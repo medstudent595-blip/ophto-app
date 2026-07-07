@@ -330,21 +330,126 @@ graph TD
     Recidive -->|NON, Guérison| StopCort(Arrêt des Stéroïdes)
 
     StopCort --> RecidiveApres(Récidive rapide ?)
+```
     RecidiveApres -->|1ère fois| Reprise[Reprise immédiate<br>Valaciclovir PO]
     RecidiveApres -->|2ème fois / ≥2 par an| Prophylaxie[Prévention au long cours<br>Valaciclovir 500mg/j x 12 mois]:::purpleFill
 `;
 
 export const hsvClassificationsMarkdown = `
-# 📊 Classifications : Herpès Oculaire
+# 📊 Classification Anatomo-Clinique de l'Herpès du Segment Antérieur
 
-> [!NOTE]
-> Bientôt disponible : Classification détaillée.
-\`;
+> [!IMPORTANT]
+> La classification repose sur la profondeur de l'atteinte et le mécanisme physiopathologique dominant (réplication virale *versus* réaction immunitaire).
 
-export const hsvClassificationsMermaid = \`
+---
+
+## I. Les Atteintes Annexielles et de Surface (Extra-cornéennes)
+Ces formes sont souvent associées entre elles, particulièrement lors des primo-infections ou chez l'enfant.
+
+<div className="table-wrapper">
+| Forme Clinique | Fréquence / Association | Caractéristiques Cliniques & Remarques |
+| :--- | :--- | :--- |
+| **Blépharites** | Isolées (21 % des cas) ou associées | Vésicules sur fond érythémateux évoluant vers des croûtes. <br/>🚨 Forme grave : le *syndrome de Kaposi-Juliusberg* chez l'atopique. |
+| **Conjonctivites** | Jusqu'à 20 % des conjonctivites aiguës non bactériennes | Souvent méconnues car d'aspect banal (folliculaire). <br/>🔍 La recherche d'une ulcération conjonctivale dendritique est primordiale. |
+| **Sclérites** | Rares | Le plus souvent antérieures, diffuses ou nodulaires (plus rarement nécrosantes). Liées à une réaction granulomateuse de résolution lente. |
+</div>
+
+---
+
+## II. Les Kératites Herpétiques (Le cœur de la pathologie)
+
+### A. Les Kératites Épithéliales (Maladie virale réplicative pure)
+<div className="table-wrapper">
+| Type de Kératite | Fréquence | Description Clinique |
+| :--- | :--- | :--- |
+| **Ponctuée Superficielle (KPS)** | Forme de début | Soulèvement par œdème épithélial. |
+| **Dendritique** | La plus fréquente (50 %) | Ulcération arborisée fractale avec renflements en bulbes terminaux. |
+| **Géographique** | 10 % des cas | Vaste placard ulcéreux dénudé. Souvent aggravé par les corticoïdes. |
+| **Marginale** | - | Ulcération périlimbique avec infiltrat stromal. Très douloureuse, souvent résistante aux antiviraux seuls. |
+| **En Archipel** | - | Début paralimbique, évolue de façon centripète en épargnant des îlots de cornée saine. |
+</div>
+
+### B. Les Kératites Stromales
+<div className="table-wrapper">
+| Type | Gravité | Mécanisme Dominant | Caractéristiques & Complications |
+| :--- | :--- | :--- | :--- |
+| 🔴 **Nécrosantes** <br/>*(avec ulcération)* | Rare mais gravissime | Réplication virale massive | Infiltrat blanc-jaunâtre dense, fonte purulente. <br/>🚨 Risque de perforation (descemétocèle). |
+| 🟢 **Non Nécrosantes** <br/>*(sans ulcération)* | Fréquente | Immunologique (Antigène - Anticorps - Complément) | Infiltrat stromal diffus, focal ou multiple, sans nécrose. <br/>⚠️ Induit opacification (fibrose) et néovascularisation. |
+</div>
+
+### C. Les Endothélites (Mécanisme mixte viral et immunitaire)
+Lésions caractérisées par un œdème stromal sus-jacent *sans infiltrat* et des précipités rétro-descemétiques (PRD).
+
+<div className="table-wrapper">
+| Forme | Sévérité | Caractéristiques Cliniques |
+| :--- | :--- | :--- |
+| **Disciforme** | Modérée | Œdème stromal central circulaire, zone saine en périphérie. |
+| **Diffuse** | Sévère | Œdème stromal généralisé à toute la cornée, rougeur et BAV plus sévères. |
+| 🔴 **Linéaire** | Très sévère | Ligne de PRD progressant de la périphérie vers le centre (mima un rejet de greffe). Témoigne d'une réplication virale endothéliale intense. |
+</div>
+
+### D. Les Kératopathies Neurotrophiques (Anciennement Métaherpétiques)
+<div className="table-wrapper">
+| Statut Infectieux | Mécanisme Physiopathologique | Conséquence Clinique |
+| :--- | :--- | :--- |
+| 🔘 **Non actif** <br/>(Lésions séquellaires) | Dénervation (anesthésie cornéenne) et altération de la membrane basale. | Ulcères torpides chroniques à bords lisses, ne répondant pas aux antiviraux. |
+</div>
+
+---
+
+## III. Les Uvéites Antérieures Herpétiques
+Elles représentent près de 90 % des atteintes uvéales à HSV et sont unilatérales, récidivantes et souvent hypertensives (par trabéculite virale).
+
+<div className="table-wrapper">
+| Forme d'Uvéite | Fréquence | Présentation et Signes Cliniques |
+| :--- | :--- | :--- |
+| **Kérato-uvéites** | 85 % des cas | Uvéite secondaire ou concomitante à une kératite stromale ou une endothélite. |
+| **Uvéites antérieures isolées** | 15 % des cas | Sans lésion cornéenne active (hypoesthésie souvent présente). <br/>🔍 Signe pathognomonique : **Atrophie irienne en secteur (transilluminable)** et PRD granulomateux. |
+</div>
+
+---
+
+## 🧠 Tableau Récapitulatif : Mindmap de Révision
+
+> [!TIP]
+> Voici l'organisation mentale requise pour l'examen de fin de spécialité :
+
+<div className="table-wrapper">
+| Niveau Anatomique | Forme Clinique Spécifique | Mécanisme Principal | Présence d'Ulcère à la Fluo ? |
+| :--- | :--- | :--- | :--- |
+| **Surface** | Blépharite, Conjonctivite, Sclérite | Viral direct / Granulomateux | Non (sauf conjonctivite parfois) |
+| **Épithélium** (Superficiel) | Dendritique, Géographique | 🦠 **Viral Pur** (Cytopathogène) | ✅ **OUI** (Ulcération vraie) |
+| **Stroma** (Profond) | Nécrosante | 🦠 **Viral Massif** | ✅ **OUI** (Risque Perforation) |
+| **Stroma** (Profond) | Non Nécrosante | 🛡️ **Immunitaire** | 🚫 **NON** (Infiltrat sans ulcère) |
+| **Endothélium** | Disciforme, Diffuse | 🦠 + 🛡️ **Mixte** | 🚫 **NON** (Œdème seul) |
+| **Endothélium** | Linéaire | 🦠 **Viral Endothélial** | 🚫 **NON** (Œdème + Ligne PRD) |
+| **Uvéale** | Iridocyclite avec Atrophie en secteur | 🦠 + 🛡️ **Mixte** (Trabéculite) | 🚫 **NON** (Souvent Isolée) |
+</div>
+`;
+
+export const hsvClassificationsMermaid = `
 mindmap
-  root((Herpès Oculaire))
-    Épithélial
-    Stromal
-    Endothélial
-\`;
+  root((Herpès<br>Oculaire))
+    Surface
+      Blépharite
+      Conjonctivite
+      Sclérite
+    Cornée
+        Épithélium
+            Dendritique
+            Géographique
+            Marginale
+            En Archipel
+        Stroma
+            Nécrosante
+            Non Nécrosante
+        Endothélium
+            Disciforme
+            Diffuse
+            Linéaire
+        Neurotrophique
+            Séquelles
+    Uvée Antérieure
+      Kérato_uvéite
+      Isolée
+`;
