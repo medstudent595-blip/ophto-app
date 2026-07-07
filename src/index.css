@@ -232,6 +232,17 @@ tr:last-child td {
   gap: 1rem;
   font-size: 0.95rem;
   line-height: 1.5;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+blockquote {
+  border-left: 4px solid var(--accent-primary);
+  padding-left: 1rem;
+  margin-left: 0;
+  color: var(--text-secondary);
+  font-style: italic;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 .alert-note {
   background-color: rgba(59, 130, 246, 0.1);
