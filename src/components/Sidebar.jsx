@@ -39,10 +39,11 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
             {isOpen && <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '1px' }}>Bibliothèque</span>}
           </div>
           
-          <NavItem to="/courses" icon={<BookOpen size={20} />} label="Bibliothèque" isOpen={isOpen} />
+          <NavItem to="/courses" icon={<BookOpen size={20} />} label="Cours Magistraux" isOpen={isOpen} />
           <NavItem to="/fiches" icon={<Map size={20} />} label="Fiches Techniques" isOpen={isOpen} />
           <NavItem to="/algorithms" icon={<Brain size={20} />} label="Algorithmes" isOpen={isOpen} />
-          <NavItem to="/imaging" icon={<ImageIcon size={20} />} label="Imagerie & Examens" isOpen={isOpen} />
+          <NavItem to="/classifications" icon={<Layout size={20} />} label="Classification" isOpen={isOpen} />
+          <NavItem to="/imaging" icon={<ImageIcon size={20} />} label="Imagerie" isOpen={isOpen} />
           
           <div style={{ margin: '1rem 0 0.5rem', padding: '0 1rem' }}>
             {isOpen && <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '1px' }}>Outils</span>}

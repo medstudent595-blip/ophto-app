@@ -340,9 +340,107 @@ export const noiAlgoMermaid = `graph TD
 `;
 
 export const noiMindmapMarkdown = `
-# Classifications
-
-*Le contenu de la classification sera bientôt disponible.*
+# Carte Mentale
+*Bientôt disponible.*
 `;
 
 export const noiMindmapMermaid = null;
+
+export const noiClassificationsMarkdown = `
+# 🗂️ Classifications des Neuropathies Optiques Inflammatoires (NOI)
+
+> Ce document synthétise les cinq axes de classification des NOI. Il est indispensable pour catégoriser la pathologie de votre patient et structurer la démarche diagnostique lors de vos dossiers à l'examen.
+
+## 1. Classification Clinico-Radiologique
+
+> [!IMPORTANT]
+> **C'est la clé de la prise en charge pratique.** Elle détermine l'ampleur du bilan et l'urgence thérapeutique. Elle s'évalue dès la première consultation.
+
+| Paramètre | 🟢 NOI Typique | 🔴 NOI Atypique (Signaux d'alarme) |
+| :--- | :--- | :--- |
+| **Profil Général** | Profil "Sclérose en Plaques" (SEP). | Suspecte d'atteinte sévère (NMO, Infection, Sarcoïdose). |
+| **Acuité Visuelle** | BAV modérée. | BAV < 1/10 (sans récupération) ; absence perception lumineuse. |
+| **Installation** | Rapidement progressive (48–72 h). | Brutale ; OU progressive > 3 semaines ; OU chronique. |
+| **Latéralité** | Unilatérale. | Bilatérale simultanée ou rapidement séquentielle. |
+| **Douleur** | Modérée, à la mobilisation du globe. | Absente ; OU très sévère / persistante > 2 semaines. |
+| **Papille** | Normale ou OP modéré. | OP majeur, exsudats, hémorragies. |
+| **Évolution** | Amélioration en qq semaines. | Pas d'amélioration ; Récidives ; Corticodépendance. |
+
+## 2. Classification Topographique 
+
+Basée sur l'aspect clinique au niveau du **Fond d'Œil (FO)**. Elle renseigne sur le siège de l'inflammation sur le Nerf Optique.
+
+| Forme | Aspect au Fond d'Œil | Particularités & Étiologies fréquentes |
+| :--- | :--- | :--- |
+| **NORB** *(Névrite Rétrobulbaire)* | FO **Normal** | - Forme la plus fréquente.<br>- Concerne 2/3 des adultes, 50% des enfants. |
+| **Papillite** *(Névrite Antérieure)* | **Œdème Papillaire** (OP) | - Plus fréquente chez l'enfant.<br>- Fréquente dans les atteintes par anticorps anti-MOG. |
+| **Périnévrite** | Normal ou OP | - Inflammation de la gaine (et non du NO).<br>- Élargissement de la tache aveugle.<br>- *Idiopathique, Syphilis, Sarcoïdose, Wegener.* |
+| **Neurorétinite** | OP + **Exsudats maculaires** en étoile | - **JAMAIS** associée à une SEP.<br>- Maladie des griffes du chat (*Bartonella*) +++.<br>- L'étoile maculaire apparaît à J10. |
+
+## 3. Classification Nosologique
+
+Permet de classer la NOI selon son **mode d'évolution dans le temps** et son association à des maladies systémiques confirmées.
+
+| Sigle | Signification | Explication clinique |
+| :--- | :--- | :--- |
+| **SION** | *Single Isolated Optic Neuritis* | Névrite isolée, épisode unique non récidivant (souvent idiopathique après suivi). |
+| **RION** | *Relapsing Isolated Optic Neuritis* | Névrites isolées mais **récidivantes** (poussées distinctes avec séquelles possibles). Évolution vers SEP ou AQP4 dans ~10 à 20% des cas à 10 ans. |
+| **CRION** | *Chronic Relapsing Inflamm. Optic Neuropathy* | NOI chronique, **corticodépendante**. Risque de cécité irréversible à l'arrêt des CTC. Nécessite des immunosuppresseurs. |
+| **NOI + SEP** | Associée à la SEP | Répond aux critères de McDonald (Dissémination spatiale et temporelle). |
+| **NOI + NMO** | Associée à la Neuromyélite Optique | Spectre séropositif aux anticorps anti-AQP4 ou anti-MOG. |
+
+## 4. Classification Étiologique
+
+Classement par familles de maladies responsables de l'inflammation.
+
+1. **Pathologies démyélinisantes du SNC :** SEP (la plus fréquente), spectre AQP4 (NMO), spectre MOG, ADEM (chez l'enfant).
+2. **Pathologies inflammatoires et auto-immunes (Systémiques) :** Sarcoïdose (fréquente), Lupus, Maladie de Behçet, Gougerot-Sjögren.
+3. **Pathologies infectieuses :**
+   - *Virales :* Herpèsvirus (HSV, VZV).
+   - *Bactériennes :* Syphilis, Maladie de Lyme, Bartonellose (*neurorétinite*).
+   - *Parasitaires / Fongiques :* Toxoplasmose (sujet immunodéprimé).
+4. **NOI iatrogènes :** Post-vaccinales, Post-radiques (dose > 50 Gy cumulée), Médicamenteuses (ex: anti-TNFα).
+
+## 5. Classification Radiologique
+
+Basée sur **l'extension longitudinale** de la prise de contraste à l'IRM. Le nerf optique se divise anatomiquement et peut être touché sur différents segments. Plus l'atteinte est étendue et postérieure, plus on suspecte une NMO (AQP4).
+
+- **Segments de chaque Nerf Optique (3) :** Intra-orbitaire, Intra-canalaire, Préchiasmatique.
+- **Voies optiques postérieures :** Chiasma (1), Bandelettes optiques (2).
+- *Total : 9 segments.*
+
+## 6. Évolution des Critères de McDonald (SEP)
+
+> [!TIP]
+> **Réflexe pour les oraux :** La classification McDonald 2024 apporte une révolution majeure pour l'ophtalmologie. 
+
+| Domaine | Critères 2017 | Nouveautés 2024 | Portée Clinique |
+| :--- | :--- | :--- | :--- |
+| **Topographie (DIS)** | 4 localisations (Péri-V, Corticale, Infratentorielle, Médullaire) | **Le NERF OPTIQUE devient la 5e localisation anatomique.** | La NOI participe directement à la preuve de la Dissémination Spatiale (démontrable par IRM, OCT, PEV). |
+| **LCS (Ponction Lombaire)** | Bandes Oligoclonales (BOC) | Les chaînes légères libres **Kappa** sont reconnues comme équivalentes aux BOC. | Élargissement de l'arsenal diagnostique biologique. |
+| **Biomarqueurs IRM** | Lésions classiques | Intégration du *Central Vein Sign* (CVS) et des lésions à liseré paramagnétique (PRL). | Diagnostic affiné face aux "mimics" vasculaires. |
+`;
+
+export const noiClassificationsMermaid = `graph TD
+    A[Classifications NOI] --> B[1. Clinico-Radiologique]
+    A --> C[2. Topographique]
+    A --> D[3. Nosologique]
+    A --> E[4. Étiologique]
+    A --> F[5. Radiologique]
+
+    B --> B1[Typique : Profil SEP]
+    B --> B2[Atypique : Signaux d'alarme NMO/Infection]
+
+    C --> C1[NORB : FO Normal]
+    C --> C2[Papillite : Oedème papillaire]
+    C --> C3[Neurorétinite : Exsudats en étoile]
+    C --> C4[Périnévrite : Atteinte de la gaine]
+
+    D --> D1[SION : Isolé unique]
+    D --> D2[RION : Isolé récidivant]
+    D --> D3[CRION : Chronique corticodépendant]
+
+    E --> E1[SEP, NMO AQP4, MOG]
+    E --> E2[Sarcoïdose, Lupus]
+    E --> E3[Infectieux : Bartonella, Syphilis]
+`;

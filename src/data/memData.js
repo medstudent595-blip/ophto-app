@@ -275,7 +275,51 @@ export const memMindmapMermaid = `mindmap
         id10b("Pelage MEM Bleu Trypan")
         id10c("Pelage MLI Brilliant Blue G")
       id11["Complications"]
+      id11["Complications"]
         id11a("Cataracte très fréquente")
         id11b("Décollement de rétine")
         id11c("Endophtalmie")`;
 
+export const memClassificationsMarkdown = `
+# 🗂️ Classifications et Formes Cliniques des MEM
+
+Bien qu'il n'existe pas de classification par stades universellement évoquée, les Membranes Épirétiniennes Maculaires (MEM) se classent formellement selon leur **étiologie** et selon les **formes anatomocliniques** à l'OCT.
+
+## 1. Classification Étiologique
+
+C'est la classification la plus importante en pratique clinique car elle dicte le bilan et l'attitude thérapeutique.
+
+| Caractéristique | MEM Idiopathiques (80 %) | MEM Secondaires / "Médicales" (20 %) |
+| :--- | :--- | :--- |
+| **Terrain / Causes** | Sujets > 50 ans | Post-DR chirurgical, Diabète, OVR, Uvéites, Trauma |
+| **Physiopathologie** | Liées au Décollement Postérieur du Vitré (DPV) | Prolifération inflammatoire ou cicatricielle |
+| **Histologie** | Monocouche cellulaire, peu de collagène | Plusieurs couches, collagène abondant |
+| **Pronostic & Évolution**| Évolution lente, chirurgie très efficace | Œdème cystoïde (logettes) fréquent, résultats visuels moyens |
+| **Risque de Récidive** | Faible | Élevé (justifie le pelage systématique de la MLI) |
+
+## 2. Classification selon l'aspect OCT (Formes Cliniques)
+
+L'OCT permet de différencier les formes induites par la MEM.
+
+| Forme Clinique | Mécanisme | Signes à l'OCT | Pronostic / Attitude |
+| :--- | :--- | :--- | :--- |
+| **Pseudotrou Maculaire** | Contraction centripète homogène | Verticalisation des bords, diamètre rétréci, **épaisseur fovéolaire conservée** | Bon pronostic |
+| **Trou Lamellaire** | Processus avorté de trou maculaire | Clivage en **oméga inversé**, perte de substance | Chirurgie si traction évolutive |
+| **Syndrome VMT** | Décollement vitréen partiel | Hyaloïde postérieure tendue attachée à la macula, œdème microkystique | Chirurgie précoce recommandée |
+`;
+
+export const memClassificationsMermaid = `graph TD
+    classDef main fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef cat fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef sub fill:#f1f8e9,stroke:#33691e,stroke-width:2px;
+
+    A["Classification des MEM"]:::main --> B["Selon l'Étiologie"]:::cat
+    A --> C["Selon l'aspect OCT"]:::cat
+
+    B --> B1["Idiopathiques (80%)"]:::sub
+    B --> B2["Secondaires / Macular Pucker (20%)"]:::sub
+
+    C --> C1["Pseudotrou Maculaire"]:::sub
+    C --> C2["Trou Lamellaire"]:::sub
+    C --> C3["Syndrome VMT"]:::sub
+`;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Book, Filter, ArrowRight } from 'lucide-react';
+import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon } from 'lucide-react';
 
 const allCourses = [
   { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.' },
@@ -15,7 +15,7 @@ const allCourses = [
 
 const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée'];
 
-const Library = () => {
+const Library = ({ type = 'cours' }) => {
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState('');
   const [selectedCategory, setSelectedCategory] = useState('Toutes');
@@ -27,6 +27,25 @@ const Library = () => {
     return matchesSearch && matchesCategory;
   });
 
+  const titleMap = {
+    cours: 'Cours Magistraux',
+    fiches: 'Fiches Techniques',
+    algorithms: 'Algorithmes Décisionnels',
+    classifications: 'Classifications',
+    imaging: 'Imagerie & Examens'
+  };
+
+  const iconMap = {
+    cours: Book,
+    fiches: Map,
+    algorithms: Brain,
+    classifications: Layout,
+    imaging: ImageIcon
+  };
+
+  const TitleIcon = iconMap[type] || Book;
+  const pageTitle = titleMap[type] || 'Bibliothèque';
+
   return (
     <div className="page-container animate-fade-in" style={{ height: '100%', overflowY: 'auto' }}>
       
@@ -34,7 +53,7 @@ const Library = () => {
       <div style={{ marginBottom: '2.5rem', display: 'flex', flexDirection: 'column', gap: '1rem' }}>
         <div>
           <h1 style={{ fontSize: '2.2rem', marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-            <Book color="var(--accent-primary)" size={32} /> Bibliothèque des Cours
+            <TitleIcon color="var(--accent-primary)" size={32} /> {pageTitle}
           </h1>
           <p style={{ color: 'var(--text-secondary)', fontSize: '1.1rem' }}>
             Explorez l'ensemble du programme DEMS classé par spécialités.
@@ -108,7 +127,7 @@ const Library = () => {
               position: 'relative',
               overflow: 'hidden'
             }}
-            onClick={() => navigate(`/course/${course.id}`)}
+            onClick={() => navigate(`/course/${course.id}?section=${type}`)}
             onMouseOver={(e) => {
               e.currentTarget.style.borderColor = 'var(--accent-primary)';
               e.currentTarget.style.transform = 'translateY(-3px)';
@@ -146,7 +165,7 @@ const Library = () => {
             </p>
             
             <div style={{ display: 'flex', alignItems: 'center', color: 'var(--accent-primary)', fontWeight: 500, fontSize: '0.9rem', marginTop: 'auto' }}>
-              Accéder au cours <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
+              Accéder <ArrowRight size={16} style={{ marginLeft: '0.5rem' }} />
             </div>
           </div>
         )) : (

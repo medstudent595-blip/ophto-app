@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">OphtoApp</string>
+    <string name="title_activity_main">OphtoApp</string>
+    <string name="package_name">com.dems.ophtoapp</string>
+    <string name="custom_url_scheme">com.dems.ophtoapp</string>
+</resources>

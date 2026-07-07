@@ -1,11 +1,31 @@
-import React from 'react';
-import { Menu, Bell, User, Moon, Sun } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, Bell, User, Moon, Sun, Download } from 'lucide-react';
 
 const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
+  const [deferredPrompt, setDeferredPrompt] = useState(null);
+
+  useEffect(() => {
+    const handleBeforeInstallPrompt = (e) => {
+      e.preventDefault();
+      setDeferredPrompt(e);
+    };
+    window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+    return () => window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
+  }, []);
+
+  const handleInstallClick = async () => {
+    if (!deferredPrompt) return;
+    deferredPrompt.prompt();
+    const { outcome } = await deferredPrompt.userChoice;
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null);
+    }
+  };
+
   return (
     <header style={{
       height: 'var(--navbar-height)',
-      background: 'rgba(11, 15, 25, 0.8)',
+      background: 'var(--glass-bg)',
       backdropFilter: 'blur(10px)',
       borderBottom: '1px solid var(--border-color)',
       display: 'flex',
@@ -40,6 +60,27 @@ const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
       </div>
       
       <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+        {deferredPrompt && (
+          <button
+            onClick={handleInstallClick}
+            style={{
+              background: 'var(--accent-primary)',
+              color: 'white',
+              border: 'none',
+              padding: '0.5rem 1rem',
+              borderRadius: 'var(--radius-md)',
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              fontWeight: 600,
+              cursor: 'pointer',
+              boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+            }}
+          >
+            <Download size={18} />
+            Installer l'App
+          </button>
+        )}
         <button 
           onClick={toggleTheme}
           style={{ color: 'var(--text-secondary)', padding: '0.5rem', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center' }}

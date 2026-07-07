@@ -280,3 +280,75 @@ export const vkhMindmapMermaid = `graph TD
     L --> M{"Forme Sévère / Retardée ?"}
     M -->|Oui| N["Ajout Immunosuppresseurs d'emblée"]
     M -->|Non| O["Surveillance Étroite OCT/ICG"]`;
+
+export const vkhClassificationsMarkdown = `
+# 📚 Classifications et Critères Diagnostiques : Maladie de VKH
+
+Ce document regroupe les différentes classifications et critères diagnostiques historiques et actuels de la maladie de Vogt-Koyanagi-Harada.
+
+## 1. Critères de Sugiura (1978)
+Sugiura a été le premier à proposer un ensemble de critères basés sur des signes majeurs.
+
+| Critère | Description |
+| :--- | :--- |
+| **Majeur 1** | Uvéite postérieure bilatérale aiguë et/ou œdème rétinien circonscrit (pôle postérieur) avec diffusion de fluorescéine sous-rétinienne. |
+| **Majeur 2** | Pléiocytose à la ponction lombaire (PL). |
+
+## 2. Critères révisés de 2001
+
+Largement utilisés mais présentent l'inconvénient de ne pas prendre en compte l'imagerie moderne (OCT, ICG).
+
+### Les 5 Critères de base
+1. **Absence d'antécédent de traumatisme** perforant ou chirurgie oculaire.
+2. **Absence d'élément** évoquant un autre diagnostic.
+3. **Atteinte oculaire bilatérale**.
+4. **Manifestations neurologiques** (acouphènes, rigidité de la nuque, pléiocytose au LCS).
+5. **Manifestations dermatologiques** (alopécie, poliose, vitiligo).
+
+### Formes Cliniques (2001)
+
+| Forme Clinique | Critères Présents | Signification |
+| :--- | :--- | :--- |
+| **Forme complète** | Critères 1 à 5 | Retard diagnostique (signes cutanés tardifs installés) |
+| **Forme incomplète** | 1 à 3 + (4 **OU** 5) | Forme intermédiaire |
+| **Forme oculaire isolée** | Critères 1 et 3 | Forme de début strict |
+
+> [!WARNING]
+> **Limites** : Aucune distinction claire entre la phase aiguë et la phase chronique, et non-intégration de l'imagerie (OCT, ICG).
+
+## 3. Critères de classification SUN Working Group (2021)
+
+Critères actuels, parfaitement adaptés à la pratique clinique et à l'imagerie multimodale.
+
+### Pré-requis (Critères d'exclusion)
+* Pas d'antécédent de traumatisme perforant ou chirurgie.
+* Bilan **Syphilis et Tuberculose négatif**.
+* Pas d'éléments en faveur d'une Sarcoïdose.
+
+| Phase de la Maladie | Critères Nécessaires (en plus des pré-requis) |
+| :--- | :--- |
+| **VKH Précoce (Aigu)** | Décollement rétinien exsudatif caractéristique (OCT/AF) **OU** Panuvéite avec > 2 manifestations neurologiques. |
+| **VKH Tardif (Chronique)** | Antécédent de VKH précoce **ET** FO en "coucher de soleil" **OU** uvéite avec > 1 signe cutané (vitiligo, poliose, alopécie). |
+
+> [!NOTE] 
+> **En pratique clinique** : Le diagnostic de la phase aiguë repose massivement sur l'imagerie multimodale (OCT, AF, ICG), permettant un traitement très précoce.
+`;
+
+export const vkhClassificationsMermaid = `graph TD
+    classDef preReq fill:#fff3e0,stroke:#e65100,stroke-width:2px;
+    classDef precoce fill:#e3f2fd,stroke:#1565c0,stroke-width:2px;
+    classDef tardif fill:#fce4ec,stroke:#c2185b,stroke-width:2px;
+
+    A[Critères SUN Working Group 2021] --> B{Pré-requis :<br>Exclusion Trauma, Syphilis, TB, Sarcoïdose}:::preReq
+    
+    B --> C["VKH PRÉCOCE (Phase Aiguë)"]:::precoce
+    B --> D["VKH TARDIF (Phase Chronique)"]:::tardif
+
+    C --> C1[Décollement Rétinien Exsudatif<br>typique à l'OCT/AF]
+    C --> C2[Panuvéite + >2 signes neuros]
+    C1 -. OU .- C2
+
+    D --> D1[Fond d'Œil en Coucher de Soleil]
+    D --> D2[Uvéite + >1 signe cutané<br>Vitiligo, Poliose, Alopécie]
+    D1 -. OU .- D2
+`;

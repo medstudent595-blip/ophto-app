@@ -33,11 +33,12 @@ function App() {
             <Route path="/" element={<Dashboard />} />
             <Route path="/course/:id" element={<CourseReader />} />
             <Route path="/courses" element={<Library />} />
-            <Route path="/fiches" element={<div className="page-container animate-fade-in"><h1>Fiches Techniques</h1><p>En construction...</p></div>} />
-            <Route path="/algorithms" element={<div className="page-container animate-fade-in"><h1>Algorithmes Décisionnels</h1><p>En construction...</p></div>} />
-            <Route path="/imaging" element={<div className="page-container animate-fade-in"><h1>Imagerie & Examens</h1><p>En construction...</p></div>} />
-            <Route path="/ai-assistant" element={<div className="page-container animate-fade-in"><h1>Assistant IA</h1><p>En construction...</p></div>} />
-            <Route path="/settings" element={<div className="page-container animate-fade-in"><h1>Paramètres</h1><p>En construction...</p></div>} />
+            <Route path="/fiches" element={<Library type="fiches" />} />
+            <Route path="/algorithms" element={<Library type="algorithms" />} />
+            <Route path="/classifications" element={<Library type="classifications" />} />
+            <Route path="/imaging" element={<Library type="imaging" />} />
+            <Route path="/ai-assistant" element={<div className="page-container animate-fade-in"><h1>Assistant IA</h1><p>Bientôt disponible...</p></div>} />
+            <Route path="/settings" element={<div className="page-container animate-fade-in"><h1>Paramètres</h1><p>Bientôt disponible...</p></div>} />
           </Routes>
         </main>
       </div>

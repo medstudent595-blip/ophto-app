@@ -1,21 +1,51 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mermaid from 'mermaid';
 import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid } from '../data/coursesData';
-import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid } from '../data/memData';
-import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid } from '../data/vkhData';
-import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid } from '../data/noiData';
+import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
+import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
+import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid } from '../data/noiData';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft } from 'lucide-react';
 
 const CourseReader = () => {
   const { id } = useParams();
+  const location = useLocation();
+  
   const [notes, setNotes] = useState('');
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('notes');
   const [activeSection, setActiveSection] = useState('cours');
   const [sidebarOpen, setSidebarOpen] = useState(true);
+  
+  // Font size state
+  const [fontSize, setFontSize] = useState(16);
+
+  // Highlighter function
+  const handleHighlight = () => {
+    try {
+      if (window.getSelection().toString().length > 0) {
+        document.designMode = 'on';
+        // 'hiliteColor' is for some browsers, 'backColor' for others
+        document.execCommand('backColor', false, '#ffeb3b');
+        document.execCommand('hiliteColor', false, '#ffeb3b');
+        document.designMode = 'off';
+        window.getSelection().removeAllRanges();
+      } else {
+        alert("Veuillez d'abord sélectionner du texte à surligner.");
+      }
+    } catch (err) {
+      console.error("Erreur de surlignage:", err);
+    }
+  };
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const section = params.get('section');
+    if (section) {
+      setActiveSection(section);
+    }
+  }, [location.search]);
 
   // Dynamic course data selection
   const courseData = id === 'membranes-epimaculaires' ? {
@@ -24,28 +54,36 @@ const CourseReader = () => {
     algorithmes: memAlgorithmsMarkdown,
     algoMermaid: memAlgoMermaid,
     mindmapMarkdown: memMindmapMarkdown,
-    mindmapMermaid: memMindmapMermaid
+    mindmapMermaid: memMindmapMermaid,
+    classificationsMarkdown: memClassificationsMarkdown,
+    classificationsMermaid: memClassificationsMermaid
   } : id === 'vogt-koyanagi-harada' ? {
     cours: vkhCourseMarkdown,
     fiches: vkhFichesMarkdown,
     algorithmes: vkhAlgorithmsMarkdown,
     algoMermaid: vkhAlgoMermaid,
     mindmapMarkdown: vkhMindmapMarkdown,
-    mindmapMermaid: vkhMindmapMermaid
+    mindmapMermaid: vkhMindmapMermaid,
+    classificationsMarkdown: vkhClassificationsMarkdown,
+    classificationsMermaid: vkhClassificationsMermaid
   } : id === 'neuropathies-optiques-inflammatoires' ? {
     cours: noiCourseMarkdown,
     fiches: noiFichesMarkdown,
     algorithmes: noiAlgorithmsMarkdown,
     algoMermaid: noiAlgoMermaid,
     mindmapMarkdown: noiMindmapMarkdown,
-    mindmapMermaid: noiMindmapMermaid
+    mindmapMermaid: noiMindmapMermaid,
+    classificationsMarkdown: noiClassificationsMarkdown,
+    classificationsMermaid: noiClassificationsMermaid
   } : {
     cours: courseMarkdown,
     fiches: fichesMarkdown,
     algorithmes: algorithmsMarkdown,
     algoMermaid: algoMermaid,
     mindmapMarkdown: mindmapMarkdown,
-    mindmapMermaid: mindmapMermaid
+    mindmapMermaid: mindmapMermaid,
+    classificationsMarkdown: '',
+    classificationsMermaid: ''
   };
 
   const systemRole = `Tu es un professeur en ophtalmologie, chef de service au CHU de Paris. Tu enseignes en école de médecine de Paris. Ton objectif est d'aider un résident en ophtalmologie préparant son examen de fin de spécialité (DEMS). Tu dois être extrêmement rigoureux, didactique, et ne faire aucune erreur. Utilise des plans structurés, des listes et des jeux de couleurs ou emojis pour tes explications médicales.`;
@@ -109,7 +147,7 @@ const CourseReader = () => {
           display: 'flex', borderBottom: '1px solid var(--border-color)',
           background: 'var(--bg-secondary)', position: 'sticky', top: 0, zIndex: 2
         }}>
-          {['cours', 'fiches', 'algorithmes'].map((sec) => (
+          {['cours', 'fiches', 'algorithmes', 'classifications'].map((sec) => (
             <button
               key={sec}
               onClick={() => setActiveSection(sec)}
@@ -121,10 +159,23 @@ const CourseReader = () => {
                 textTransform: 'capitalize'
               }}
             >
-              {sec === 'cours' ? 'Cours Magistral' : sec === 'fiches' ? 'Fiches Techniques' : 'Algorithmes'}
+              {sec === 'cours' ? 'Cours Magistral' : sec === 'fiches' ? 'Fiches Techniques' : sec === 'algorithmes' ? 'Algorithmes' : 'Classifications'}
             </button>
           ))}
           <div style={{ flex: 1 }} />
+          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginRight: '1.5rem' }}>
+            <div style={{ display: 'flex', background: 'var(--bg-primary)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
+              <button onClick={() => setFontSize(Math.max(12, fontSize - 2))} style={{ padding: '0.25rem 0.75rem', color: 'var(--text-primary)', borderRight: '1px solid var(--border-color)' }}>A-</button>
+              <button onClick={() => setFontSize(Math.min(24, fontSize + 2))} style={{ padding: '0.25rem 0.75rem', color: 'var(--text-primary)' }}>A+</button>
+            </div>
+            <button 
+              onClick={handleHighlight} 
+              style={{ background: 'rgba(245, 158, 11, 0.2)', color: 'var(--accent-warning)', border: '1px solid var(--accent-warning)', padding: '0.4rem 1rem', borderRadius: 'var(--radius-sm)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
+              title="Sélectionnez du texte puis cliquez ici"
+            >
+              <PenTool size={16} /> Surligner
+            </button>
+          </div>
           {!sidebarOpen && (
             <button 
               onClick={() => setSidebarOpen(true)}
@@ -135,7 +186,7 @@ const CourseReader = () => {
           )}
         </div>
 
-        <div style={{ padding: '2rem' }}>
+        <div style={{ padding: '2rem', fontSize: `${fontSize}px` }}>
           {activeSection === 'cours' && (
             <div 
               className="course-content animate-fade-in"
@@ -162,7 +213,13 @@ const CourseReader = () => {
                   {courseData.algoMermaid}
                 </div>
               )}
-
+            </div>
+          )}
+          {activeSection === 'classifications' && (
+            <div 
+              className="course-content animate-fade-in"
+              style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
+            >
               {courseData.mindmapMarkdown && <div dangerouslySetInnerHTML={createMarkup(courseData.mindmapMarkdown)} />}
 
               {courseData.mindmapMermaid && (
