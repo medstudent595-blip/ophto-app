@@ -17,7 +17,7 @@ const CourseReader = () => {
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('notes');
   const [activeSection, setActiveSection] = useState('cours');
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Font size state
   const [fontSize, setFontSize] = useState(16);
