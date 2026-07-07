@@ -7,10 +7,10 @@ const allCourses = [
   { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.' },
   { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine', description: 'Diagnostic OCT, critères pronostics et indications de la vitrectomie.' },
   { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.' },
+  { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).' },
   // Placeholders for visual effect
   { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.' },
-  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.' },
-  { id: 'keratite-herpetique', title: 'Kératite Herpétique', category: 'Cornée', description: 'Signes cliniques, traitement antiviral et complications.' }
+  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.' }
 ];
 
 const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée'];

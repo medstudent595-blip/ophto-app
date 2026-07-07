@@ -8,6 +8,7 @@ import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindma
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
 import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid } from '../data/noiData';
+import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
 
 const CourseReader = () => {
@@ -80,6 +81,15 @@ const CourseReader = () => {
     mindmapMermaid: noiMindmapMermaid,
     classificationsMarkdown: noiClassificationsMarkdown,
     classificationsMermaid: noiClassificationsMermaid
+  } : id === 'herpes-oculaire' ? {
+    cours: hsvCourseMarkdown,
+    fiches: hsvFichesMarkdown,
+    algorithmes: hsvAlgorithmsMarkdown,
+    algoMermaid: hsvAlgoMermaid,
+    mindmapMarkdown: '',
+    mindmapMermaid: '',
+    classificationsMarkdown: hsvClassificationsMarkdown,
+    classificationsMermaid: hsvClassificationsMermaid
   } : {
     cours: courseMarkdown,
     fiches: fichesMarkdown,
