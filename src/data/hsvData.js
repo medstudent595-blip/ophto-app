@@ -231,23 +231,110 @@ Indispensables pour les formes stromales, endothéliales, les uvéites, ou les k
 | 🟣 **Uvéite Antérieure** | Valaciclovir PO pleine dose <br/> + Hypotonisant (Éviter les prostaglandines) + Cycloplégique | ✅ **OUI**, Dexaméthasone topique rapidement |
 | 🛡️ **Prophylaxie** | Valaciclovir PO (500mg x1/j) sur 1 an | - |
 </div>
-\`;
+`;
 
-export const hsvAlgorithmsMarkdown = \`
-# 🧠 Algorithmes Décisionnels : Herpès Oculaire
+export const hsvAlgorithmsMarkdown = `
+# 🧠 Algorithme Décisionnel et de Prise en Charge (Mise à jour 2025)
 
-> [!NOTE]
-> Bientôt disponible : Arbre décisionnel de prise en charge.
-\`;
+> [!IMPORTANT]
+> L'algorithme commence systématiquement par une question fondamentale à la lampe à fente (après test de sensibilité) : **Y a-t-il une atteinte de l'épithélium (prise de fluorescéine) ?**
 
-export const hsvAlgoMermaid = \`
+---
+
+### 🟩 BRANCHE 1 : ATTEINTE ÉPITHÉLIALE PRÉSENTE (Dendritique, Géographique)
+La réplication virale est active et en surface.
+
+*   **Décision 1** : 🛑 **CONTRE-INDICATION ABSOLUE AUX CORTICOÏDES**.
+*   **Décision 2** : Choix du traitement antiviral d'attaque (Ne jamais associer local et per os).
+    *   *Option A (Local)* : Ganciclovir gel 0,15 % (5x/jour).
+    *   *Option B (Per Os)* : Valaciclovir 500 mg (1 comp 2x/jour).
+*   **Suivi** : Contrôle à J5-J7.
+    *   *Si guérison* : Poursuivre le traitement local à 3x/jour pendant 7 jours, ou arrêter le per os selon cicatrisation.
+    *   *Si non-guérison/aggravation* : Suspecter une toxicité médicamenteuse, un problème neurotrophique ou, plus rarement, une résistance.
+
+---
+
+### 🟦 BRANCHE 2 : PAS D'ATTEINTE ÉPITHÉLIALE (Lésion Stromale ou Endothéliale)
+L'épithélium est intact. Il faut évaluer la sévérité de l'atteinte profonde.
+
+#### Sous-Branche 2A : Formes Sévères avec Réplication Massive (Kératite Stromale Nécrosante OU Endothélite Linéaire)
+*   **Décision 1** : Hospitalisation en urgence.
+*   **Décision 2** : Aciclovir Intraveineux (5 à 10 mg/kg toutes les 8h).
+*   **Décision 3 (Corticoïdes)** :
+    *   *Stromale Nécrosante* : 🛑 **AUCUN CORTICOÏDE** en phase aiguë (Risque majeur de fonte cornéenne et perforation).
+    *   *Endothélite Linéaire* : ✅ Introduction de stéroïdes topiques, mais strictement retardée après confirmation de l'efficacité antivirale.
+
+#### Sous-Branche 2B : Formes Immunologiques / Mixtes (Kératite Stromale Non Nécrosante, Endothélite Disciforme ou Diffuse, Uvéite Antérieure)
+C'est la situation clinique la plus fréquente nécessitant un maniement subtil. L'objectif est d'encadrer l'immunité tout en bloquant le virus.
+*   **Étape 1 (Attaque Antivirale)** : Valaciclovir Per Os (Pleine dose : 1g à 3g/jour selon sévérité, soit 2 à 6 comprimés de 500 mg).
+*   **Étape 2 (Fenêtre d'observation)** : Attendre le début d'amélioration clinique (48h à 72h) sous couverture antivirale seule.
+*   **Étape 3 (Introduction des Stéroïdes)** : Si et seulement si la réplication est bloquée (pas d'aggravation). Dexaméthasone topique à dose d'attaque (6 à 8 gouttes/jour).
+*   **Étape 4 (Décroissance)** : Réduction progressive par paliers de 5 à 10 jours minimum. Maintien obligatoire du Valaciclovir PO pendant toute la décroissance.
+
+---
+
+### 🟪 BRANCHE 3 : GESTION DES COMPLICATIONS ET SEVRAGE (L'Arbre Décisionnel des Récidives)
+Pendant la phase de décroissance des corticoïdes (Branche 2B) ou après guérison, voici l'algorithme décisionnel :
+
+*   **Récidive inflammatoire AVANT la fin du sevrage en corticoïdes (Corticodépendance)** :
+    *   *Action* : Arrêter la décroissance, remonter le corticoïde au palier précédent et introduire Ciclosporine A 2% collyre (hors AMM) pour prendre le relais immunomodulateur.
+*   **Disparition de l'inflammation et sevrage réussi** :
+    *   *Action* : Arrêt des stéroïdes.
+*   **Survenue d'une 1ère récidive rapide après sevrage** :
+    *   *Action* : Reprise immédiate du Valaciclovir PO (1 à 3 comprimés/jour).
+*   **Survenue d'une 2ème récidive rapide OU ≥ 2 épisodes stromaux en moins de 1 an** :
+    *   *Action* : Mise en route de la Prévention au long cours.
+    *   *Protocole* : Valaciclovir 500 mg (1 comp/jour) pendant 12 mois minimum. Surveillance créatinine, bilan hépatique et NFS.
+
+---
+
+## 🎨 Représentation Synthétique (Code Couleurs d'Urgence)
+
+<div className="table-wrapper">
+| Situation Clinique | 🦠 Statut Viral | 💊 Action Antivirale Immédiate | 💧 Statut Corticoïdes |
+| :--- | :--- | :--- | :--- |
+| **Ulcère Fluo +** | Réplication Active | Topique ou PO (Dose curative) | 🛑 **INTERDIT** |
+| **Nécrose Blanche** | Réplication Massive | Intraveineux (Hospitalisation) | 🛑 **INTERDIT** (Phase aiguë) |
+| **Infiltrat Diffus sans Ulcère** | Réaction Immune | Per Os (Dose curative) obligatoire | ⏳ **OUI** (Mais après 48h d'antiviral) |
+| **Œdème + Hypertonie** | Mixte (Trabéculite) | Per Os (Dose curative) | ⏳ **OUI** (Dès blocage viral confirmé) |
+</div>
+`;
+
+export const hsvAlgoMermaid = `
 graph TD
-    A[Herpès Oculaire Suspecté] --> B{Atteinte Principale ?}
-    B --> C[Épithéliale]
-    B --> D[Stromale / Endothéliale / Uvéite]
-\`;
+    classDef redFill fill:#ef4444,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef greenFill fill:#10b981,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef blueFill fill:#3b82f6,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef purpleFill fill:#8b5cf6,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef orangeFill fill:#f59e0b,stroke:#fff,stroke-width:2px,color:#fff;
+    classDef grayFill fill:#374151,stroke:#fff,stroke-width:2px,color:#fff;
 
-export const hsvClassificationsMarkdown = \`
+    Start((LAF : Prise <br>de Fluorescéine ?)):::grayFill -->|OUI| Epith(Atteinte Épithéliale<br>Dendrite / Géographique):::greenFill
+    Start -->|NON| Deep(Atteinte Profonde<br>Stromale / Endothéliale / Uvéite):::blueFill
+
+    Epith -->|Décision| CI_Cort[🛑 CONTRE-INDICATION<br>AUX CORTICOÏDES]:::redFill
+    CI_Cort --> TTT_Epith(Antiviral Local OU Per Os<br>Contrôle J5-J7)
+
+    Deep -->|K. Stromale Nécrosante<br>Endothélite Linéaire| Urgence(Forme Sévère :<br>Hospitalisation + Aciclovir IV):::orangeFill
+    Urgence --> UrgenceCort[🛑 Pas de corticoïdes en phase aiguë]:::redFill
+
+    Deep -->|K. Stromale Non Nécrosante<br>Endothélite Diffuse<br>Uvéite| Immune(Forme Immunologique / Mixte):::blueFill
+    Immune --> Etape1[Étape 1 : Valaciclovir PO Pleine Dose]
+    Etape1 --> Etape2[Étape 2 : Attendre 48h-72h]
+    Etape2 --> Etape3{Amélioration ?<br>Réplication Bloquée ?}
+    Etape3 -->|OUI| Cort(Introduction Dexaméthasone<br>Décroissance très lente):::purpleFill
+    Etape3 -->|NON| Wait(Poursuivre Antiviral seul)
+
+    Cort --> Recidive(Récidive inflammatoire<br>pendant sevrage ?)
+    Recidive -->|OUI| Ciclo(Remonter corticoïde +<br>Ciclosporine A 2% relais)
+    Recidive -->|NON, Guérison| StopCort(Arrêt des Stéroïdes)
+
+    StopCort --> RecidiveApres(Récidive rapide ?)
+    RecidiveApres -->|1ère fois| Reprise[Reprise immédiate<br>Valaciclovir PO]
+    RecidiveApres -->|2ème fois / ≥2 par an| Prophylaxie[Prévention au long cours<br>Valaciclovir 500mg/j x 12 mois]:::purpleFill
+`;
+
+export const hsvClassificationsMarkdown = `
 # 📊 Classifications : Herpès Oculaire
 
 > [!NOTE]
