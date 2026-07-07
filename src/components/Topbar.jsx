@@ -23,7 +23,7 @@ const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
   };
 
   return (
-    <header style={{
+    <header className="topbar-container" style={{
       height: 'var(--navbar-height)',
       background: 'var(--glass-bg)',
       backdropFilter: 'blur(10px)',
@@ -45,7 +45,7 @@ const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
         >
           <Menu size={24} />
         </button>
-        <div style={{
+        <div className="topbar-search" style={{
           background: 'var(--bg-secondary)',
           borderRadius: 'var(--radius-xl)',
           padding: '0.5rem 1rem',
@@ -78,7 +78,7 @@ const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
             }}
           >
             <Download size={18} />
-            Installer l'App
+            <span className="topbar-user-info">Installer l'App</span>
           </button>
         )}
         <button 
@@ -96,7 +96,7 @@ const Topbar = ({ toggleSidebar, theme, toggleTheme }) => {
             background: 'var(--accent-danger)', width: '8px', height: '8px', borderRadius: '50%'
           }}></span>
         </button>
-        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+        <div className="topbar-user-info" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
           <div style={{ textAlign: 'right', display: 'flex', flexDirection: 'column' }}>
             <span style={{ fontSize: '0.9rem', fontWeight: 600 }}>Dr. User</span>
             <span style={{ fontSize: '0.75rem', color: 'var(--text-tertiary)' }}>Résident Ophtalmo</span>

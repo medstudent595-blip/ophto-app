@@ -107,7 +107,8 @@ const CourseReader = () => {
   const createMarkup = (markdownText) => {
     if (!markdownText) return { __html: '<p style="color:var(--text-secondary)">Aucun contenu disponible pour cette section.</p>' };
     const rawMarkup = marked.parse(markdownText);
-    return { __html: DOMPurify.sanitize(rawMarkup, { ADD_ATTR: ['target'] }) };
+    const wrappedTables = rawMarkup.replace(/<table/g, '<div class="table-wrapper"><table').replace(/<\/table>/g, '</table></div>');
+    return { __html: DOMPurify.sanitize(wrappedTables, { ADD_ATTR: ['target'] }) };
   };
 
   useEffect(() => {
@@ -143,9 +144,10 @@ const CourseReader = () => {
         scrollBehavior: 'smooth'
       }}>
         {/* Section Tabs */}
-        <div style={{
+        <div className="course-tabs-container" style={{
           display: 'flex', borderBottom: '1px solid var(--border-color)',
-          background: 'var(--bg-secondary)', position: 'sticky', top: 0, zIndex: 2
+          background: 'var(--bg-secondary)', position: 'sticky', top: 0, zIndex: 2,
+          overflowX: 'auto', whiteSpace: 'nowrap', WebkitOverflowScrolling: 'touch'
         }}>
           {['cours', 'fiches', 'algorithmes', 'classifications'].map((sec) => (
             <button
@@ -156,14 +158,15 @@ const CourseReader = () => {
                 borderBottom: activeSection === sec ? '2px solid var(--accent-primary)' : '2px solid transparent',
                 color: activeSection === sec ? 'var(--text-primary)' : 'var(--text-secondary)',
                 fontWeight: activeSection === sec ? 600 : 400,
-                textTransform: 'capitalize'
+                textTransform: 'capitalize',
+                flexShrink: 0
               }}
             >
               {sec === 'cours' ? 'Cours Magistral' : sec === 'fiches' ? 'Fiches Techniques' : sec === 'algorithmes' ? 'Algorithmes' : 'Classifications'}
             </button>
           ))}
-          <div style={{ flex: 1 }} />
-          <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginRight: '1.5rem' }}>
+          <div style={{ flex: 1, minWidth: '1rem' }} />
+          <div className="course-tools" style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginRight: '1.5rem', flexShrink: 0 }}>
             <div style={{ display: 'flex', background: 'var(--bg-primary)', borderRadius: 'var(--radius-sm)', overflow: 'hidden', border: '1px solid var(--border-color)' }}>
               <button onClick={() => setFontSize(Math.max(12, fontSize - 2))} style={{ padding: '0.25rem 0.75rem', color: 'var(--text-primary)', borderRight: '1px solid var(--border-color)' }}>A-</button>
               <button onClick={() => setFontSize(Math.min(24, fontSize + 2))} style={{ padding: '0.25rem 0.75rem', color: 'var(--text-primary)' }}>A+</button>
@@ -173,20 +176,21 @@ const CourseReader = () => {
               style={{ background: 'rgba(245, 158, 11, 0.2)', color: 'var(--accent-warning)', border: '1px solid var(--accent-warning)', padding: '0.4rem 1rem', borderRadius: 'var(--radius-sm)', fontWeight: 500, display: 'flex', alignItems: 'center', gap: '0.5rem' }}
               title="Sélectionnez du texte puis cliquez ici"
             >
-              <PenTool size={16} /> Surligner
+              <PenTool size={16} /> <span className="hide-mobile">Surligner</span>
             </button>
           </div>
           {!sidebarOpen && (
             <button 
+              className="open-notes-btn"
               onClick={() => setSidebarOpen(true)}
-              style={{ padding: '0 1rem', display: 'flex', alignItems: 'center', color: 'var(--accent-primary)' }}
+              style={{ padding: '0 1rem', display: 'flex', alignItems: 'center', color: 'var(--accent-primary)', flexShrink: 0 }}
             >
-              <ChevronLeft size={20} /> Ouvrir le panneau IA & Notes
+              <ChevronLeft size={20} /> <span className="hide-mobile">Notes & IA</span>
             </button>
           )}
         </div>
 
-        <div style={{ padding: '2rem', fontSize: `${fontSize}px` }}>
+        <div style={{ padding: '1rem 2rem', fontSize: `${fontSize}px` }}>
           {activeSection === 'cours' && (
             <div 
               className="course-content animate-fade-in"
@@ -233,16 +237,16 @@ const CourseReader = () => {
       </div>
 
       {/* Right Sidebar (Notes & AI) */}
-      <div style={{ 
+      <div className={`notes-sidebar ${sidebarOpen ? 'open' : ''}`} style={{ 
         width: sidebarOpen ? '350px' : '0px', 
         background: 'var(--bg-secondary)', 
         borderLeft: sidebarOpen ? '1px solid var(--border-color)' : 'none',
         display: 'flex', 
         flexDirection: 'column',
-        transition: 'width 0.3s ease',
+        transition: 'width 0.3s ease, transform 0.3s ease',
         overflow: 'hidden'
       }}>
-        <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', minWidth: '350px' }}>
+        <div style={{ display: 'flex', borderBottom: '1px solid var(--border-color)', minWidth: '100%' }}>
           <button
             onClick={() => setSidebarOpen(false)}
             style={{ padding: '0.5rem', color: 'var(--text-tertiary)', borderRight: '1px solid var(--border-color)' }}

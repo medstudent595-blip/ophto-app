@@ -8,7 +8,7 @@ import Library from './pages/Library';
 import './index.css';
 
 function App() {
-  const [sidebarOpen, setSidebarOpen] = useState(true);
+  const [sidebarOpen, setSidebarOpen] = useState(window.innerWidth > 768);
   const [theme, setTheme] = useState('dark');
 
   useEffect(() => {
@@ -19,11 +19,30 @@ function App() {
     }
   }, [theme]);
 
+  // Handle resize to auto-close sidebar on mobile
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 768) {
+        setSidebarOpen(false);
+      } else {
+        setSidebarOpen(true);
+      }
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
   const toggleTheme = () => setTheme(theme === 'dark' ? 'light' : 'dark');
 
   return (
     <Router>
       <div className="app-container">
+        {/* Overlay for mobile */}
+        <div 
+          className={`sidebar-overlay ${sidebarOpen ? 'open' : ''}`}
+          onClick={() => setSidebarOpen(false)}
+        ></div>
+        
         <Sidebar isOpen={sidebarOpen} setIsOpen={setSidebarOpen} />
         
         <main className="main-content">

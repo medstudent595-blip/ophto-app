@@ -100,29 +100,42 @@ const Dashboard = () => {
           <button style={{ color: 'var(--accent-primary)' }}>Voir tout</button>
         </div>
         
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {recentCourses.map(course => (
-            <div key={course.id} className="glass-panel" style={{
-              padding: '1.25rem 1.5rem', display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1rem' }}>
+          {recentCourses.map((course, idx) => (
+            <div key={idx} style={{
+              background: 'var(--bg-secondary)', padding: '1rem', borderRadius: 'var(--radius-md)',
+              border: '1px solid var(--border-color)', display: 'flex', alignItems: 'center', gap: '1rem',
               cursor: 'pointer'
-            }}
-            onClick={() => navigate(`/course/${course.id}`)}
-            onMouseOver={(e) => e.currentTarget.style.background = 'var(--bg-tertiary)'}
-            onMouseOut={(e) => e.currentTarget.style.background = 'var(--glass-bg)'}
-            >
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
-                <div style={{
-                  background: 'var(--bg-secondary)', padding: '0.5rem 1rem', borderRadius: 'var(--radius-sm)',
-                  color: 'var(--accent-primary)', fontSize: '0.8rem', fontWeight: 600, textTransform: 'uppercase'
-                }}>
-                  {course.category}
-                </div>
-                <h4 style={{ fontSize: '1.1rem', margin: 0 }}>{course.title}</h4>
+            }} onClick={() => navigate(`/course/${course.id}`)}>
+              <div style={{ width: '40px', height: '40px', borderRadius: '50%', background: 'var(--bg-tertiary)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                <BookOpen size={20} color="var(--accent-primary)" />
               </div>
-              <ArrowRight size={20} color="var(--text-tertiary)" />
+              <div>
+                <h4 style={{ fontSize: '1rem', fontWeight: 500, marginBottom: '0.25rem' }}>{course.title}</h4>
+                <span style={{ fontSize: '0.8rem', color: 'var(--text-tertiary)' }}>{course.category}</span>
+              </div>
             </div>
           ))}
         </div>
+      </div>
+      {/* APK Download Section */}
+      <div style={{ marginTop: '3rem', padding: '1.5rem', background: 'var(--accent-primary-transparent)', borderRadius: 'var(--radius-lg)', border: '1px solid var(--accent-primary)', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '1rem' }}>
+        <div>
+          <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>Application Mobile (APK)</h3>
+          <p style={{ color: 'var(--text-secondary)', fontSize: '0.95rem' }}>Téléchargez la version Android de DEMS Ophto pour réviser hors-ligne et sur mobile avec une fluidité optimale.</p>
+        </div>
+        <a 
+          href="/ophto-app.apk" 
+          download 
+          style={{ 
+            background: 'var(--accent-primary)', color: 'white', padding: '0.75rem 1.5rem', 
+            borderRadius: 'var(--radius-md)', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.5rem',
+            textDecoration: 'none', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'
+          }}
+        >
+          <ArrowRight size={20} style={{ transform: 'rotate(90deg)' }} />
+          Télécharger l'APK
+        </a>
       </div>
     </div>
   );

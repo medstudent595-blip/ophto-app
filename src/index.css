@@ -125,14 +125,19 @@ button {
 }
 
 /* Markdown Tables */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  margin: 2rem 0;
+  border-radius: var(--radius-md);
+  box-shadow: var(--glass-shadow);
+}
 table {
   width: 100%;
   border-collapse: collapse;
-  margin: 2rem 0;
   background: var(--bg-secondary);
   border-radius: var(--radius-md);
   overflow: hidden;
-  box-shadow: var(--glass-shadow);
 }
 th, td {
   padding: 1rem;
@@ -204,6 +209,7 @@ tr:last-child td {
   height: 100vh;
   overflow-y: auto;
   position: relative;
+  -webkit-overflow-scrolling: touch;
 }
 
 .page-container {
@@ -265,4 +271,94 @@ tr:last-child td {
   color: var(--text-secondary);
   background: var(--bg-secondary);
   border-top: 1px solid var(--border-color);
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  .app-container {
+    flex-direction: column;
+  }
+  
+  /* Sidebar Mobile */
+  .sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    z-index: 50;
+    transform: translateX(-100%);
+    width: 280px !important;
+    max-width: 80vw;
+    will-change: transform;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .sidebar-container.open {
+    transform: translateX(0);
+  }
+  
+  /* Sidebar Overlay */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 40;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease;
+  }
+  .sidebar-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Topbar Mobile */
+  .topbar-search {
+    display: none !important;
+  }
+  .topbar-user-info {
+    display: none !important;
+  }
+  .topbar-container {
+    padding: 0 1rem !important;
+  }
+  
+  .page-container {
+    padding: 1rem;
+  }
+  
+  .md-image-container {
+    margin: 1rem 0;
+  }
+  
+  .hide-mobile {
+    display: none !important;
+  }
+  
+  .course-tools {
+    margin-right: 0.5rem !important;
+  }
+  
+  .open-notes-btn {
+    padding: 0 0.5rem !important;
+  }
+  
+  /* Right Sidebar (Notes & IA) Mobile */
+  .notes-sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 50;
+    width: 320px !important;
+    max-width: 85vw;
+    transform: translateX(100%);
+    border-left: 1px solid var(--border-color);
+  }
+  .notes-sidebar.open {
+    transform: translateX(0);
+  }
 }

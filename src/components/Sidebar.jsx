@@ -5,14 +5,15 @@ import { BookOpen, Map, Settings, Search, Layout, Image as ImageIcon, MessageSqu
 const Sidebar = ({ isOpen, setIsOpen }) => {
   return (
     <aside 
+      className={`sidebar-container ${isOpen ? 'open' : ''}`}
       style={{
         width: isOpen ? 'var(--sidebar-width)' : '80px',
         background: 'var(--bg-secondary)',
         borderRight: '1px solid var(--border-color)',
-        transition: 'width 0.3s ease',
+        transition: 'width 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
         display: 'flex',
         flexDirection: 'column',
-        zIndex: 10
+        zIndex: 50
       }}
     >
       <div style={{ padding: '1.5rem', display: 'flex', alignItems: 'center', gap: '1rem', borderBottom: '1px solid var(--border-color)' }}>
@@ -33,38 +34,45 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
       <div style={{ padding: '1rem 0', flex: 1, overflowY: 'auto' }}>
         <ul style={{ listStyle: 'none', padding: '0 0.75rem', display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
           
-          <NavItem to="/" icon={<Layout size={20} />} label="Dashboard" isOpen={isOpen} />
+          <NavItem to="/" icon={<Layout size={20} />} label="Dashboard" isOpen={isOpen} setIsOpen={setIsOpen} />
           
           <div style={{ margin: '1rem 0 0.5rem', padding: '0 1rem' }}>
             {isOpen && <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '1px' }}>Bibliothèque</span>}
           </div>
           
-          <NavItem to="/courses" icon={<BookOpen size={20} />} label="Cours Magistraux" isOpen={isOpen} />
-          <NavItem to="/fiches" icon={<Map size={20} />} label="Fiches Techniques" isOpen={isOpen} />
-          <NavItem to="/algorithms" icon={<Brain size={20} />} label="Algorithmes" isOpen={isOpen} />
-          <NavItem to="/classifications" icon={<Layout size={20} />} label="Classification" isOpen={isOpen} />
-          <NavItem to="/imaging" icon={<ImageIcon size={20} />} label="Imagerie" isOpen={isOpen} />
+          <NavItem to="/courses" icon={<BookOpen size={20} />} label="Cours Magistraux" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/fiches" icon={<Map size={20} />} label="Fiches Techniques" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/algorithms" icon={<Brain size={20} />} label="Algorithmes" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/classifications" icon={<Layout size={20} />} label="Classification" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/imaging" icon={<ImageIcon size={20} />} label="Imagerie" isOpen={isOpen} setIsOpen={setIsOpen} />
           
           <div style={{ margin: '1rem 0 0.5rem', padding: '0 1rem' }}>
             {isOpen && <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '1px' }}>Outils</span>}
           </div>
           
-          <NavItem to="/ai-assistant" icon={<MessageSquare size={20} />} label="Assistant IA" isOpen={isOpen} />
+          <NavItem to="/ai-assistant" icon={<MessageSquare size={20} />} label="Assistant IA" isOpen={isOpen} setIsOpen={setIsOpen} />
         </ul>
       </div>
       
       <div style={{ padding: '1rem', borderTop: '1px solid var(--border-color)' }}>
-         <NavItem to="/settings" icon={<Settings size={20} />} label="Paramètres" isOpen={isOpen} />
+         <NavItem to="/settings" icon={<Settings size={20} />} label="Paramètres" isOpen={isOpen} setIsOpen={setIsOpen} />
       </div>
     </aside>
   );
 };
 
-const NavItem = ({ to, icon, label, isOpen }) => {
+const NavItem = ({ to, icon, label, isOpen, setIsOpen }) => {
+  const handleClick = () => {
+    if (window.innerWidth <= 768 && setIsOpen) {
+      setIsOpen(false);
+    }
+  };
+
   return (
     <li>
       <NavLink
         to={to}
+        onClick={handleClick}
         style={({ isActive }) => ({
           display: 'flex',
           alignItems: 'center',
