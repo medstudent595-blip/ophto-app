@@ -3,6 +3,7 @@ import { useParams, useLocation } from 'react-router-dom';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mermaid from 'mermaid';
+import mediumZoom from 'medium-zoom';
 import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid } from '../data/coursesData';
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
@@ -20,7 +21,7 @@ const CourseReader = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Font size state
-  const [fontSize, setFontSize] = useState(16);
+  const [fontSize, setFontSize] = useState(14);
 
   // Highlighter function
   const handleHighlight = () => {
@@ -92,11 +93,38 @@ const CourseReader = () => {
     mermaid.initialize({ startOnLoad: false, theme: 'dark' });
   }, []);
 
+  // Initialize zoom for images
+  useEffect(() => {
+    const timeout = setTimeout(() => {
+      mediumZoom('.course-content img', {
+        margin: 24,
+        background: 'var(--bg-primary)'
+      });
+    }, 200);
+    return () => clearTimeout(timeout);
+  }, [activeSection, courseData]);
+
   useEffect(() => {
     if (activeSection === 'algorithmes' && courseData.algoMermaid) {
       setTimeout(() => {
         try {
           mermaid.run({ querySelector: '.mermaid' });
+          // Initialize zoom for mermaid SVGs after rendering
+          setTimeout(() => {
+            mediumZoom('.mermaid svg', { margin: 24, background: 'var(--bg-primary)' });
+          }, 300);
+        } catch (e) {
+          console.error("Mermaid error:", e);
+        }
+      }, 100);
+    } else if (activeSection === 'classifications' && courseData.mindmapMermaid) {
+      setTimeout(() => {
+        try {
+          mermaid.run({ querySelector: '.mermaid' });
+          // Initialize zoom for mermaid SVGs after rendering
+          setTimeout(() => {
+            mediumZoom('.mermaid svg', { margin: 24, background: 'var(--bg-primary)' });
+          }, 300);
         } catch (e) {
           console.error("Mermaid error:", e);
         }
