@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mermaid from 'mermaid';
@@ -8,16 +8,20 @@ import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindma
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
 import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid } from '../data/noiData';
-import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft } from 'lucide-react';
+import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
 
 const CourseReader = () => {
   const { id } = useParams();
   const location = useLocation();
+  const navigate = useNavigate();
   
   const [notes, setNotes] = useState('');
   const [copied, setCopied] = useState(false);
   const [activeTab, setActiveTab] = useState('notes');
-  const [activeSection, setActiveSection] = useState('cours');
+  const [activeSection, setActiveSection] = useState(() => {
+    const params = new URLSearchParams(location.search);
+    return params.get('section') || 'cours';
+  });
   const [sidebarOpen, setSidebarOpen] = useState(false);
   
   // Font size state
@@ -177,6 +181,19 @@ const CourseReader = () => {
           background: 'var(--bg-secondary)', position: 'sticky', top: 0, zIndex: 2,
           overflowX: 'auto', whiteSpace: 'nowrap', WebkitOverflowScrolling: 'touch'
         }}>
+          <button
+            onClick={() => navigate(-1)}
+            style={{
+              padding: '0 1.25rem',
+              display: 'flex', alignItems: 'center',
+              color: 'var(--text-secondary)',
+              borderRight: '1px solid var(--border-color)',
+              flexShrink: 0
+            }}
+            title="Retour"
+          >
+            <ArrowLeft size={20} />
+          </button>
           {['cours', 'fiches', 'algorithmes', 'classifications'].map((sec) => (
             <button
               key={sec}
