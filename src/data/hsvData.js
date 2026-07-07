@@ -131,8 +131,106 @@ Directement issue de l'étude HEDS (Herpetic Eye Disease Study).
 export const hsvFichesMarkdown = \`
 # 📋 Fiche Technique : Herpès Oculaire
 
+> [!IMPORTANT]
+> **Objectif Pratique** : Cette fiche technique détaille les posologies exactes, les protocoles d'urgence et les règles strictes de corticothérapie pour la prise en charge de l'herpès oculaire.
+
+---
+
+## I. Bilan Diagnostique Pratique
+
+### 1. L'examen à la lampe à fente (LAF)
+*   **Test de sensibilité cornéenne** : À faire **AVANT** toute instillation de collyre anesthésique. L'hypoesthésie est le maître symptôme.
+*   **Test à la Fluorescéine** : Recherche de dendrites (arbres morts avec renflements en bulbe aux extrémités).
+    > [!TIP]
+    > **Astuce clinique** : Le colorant stagne d'abord au fond de l'ulcère, puis diffuse en brouillard verdâtre dans le stroma (signe l'atteinte de la membrane basale, typique de l'herpès).
+*   **Prise de Tonus (PIO)** : Une hypertonie (même relative de +4 mmHg par rapport à l'œil adelphe) est très évocatrice d'une trabéculite herpétique.
+
+### 2. Les Prélèvements Biologiques (Mise à jour 2025)
+Le diagnostic est clinique, mais la biologie est requise en cas de doute, de résistance ou de forme uvéitique/endothéliale grave.
+
+*   **Forme de surface (Épithéliale)** : Grattage cornéen ou prélèvement de larmes pour PCR quantitative ou PCR multiplex. Un séquençage est demandé si l'on suspecte une résistance (mutation de la thymidine kinase virale). Évitez la fluorescéine avant le prélèvement car elle peut interférer avec la PCR.
+*   **Forme intraoculaire (Uvéite/Endothélite)** : Ponction de chambre antérieure (PCA). Demander une PCR HSV dans l'humeur aqueuse (sensibilité 80%, spécificité proche de 100% en phase aiguë) et le calcul du Coefficient de Witmer-Desmont (utile à distance de l'épisode).
+
+---
+
+## II. Posologies et Ordonnances Types (Les Antiviraux)
+
+> [!WARNING]
+> Vous devez prescrire soit un traitement local, soit un traitement per os. Ils ont une efficacité équivalente pour les formes épithéliales, **il ne faut pas les associer** (risque de toxicité accrue).
+
+### 1. Les Antiviraux Topiques (Locaux)
+*   **Ganciclovir 0,15 % (Virgan® gel)** : 1 goutte 5 fois/jour jusqu'à cicatrisation, puis 3 fois/jour pendant 7 jours. Excellente tolérance.
+*   **Aciclovir 3 % (Zovirax® pommade)** : 1 application (grain de riz) 5 fois/jour, à poursuivre 3 jours après cicatrisation. Gêne visuelle importante.
+*   **Trifluridine 1 % (Virophta® collyre)** : 1 goutte toutes les 2 heures (max 9 gouttes/jour) jusqu'à cicatrisation, puis 5 fois/jour pendant 7 jours. Durée totale < 21 jours. Très épithéliotoxique, agit indépendamment de la thymidine kinase virale.
+
+### 2. Les Antiviraux Per Os (Généraux)
+Indispensables pour les formes stromales, endothéliales, les uvéites, ou les kératites épithéliales pédiatriques. **Toujours vérifier la clairance de la créatinine.**
+*   **Valaciclovir (Zelitrex®)** : 1 comprimé de 500 mg, 2 fois/jour pendant 7 à 14 jours. Dans les endothélites diffuses ou formes sévères, la dose peut être montée hors AMM à 3 g/jour (1g x3/j).
+*   **Aciclovir (Zovirax®)** : 2 comprimés de 200 mg (soit 400 mg), 5 fois/jour pendant 7 à 14 jours.
+*   **Famciclovir (Oravir®)** : Hors AMM en France pour l'œil. 1 comprimé de 500 mg, 3 fois/jour pendant 10 jours.
+
+### 3. Les Antiviraux Intraveineux (Urgence absolue)
+*   **Aciclovir IV** : 5 à 10 mg/kg toutes les 8 heures.
+*   **Indications** : Kératites stromales nécrosantes (hospitalisation), endothélites linéaires, ou uvéites avec atteinte endothéliale/rétinienne majeure.
+
+---
+
+## III. Règles de Maniement des Corticoïdes Locaux
+
+🚨 C'est ici que l'erreur médicale vous coûtera votre examen (et la cornée de votre patient).
+
+> [!CAUTION]
+> **🚫 CONTRE-INDICATIONS ABSOLUES :**
+> *   Toute lésion épithéliale active (dendrite, ulcère géographique).
+> *   Kératite stromale nécrosante (risque de fonte purulente et perforation).
+
 > [!NOTE]
-> Bientôt disponible : Fiche de synthèse pour l'examen clinique de l'herpès oculaire.
+> **✅ INDICATIONS STRICTES :**
+> *   Kératites stromales non nécrosantes.
+> *   Endothélites disciformes et diffuses.
+> *   Uvéites antérieures herpétiques.
+
+> [!WARNING]
+> **⚠️ PROTOCOLE D'INTRODUCTION (La Règle d'Or) :**
+> *   **Couverture antivirale préalable** : Ne JAMAIS débuter avant 48 heures d'un traitement antiviral systémique efficace (ex: Valaciclovir).
+> *   **Dose d'attaque** : Dexaméthasone collyre, 6 à 8 gouttes par jour.
+> *   **Décroissance** : Extrêmement lente (paliers de plusieurs semaines). La couverture antivirale doit être maintenue jusqu'au sevrage total des corticoïdes.
+
+---
+
+## IV. Traitements Adjuvants et Innovations
+
+*   **Débridement épithélial** : À la LAF avec une éponge stérile. Réduit la charge virale et accélère la cicatrisation épithéliale. Synergique avec les antiviraux.
+*   **Cycloplégiques** : Atropine 1 % (1 goutte 2 à 3 fois/j) pour lever le spasme ciliaire et calmer la douleur.
+*   **Larmes artificielles sans conservateur** : Essentielles pour lessiver le virus et traiter la sécheresse induite par l'hypoesthésie.
+*   **Cas des Corticodépendances** : Utilisation de Ciclosporine A en collyre à 2 % (hors AMM) pour prendre le relais des stéroïdes et éviter le rebond inflammatoire.
+*   **Sauvetage tissulaire** : Greffe de membrane amniotique (GMA) pour les nécroses stromales sévères ou descemétocèles.
+
+---
+
+## V. Protocoles de Prophylaxie (Prévention des récidives)
+
+*   **Indications** : 
+    *   Maladie herpétique très récurrente (≥ 3 épisodes épithéliaux ou ≥ 2 épisodes stromaux par an).
+    *   Prévention périopératoire : chirurgie de la cataracte, chirurgie réfractive (PKR, LASIK), greffe de cornée (PK, DMEK).
+*   **Posologie (au long cours, 6 à 12 mois minimum)** :
+    *   **Valaciclovir** : 1 comprimé de 500 mg / jour.
+    *   **Aciclovir** : 2 comprimés de 200 mg (400 mg), 2 fois / jour (soit 800 mg/j au total).
+*   **Suivi Biologique (Aciclovir/Valaciclovir per os)** : Créatininémie, bilan hépatique (ASAT/ALAT) et NFS-Plaquettes à M1 puis tous les 2 à 3 mois.
+
+---
+
+## 🧠 Récapitulatif : Ordonnances Types Selon La Forme
+
+<div className="table-wrapper">
+| Forme Clinique | Traitement d'Attaque | Corticoïdes Topiques ? |
+| :--- | :--- | :--- |
+| 🟢 **Kératite Épithéliale** | Valaciclovir PO (500mg x2/j) **OU** Ganciclovir local (5x/j) <br/> + Atropine + Larmes. (Durée: 7-14j) | 🛑 **Zéro Corticoïde** |
+| 🔴 **Stromale Nécrosante** /<br/> **Endothélite Linéaire** | **Aciclovir Intraveineux** (Hospitalisation) <br/> + Larmes + Cycloplégique | 🛑 **Zéro Corticoïde** (en phase aiguë) |
+| 🟠 **Stromale Non Nécrosante** /<br/> **Endothélite Disciforme** | Valaciclovir PO (500mg x2/j) | ✅ **OUI**, ajout de Dexaméthasone topique (6-8x/j) **après 48h**. Décroissance très lente. |
+| 🟣 **Uvéite Antérieure** | Valaciclovir PO pleine dose <br/> + Hypotonisant (Éviter les prostaglandines) + Cycloplégique | ✅ **OUI**, Dexaméthasone topique rapidement |
+| 🛡️ **Prophylaxie** | Valaciclovir PO (500mg x1/j) sur 1 an | - |
+</div>
 \`;
 
 export const hsvAlgorithmsMarkdown = \`
