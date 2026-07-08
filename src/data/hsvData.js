@@ -126,9 +126,9 @@ Directement issue de l'étude HEDS (Herpetic Eye Disease Study).
 | **Endothélite Linéaire** | Réplication / Mixte | Aciclovir IV en urgence | ✅ **OUI**, mais retardé (preuve efficacité antivirale) |
 | **Uvéite Antérieure** | Trabéculite Virale / Mixte | Valaciclovir PO (pleine dose) | ✅ **OUI**, rapidement, sous couverture antivirale |
 </div>
-\`;
+`;
 
-export const hsvFichesMarkdown = \`
+export const hsvFichesMarkdown = `
 # 📋 Fiche Technique : Herpès Oculaire
 
 > [!IMPORTANT]
