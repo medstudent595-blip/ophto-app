@@ -3,14 +3,14 @@ import { useNavigate } from 'react-router-dom';
 import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon } from 'lucide-react';
 
 const allCourses = [
-  { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.' },
-  { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.' },
-  { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine', description: 'Diagnostic OCT, critères pronostics et indications de la vitrectomie.' },
-  { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.' },
-  { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).' },
+  { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine', description: 'Diagnostic OCT, critères pronostics et indications de la vitrectomie.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.', has: { cours: true, fiches: true, algorithms: true, classifications: false } },
+  { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
   // Placeholders for visual effect
-  { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.' },
-  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.' }
+  { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
+  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } }
 ];
 
 const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée'];
@@ -21,6 +21,10 @@ const Library = ({ type = 'cours' }) => {
   const [selectedCategory, setSelectedCategory] = useState('Toutes');
 
   const filteredCourses = allCourses.filter(course => {
+    // Check content availability based on category (type)
+    // If the view is "cours" or "Toutes", we show it if it has a course.
+    if (type !== 'cours' && course.has && !course.has[type]) return false;
+
     const matchesSearch = course.title.toLowerCase().includes(searchTerm.toLowerCase()) || 
                           course.description.toLowerCase().includes(searchTerm.toLowerCase());
     const matchesCategory = selectedCategory === 'Toutes' || course.category === selectedCategory;

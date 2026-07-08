@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { BookOpen, Map, Brain, Image as ImageIcon, ArrowRight } from 'lucide-react';
+import { BookOpen, Map, Brain, Image as ImageIcon, Search, Clock, ArrowRight, CheckSquare, Stethoscope, Scissors } from 'lucide-react';
 
 const Dashboard = () => {
   const navigate = useNavigate();
@@ -36,7 +36,30 @@ const Dashboard = () => {
       icon: <ImageIcon size={28} color="var(--accent-danger)" />,
       path: '/imaging',
       bg: 'rgba(239, 68, 68, 0.1)',
-      border: 'rgba(239, 68, 68, 0.2)'
+    },
+    {
+      title: 'QCM & Évaluation',
+      description: 'Entraînement avec corrections détaillées pour le DEMS.',
+      icon: <CheckSquare size={28} color="#8b5cf6" />,
+      path: '/qcm',
+      bg: 'rgba(139, 92, 246, 0.1)',
+      border: 'rgba(139, 92, 246, 0.2)'
+    },
+    {
+      title: 'Cas Cliniques',
+      description: 'Scénarios interactifs et prise en charge étape par étape.',
+      icon: <Stethoscope size={28} color="#06b6d4" />,
+      path: '/cas-cliniques',
+      bg: 'rgba(6, 182, 212, 0.1)',
+      border: 'rgba(6, 182, 212, 0.2)'
+    },
+    {
+      title: 'Chirurgie',
+      description: 'Techniques, indications et complications chirurgicales.',
+      icon: <Scissors size={28} color="#f43f5e" />,
+      path: '/chirurgie',
+      bg: 'rgba(244, 63, 94, 0.1)',
+      border: 'rgba(244, 63, 94, 0.2)'
     }
   ];
 

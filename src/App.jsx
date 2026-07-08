@@ -50,12 +50,15 @@ function App() {
           
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/imaging" element={<Library type="imaging" />} />
+            <Route path="/qcm" element={<Library type="qcm" />} />
+            <Route path="/cas-cliniques" element={<Library type="cas-cliniques" />} />
+            <Route path="/chirurgie" element={<Library type="chirurgie" />} />
             <Route path="/course/:id" element={<CourseReader />} />
             <Route path="/courses" element={<Library />} />
             <Route path="/fiches" element={<Library type="fiches" />} />
             <Route path="/algorithms" element={<Library type="algorithms" />} />
             <Route path="/classifications" element={<Library type="classifications" />} />
-            <Route path="/imaging" element={<Library type="imaging" />} />
             <Route path="/ai-assistant" element={<div className="page-container animate-fade-in"><h1>Assistant IA</h1><p>Bientôt disponible...</p></div>} />
             <Route path="/settings" element={<div className="page-container animate-fade-in"><h1>Paramètres</h1><p>Bientôt disponible...</p></div>} />
           </Routes>

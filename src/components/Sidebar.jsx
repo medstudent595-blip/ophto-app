@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { BookOpen, Map, Settings, Search, Layout, Image as ImageIcon, MessageSquare, Brain } from 'lucide-react';
+import { BookOpen, Search, Bookmark, Settings, MessageSquare, Layout, Activity, User, ChevronRight, Menu, X, Map, Brain, Image as ImageIcon, CheckSquare, Stethoscope, Scissors } from 'lucide-react';
 
 const Sidebar = ({ isOpen, setIsOpen }) => {
   return (
@@ -45,6 +45,9 @@ const Sidebar = ({ isOpen, setIsOpen }) => {
           <NavItem to="/algorithms" icon={<Brain size={20} />} label="Algorithmes" isOpen={isOpen} setIsOpen={setIsOpen} />
           <NavItem to="/classifications" icon={<Layout size={20} />} label="Classification" isOpen={isOpen} setIsOpen={setIsOpen} />
           <NavItem to="/imaging" icon={<ImageIcon size={20} />} label="Imagerie" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/qcm" icon={<CheckSquare size={20} />} label="QCM & Évaluation" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/cas-cliniques" icon={<Stethoscope size={20} />} label="Cas Cliniques" isOpen={isOpen} setIsOpen={setIsOpen} />
+          <NavItem to="/chirurgie" icon={<Scissors size={20} />} label="Chirurgie" isOpen={isOpen} setIsOpen={setIsOpen} />
           
           <div style={{ margin: '1rem 0 0.5rem', padding: '0 1rem' }}>
             {isOpen && <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', color: 'var(--text-tertiary)', fontWeight: 600, letterSpacing: '1px' }}>Outils</span>}

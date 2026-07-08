@@ -9,7 +9,7 @@ import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMer
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
 import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid } from '../data/noiData';
 import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
-import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft } from 'lucide-react';
+import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
 
 const CourseReader = () => {
   const { id } = useParams();
@@ -100,14 +100,15 @@ const CourseReader = () => {
     classificationsMermaid: ''
   };
 
-  const availableSections = [];
-  if (courseData.cours && courseData.cours.trim().length > 0) availableSections.push('cours');
-  if (courseData.fiches && courseData.fiches.trim().length > 0) availableSections.push('fiches');
-  if (courseData.algorithmes && courseData.algorithmes.trim().length > 0) availableSections.push('algorithmes');
-  if (courseData.classificationsMarkdown && courseData.classificationsMarkdown.trim().length > 0) availableSections.push('classifications');
+  const allSections = ['cours', 'fiches', 'algorithmes', 'classifications', 'qcm', 'cas-cliniques', 'chirurgie'];
 
-  const currentSection = availableSections.includes(activeSection) ? activeSection : (availableSections[0] || 'cours');
-
+  const EmptyState = ({ moduleName }) => (
+    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', padding: '4rem 2rem', textAlign: 'center', color: 'var(--text-secondary)', background: 'var(--bg-secondary)', borderRadius: 'var(--radius-lg)', border: '1px dashed var(--border-color)', margin: '2rem auto', maxWidth: '600px' }} className="animate-fade-in">
+      <Hammer size={48} style={{ color: 'var(--accent-primary)', marginBottom: '1.5rem', opacity: 0.8 }} />
+      <h3 style={{ fontSize: '1.5rem', marginBottom: '0.75rem', color: 'var(--text-primary)' }}>{moduleName} en construction</h3>
+      <p style={{ fontSize: '1.1rem', maxWidth: '400px', lineHeight: 1.6 }}>Nous préparons activement ce module. Il sera disponible très prochainement pour enrichir vos révisions.</p>
+    </div>
+  );
 
   const systemRole = `Tu es un professeur en ophtalmologie, chef de service au CHU de Paris. Tu enseignes en école de médecine de Paris. Ton objectif est d'aider un résident en ophtalmologie préparant son examen de fin de spécialité (DEMS). Tu dois être extrêmement rigoureux, didactique, et ne faire aucune erreur. Utilise des plans structurés, des listes et des jeux de couleurs ou emojis pour tes explications médicales.`;
 
@@ -124,10 +125,10 @@ const CourseReader = () => {
       });
     }, 200);
     return () => clearTimeout(timeout);
-  }, [currentSection, courseData]);
+  }, [activeSection, courseData]);
 
   useEffect(() => {
-    if (currentSection === 'algorithmes' && courseData.algoMermaid) {
+    if (activeSection === 'algorithmes' && courseData.algoMermaid) {
       setTimeout(() => {
         try {
           mermaid.run({ querySelector: '.mermaid' });
@@ -139,7 +140,7 @@ const CourseReader = () => {
           console.error("Mermaid error:", e);
         }
       }, 100);
-    } else if (currentSection === 'classifications' && courseData.mindmapMermaid) {
+    } else if (activeSection === 'classifications' && courseData.mindmapMermaid) {
       setTimeout(() => {
         try {
           mermaid.run({ querySelector: '.mermaid' });
@@ -212,20 +213,20 @@ const CourseReader = () => {
           >
             <ArrowLeft size={20} />
           </button>
-          {availableSections.map((sec) => (
+          {allSections.map((sec) => (
             <button
               key={sec}
               onClick={() => setActiveSection(sec)}
               style={{
                 padding: '1rem 1.5rem',
-                borderBottom: currentSection === sec ? '2px solid var(--accent-primary)' : '2px solid transparent',
-                color: currentSection === sec ? 'var(--text-primary)' : 'var(--text-secondary)',
-                fontWeight: currentSection === sec ? 600 : 400,
+                borderBottom: activeSection === sec ? '2px solid var(--accent-primary)' : '2px solid transparent',
+                color: activeSection === sec ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontWeight: activeSection === sec ? 600 : 400,
                 textTransform: 'capitalize',
                 flexShrink: 0
               }}
             >
-              {sec === 'cours' ? 'Cours Magistral' : sec === 'fiches' ? 'Fiches Techniques' : sec === 'algorithmes' ? 'Algorithmes' : 'Classifications'}
+              {sec === 'cours' ? 'Cours Magistral' : sec === 'fiches' ? 'Fiches Techniques' : sec === 'algorithmes' ? 'Algorithmes' : sec === 'classifications' ? 'Classifications' : sec === 'qcm' ? 'QCM' : sec === 'cas-cliniques' ? 'Cas Cliniques' : 'Chirurgie'}
             </button>
           ))}
           <div style={{ flex: 1, minWidth: '1rem' }} />
@@ -254,48 +255,72 @@ const CourseReader = () => {
         </div>
 
         <div style={{ padding: '1rem 2rem', fontSize: `${fontSize}px` }}>
-          {currentSection === 'cours' && (
-            <div 
-              className="course-content animate-fade-in"
-              style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
-              dangerouslySetInnerHTML={createMarkup(courseData.cours)} 
-            />
+          {activeSection === 'cours' && (
+            courseData.cours ? (
+              <div 
+                className="course-content animate-fade-in"
+                style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
+                dangerouslySetInnerHTML={createMarkup(courseData.cours)} 
+              />
+            ) : (
+              <EmptyState moduleName="Cours Magistral" />
+            )
           )}
-          {currentSection === 'fiches' && (
-            <div 
-              className="course-content animate-fade-in"
-              style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
-              dangerouslySetInnerHTML={createMarkup(courseData.fiches)} 
-            />
+          {activeSection === 'fiches' && (
+            courseData.fiches ? (
+              <div 
+                className="course-content animate-fade-in"
+                style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
+                dangerouslySetInnerHTML={createMarkup(courseData.fiches)} 
+              />
+            ) : (
+              <EmptyState moduleName="Fiches Techniques" />
+            )
           )}
-          {currentSection === 'algorithmes' && (
-            <div 
-              className="course-content animate-fade-in"
-              style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
-            >
-              <div dangerouslySetInnerHTML={createMarkup(courseData.algorithmes)} />
-              
-              {courseData.algoMermaid && (
-                <div className="mermaid" style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center', marginBottom: '2rem' }}>
-                  {courseData.algoMermaid}
-                </div>
-              )}
-            </div>
+          {activeSection === 'algorithmes' && (
+            courseData.algorithmes || courseData.algoMermaid ? (
+              <div 
+                className="course-content animate-fade-in"
+                style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
+              >
+                {courseData.algorithmes && <div dangerouslySetInnerHTML={createMarkup(courseData.algorithmes)} />}
+                
+                {courseData.algoMermaid && (
+                  <div className="mermaid" style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center', marginBottom: '2rem', marginTop: courseData.algorithmes ? '2rem' : '0' }}>
+                    {courseData.algoMermaid}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <EmptyState moduleName="Algorithmes" />
+            )
           )}
-          {currentSection === 'classifications' && (
-            <div 
-              className="course-content animate-fade-in"
-              style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
-            >
-              {courseData.mindmapMarkdown && <div dangerouslySetInnerHTML={createMarkup(courseData.mindmapMarkdown)} />}
-
-              {courseData.mindmapMermaid && (
-                <div className="mermaid" style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center' }}>
-                  {courseData.mindmapMermaid}
-                </div>
-              )}
-            </div>
+          {activeSection === 'classifications' && (
+            courseData.classificationsMarkdown || courseData.mindmapMarkdown || courseData.mindmapMermaid || courseData.classificationsMermaid ? (
+              <div 
+                className="course-content animate-fade-in"
+                style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
+              >
+                {courseData.mindmapMarkdown && <div dangerouslySetInnerHTML={createMarkup(courseData.mindmapMarkdown)} />}
+                {courseData.mindmapMermaid && (
+                  <div className="mermaid" style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center', marginBottom: '2rem', marginTop: courseData.mindmapMarkdown ? '2rem' : '0' }}>
+                    {courseData.mindmapMermaid}
+                  </div>
+                )}
+                {courseData.classificationsMarkdown && <div dangerouslySetInnerHTML={createMarkup(courseData.classificationsMarkdown)} style={{ marginTop: '2rem' }} />}
+                {courseData.classificationsMermaid && (
+                  <div className="mermaid" style={{ background: 'var(--bg-secondary)', padding: '1.5rem', borderRadius: 'var(--radius-md)', textAlign: 'center', marginBottom: '2rem', marginTop: '2rem' }}>
+                    {courseData.classificationsMermaid}
+                  </div>
+                )}
+              </div>
+            ) : (
+              <EmptyState moduleName="Classifications" />
+            )
           )}
+          {activeSection === 'qcm' && <EmptyState moduleName="QCM & Évaluation" />}
+          {activeSection === 'cas-cliniques' && <EmptyState moduleName="Cas Cliniques" />}
+          {activeSection === 'chirurgie' && <EmptyState moduleName="Chirurgie" />}
         </div>
       </div>
 
