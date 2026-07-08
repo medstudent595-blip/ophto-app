@@ -41,6 +41,7 @@ const Dashboard = () => {
   ];
 
   const recentCourses = [
+    { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée' },
     { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites' },
     { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine' },
     { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite' }

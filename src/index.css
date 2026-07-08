@@ -226,9 +226,6 @@ tr:last-child td {
   padding: 1rem 1.25rem;
   border-radius: var(--radius-md);
   margin-bottom: 1.5rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 1rem;
   font-size: 0.95rem;
   line-height: 1.5;
   overflow-wrap: break-word;
