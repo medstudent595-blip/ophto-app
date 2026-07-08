@@ -132,7 +132,13 @@ const Library = ({ type = 'cours' }) => {
               position: 'relative',
               overflow: 'hidden'
             }}
-            onClick={() => navigate(`/course/${course.id}?section=${type}`)}
+            onClick={() => {
+              if (type === 'imaging' || course.category === 'Imagerie') {
+                navigate(`/imaging-reader/${course.id}`);
+              } else {
+                navigate(`/course/${course.id}?section=${type}`);
+              }
+            }}
             onMouseOver={(e) => {
               e.currentTarget.style.borderColor = 'var(--accent-primary)';
               e.currentTarget.style.transform = 'translateY(-3px)';

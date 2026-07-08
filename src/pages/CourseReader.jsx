@@ -7,9 +7,10 @@ import mediumZoom from 'medium-zoom';
 import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid } from '../data/coursesData';
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
-import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid, noiQcmMarkdown } from '../data/noiData';
+import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid, noiQcmMarkdown, noiQcmData } from '../data/noiData';
 import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
 import { dmlaCourseMarkdown, dmlaFichesMarkdown, dmlaAlgorithmsMarkdown, dmlaAlgoMermaid, dmlaMindmapMarkdown, dmlaMindmapMermaid, dmlaClassificationsMarkdown, dmlaClassificationsMermaid } from '../data/dmlaData';
+import QcmPlayer from '../components/QcmPlayer';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
 
 const CourseReader = () => {
@@ -82,7 +83,8 @@ const CourseReader = () => {
     mindmapMermaid: noiMindmapMermaid,
     classificationsMarkdown: noiClassificationsMarkdown,
     classificationsMermaid: noiClassificationsMermaid,
-    qcm: noiQcmMarkdown
+    qcm: noiQcmMarkdown,
+    qcmData: noiQcmData
   } : id === 'herpes-oculaire' ? {
     cours: hsvCourseMarkdown,
     fiches: hsvFichesMarkdown,
@@ -330,7 +332,9 @@ const CourseReader = () => {
             )
           )}
           {activeSection === 'qcm' && (
-            courseData.qcm ? (
+            courseData.qcmData ? (
+              <QcmPlayer qcmData={courseData.qcmData} />
+            ) : courseData.qcm ? (
               <div 
                 className="course-content animate-fade-in"
                 style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
