@@ -330,7 +330,7 @@ graph TD
     Recidive -->|NON, Guérison| StopCort(Arrêt des Stéroïdes)
 
     StopCort --> RecidiveApres(Récidive rapide ?)
-```
+
     RecidiveApres -->|1ère fois| Reprise[Reprise immédiate<br>Valaciclovir PO]
     RecidiveApres -->|2ème fois / ≥2 par an| Prophylaxie[Prévention au long cours<br>Valaciclovir 500mg/j x 12 mois]:::purpleFill
 `;
