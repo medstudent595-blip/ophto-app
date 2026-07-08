@@ -7,8 +7,9 @@ import mediumZoom from 'medium-zoom';
 import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid } from '../data/coursesData';
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
-import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid } from '../data/noiData';
+import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid, noiQcmMarkdown } from '../data/noiData';
 import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
+import { dmlaCourseMarkdown, dmlaFichesMarkdown, dmlaAlgorithmsMarkdown, dmlaAlgoMermaid, dmlaMindmapMarkdown, dmlaMindmapMermaid, dmlaClassificationsMarkdown, dmlaClassificationsMermaid } from '../data/dmlaData';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
 
 const CourseReader = () => {
@@ -80,7 +81,8 @@ const CourseReader = () => {
     mindmapMarkdown: noiMindmapMarkdown,
     mindmapMermaid: noiMindmapMermaid,
     classificationsMarkdown: noiClassificationsMarkdown,
-    classificationsMermaid: noiClassificationsMermaid
+    classificationsMermaid: noiClassificationsMermaid,
+    qcm: noiQcmMarkdown
   } : id === 'herpes-oculaire' ? {
     cours: hsvCourseMarkdown,
     fiches: hsvFichesMarkdown,
@@ -90,6 +92,15 @@ const CourseReader = () => {
     mindmapMermaid: '',
     classificationsMarkdown: hsvClassificationsMarkdown,
     classificationsMermaid: hsvClassificationsMermaid
+  } : id === 'dmla' ? {
+    cours: dmlaCourseMarkdown,
+    fiches: dmlaFichesMarkdown,
+    algorithmes: dmlaAlgorithmsMarkdown,
+    algoMermaid: dmlaAlgoMermaid,
+    mindmapMarkdown: dmlaMindmapMarkdown,
+    mindmapMermaid: dmlaMindmapMermaid,
+    classificationsMarkdown: dmlaClassificationsMarkdown,
+    classificationsMermaid: dmlaClassificationsMermaid
   } : {
     cours: courseMarkdown,
     fiches: fichesMarkdown,
@@ -318,7 +329,17 @@ const CourseReader = () => {
               <EmptyState moduleName="Classifications" />
             )
           )}
-          {activeSection === 'qcm' && <EmptyState moduleName="QCM & Évaluation" />}
+          {activeSection === 'qcm' && (
+            courseData.qcm ? (
+              <div 
+                className="course-content animate-fade-in"
+                style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
+                dangerouslySetInnerHTML={createMarkup(courseData.qcm)} 
+              />
+            ) : (
+              <EmptyState moduleName="QCM & Évaluation" />
+            )
+          )}
           {activeSection === 'cas-cliniques' && <EmptyState moduleName="Cas Cliniques" />}
           {activeSection === 'chirurgie' && <EmptyState moduleName="Chirurgie" />}
         </div>

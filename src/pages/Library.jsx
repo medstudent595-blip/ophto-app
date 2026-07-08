@@ -3,17 +3,18 @@ import { useNavigate } from 'react-router-dom';
 import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon } from 'lucide-react';
 
 const allCourses = [
-  { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.', has: { cours: true, fiches: true, algorithms: true, classifications: true, qcm: true } },
   { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
   { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine', description: 'Diagnostic OCT, critères pronostics et indications de la vitrectomie.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
   { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.', has: { cours: true, fiches: true, algorithms: true, classifications: false } },
   { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
   // Placeholders for visual effect
   { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
-  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } }
+  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
+  { id: 'dmla', title: 'Dégénérescence Maculaire Liée à l\'Âge (DMLA)', category: 'Imagerie', description: 'Cours OCT sur la DMLA et MLA : Drusen, classifications et prise en charge.', has: { cours: true, fiches: false, algorithms: false, classifications: false, imaging: true } }
 ];
 
-const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée'];
+const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée', 'Imagerie'];
 
 const Library = ({ type = 'cours' }) => {
   const navigate = useNavigate();
@@ -146,7 +147,8 @@ const Library = ({ type = 'cours' }) => {
               background: course.category === 'Rétine' ? '#ef4444' : 
                           course.category === 'Uvéites' ? '#3b82f6' : 
                           course.category === 'Orbite' ? '#8b5cf6' : 
-                          course.category === 'Glaucome' ? '#10b981' : '#f59e0b'
+                          course.category === 'Glaucome' ? '#10b981' : 
+                          course.category === 'Imagerie' ? '#ec4899' : '#f59e0b'
             }} />
             
             <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '1rem' }}>
