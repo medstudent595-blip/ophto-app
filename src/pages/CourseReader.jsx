@@ -97,9 +97,17 @@ const CourseReader = () => {
     algoMermaid: algoMermaid,
     mindmapMarkdown: mindmapMarkdown,
     mindmapMermaid: mindmapMermaid,
-    classificationsMarkdown: '',
     classificationsMermaid: ''
   };
+
+  const availableSections = [];
+  if (courseData.cours && courseData.cours.trim().length > 0) availableSections.push('cours');
+  if (courseData.fiches && courseData.fiches.trim().length > 0) availableSections.push('fiches');
+  if (courseData.algorithmes && courseData.algorithmes.trim().length > 0) availableSections.push('algorithmes');
+  if (courseData.classificationsMarkdown && courseData.classificationsMarkdown.trim().length > 0) availableSections.push('classifications');
+
+  const currentSection = availableSections.includes(activeSection) ? activeSection : (availableSections[0] || 'cours');
+
 
   const systemRole = `Tu es un professeur en ophtalmologie, chef de service au CHU de Paris. Tu enseignes en école de médecine de Paris. Ton objectif est d'aider un résident en ophtalmologie préparant son examen de fin de spécialité (DEMS). Tu dois être extrêmement rigoureux, didactique, et ne faire aucune erreur. Utilise des plans structurés, des listes et des jeux de couleurs ou emojis pour tes explications médicales.`;
 
@@ -116,10 +124,10 @@ const CourseReader = () => {
       });
     }, 200);
     return () => clearTimeout(timeout);
-  }, [activeSection, courseData]);
+  }, [currentSection, courseData]);
 
   useEffect(() => {
-    if (activeSection === 'algorithmes' && courseData.algoMermaid) {
+    if (currentSection === 'algorithmes' && courseData.algoMermaid) {
       setTimeout(() => {
         try {
           mermaid.run({ querySelector: '.mermaid' });
@@ -131,7 +139,7 @@ const CourseReader = () => {
           console.error("Mermaid error:", e);
         }
       }, 100);
-    } else if (activeSection === 'classifications' && courseData.mindmapMermaid) {
+    } else if (currentSection === 'classifications' && courseData.mindmapMermaid) {
       setTimeout(() => {
         try {
           mermaid.run({ querySelector: '.mermaid' });
@@ -204,15 +212,15 @@ const CourseReader = () => {
           >
             <ArrowLeft size={20} />
           </button>
-          {['cours', 'fiches', 'algorithmes', 'classifications'].map((sec) => (
+          {availableSections.map((sec) => (
             <button
               key={sec}
               onClick={() => setActiveSection(sec)}
               style={{
                 padding: '1rem 1.5rem',
-                borderBottom: activeSection === sec ? '2px solid var(--accent-primary)' : '2px solid transparent',
-                color: activeSection === sec ? 'var(--text-primary)' : 'var(--text-secondary)',
-                fontWeight: activeSection === sec ? 600 : 400,
+                borderBottom: currentSection === sec ? '2px solid var(--accent-primary)' : '2px solid transparent',
+                color: currentSection === sec ? 'var(--text-primary)' : 'var(--text-secondary)',
+                fontWeight: currentSection === sec ? 600 : 400,
                 textTransform: 'capitalize',
                 flexShrink: 0
               }}
@@ -246,21 +254,21 @@ const CourseReader = () => {
         </div>
 
         <div style={{ padding: '1rem 2rem', fontSize: `${fontSize}px` }}>
-          {activeSection === 'cours' && (
+          {currentSection === 'cours' && (
             <div 
               className="course-content animate-fade-in"
               style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
               dangerouslySetInnerHTML={createMarkup(courseData.cours)} 
             />
           )}
-          {activeSection === 'fiches' && (
+          {currentSection === 'fiches' && (
             <div 
               className="course-content animate-fade-in"
               style={{ maxWidth: '800px', margin: '0 auto', paddingBottom: '4rem' }}
               dangerouslySetInnerHTML={createMarkup(courseData.fiches)} 
             />
           )}
-          {activeSection === 'algorithmes' && (
+          {currentSection === 'algorithmes' && (
             <div 
               className="course-content animate-fade-in"
               style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
@@ -274,7 +282,7 @@ const CourseReader = () => {
               )}
             </div>
           )}
-          {activeSection === 'classifications' && (
+          {currentSection === 'classifications' && (
             <div 
               className="course-content animate-fade-in"
               style={{ maxWidth: '900px', margin: '0 auto', paddingBottom: '4rem' }}
