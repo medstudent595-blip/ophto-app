@@ -6,6 +6,7 @@ import Dashboard from './pages/Dashboard';
 import CourseReader from './pages/CourseReader';
 import ImagingReader from './pages/ImagingReader';
 import Library from './pages/Library';
+import InteractiveReader from './pages/InteractiveReader';
 import './index.css';
 
 function App() {
@@ -56,6 +57,7 @@ function App() {
             <Route path="/cas-cliniques" element={<Library type="cas-cliniques" />} />
             <Route path="/chirurgie" element={<Library type="chirurgie" />} />
             <Route path="/course/:id" element={<CourseReader />} />
+            <Route path="/interactive/:id" element={<InteractiveReader />} />
             <Route path="/imaging-reader/:id" element={<ImagingReader />} />
             <Route path="/courses" element={<Library />} />
             <Route path="/fiches" element={<Library type="fiches" />} />

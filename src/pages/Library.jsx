@@ -2,12 +2,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon } from 'lucide-react';
 
-const allCourses = [
+export const allCourses = [
   { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.', has: { cours: true, fiches: true, algorithms: true, classifications: true, qcm: true } },
-  { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  { id: 'vogt-koyanagi-harada', title: 'Maladie de Vogt-Koyanagi-Harada (VKH)', category: 'Uvéites', description: 'Diagnostic précoce et prise en charge de la panuvéite granulomateuse bilatérale.', has: { cours: true, fiches: true, algorithms: true, classifications: true, qcm: true } },
   { id: 'membranes-epimaculaires', title: 'Membranes Épirétiniennes Maculaires (MEM)', category: 'Rétine', description: 'Diagnostic OCT, critères pronostics et indications de la vitrectomie.', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
-  { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.', has: { cours: true, fiches: true, algorithms: true, classifications: false } },
+  { id: 'inflammations-orbitaires', title: 'Orbitopathies Inflammatoires', category: 'Orbite', description: 'Arbre diagnostique des inflammations orbitaires idiopathiques et spécifiques.', has: { cours: true, fiches: true, algorithms: true, classifications: false, qcm: true } },
   { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
+  
+  // Interactive HTML Courses - Uvéites
+  { id: 'uveites-anterieures', title: 'Uvéites Antérieures', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites antérieures.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Anterieures_interactif.html' },
+  { id: 'uveites-intermediaires', title: 'Uvéites Intermédiaires', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites intermédiaires.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Intermediaires_interactif.html' },
+  { id: 'uveites-posterieures-vascularites', title: 'Uvéites Postérieures et Vascularites', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites postérieures et vascularites.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Posterieures_et_Vascularites_interactif.html' },
+  { id: 'uveo-meningites', title: 'Uvéo-méningites', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéo-méningites.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveo-meningites_interactif.html' },
+  { id: 'uveites-orientation-diagnostique', title: 'Orientation Diagnostique des Uvéites', category: 'Uvéites', description: 'Cours magistral interactif sur la démarche et orientation diagnostique.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Orientation_Diagnostique_interactif.html' },
+  
   // Placeholders for visual effect
   { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
   { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
@@ -133,7 +141,9 @@ const Library = ({ type = 'cours' }) => {
               overflow: 'hidden'
             }}
             onClick={() => {
-              if (type === 'imaging' || course.category === 'Imagerie') {
+              if (course.isInteractive) {
+                navigate(`/interactive/${course.id}`);
+              } else if (type === 'imaging' || course.category === 'Imagerie') {
                 navigate(`/imaging-reader/${course.id}`);
               } else {
                 navigate(`/course/${course.id}?section=${type}`);

@@ -119,7 +119,7 @@ const QcmPlayer = ({ qcmData }) => {
       {/* Progress Bar */}
       <div style={{ width: '100%', height: '6px', background: 'var(--border-color)', borderRadius: '3px', marginBottom: '3rem', overflow: 'hidden' }}>
         <div style={{ 
-          width: \`\${((currentIndex) / qcmData.length) * 100}%\`, 
+          width: `${((currentIndex) / qcmData.length) * 100}%`, 
           height: '100%', 
           background: 'var(--accent-primary)',
           transition: 'width 0.3s ease'
@@ -162,7 +162,7 @@ const QcmPlayer = ({ qcmData }) => {
               onClick={() => toggleOption(opt.id)}
               style={{
                 display: 'flex', alignItems: 'flex-start', gap: '1rem',
-                padding: '1.25rem', border: \`2px solid \${borderColor}\`,
+                padding: '1.25rem', border: `2px solid ${borderColor}`,
                 borderRadius: 'var(--radius-md)', background: bgColor,
                 cursor: isValidated ? 'default' : 'pointer',
                 transition: 'all 0.2s ease'
@@ -170,7 +170,7 @@ const QcmPlayer = ({ qcmData }) => {
             >
               <div style={{ 
                 width: '24px', height: '24px', flexShrink: 0,
-                borderRadius: '4px', border: \`2px solid \${isSelected ? 'var(--accent-primary)' : 'var(--border-color)'}\`,
+                borderRadius: '4px', border: `2px solid ${isSelected ? 'var(--accent-primary)' : 'var(--border-color)'}`,
                 background: isSelected ? 'var(--accent-primary)' : 'transparent',
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
                 marginTop: '0.1rem',

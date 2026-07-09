@@ -4,12 +4,13 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mermaid from 'mermaid';
 import mediumZoom from 'medium-zoom';
-import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid } from '../data/coursesData';
+import { courseMarkdown, fichesMarkdown, algorithmsMarkdown, algoMermaid, mindmapMarkdown, mindmapMermaid, qcmMarkdown, qcmData } from '../data/coursesData';
+import { uveitesEnfantCourseMarkdown, uveitesEnfantFichesMarkdown, uveitesEnfantAlgorithmsMarkdown, uveitesEnfantClassificationsMarkdown } from '../data/uveitesEnfantData';
 import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMermaid, memMindmapMarkdown, memMindmapMermaid, memClassificationsMarkdown, memClassificationsMermaid } from '../data/memData';
-import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid } from '../data/vkhData';
+import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid, vkhQcmMarkdown, vkhQcmData } from '../data/vkhData';
 import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid, noiQcmMarkdown, noiQcmData } from '../data/noiData';
 import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
-import { dmlaCourseMarkdown, dmlaFichesMarkdown, dmlaAlgorithmsMarkdown, dmlaAlgoMermaid, dmlaMindmapMarkdown, dmlaMindmapMermaid, dmlaClassificationsMarkdown, dmlaClassificationsMermaid } from '../data/dmlaData';
+
 import QcmPlayer from '../components/QcmPlayer';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
 
@@ -56,7 +57,16 @@ const CourseReader = () => {
   }, [location.search]);
 
   // Dynamic course data selection
-  const courseData = id === 'membranes-epimaculaires' ? {
+  const courseData = id === 'uveites-enfant' ? {
+    cours: uveitesEnfantCourseMarkdown,
+    fiches: uveitesEnfantFichesMarkdown,
+    algorithmes: uveitesEnfantAlgorithmsMarkdown,
+    algoMermaid: '',
+    mindmapMarkdown: '',
+    mindmapMermaid: '',
+    classificationsMarkdown: uveitesEnfantClassificationsMarkdown,
+    classificationsMermaid: ''
+  } : id === 'membranes-epimaculaires' ? {
     cours: memCourseMarkdown,
     fiches: memFichesMarkdown,
     algorithmes: memAlgorithmsMarkdown,
@@ -73,7 +83,9 @@ const CourseReader = () => {
     mindmapMarkdown: vkhMindmapMarkdown,
     mindmapMermaid: vkhMindmapMermaid,
     classificationsMarkdown: vkhClassificationsMarkdown,
-    classificationsMermaid: vkhClassificationsMermaid
+    classificationsMermaid: vkhClassificationsMermaid,
+    qcm: vkhQcmMarkdown,
+    qcmData: vkhQcmData
   } : id === 'neuropathies-optiques-inflammatoires' ? {
     cours: noiCourseMarkdown,
     fiches: noiFichesMarkdown,
@@ -94,15 +106,6 @@ const CourseReader = () => {
     mindmapMermaid: '',
     classificationsMarkdown: hsvClassificationsMarkdown,
     classificationsMermaid: hsvClassificationsMermaid
-  } : id === 'dmla' ? {
-    cours: dmlaCourseMarkdown,
-    fiches: dmlaFichesMarkdown,
-    algorithmes: dmlaAlgorithmsMarkdown,
-    algoMermaid: dmlaAlgoMermaid,
-    mindmapMarkdown: dmlaMindmapMarkdown,
-    mindmapMermaid: dmlaMindmapMermaid,
-    classificationsMarkdown: dmlaClassificationsMarkdown,
-    classificationsMermaid: dmlaClassificationsMermaid
   } : {
     cours: courseMarkdown,
     fiches: fichesMarkdown,
@@ -110,7 +113,9 @@ const CourseReader = () => {
     algoMermaid: algoMermaid,
     mindmapMarkdown: mindmapMarkdown,
     mindmapMermaid: mindmapMermaid,
-    classificationsMermaid: ''
+    classificationsMermaid: '',
+    qcm: qcmMarkdown,
+    qcmData: qcmData
   };
 
   const allSections = ['cours', 'fiches', 'algorithmes', 'classifications', 'qcm', 'cas-cliniques', 'chirurgie'];

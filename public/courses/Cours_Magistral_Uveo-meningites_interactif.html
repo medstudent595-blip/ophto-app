@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>UVÉO-MÉNINGITES</title>
+<style>
+  :root {
+    --teal:#1F4E5F; --orange:#B9770E; --urgence:#C0392B; --ligne1:#1F618D; --ligne2:#B9770E; --surv:#1E8449;
+    --bg:#f7f9fa; --card:#ffffff; --text:#222; --muted:#666;
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; font-family: -apple-system, "Segoe UI", Arial, sans-serif; background:var(--bg); color:var(--text); line-height:1.55; }
+  .layout { display:flex; min-height:100vh; }
+  nav.sidebar { width:300px; flex-shrink:0; background:var(--teal); color:#fff; padding:24px 18px; position:sticky; top:0; height:100vh; overflow-y:auto; }
+  nav.sidebar h1 { font-size:1.15rem; margin:0 0 4px; }
+  nav.sidebar .subtitle { font-size:0.85rem; opacity:0.8; margin-bottom:20px; }
+  .toc-link { display:block; color:#dce8ec; text-decoration:none; padding:7px 10px; border-radius:6px; font-size:0.88rem; margin-bottom:2px; }
+  .toc-link:hover { background:rgba(255,255,255,0.12); color:#fff; }
+  main { flex:1; padding:36px 48px; max-width:960px; margin:0 auto; }
+  .cover { text-align:left; padding-bottom:20px; border-bottom:3px solid var(--teal); margin-bottom:30px; }
+  .cover h1 { color:var(--teal); font-size:2.1rem; margin:0 0 8px; }
+  .cover .sub { font-style:italic; color:var(--muted); font-size:1.1rem; }
+  details.section { background:var(--card); border-radius:10px; margin-bottom:18px; box-shadow:0 1px 3px rgba(0,0,0,0.08); overflow:hidden; }
+  details.section > summary { list-style:none; cursor:pointer; padding:16px 22px; background:linear-gradient(to right, #eef4f6, #ffffff); border-left:5px solid var(--teal); }
+  details.section > summary::-webkit-details-marker { display:none; }
+  details.section > summary h2 { display:inline; font-size:1.25rem; color:var(--teal); margin:0; }
+  details.section > summary::before { content: "\25B6"; display:inline-block; margin-right:10px; color:var(--orange); transition:transform 0.15s; font-size:0.75rem; }
+  details.section[open] > summary::before { transform: rotate(90deg); }
+  .section-body { padding:6px 26px 22px; }
+  h3 { color:var(--orange); font-size:1.05rem; margin-top:22px; }
+  h4 { color:#555; font-size:0.98rem; }
+  p { margin:10px 0; }
+  ul { margin:6px 0; padding-left:22px; }
+  li { margin:4px 0; }
+  .numitem { margin:6px 0; }
+  .tag { color:#fff; padding:1px 8px; border-radius:4px; font-weight:600; font-size:0.85em; white-space:nowrap; }
+  .table-wrap { overflow-x:auto; margin:16px 0; }
+  table { border-collapse:collapse; width:100%; font-size:0.92rem; }
+  th { background:var(--teal); color:#fff; text-align:left; padding:9px 12px; }
+  td { padding:8px 12px; border-bottom:1px solid #e2e6e8; }
+  tr:nth-child(even) td { background:#f5f8f9; }
+  figure.fig { margin:20px 0; text-align:center; }
+  figure.fig img { max-width:100%; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,0.15); cursor:zoom-in; }
+  figcaption { font-style:italic; color:var(--muted); font-size:0.88rem; margin-top:8px; }
+  .img-missing { color:#999; font-style:italic; padding:10px; }
+  pre.code-block { background:#f2f2f2; padding:14px; border-radius:8px; overflow-x:auto; font-family:Consolas, monospace; font-size:0.85rem; }
+  .diagram-wrap { position:relative; background:#fbfcfc; border:1px solid #e2e6e8; border-radius:10px; margin:16px 0; }
+  .diagram-controls { position:absolute; top:10px; right:10px; z-index:5; display:flex; gap:6px; }
+  .diagram-controls button { width:30px; height:30px; border-radius:6px; border:1px solid #d5dde0; background:#fff; color:var(--teal); font-size:1.05rem; font-weight:700; cursor:pointer; box-shadow:0 1px 3px rgba(0,0,0,0.12); }
+  .diagram-controls button:hover { background:var(--teal); color:#fff; }
+  .diagram-scroll { overflow:auto; padding:20px; max-height:640px; }
+  .diagram-scroll svg { transition:transform 0.12s ease-out; transform-origin:0 0; }
+  pre.mermaid { background:transparent; margin:0; }
+  #lightbox { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.85); z-index:999; align-items:center; justify-content:center; cursor:zoom-out; }
+  #lightbox img { max-width:92%; max-height:92%; border-radius:6px; }
+  .backtotop { position:fixed; bottom:24px; right:24px; background:var(--teal); color:#fff; border-radius:50%; width:44px; height:44px; display:flex; align-items:center; justify-content:center; text-decoration:none; box-shadow:0 2px 6px rgba(0,0,0,0.3); font-size:1.2rem; }
+  @media (max-width:800px){ nav.sidebar{ display:none; } main{ padding:20px; } }
+</style>
+</head>
+<body>
+<div class="layout">
+  <nav class="sidebar">
+    <h1>UVÉO-MÉNINGITES</h1>
+    <div class="subtitle">Cours magistral — DES d'Ophtalmologie</div>
+    <a href="#plan-du-cours" class="toc-link">PLAN DU COURS</a>
+<a href="#i-generalites" class="toc-link">I. GÉNÉRALITÉS</a>
+<a href="#ii-rappel-anatomique-et-physiopathologique" class="toc-link">II. RAPPEL ANATOMIQUE ET PHYSIOPATHOLOGIQUE</a>
+<a href="#iii-presentation-clinique-generale" class="toc-link">III. PRÉSENTATION CLINIQUE GÉNÉRALE</a>
+<a href="#iv-demarche-diagnostique-devant-une-uveo-meningite" class="toc-link">IV. DÉMARCHE DIAGNOSTIQUE DEVANT UNE UVÉO-MÉNINGITE</a>
+<a href="#v-etiologies-des-uveo-meningites" class="toc-link">V. ÉTIOLOGIES DES UVÉO-MÉNINGITES</a>
+<a href="#vi-diagnostics-differentiels-complementaires" class="toc-link">VI. DIAGNOSTICS DIFFÉRENTIELS COMPLÉMENTAIRES</a>
+<a href="#vii-prise-en-charge" class="toc-link">VII. PRISE EN CHARGE</a>
+<a href="#viii-pronostic-et-evolution-exemple-du-vkh-et-de-l-ophtalmie" class="toc-link">VIII. PRONOSTIC ET ÉVOLUTION (exemple du VKH et de l'ophtalmie sympathique)</a>
+<a href="#ix-algorithme-diagnostique-demarche-devant-une-uveite-associ" class="toc-link">IX. ALGORITHME DIAGNOSTIQUE — DÉMARCHE DEVANT UNE UVÉITE ASSOCIÉE À DES SIGNES NEUROLOGIQUES</a>
+<a href="#x-carte-mentale-de-synthese" class="toc-link">X. CARTE MENTALE DE SYNTHÈSE</a>
+<a href="#xi-tableaux-de-synthese-des-etiologies" class="toc-link">XI. TABLEAUX DE SYNTHÈSE DES ÉTIOLOGIES</a>
+  </nav>
+  <main>
+    <div class="cover">
+      <h1>UVÉO-MÉNINGITES</h1>
+      <div class="sub">Cours magistral — DES d'Ophtalmologie</div>
+    </div>
+    <p><em>Cours magistral — DES d'Ophtalmologie, préparation à l'examen final</em></p>
+<details class="section" open id="plan-du-cours"><summary><h2>PLAN DU COURS</h2></summary><div class="section-body">
+<p><strong>I. Généralités</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Définition du concept d'uvéo-méningite</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Intérêt de la question</div>
+<p><strong>II. Rappel anatomique et physiopathologique</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> La barrière hémato-oculaire</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> La barrière hémato-méningée</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> Le substratum anatomique commun uvée–méninges–SNC : le rôle des mélanocytes et de la pie-mère</div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> Mécanismes immunopathologiques communs</div>
+<p><strong>III. Présentation clinique générale</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Signes ophtalmologiques</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Signes neurologiques et méningés</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> Signes extra-oculaires associés (auditifs, cutanés)</div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> Les quatre phases évolutives type (modèle VKH)</div>
+<p><strong>IV. Démarche diagnostique devant une uvéo-méningite</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Interrogatoire et examen clinique général</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Bilan ophtalmologique de première intention</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> Ponction lombaire</div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> Imagerie cérébrale</div>
+<div class="numitem" style="margin-left:0px"><strong>5.</strong> Bilan étiologique orienté</div>
+<p><strong>V. Étiologies des uvéo-méningites</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Le syndrome de Vogt-Koyanagi-Harada (VKH)</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> L'ophtalmie sympathique</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> La sarcoïdose neuro-oculaire</div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> La maladie de Behçet (neuro-Behçet)</div>
+<div class="numitem" style="margin-left:0px"><strong>5.</strong> Étiologies infectieuses : syphilis, tuberculose, maladie de Lyme, maladie de Whipple</div>
+<div class="numitem" style="margin-left:0px"><strong>6.</strong> Étiologies néoplasiques : lymphome intraoculaire primitif, méningite carcinomateuse/lymphomateuse</div>
+<p><strong>VI. Diagnostics différentiels complémentaires</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Sclérite postérieure</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Neurorétinites infectieuses</div>
+<p><strong>VII. PRISE EN CHARGE</strong></p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Principes généraux et prise en charge multidisciplinaire</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Gestes et décisions <span class="tag" style="background:#C0392B">[URGENCE]</span></div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> Traitement de <span class="tag" style="background:#1F618D">[1ère LIGNE]</span></div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> Traitement de <span class="tag" style="background:#B9770E">[2ème LIGNE]</span></div>
+<div class="numitem" style="margin-left:0px"><strong>5.</strong> <span class="tag" style="background:#1E8449">[SURVEILLANCE]</span></div>
+<p><strong>VIII. Pronostic et évolution</strong></p>
+<p><strong>IX. Algorithme diagnostique devant une uvéite associée à des signes neurologiques</strong></p>
+<p><strong>X. Carte mentale de synthèse</strong></p>
+<p><strong>XI. Tableaux de synthèse des étiologies</strong></p>
+</div></details>
+<details class="section" open id="i-generalites"><summary><h2>I. GÉNÉRALITÉS</h2></summary><div class="section-body">
+<h3>1. Définition du concept d'uvéo-méningite</h3>
+<p>Une <strong>uvéo-méningite</strong> désigne l'association, chez un même patient, d'une <strong>atteinte inflammatoire de l'uvée</strong> (iris, corps ciliaire, choroïde) et d'une <strong>atteinte inflammatoire des méninges</strong> (et plus largement du système nerveux central), relevant d'un <strong>processus pathologique unique</strong>, et non de la coïncidence fortuite de deux maladies indépendantes.</p>
+<p>Ce cadre nosologique regroupe des affections de mécanismes très différents :</p>
+<ul><li>des maladies <strong>inflammatoires auto-immunes non infectieuses</strong> (VKH, ophtalmie sympathique, sarcoïdose, maladie de Behçet) ;</li><li>des maladies <strong>infectieuses</strong> capables d'atteindre simultanément uvée et méninges/SNC (syphilis, tuberculose, maladie de Lyme, maladie de Whipple) ;</li><li>des processus <strong>néoplasiques</strong> disséminant à la fois dans l'œil et dans les espaces méningés (lymphome intraoculaire primitif, méningites carcinomateuses).</li></ul><p>Le point commun physiopathologique est l'existence d'une <strong>cible antigénique ou d'une voie de dissémination partagée</strong> entre le tissu uvéal et le système nerveux central, ce qui explique que l'atteinte oculaire et l'atteinte neurologique surviennent de façon concomitante ou séquentielle chez un même patient.</p>
+<h3>2. Intérêt de la question</h3>
+<ul><li>Le diagnostic positif d'uvéo-méningite <strong>change radicalement la prise en charge</strong> : il impose la recherche systématique de signes neurologiques devant toute uvéite, et réciproquement la recherche d'une atteinte oculaire devant toute méningite lymphocytaire inexpliquée.</li><li>Il s'agit d'un <strong>piège diagnostique et thérapeutique classique</strong> : une corticothérapie systémique à forte dose, indiquée dans les formes inflammatoires, est <strong>dangereuse et contre-indiquée</strong> tant qu'une cause infectieuse (tuberculose, syphilis) n'a pas été formellement écartée.</li><li>Le pronostic fonctionnel visuel et vital dépend directement de la <strong>rapidité et de la rigueur de la démarche diagnostique</strong>.</li><li>La prise en charge est <strong>par nature pluridisciplinaire</strong> : ophtalmologiste, neurologue, interniste, infectiologue, radiologue.</li></ul></div></details>
+<details class="section" open id="ii-rappel-anatomique-et-physiopathologique"><summary><h2>II. RAPPEL ANATOMIQUE ET PHYSIOPATHOLOGIQUE</h2></summary><div class="section-body">
+<h3>1. La barrière hémato-oculaire</h3>
+<p>La barrière hémato-oculaire (BHO) comprend deux composantes :</p>
+<ul><li>la <strong>barrière hémato-rétinienne externe</strong>, formée par les jonctions serrées de l'épithélium pigmentaire rétinien (EP) ;</li><li>la <strong>barrière hémato-rétinienne interne</strong>, formée par les jonctions serrées de l'endothélium des capillaires rétiniens.</li></ul><p>Cette barrière assure normalement l'<strong>immuno-privilège</strong> du globe oculaire, limitant l'accès des cellules immunitaires circulantes et des macromolécules au compartiment intra-oculaire. Sa rupture, qu'elle soit primitive (auto-immune) ou secondaire (infectieuse, inflammatoire), est à l'origine des décollements séreux rétiniens (DSR) exsudatifs et de la diffusion de contraste observée en angiographie, communs à la plupart des uvéo-méningites.</p>
+<h3>2. La barrière hémato-méningée (barrière hémato-encéphalique)</h3>
+<p>De façon analogue, la <strong>barrière hémato-encéphalique (BHE)</strong>, constituée par les jonctions serrées de l'endothélium capillaire cérébral associées aux astrocytes et péricytes, isole le parenchyme cérébral et le liquide céphalo-rachidien (LCR) du compartiment sanguin. Le SNC bénéficie ainsi, comme l'œil, d'un statut de <strong>site immunologiquement privilégié</strong>.</p>
+<h3>3. Le substratum anatomique et embryologique commun uvée-méninges-SNC</h3>
+<p>Le lien anatomique entre uvée et méninges repose sur deux éléments essentiels, à bien connaître pour comprendre la physiopathologie des uvéo-méningites :</p>
+<ul><li><strong>Au niveau de la tête du nerf optique</strong>, les fibres de la <strong>pie-mère</strong> (leptoméninge la plus interne) se poursuivent avec la <strong>choroïde péri-papillaire</strong> : il existe une <strong>solution de continuité anatomique directe</strong> entre l'espace sous-arachnoïdien (où circule le LCR) et le tissu uvéal postérieur. Cette continuité explique la diffusion possible de processus inflammatoires ou infectieux entre les deux compartiments.</li></ul><ul><li><strong>Sur le plan embryologique</strong>, l'uvée (mélanocytes stromaux de l'iris et de la choroïde), les méninges, la peau (mélanocytes épidermiques), l'oreille interne (mélanocytes cochléo-vestibulaires) et certaines structures du SNC dérivent de la <strong>crête neurale</strong>. Les <strong>mélanocytes</strong> constituent ainsi une <strong>cible antigénique commune</strong> à ces différents tissus, ce qui explique la présentation clinique multi-systémique caractéristique du syndrome de Vogt-Koyanagi-Harada (atteinte oculaire + méningée + auditive + cutanée).</li></ul><h3>4. Mécanismes immunopathologiques communs</h3>
+<p>Trois grands mécanismes rendent compte de l'association uvée-méninges :</p>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> <strong>Auto-immunité dirigée contre un antigène partagé</strong> (mélanocytaire dans le VKH et l'ophtalmie sympathique, ou antigène uvéo-rétinien dans la maladie de Behçet) : réaction d'hypersensibilité à médiation cellulaire (lymphocytes T), avec constitution de granulomes dans les formes granulomateuses.</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> <strong>Dissémination hématogène ou par contiguïté d'un agent infectieux</strong>, capable de franchir à la fois la BHO et la BHE (tréponème, bacille tuberculeux, <em>Borrelia</em>, <em>Tropheryma whipplei</em>).</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> <strong>Dissémination métastatique ou infiltrative de cellules néoplasiques</strong> par voie leptoméningée et vitréo-rétinienne (lymphome, carcinose méningée), les deux compartiments étant contigus le long des espaces périvasculaires et du nerf optique.</div>
+</div></details>
+<details class="section" open id="iii-presentation-clinique-generale"><summary><h2>III. PRÉSENTATION CLINIQUE GÉNÉRALE</h2></summary><div class="section-body">
+<h3>1. Signes ophtalmologiques</h3>
+<ul><li><strong>Baisse d'acuité visuelle</strong>, variable selon l'atteinte du segment antérieur et/ou postérieur.</li><li><strong>Signes de segment antérieur</strong> : uvéite antérieure, le plus souvent <strong>granulomateuse</strong> (précipités rétro-descémétiques « en graisse de mouton », nodules iriens de Koeppe/Busacca), synéchies irido-cristalliniennes.</li><li><strong>Signes de segment postérieur</strong> : hyalite, papillite, décollements séreux rétiniens (DSR) multifocaux souvent bilatéraux, granulomes choroïdiens, vascularite rétinienne (périphlébite, engainements vasculaires), plis choroïdiens et rétiniens.</li><li>Au stade évolué : <strong>dépigmentation du fond d'œil</strong> (« lueur de coucher de soleil »), nodules de Dalen-Fuchs.</li></ul><h3>2. Signes neurologiques et méningés</h3>
+<ul><li><strong>Syndrome méningé</strong> : céphalées, raideur de nuque, nausées, vomissements, photophobie, parfois fièvre. <strong>Un point sémiologique fondamental à retenir</strong> : des céphalées isolées, sans autre signe d'irritation méningée, ne suffisent pas à définir un syndrome méningé.</li><li><strong>Pléiocytose du LCR</strong>, pouvant être détectée <strong>même en l'absence de tout signe clinique méningé</strong> : sa recherche systématique par ponction lombaire est donc justifiée devant toute uvéite évocatrice, y compris asymptomatique sur le plan neurologique.</li><li>Signes neurologiques focaux (plus rares) : déficits sensitivomoteurs, syndrome confusionnel, crises comitiales, atteinte des paires crâniennes, syndrome de Guillain-Barré (décrit dans le VKH).</li></ul><h3>3. Signes extra-oculaires associés</h3>
+<ul><li><strong>Signes cochléo-vestibulaires</strong> : acouphènes, vertiges (souvent prodromiques), hypoacousie de perception touchant préférentiellement les <strong>fréquences aiguës</strong> (≥ 4 kHz).</li><li><strong>Signes cutanés</strong> (tardifs, ne devant pas précéder l'atteinte oculaire ou du SNC dans le VKH) : poliose (décoloration des cils, sourcils, cheveux), vitiligo (paupières, tronc, région sacrée), alopécie, hyperesthésie cutanée prodromique.</li></ul><h3>4. Les quatre phases évolutives type (modèle du VKH)</h3>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> <strong>Phase prodromale</strong> : signes méningés et/ou auditifs, précédant l'atteinte oculaire.</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> <strong>Phase d'uvéite aiguë</strong> : atteinte bilatérale, le plus souvent d'installation simultanée ; choroïdite diffuse avec DSR exsudatifs et papillite.</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> <strong>Phase chronique</strong> : dépigmentation progressive du fond d'œil et du limbe.</div>
+<div class="numitem" style="margin-left:0px"><strong>4.</strong> <strong>Phase de récidive</strong> : épisodes d'uvéite antérieure récidivante et/ou chronique interrompant la phase chronique.</div>
+<p>Ce schéma en quatre temps, bien que décrit initialement pour le VKH, constitue une <strong>grille de lecture utile</strong> pour comprendre la chronologie clinique des autres uvéo-méningites.</p>
+</div></details>
+<details class="section" open id="iv-demarche-diagnostique-devant-une-uveo-meningite"><summary><h2>IV. DÉMARCHE DIAGNOSTIQUE DEVANT UNE UVÉO-MÉNINGITE</h2></summary><div class="section-body">
+<h3>1. Interrogatoire et examen clinique général</h3>
+<ul><li>Recherche systématique de <strong>notion de traumatisme oculaire pénétrant ou de chirurgie oculaire</strong> récente (orientant vers une ophtalmie sympathique et devant, à l'inverse, faire évoquer un VKH en son absence).</li><li>Origine géographique et ethnique (Asie, pourtour méditerranéen, Amérindiens pour le VKH).</li><li>Antécédents de tuberculose, exposition à la tuberculose, séjour en zone d'endémie, conduites à risque (syphilis), morsure de tique récente (Lyme), symptomatologie digestive et articulaire chronique (Whipple), néoplasie connue (méningite carcinomateuse).</li><li>Recherche de signes systémiques associés : aphtose bipolaire (Behçet), atteinte pulmonaire ou ganglionnaire (sarcoïdose).</li></ul><h3>2. Bilan ophtalmologique de première intention</h3>
+<ul><li>Examen à la lampe à fente et <strong>fond d'œil dilaté</strong> bilatéral.</li><li><strong>Angiographie à la fluorescéine</strong> : recherche de diffusions punctiformes (pinpoints), de DSR, de vascularite.</li><li><strong>Angiographie au vert d'indocyanine (ICG)</strong> : étude de la vascularisation choroïdienne (utile en particulier dans le VKH et l'ophtalmie sympathique).</li><li><strong>OCT maculaire et OCT-EDI (Enhanced Depth Imaging)</strong> : analyse des DSR, mesure de l'<strong>épaisseur choroïdienne</strong>, marqueur d'activité inflammatoire et de risque de rechute.</li><li><strong>Échographie oculaire en mode B</strong> : indispensable en cas de trouble des milieux (cataracte, hyalite dense) ; recherche d'un épaississement choroïdien diffus, permettant d'éliminer une sclérite postérieure (absence d'épaississement scléral).</li></ul><h3>3. Ponction lombaire</h3>
+<ul><li>Indiquée devant <strong>toute suspicion d'uvéo-méningite</strong>, y compris en l'absence de syndrome méningé clinique franc.</li><li>Analyse cytologique (recherche de pléiocytose, formule lymphocytaire ou neutrophile), biochimique (protéinorachie, glycorachie), microbiologique (cultures, PCR ciblées) et <strong>cytologique à la recherche de cellules néoplasiques</strong> en cas de suspicion de méningite carcinomateuse ou de lymphome (la sensibilité de la cytologie augmente avec la répétition des ponctions).</li><li>Sérologies et recherche d'ADN/ARN spécifiques dans le LCR selon l'orientation (VDRL LCR, PCR <em>Borrelia</em>, PCR <em>Tropheryma whipplei</em>, recherche de BAAR/PCR tuberculose).</li></ul><h3>4. Imagerie cérébrale</h3>
+<ul><li><strong>IRM cérébrale et médullaire avec injection de gadolinium</strong> : examen de référence, à la recherche de :</li><ul><li>prise de contraste leptoméningée (méningite carcinomateuse, sarcoïdose, tuberculose) ;</li><li>hypersignaux parenchymateux du tronc cérébral et des noyaux gris centraux (neuro-Behçet) ;</li><li>atteinte hypophysaire/hypothalamique ou des nerfs crâniens (sarcoïdose) ;</li><li>lésions évocatrices de lymphome cérébral primitif.</li></ul><li>Complète utilement, sans la remplacer, la ponction lombaire.</li></ul><h3>5. Bilan étiologique orienté</h3>
+<p>À adapter au contexte clinique et au terrain, comportant classiquement :</p>
+<ul><li>Sérologies syphilitiques (TPHA-VDRL ou test tréponémique automatisé), sérologie de Lyme (ELISA puis Western Blot), sérologies VIH.</li><li>Dosage de l'enzyme de conversion de l'angiotensine (ECA), imagerie thoracique (radiographie, TDM thoracique), recherche d'adénopathies médiastinales (sarcoïdose).</li><li>IDR à la tuberculine et/ou test IGRA, radiographie/TDM thoracique (tuberculose).</li><li>Typage HLA (HLA classe II pour le VKH, HLA-B51 pour la maladie de Behçet, HLA-A11 pour l'ophtalmie sympathique) : élément d'orientation, jamais suffisant seul au diagnostic.</li><li>Bilan à la recherche d'une néoplasie primitive (mammographie, TDM thoraco-abdomino-pelvien) en cas de suspicion de méningite carcinomateuse.</li><li>Vitrectomie diagnostique avec analyse cytologique et dosage du rapport IL-10/IL-6 en cas de suspicion de lymphome intraoculaire primitif.</li></ul></div></details>
+<details class="section" open id="v-etiologies-des-uveo-meningites"><summary><h2>V. ÉTIOLOGIES DES UVÉO-MÉNINGITES</h2></summary><div class="section-body">
+<h3>1. LE SYNDROME DE VOGT-KOYANAGI-HARADA (VKH)</h3>
+<h4>a. Historique et définition</h4>
+<p>La dénomination associe les descriptions historiques de trois auteurs :</p>
+<ul><li><strong>Vogt</strong> (1906) : poliose associée à une inflammation intraoculaire ;</li><li><strong>Harada</strong> (1926) : uvéite postérieure avec décollements de rétine exsudatifs et pléiocytose du LCR ;</li><li><strong>Koyanagi</strong> (1929) : association de vitiligo, alopécie en plaques, blanchiment des phanères, hypoacousie et acouphènes.</li></ul><p>Ces manifestations relèvent d'un <strong>processus unique d'uvéo-méningo-encéphalite</strong>, regroupé sous le terme de syndrome de VKH. Le diagnostic repose sur des <strong>critères précis</strong>, la maladie présente une <strong>réponse spectaculaire à la corticothérapie</strong>, et le pronostic est généralement favorable en cas de prise en charge précoce et suffisamment intense.</p>
+<h4>b. Épidémiologie</h4>
+<ul><li>Rare en Europe, mais très fréquente en Asie, au pourtour méditerranéen et chez les Amérindiens ; <strong>2ème cause de panuvéite en Asie</strong>.</li><li>Nette <strong>prédominance féminine</strong>.</li><li><strong>Âge moyen</strong> : 35 ans.</li></ul><h4>c. Physiopathologie</h4>
+<ul><li><strong>Mécanisme présumé</strong> : auto-immunité à médiation cellulaire dirigée contre les <strong>mélanocytes</strong> du tissu uvéal, de la peau, de l'oreille interne et du cerveau, considérés comme auto-antigènes.</li><li><strong>Facteur déclenchant</strong> : inconnu ; hypothèse d'un agent infectieux évoquée.</li><li><strong>Terrain génétique</strong> : association à l'<strong>HLA de classe II</strong>.</li></ul><h4>d. Anatomopathologie</h4>
+<ul><li>Inflammation choroïdienne <strong>granulomateuse épithélio-giganto-cellulaire</strong>.</li><li><strong>Nodules de Dalen-Fuchs</strong> (entre l'épithélium pigmentaire et la membrane de Bruch), observés au stade chronique.</li></ul><h4>e. Critères diagnostiques</h4>
+<div class="numitem" style="margin-left:0px"><strong>1.</strong> Absence d'antécédent de <strong>traumatisme oculaire pénétrant ou de chirurgie oculaire</strong> ayant précédé le début de l'uvéite.</div>
+<div class="numitem" style="margin-left:0px"><strong>2.</strong> Absence d'élément clinique ou paraclinique évoquant une autre maladie oculaire.</div>
+<div class="numitem" style="margin-left:0px"><strong>3.</strong> <strong>Atteinte oculaire bilatérale</strong>, remplissant le critère A ou B selon le stade :</div>
+<ul><ul><li><strong>A. Manifestations précoces</strong> : choroïdite diffuse (zones localisées de liquide sous-rétinien, DSR bulleux), avec en angiographie des zones focales de retard de perfusion choroïdienne, des diffusions punctiformes multifocales, de grandes plages d'hyperfluorescence, et en échographie un épaississement choroïdien diffus <strong>sans sclérite postérieure</strong>.</li><li><strong>B. Manifestations tardives</strong> : antécédent compatible avec le stade A, associé à une <strong>dépigmentation oculaire</strong> (FO en « lueur de coucher de soleil », signe de Sugiura) et/ou d'autres signes (cicatrices choroïdiennes dépigmentées nummulaires, migrations de l'épithélium pigmentaire, uvéite antérieure récidivante ou chronique).</li></ul></ul><div class="numitem" style="margin-left:0px"><strong>4.</strong> <strong>Manifestations neurologiques ou auditives</strong> (ayant pu être résolutives au moment de l'examen) : signes méningés (fièvre, céphalées, nausées, douleurs abdominales, raideur de nuque), acouphènes, ou pléiocytose du LCR.</div>
+<div class="numitem" style="margin-left:0px"><strong>5.</strong> <strong>Manifestations tégumentaires</strong> (ne pouvant pas avoir précédé l'atteinte oculaire ou du SNC) : alopécie, poliose, vitiligo.</div>
+<h4>f. Manifestations oculaires</h4>
+<ul><li><strong>Segment antérieur</strong> : uvéite antérieure typiquement granulomateuse (précipités en graisse de mouton, nodules iriens) et synéchiante, évoluant parfois indépendamment de l'atteinte postérieure.</li><li><strong>Segment postérieur, phase aiguë</strong> : DSR multifocaux et OP, éléments les plus caractéristiques ; hyalite d'intensité variable. Le DSR débute typiquement en région maculaire, pouvant s'étendre à la moyenne ou l'extrême périphérie ; son caractère <strong>bilatéral dans un contexte inflammatoire est très évocateur</strong>. Des plis rétiniens et choroïdiens peuvent l'accompagner.</li><li><strong>Sous traitement</strong> : réapplication des DSR.</li><li><strong>Phase chronique</strong> : FO en « lueur de coucher de soleil », nodules de Dalen-Fuchs, complications possibles (fibrose sous-rétinienne, néovascularisation choroïdienne, cataracte, glaucome).</li><li><strong>Signe de Sugiura</strong> : vitiligo péri-limbique, manifestation la plus précoce de dépigmentation chez les patients asiatiques, rare et tardive en Europe.</li></ul><h4>g. Examens complémentaires</h4>
+<ul><li><strong>Angiographie à la fluorescéine</strong> :</li><ul><li>Phase aiguë : <strong>pinpoints</strong> (points hyperfluorescents multiples au niveau de l'EP augmentant en taille et diffusant dans l'espace sous-rétinien), accumulation de fluorescéine délimitant les DSR, hyperfluorescence papillaire ; engainements vasculaires rétiniens rares.</li><li>Phase chronique : aspect « mité » par effet fenêtre lié à la dépigmentation de l'EP.</li></ul><li><strong>ICG</strong> : diffusion précoce à partir des vaisseaux choroïdiens, hyperfluorescence diffuse aux temps tardifs.</li><li><strong>OCT</strong> : examen de choix pour le diagnostic et le suivi — DSR multifocaux polylobés avec cloisonnements membranaires, épaisseur des couches rétiniennes internes conservée malgré l'importance du DSR, augmentation de la RNFL papillaire (suivi possible sous traitement). <strong>OCT-EDI</strong> : la mesure de l'épaisseur choroïdienne est un marqueur d'activité inflammatoire et prédit les rechutes infra-cliniques (augmentation précédant l'accumulation de fluide sous-rétinien et les récidives, diminution sous corticothérapie systémique).</li><li><strong>Échographie oculaire</strong> : utile dans les formes atypiques ou lorsque le FO est difficilement visible ; épaississement choroïdien diffus faiblement échogène, plus marqué en péripapillaire, <strong>sans épaississement scléral</strong>.</li></ul><h4>h. Manifestations extra-oculaires</h4>
+<ul><li><strong>Neurologiques</strong> : syndrome méningé fréquent à la phase prodromale (méningite lymphocytaire, transitoire) ; pléiocytose du LCR pouvant être détectée en l'absence de signe clinique ; plus rarement état confusionnel, déficits focaux, syndrome de Guillain-Barré.</li><li><strong>Auditives</strong> : acouphènes et vertiges prodromiques, hypoacousie touchant surtout les fréquences ≥ 4 kHz.</li><li><strong>Cutanées</strong> : hyperesthésie cutanée prodromique, poliose (signe tardif), vitiligo (à distance des signes initiaux, parallèle à la dépigmentation du FO).</li><li>Bilan complémentaire systématique : <strong>audiogramme</strong>, <strong>ponction lombaire</strong>, <strong>IRM cérébrale</strong> (peut objectiver des lésions cérébrales).</li></ul><h4>i. Évolution et complications</h4>
+<ul><li>Tendance aux <strong>rechutes</strong>, notamment lors des décroissances thérapeutiques, pouvant conduire à une corticodépendance.</li><li>L'inflammation antérieure récidive plus souvent que l'atteinte postérieure, qui tend à se résoudre.</li><li>Complications : cataracte, glaucome, néovascularisation choroïdienne ou prépapillaire, remaniements pigmentaires maculaires, atrophie optique.</li></ul><h3>2. L'OPHTALMIE SYMPATHIQUE</h3>
+<h4>a. Introduction</h4>
+<p><strong>Définition</strong> : panuvéite granulomateuse <strong>bilatérale</strong>, survenant dans les suites d'une <strong>plaie transfixiante traumatique ou chirurgicale</strong>.</p>
+<p><strong>Intérêt</strong> : affection rare, à début insidieux et évolution progressive avec rechutes ; étiologie inconnue (mécanisme d'hypersensibilité retardée suspecté) ; l'<strong>énucléation de l'œil traumatisé</strong> reste le traitement préventif le plus efficace, bien que corticothérapie et immunosuppresseurs modifient le pronostic.</p>
+<h4>b. Épidémiologie</h4>
+<ul><li><strong>Âge</strong> : chez l'enfant, cause post-traumatique prédominante ; après 60 ans, cause post-chirurgicale prédominante.</li><li><strong>Sexe</strong> : deux fois plus fréquente chez l'homme (lié à la prédominance des causes post-traumatiques).</li><li><strong>Prédisposition génétique</strong> : HLA-A11.</li><li><strong>Facteurs déclenchants</strong> (condition nécessaire mais non suffisante) : cause traumatique (plaie transfixiante touchant corps ciliaire et uvée) ou cause iatrogène (chirurgie du glaucome +++, de la cataracte, du pôle postérieur).</li></ul><h4>c. Histopathologie et immunohistochimie</h4>
+<ul><li>Réaction inflammatoire <strong>granulomateuse non nécrosante</strong>, infiltrat lymphocytaire avec cellules épithélioïdes et cellules géantes, maximale au niveau de la choroïde.</li><li><strong>Nodules de Dalen-Fuchs</strong>, caractéristiques mais <strong>non pathognomoniques</strong> (retrouvés aussi dans la sarcoïdose, la tuberculose et le VKH).</li><li>Infiltrat choroïdien composé majoritairement de <strong>lymphocytes T suppresseurs</strong> : hypersensibilité à médiation cellulaire.</li></ul><h4>d. Pathogénie</h4>
+<p>Deux hypothèses : origine <strong>auto-immune</strong> (vis-à-vis des mélanocytes choroïdiens, de la mélanine uvéale, de l'épithélium pigmentaire, d'antigènes rétiniens) ou origine <strong>infectieuse</strong> (aucun agent identifié à ce jour).</p>
+<h4>e. Étude clinique</h4>
+<ul><li><strong>Délai de survenue</strong> : l'intervalle entre l'agression oculaire unilatérale et la survenue de l'ophtalmie sympathique est le plus souvent compris entre <strong>2 semaines et 2 mois</strong> (environ 80 % des cas), avec des extrêmes rapportés de 15 jours à plusieurs décennies.</li></ul><p><strong>Œil sympathisant (traumatisé)</strong> :</p>
+<ul><li>Examen à la lampe à fente : œil rouge douloureux avec cercle périkératique, uvéite antérieure granulomateuse (précipités « en graisse de mouton », synéchies, parfois nodules iriens).</li><li>Fond d'œil (si visible) : aspect de drusen exsudatif sous-rétinien pouvant confluer en DSR, choroïdite péripapillaire, œdème papillaire persistant (bon témoin d'évolutivité), cicatrices chorio-rétiniennes tardives (aspect mité).</li></ul><p><strong>Œil sympathisé</strong> :</p>
+<ul><li>Prodromes : photophobie, flou visuel, injection ciliaire, larmoiement, parfois blépharospasme.</li><li>Phase d'état, d'installation progressive : uvéite antérieure granulomateuse d'abord, puis uvéite postérieure secondaire avec œdème papillaire et rétinien diffus, DR exsudatif parfois total, nombreux granulomes choroïdiens, réalisant un tableau pouvant <strong>mimer un syndrome d'effusion uvéale</strong>.</li></ul><p><strong>Angiographie à la fluorescéine</strong> : forme classique avec multiples points d'hyperfluorescence choroïdienne aux temps précoces confluant aux temps tardifs, accumulation sous la rétine décollée, œdème papillaire ; forme atypique plus rare, proche de l'épithéliopathie en plaques.</p>
+<p><strong>Champ visuel</strong> : élargissement de la tache aveugle en cas de granulome choroïdien juxta-papillaire.</p>
+<p><strong>OCT</strong> : DR exsudatif avec infiltration sous-rétinienne hyporéflective multilobée.</p>
+<p><strong>Signes extra-oculaires</strong> (rares dans l'ophtalmie sympathique — leur présence pose alors le problème du diagnostic différentiel avec le VKH) :</p>
+<ul><li>Signes méningo-encéphalitiques : syndrome méningé, plus rarement crises d'épilepsie ou signes psychiatriques ; PL avec pléiocytose à prédominance lymphocytaire.</li><li>Signes cochléo-vestibulaires : hypoacousie de perception, bourdonnements, vertiges ; audiogramme montrant une surdité de perception sur les sons aigus.</li><li>Signes cutanés : exceptionnels (vitiligo, alopécie, poliose).</li></ul><h4>f. Évolution, complications et pronostic</h4>
+<ul><li>Évolution faite de poussées d'aggravation alternant avec des périodes d'amélioration ; environ 60 % des patients développent une corticodépendance nécessitant un immunosuppresseur d'épargne cortisonique.</li><li>Complications : cataracte, glaucome, cicatrice choriorétinienne sévère, néovascularisation choroïdienne, atrophie optique, phtisie du globe.</li><li>Pronostic sévère malgré les progrès thérapeutiques récents ; certains patients peuvent perdre la perception lumineuse.</li></ul><h4>g. Diagnostic différentiel</h4>
+<p>Le <strong>syndrome de VKH</strong> est le principal diagnostic différentiel ; la difficulté se pose surtout dans les formes atypiques où la notion de traumatisme perforant est douteuse et où les signes extra-oculaires manquent.</p>
+<h4>h. Traitement</h4>
+<ul><li><strong>Énucléation</strong> : seul traitement préventif, à réaliser classiquement dans les <strong>14 premiers jours</strong> suivant le traumatisme perforant (avant le développement de la maladie). Le pronostic de l'œil sympathisant est parfois meilleur que celui de l'œil sympathisé.</li><li><strong>Corticothérapie</strong>, traitement de référence : traitement d'attaque par méthylprednisolone 500 mg à 1 g/jour en perfusion IV sur 3 jours, suivi d'un relais oral par prednisone 1 mg/kg/jour, avec décroissance progressive prolongée (arrêt après au moins 6 mois d'accalmie inflammatoire ; parfois traitement à vie). Injections intravitréennes de triamcinolone possibles. La corticodépendance est fréquente.</li><li><strong>Immunosuppresseurs</strong> : ciclosporine A, azathioprine, cyclophosphamide, chlorambucil ; certains auteurs préconisent leur introduction d'emblée (meilleur pronostic), d'autres réservent leur usage à la corticodépendance (≥ 10 mg/j de prednisone). Dans les formes sévères, association possible de deux immunosuppresseurs.</li></ul><h3>3. LA SARCOÏDOSE NEURO-OCULAIRE</h3>
+<p><strong>Définition</strong> : granulomatose systémique de cause inconnue, caractérisée par des granulomes épithélioïdes et gigantocellulaires <strong>sans nécrose caséeuse</strong>, pouvant toucher tout organe, en particulier le poumon, les ganglions, la peau, l'œil et le système nerveux.</p>
+<p><strong>Neurosarcoïdose</strong> : atteinte du système nerveux, touchant électivement les <strong>méninges basales</strong>, les <strong>nerfs crâniens</strong> (paralysie faciale périphérique classique, atteinte du nerf optique), l'axe hypothalamo-hypophysaire, et pouvant se traduire par une méningite lymphocytaire chronique, volontiers subaiguë ou pauci-symptomatique.</p>
+<p><strong>Manifestations oculaires</strong> :</p>
+<ul><li><strong>Segment antérieur</strong> : uvéite antérieure granulomateuse (précipités en graisse de mouton, nodules de Koeppe et Busacca) — atteinte antérieure plus fréquente que postérieure.</li><li><strong>Segment postérieur</strong> : périphlébite rétinienne caractéristique en « <strong>candle wax drippings</strong> » (coulées de bougie), granulomes choroïdiens de grande taille (exceptionnellement responsables de DSR), papillite.</li><li>Atteinte des glandes lacrymales (syndrome sec).</li></ul><p><strong>Bilan étiologique</strong> :</p>
+<ul><li>Dosage de l'<strong>enzyme de conversion de l'angiotensine (ECA)</strong> sérique.</li><li>Imagerie thoracique (radiographie, TDM) à la recherche d'adénopathies médiastinales.</li><li>Lavage broncho-alvéolaire (élévation du rapport lymphocytaire CD4/CD8).</li><li>Biopsie (glande salivaire accessoire, ganglion, bronches) confirmant le granulome sans nécrose caséeuse.</li><li>IRM cérébrale : prise de contraste leptoméningée, épaississement pachyméningé, atteinte hypophysaire/hypothalamique.</li><li>PL : pléiocytose lymphocytaire, hyperprotéinorachie ; l'ECA dans le LCR est peu sensible et peu spécifique.</li></ul><h3>4. LA MALADIE DE BEHÇET (NEURO-BEHÇET)</h3>
+<p><strong>Définition</strong> : vascularite systémique multi-organe, de diagnostic clinique reposant sur des critères internationaux associant une <strong>aphtose buccale récidivante</strong> à au moins deux des critères suivants : aphtose génitale, atteinte oculaire, lésions cutanées, test pathergique positif. Association classique à l'<strong>HLA-B51</strong>.</p>
+<p><strong>Atteinte oculaire</strong> : uvéite habituellement <strong>non granulomateuse</strong>, pouvant réaliser une panuvéite à hypopion, avec <strong>vascularite rétinienne occlusive</strong> (vascularite nécrosante, occlusions veineuses et/ou artérielles rétiniennes) évoluant par poussées récidivantes, mettant en jeu le pronostic visuel.</p>
+<p><strong>Neuro-Behçet</strong> : on distingue classiquement :</p>
+<ul><li>une <strong>forme parenchymateuse</strong>, touchant préférentiellement le <strong>tronc cérébral</strong>, se traduisant par des signes pyramidaux, une atteinte des nerfs crâniens, un syndrome cérébelleux ;</li><li>une <strong>forme non parenchymateuse</strong>, dominée par la <strong>thrombose veineuse cérébrale</strong>, responsable d'un tableau d'hypertension intracrânienne.</li></ul><p><strong>Bilan</strong> :</p>
+<ul><li>LCR : pléiocytose pouvant être à prédominance <strong>neutrophile</strong> à la phase aiguë (particularité par rapport aux autres uvéo-méningites, habituellement lymphocytaires), puis à prédominance lymphocytaire.</li><li>IRM cérébrale : hypersignaux T2/FLAIR du tronc cérébral et des noyaux gris centraux dans la forme parenchymateuse ; angio-IRM veineuse à la recherche d'une thrombose veineuse cérébrale dans la forme non parenchymateuse.</li></ul><h3>5. ÉTIOLOGIES INFECTIEUSES</h3>
+<h4>a. Syphilis</h4>
+<p>Infection à <em>Treponema pallidum</em>, décrite comme le « grand imitateur » en ophtalmologie. L'atteinte oculaire est <strong>polymorphe</strong> : uvéite postérieure ou panuvéite, choriorétinite, vascularite rétinienne, tableau de placoïde syphilitique aigu postérieur (ASPPC) ; un DSR exsudatif bulleux bilatéral est possible mais rare. La <strong>neurosyphilis</strong> peut associer méningite lymphocytaire, méningo-vascularite (risque d'accident vasculaire cérébral), atteinte des paires crâniennes, et à un stade tardif un tabès. Le diagnostic repose sur les tests sérologiques tréponémiques et non tréponémiques (TPHA-VDRL), confirmés si besoin par un <strong>VDRL dans le LCR</strong> (spécifique mais peu sensible). La sérologie VIH doit être systématiquement associée. Traitement : pénicilline G par voie intraveineuse à forte dose.</p>
+<h4>b. Tuberculose</h4>
+<p>Infection à <em>Mycobacterium tuberculosis</em>, réalisant un granulome caséeux. Manifestations oculaires : choroïdite à tubercules de Bouchut, plus rarement tuberculome choroïdien avec DSR associé, vascularite rétinienne périphérique. L'atteinte méningée réalise une <strong>méningite tuberculeuse basilaire</strong>, pouvant s'accompagner d'une atteinte des nerfs crâniens et d'une hydrocéphalie. Bilan : IDR à la tuberculine et/ou test IGRA, imagerie thoracique, PL (hyperprotéinorachie franche, hypoglycorachie, formule lymphocytaire), recherche de BAAR et PCR spécifique dans le LCR. Traitement : quadrithérapie antituberculeuse, associée à une corticothérapie dans les formes méningées.</p>
+<h4>c. Maladie de Lyme</h4>
+<p>Infection à <em>Borrelia burgdorferi</em>, transmise par piqûre de tique. La <strong>neuroborréliose</strong> se manifeste classiquement par une méningoradiculite douloureuse et une paralysie faciale périphérique, volontiers bilatérale. L'atteinte oculaire peut associer uvéite et vascularite rétinienne. Diagnostic : sérologie ELISA puis confirmation par Western Blot, mise en évidence d'une synthèse intrathécale d'anticorps spécifiques dans le LCR. Traitement : antibiothérapie (ceftriaxone).</p>
+<h4>d. Maladie de Whipple</h4>
+<p>Infection rare à <em>Tropheryma whipplei</em>, atteinte multisystémique classiquement digestive et articulaire. L'atteinte oculaire réalise une uvéite postérieure avec vitrite. L'atteinte du système nerveux central peut être isolée, se traduisant notamment par un syndrome démentiel et, de façon très évocatrice, une <strong>ophtalmoplégie supranucléaire</strong> associée à une <strong>myorythmie oculo-masticatrice</strong>, quasi pathognomonique. Diagnostic : PCR spécifique sur biopsies duodénales et/ou LCR. Traitement : antibiothérapie prolongée.</p>
+<h3>6. ÉTIOLOGIES NÉOPLASIQUES</h3>
+<h4>a. Lymphome intraoculaire primitif (LIOP)</h4>
+<p>Lymphome non hodgkinien à grandes cellules B, considéré comme un sous-type de <strong>lymphome primitif du système nerveux central</strong>, survenant préférentiellement chez le sujet âgé. Il réalise un authentique <strong>syndrome masquarade</strong> : uvéite chronique cortico-résistante, vitrite dense, infiltrats jaunâtres sous-épithéliaux pigmentaires. L'atteinte du SNC (lymphome cérébral primitif) peut être associée, contemporaine ou différée. Diagnostic : <strong>vitrectomie diagnostique</strong> avec analyse cytologique (cellules lymphomateuses atypiques), dosage du rapport <strong>IL-10/IL-6</strong> dans le vitré (élévation évocatrice), IRM cérébrale, cytologie du LCR.</p>
+<h4>b. Méningite carcinomateuse (méningite néoplasique)</h4>
+<p>Dissémination métastatique leptoméningée d'un cancer solide (sein, poumon, mélanome) ou d'une hémopathie. Le tableau neurologique est volontiers <strong>multifocal</strong> : céphalées, atteinte de plusieurs paires crâniennes, radiculopathies. Une atteinte oculaire est possible par infiltration des voies visuelles ou de la choroïde. Diagnostic : cytologie du LCR (sensibilité augmentée par la répétition des ponctions), IRM cérébrale avec prise de contraste leptoméningée diffuse. Pronostic sombre.</p>
+</div></details>
+<details class="section" open id="vi-diagnostics-differentiels-complementaires"><summary><h2>VI. DIAGNOSTICS DIFFÉRENTIELS COMPLÉMENTAIRES</h2></summary><div class="section-body">
+<p>Les diagnostics différentiels des uvéo-méningites sont, pour la plupart, représentés par les <strong>autres causes de décollement de rétine exsudatif</strong> :</p>
+<ul><li><strong>Sclérite postérieure</strong> : inflammation de la sclère en arrière de l'équateur, rare, souvent idiopathique ou associée à des maladies systémiques (auto-immunes : polyarthrite rhumatoïde, granulomatose avec polyangéite [Wegener], polychondrite atrophiante ; infectieuses, notamment tuberculeuse). Clinique : douleur oculaire (« ORD ») avec baisse d'acuité visuelle ; au FO, association variable de poches de DSR exsudatif, de plis rétiniens/choroïdiens et d'une papillite. L'échographie oculaire retrouve un <strong>épaississement scléral</strong>, absent dans le VKH et l'ophtalmie sympathique.</li><li><strong>Neurorétinites infectieuses</strong> (accompagnées de DSR de contiguïté) : maladie des griffes du chat (<em>Bartonella henselae</em>), rickettsioses, rétino-choroïdite toxoplasmique.</li></ul></div></details>
+<details class="section" open id="vii-prise-en-charge"><summary><h2>VII. PRISE EN CHARGE</h2></summary><div class="section-body">
+<h3>1. Principes généraux</h3>
+<p>La prise en charge des uvéo-méningites est <strong>impérativement multidisciplinaire</strong>, associant ophtalmologiste, neurologue, interniste et infectiologue. Le préalable indispensable à toute décision thérapeutique est l'<strong>identification du mécanisme causal</strong> (inflammatoire, infectieux ou néoplasique), car les traitements de première intention des formes inflammatoires (corticothérapie systémique à forte dose) sont <strong>potentiellement délétères</strong> en cas de cause infectieuse ou néoplasique méconnue.</p>
+<h3>2. <span class="tag" style="background:#C0392B">[URGENCE]</span></h3>
+<ul><li><strong>Éliminer formellement une cause infectieuse (tuberculose, syphilis) avant toute corticothérapie systémique à forte dose</strong> : piège classique, une corticothérapie inaugurale sur une méningite tuberculeuse ou une neurosyphilis méconnue peut entraîner une dissémination gravissime de l'infection.</li><li><strong>Ponction lombaire en urgence</strong> devant tout syndrome méningé fébrile ou toute suspicion d'uvéo-méningite, y compris en l'absence de signe méningé franc.</li><li><strong>IRM cérébrale en urgence</strong> en cas de signe de localisation neurologique, de syndrome d'hypertension intracrânienne, ou de suspicion de thrombose veineuse cérébrale (neuro-Behçet non parenchymateux).</li><li><strong>Bilan pré-thérapeutique exhaustif avant toute corticothérapie/immunosuppression</strong> : recherche d'une tuberculose latente ou active, sérologies virales (VIH, hépatites), en raison du risque de décompensation infectieuse sous traitement immunosuppresseur.</li><li>Dans l'ophtalmie sympathique post-traumatique : <strong>discussion de l'énucléation de l'œil traumatisé dans les 14 premiers jours</strong>, seul geste réellement préventif.</li></ul><h3>3. <span class="tag" style="background:#1F618D">[1ère LIGNE]</span></h3>
+<p><strong>Pour les causes inflammatoires non infectieuses</strong> (VKH, ophtalmie sympathique, sarcoïdose, Behçet), une fois les causes infectieuse et néoplasique formellement écartées :</p>
+<ul><li><strong>Corticothérapie systémique</strong>, traitement standard de la phase aiguë (affections cortico-sensibles) : voie orale ou IV précoce et massive (≥ 1 mg/kg/jour), voire bolus de méthylprednisolone (500 mg à 1 g/jour sur 3 jours) dans les formes sévères, avec <strong>décroissance lente et prolongée</strong>.</li><li>Traitement topique associé (corticoïdes locaux et cycloplégiques) en cas d'uvéite antérieure.</li><li>Injection intra- ou péri-oculaire de corticoïdes envisageable en cas isolé, si un traitement systémique est impossible.</li></ul><p><strong>Pour les causes infectieuses identifiées</strong> : traitement anti-infectieux spécifique <strong>institué en urgence</strong> (antibiothérapie ciblée : pénicilline G pour la syphilis, quadrithérapie antituberculeuse, ceftriaxone pour la maladie de Lyme, antibiothérapie prolongée pour la maladie de Whipple).</p>
+<h3>4. <span class="tag" style="background:#B9770E">[2ème LIGNE]</span></h3>
+<ul><li><strong>Immunosuppresseurs conventionnels</strong> en cas de rechute à un seuil de corticodépendance inacceptable, ou de terrain contre-indiquant la poursuite de la corticothérapie (diabète, surpoids) : <strong>méthotrexate ou azathioprine en première intention</strong> ; le mycophénolate mofétil d'emblée associé à la corticothérapie a montré un effet bénéfique sur le taux de rechutes et le pronostic visuel par rapport à la corticothérapie seule (VKH). Dans l'ophtalmie sympathique : ciclosporine A, azathioprine, cyclophosphamide, chlorambucil ; association de deux immunosuppresseurs dans les formes sévères.</li><li><strong>Immunothérapie biologique</strong> (rituximab notamment) dans les formes chroniques réfractaires (diagnostic tardif ou prise en charge initiale insuffisante), ainsi que dans les formes sévères de neuro-Behçet ou de lymphome intraoculaire (chimiothérapie systémique et/ou intrathécale, radiothérapie, rituximab selon les protocoles d'hémato-oncologie).</li><li><strong>Traitement chirurgical des complications</strong> : chirurgie de la cataracte, chirurgie filtrante du glaucome.</li></ul><h3>5. <span class="tag" style="background:#1E8449">[SURVEILLANCE]</span></h3>
+<ul><li>Surveillance clinique <strong>ophtalmologique</strong> régulière : acuité visuelle, tonus oculaire, examen du segment antérieur et fond d'œil.</li><li>Surveillance <strong>neurologique</strong> conjointe en cas d'atteinte du SNC.</li><li><strong>OCT-EDI</strong> de suivi : la mesure répétée de l'épaisseur choroïdienne permet de dépister une activité inflammatoire infra-clinique et d'anticiper les rechutes.</li><li>Surveillance de la <strong>tolérance de la corticothérapie et des immunosuppresseurs</strong> (bilan métabolique, densité osseuse, dépistage des complications infectieuses opportunistes).</li><li>Décroissance thérapeutique <strong>lente et prudente</strong> : une décroissance trop rapide des corticoïdes est un facteur de risque de récidive reconnu.</li><li>Surveillance à long terme des séquelles : atrophie péripapillaire, dépigmentation ou fibrose et pigmentation résiduelles.</li></ul></div></details>
+<details class="section" open id="viii-pronostic-et-evolution-exemple-du-vkh-et-de-l-ophtalmie"><summary><h2>VIII. PRONOSTIC ET ÉVOLUTION (exemple du VKH et de l'ophtalmie sympathique)</h2></summary><div class="section-body">
+<ul><li>Le pronostic est généralement <strong>favorable</strong> en cas de prise en charge précoce avec un traitement suffisamment intense, mais les décisions thérapeutiques restent en grande partie <strong>empiriques</strong>, faute d'études randomisées comparatives prospectives de fort niveau de preuve.</li><li>Malgré un traitement bien conduit, des <strong>séquelles sont possibles</strong> : atrophie péripapillaire associée à une dépigmentation, ou fibrose associée à une pigmentation.</li><li>Le <strong>taux de récidive</strong> rapporté dans le VKH est élevé (atteinte antérieure et/ou postérieure : DSR ou papillite).</li></ul><p><strong>Facteurs de risque de récidive (VKH)</strong> :</p>
+<ul><li>Acuité visuelle initiale &lt; 1/10.</li><li>Décroissance orale trop rapide des corticoïdes (&gt; 30 mg/semaine sur 3 mois).</li><li>Tyndall de chambre antérieure &gt; 2+.</li><li>Présence de manifestations extra-oculaires à la phase aiguë.</li><li>Augmentation de l'épaisseur choroïdienne.</li><li>Présence de plis rétiniens initiaux.</li></ul><p>Dans l'<strong>ophtalmie sympathique</strong>, le pronostic reste <strong>sévère</strong> malgré les progrès thérapeutiques récents, avec un risque de perte de la perception lumineuse dans certains cas ; environ 60 % des patients développent une corticodépendance nécessitant un traitement immunosuppresseur d'épargne.</p>
+</div></details>
+<details class="section" open id="ix-algorithme-diagnostique-demarche-devant-une-uveite-associ"><summary><h2>IX. ALGORITHME DIAGNOSTIQUE — DÉMARCHE DEVANT UNE UVÉITE ASSOCIÉE À DES SIGNES NEUROLOGIQUES</h2></summary><div class="section-body">
+<div class="diagram-wrap"><div class="diagram-controls"><button onclick="zoomDiagram('diagram-0',1.15)" title="Zoom avant">+</button><button onclick="zoomDiagram('diagram-0',0.87)" title="Zoom arri&egrave;re">&minus;</button><button onclick="resetDiagram('diagram-0')" title="R&eacute;initialiser">&#8635;</button></div><div class="diagram-scroll" id="diagram-0-scroll"><pre class="mermaid" id="diagram-0">flowchart TD
+  n0(["`UVÉITE (antérieure, postérieure ou panuvéite)`"])
+  n1["`► Interrogatoire systématique : - Recherche de signes méningés même mineurs (céphalées + un autre signe) - Recherche de signes auditifs (acouphènes, hypoacousie), cutanés (poliose, vitiligo, alopécie) - Recherche de notion de traumatisme/chirurgie oculaire antérieure - Recherche de terrain (origine géographique, contexte infectieux, néoplasie connue)`"]
+  n2["`► Examen ophtalmologique complet : FO bilatéral + angiographie (fluo +/- ICG) + OCT (dont OCT-EDI) + échographie si besoin → Caractériser : granulomateuse ou non, uni/bilatérale, DSR, vascularite, épaississement choroïdien vs scléral`"]
+  n3["`► Signes d'appel neurologiques présents OU uvéite évocatrice (bilatérale, granulomateuse, DSR multifocaux)`"]
+  n4["`► PONCTION LOMBAIRE (systématique, même sans signe méningé net) - Cytologie (lymphocytaire vs neutrophile vs cellules néoplasiques) - Biochimie (protéinorachie, glycorachie) - Microbiologie ciblée (BAAR/PCR TB, VDRL, PCR Borrelia, PCR T. whipplei)`"]
+  n5["`► IRM CÉRÉBRALE (+/- médullaire) injectée - Prise de contraste leptoméningée ? Atteinte du tronc cérébral ? Thrombose veineuse ? - Lésion parenchymateuse évocatrice de lymphome ?`"]
+  n6["`► AVANT TOUTE CORTICOTHÉRAPIE SYSTÉMIQUE : ÉLIMINER UNE CAUSE INFECTIEUSE - Sérologies syphilitiques, IDR/IGRA + imagerie thoracique, sérologie Lyme - Bilan pré-thérapeutique (tuberculose latente, VIH, hépatites)`"]
+  n7["`► ORIENTATION ÉTIOLOGIQUE selon le faisceau d'arguments :`"]
+  n8["`Bilatéral + granulomateux + DSR + pas de traumatisme + signes cochléo-cutanés → VKH`"]
+  n9["`Bilatéral + granulomateux + DSR + traumatisme/chirurgie < 2 mois-2 ans → Ophtalmie sympathique`"]
+  n10["`Granulomateux + périphlébite en candle wax + ECA élevée + adénopathies médiastinales → Sarcoïdose`"]
+  n11["`Non granulomateux + hypopion + vascularite occlusive + aphtose bipolaire + HLA-B51 → Behçet`"]
+  n12["`Sérologies positives + contexte à risque → Syphilis / Lyme`"]
+  n13["`Contage tuberculeux + choroïdite/tuberculome + PL évocatrice → Tuberculose`"]
+  n14["`Signes digestifs/articulaires + myorythmie oculo-masticatrice → Whipple`"]
+  n15["`Sujet âgé + uvéite chronique cortico-résistante + vitrite dense → Lymphome intraoculaire`"]
+  n16["`Néoplasie connue + atteinte multifocale de plusieurs paires crâniennes → Méningite carcinomateuse`"]
+  n17["`► TRAITEMENT adapté à l'étiologie (cf. section VII), suivi multidisciplinaire et surveillance prolongée`"]
+  n0 --> n1
+  n0 --> n2
+  n0 --> n3
+  n3 --> n4
+  n3 --> n5
+  n0 --> n6
+  n0 --> n7
+  n7 --> n8
+  n7 --> n9
+  n7 --> n10
+  n7 --> n11
+  n7 --> n12
+  n7 --> n13
+  n7 --> n14
+  n7 --> n15
+  n7 --> n16
+  n0 --> n17
+  classDef urgence fill:#C0392B,stroke:#922B21,color:#fff,font-weight:bold;
+  classDef ligne1 fill:#1F618D,stroke:#154360,color:#fff;
+  classDef ligne2 fill:#B9770E,stroke:#7E5109,color:#fff;
+  classDef surveillance fill:#1E8449,stroke:#145A32,color:#fff;
+  class n17 surveillance;
+</pre></div></div></div></details>
+<details class="section" open id="x-carte-mentale-de-synthese"><summary><h2>X. CARTE MENTALE DE SYNTHÈSE</h2></summary><div class="section-body">
+<div class="diagram-wrap"><div class="diagram-controls"><button onclick="zoomDiagram('diagram-1',1.15)" title="Zoom avant">+</button><button onclick="zoomDiagram('diagram-1',0.87)" title="Zoom arri&egrave;re">&minus;</button><button onclick="resetDiagram('diagram-1')" title="R&eacute;initialiser">&#8635;</button></div><div class="diagram-scroll" id="diagram-1-scroll"><pre class="mermaid" id="diagram-1">flowchart LR
+  n0(["`UVÉO-MÉNINGITES`"])
+  n1["`1. DÉFINITION`"]
+  n2["`Atteinte inflammatoire/infectieuse/néoplasique commune uvée + méninges/SNC`"]
+  n3["`2. SUBSTRATUM ANATOMIQUE`"]
+  n4["`Continuité pie-mère / choroïde péripapillaire (au niveau du nerf optique)`"]
+  n5["`Origine commune (crête neurale) : mélanocytes uvéaux, cutanés, cochléaires, méningés`"]
+  n6["`3. CLINIQUE`"]
+  n7["`Ophtalmologique : uvéite antérieure/postérieure, DSR, papillite, vascularite`"]
+  n8["`Neurologique/méningé : céphalées, raideur de nuque, pléiocytose (même asymptomatique)`"]
+  n9["`Associée : acouphènes/hypoacousie aiguë, poliose/vitiligo/alopécie`"]
+  n10["`4. DIAGNOSTIC`"]
+  n11["`FO + angiographie (fluo/ICG) + OCT-EDI + échographie`"]
+  n12["`Ponction lombaire (systématique)`"]
+  n13["`IRM cérébrale injectée`"]
+  n14["`Bilan étiologique orienté (sérologies, ECA, HLA, imagerie thoracique)`"]
+  n15["`5. ÉTIOLOGIES`"]
+  n16["`Inflammatoires non infectieuses`"]
+  n17["`VKH (mélanocytaire, HLA classe II, pas de traumatisme)`"]
+  n18["`Ophtalmie sympathique (post-traumatique/chirurgical, HLA-A11)`"]
+  n19["`Sarcoïdose (granulome non caséeux, ECA, candle wax)`"]
+  n20["`Behçet (HLA-B51, vascularite occlusive, neuro-Behçet parenchymateux/non parenchymateux)`"]
+  n21["`Infectieuses`"]
+  n22["`Syphilis (grand imitateur, VDRL LCR)`"]
+  n23["`Tuberculose (granulome caséeux, méningite basilaire)`"]
+  n24["`Lyme (paralysie faciale bilatérale, sérologie + Western Blot)`"]
+  n25["`Whipple (myorythmie oculo-masticatrice, PCR spécifique)`"]
+  n26["`Néoplasiques`"]
+  n27["`Lymphome intraoculaire primitif (syndrome masquarade, IL-10/IL-6)`"]
+  n28["`Méningite carcinomateuse (cytologie LCR, atteinte multifocale)`"]
+  n29["`6. DIFFÉRENTIELS`"]
+  n30["`Sclérite postérieure (épaississement scléral échographique)`"]
+  n31["`Neurorétinites infectieuses (griffes du chat, rickettsioses, toxoplasmose)`"]
+  n32["`7. PRISE EN CHARGE`"]
+  n33["`**[URGENCE]** : éliminer infection avant corticoïdes, PL, IRM, bilan pré-thérapeutique`"]
+  n34["`**[1ère LIGNE]** : corticothérapie systémique (inflammatoire) / antibiothérapie ciblée (infectieux)`"]
+  n35["`**[2ème LIGNE]** : immunosuppresseurs (MTX, AZA, MMF), biothérapies (rituximab), chirurgie des complications`"]
+  n36["`**[SURVEILLANCE]** : clinique + OCT-EDI + tolérance thérapeutique + décroissance lente`"]
+  n37["`8. PRONOSTIC`"]
+  n38["`Favorable si précoce et intense (VKH)`"]
+  n39["`Sévère (ophtalmie sympathique)`"]
+  n40["`FDR de récidive : AV initiale basse, décroissance CTC trop rapide, Tyndall élevé, atteinte extra-oculaire`"]
+  n0 --> n1
+  n1 --> n2
+  n0 --> n3
+  n3 --> n4
+  n3 --> n5
+  n0 --> n6
+  n6 --> n7
+  n6 --> n8
+  n6 --> n9
+  n0 --> n10
+  n10 --> n11
+  n10 --> n12
+  n10 --> n13
+  n10 --> n14
+  n0 --> n15
+  n15 --> n16
+  n16 --> n17
+  n16 --> n18
+  n16 --> n19
+  n16 --> n20
+  n15 --> n21
+  n21 --> n22
+  n21 --> n23
+  n21 --> n24
+  n21 --> n25
+  n15 --> n26
+  n15 --> n27
+  n15 --> n28
+  n0 --> n29
+  n29 --> n30
+  n29 --> n31
+  n0 --> n32
+  n32 --> n33
+  n32 --> n34
+  n32 --> n35
+  n32 --> n36
+  n0 --> n37
+  n0 --> n38
+  n0 --> n39
+  n0 --> n40
+  classDef urgence fill:#C0392B,stroke:#922B21,color:#fff,font-weight:bold;
+  classDef ligne1 fill:#1F618D,stroke:#154360,color:#fff;
+  classDef ligne2 fill:#B9770E,stroke:#7E5109,color:#fff;
+  classDef surveillance fill:#1E8449,stroke:#145A32,color:#fff;
+  class n33 urgence;
+  class n34 ligne1;
+  class n35 ligne2;
+  class n36 surveillance;
+</pre></div></div></div></details>
+<details class="section" open id="xi-tableaux-de-synthese-des-etiologies"><summary><h2>XI. TABLEAUX DE SYNTHÈSE DES ÉTIOLOGIES</h2></summary><div class="section-body">
+<h3>Tableau 1 — Profil clinico-biologique comparatif des principales uvéo-méningites</h3>
+<div class="table-wrap"><table><tr><th>Étiologie</th><th>Terrain / Contexte</th><th>Type d'uvéite</th><th>Signe oculaire clé</th><th>Atteinte neuro-méningée</th><th>LCR</th><th>Marqueur biologique / génétique</th><th>Traitement de fond</th></tr><tr><td><strong>VKH</strong></td><td>Asiatique, méditerranéen, amérindien ; femme ; ~35 ans ; pas de traumatisme</td><td>Granulomateuse, bilatérale</td><td>DSR multifocaux + papillite ; puis « lueur de coucher de soleil »</td><td>Méningite lymphocytaire prodromique, pléiocytose fréquente</td><td>Lymphocytaire</td><td>HLA classe II</td><td>Corticothérapie systémique précoce et massive</td></tr><tr><td><strong>Ophtalmie sympathique</strong></td><td>Traumatisme/chirurgie oculaire (2 sem-2 mois avant)</td><td>Granulomateuse, bilatérale (œil sympathisé)</td><td>DR exsudatif, granulomes choroïdiens, aspect d'effusion uvéale</td><td>Rares ; syndrome méningé possible</td><td>Lymphocytaire (si présent)</td><td>HLA-A11</td><td>Énucléation préventive (&lt; 14 j) + corticothérapie</td></tr><tr><td><strong>Sarcoïdose</strong></td><td>Adulte jeune/âge moyen, atteinte pulmonaire possible</td><td>Granulomateuse</td><td>Périphlébite « candle wax », granulomes choroïdiens</td><td>Atteinte méninges basales, nerfs crâniens (VII)</td><td>Lymphocytaire</td><td>ECA élevée, adénopathies médiastinales</td><td>Corticothérapie ± immunosuppresseurs</td></tr><tr><td><strong>Behçet</strong></td><td>Pourtour méditerranéen, jeune adulte</td><td>Non granulomateuse</td><td>Hypopion, vascularite rétinienne occlusive</td><td>Neuro-Behçet parenchymateux (tronc cérébral) ou non parenchymateux (thrombose veineuse)</td><td>Neutrophile puis lymphocytaire</td><td>HLA-B51, aphtose bipolaire</td><td>Immunosuppresseurs/biothérapies</td></tr><tr><td><strong>Syphilis</strong></td><td>Conduites à risque, VIH</td><td>Polymorphe (postérieure/panuvéite)</td><td>Choriorétinite, placoïde syphilitique aigu</td><td>Méningite, méningovascularite</td><td>VDRL LCR positif (peu sensible)</td><td>TPHA-VDRL sériques</td><td>Pénicilline G IV</td></tr><tr><td><strong>Tuberculose</strong></td><td>Contage, zone d'endémie</td><td>Choroïdite</td><td>Tubercules de Bouchut, tuberculome</td><td>Méningite basilaire, atteinte nerfs crâniens</td><td>Hyperprotéinorachie, hypoglycorachie, lymphocytaire</td><td>IDR/IGRA, imagerie thoracique</td><td>Quadrithérapie antituberculeuse</td></tr><tr><td><strong>Lyme</strong></td><td>Piqûre de tique, zone endémique</td><td>Uvéite ± vascularite</td><td>Non spécifique</td><td>Méningoradiculite, paralysie faciale bilatérale</td><td>Synthèse intrathécale d'anticorps</td><td>ELISA + Western Blot</td><td>Ceftriaxone</td></tr><tr><td><strong>Whipple</strong></td><td>Signes digestifs/articulaires chroniques</td><td>Uvéite postérieure, vitrite</td><td>Non spécifique</td><td>Myorythmie oculo-masticatrice, ophtalmoplégie supranucléaire</td><td>PCR <em>T. whipplei</em></td><td>PCR biopsies duodénales</td><td>Antibiothérapie prolongée</td></tr><tr><td><strong>Lymphome intraoculaire primitif</strong></td><td>Sujet âgé</td><td>Syndrome masquarade cortico-résistant</td><td>Vitrite dense, infiltrats sous-EP</td><td>Lymphome cérébral primitif associé</td><td>Cytologie positive possible</td><td>IL-10/IL-6 &gt; 1 (vitré)</td><td>Chimiothérapie ± rituximab, radiothérapie</td></tr><tr><td><strong>Méningite carcinomateuse</strong></td><td>Néoplasie solide/hémopathie connue</td><td>Infiltration choroïdienne possible</td><td>Non spécifique</td><td>Atteinte multifocale (plusieurs paires crâniennes)</td><td>Cytologie positive (répéter les PL)</td><td>Selon cancer primitif</td><td>Traitement oncologique spécifique</td></tr></table></div><h3>Tableau 2 — Éléments d'orientation selon la nature de la pléiocytose du LCR</h3>
+<div class="table-wrap"><table><tr><th>Formule cytologique du LCR</th><th>Étiologies à évoquer en priorité</th></tr><tr><td><strong>Lymphocytaire</strong></td><td>VKH, ophtalmie sympathique, sarcoïdose, tuberculose, Lyme, syphilis, Behçet (phase secondaire)</td></tr><tr><td><strong>Neutrophile</strong> (à la phase aiguë)</td><td>Neuro-Behçet</td></tr><tr><td><strong>Cellules néoplasiques</strong></td><td>Lymphome intraoculaire primitif avec extension SNC, méningite carcinomateuse</td></tr><tr><td><strong>Hyperprotéinorachie franche + hypoglycorachie</strong></td><td>Tuberculose (évocateur, non spécifique)</td></tr></table></div><p><em>Fin du cours.</em></p>
+<p><strong>Note documentaire</strong> : le document source (« uvéoméningites.docx ») ne contenait aucune image ni schéma exploitable (fond d'œil, algorithme, tableau image) — l'extraction via pandoc n'a retourné aucun fichier média. Le contenu source, centré sur le syndrome de Vogt-Koyanagi-Harada et l'ophtalmie sympathique, a été repris de façon fidèle et exhaustive (définitions, critères diagnostiques, épidémiologie, physiopathologie, examens complémentaires, traitement), puis complété — conformément à la structure demandée — par les autres étiologies classiques des uvéo-méningites (sarcoïdose, maladie de Behçet, causes infectieuses et néoplasiques) à partir des connaissances de référence en ophtalmologie, en restant qualitatif pour toute donnée chiffrée non présente dans le document source.</p>
+</div></details>
+
+  </main>
+</div>
+<div id="lightbox" onclick="this.style.display='none'"><img id="lightbox-img" src=""></div>
+<a href="#" class="backtotop">&uarr;</a>
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script>
+function openLightbox(src){
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox').style.display = 'flex';
+}
+var __diagramScale = {};
+function zoomDiagram(id, factor){
+  var svg = document.querySelector('#' + id + '-scroll svg');
+  if (!svg) return;
+  var cur = __diagramScale[id] || 1;
+  cur = Math.max(0.3, Math.min(4, cur * factor));
+  __diagramScale[id] = cur;
+  svg.style.transform = 'scale(' + cur + ')';
+}
+function resetDiagram(id){
+  var svg = document.querySelector('#' + id + '-scroll svg');
+  if (!svg) return;
+  __diagramScale[id] = 1;
+  svg.style.transform = 'scale(1)';
+}
+if (window.mermaid) {
+  mermaid.initialize({ startOnLoad: true, theme: 'neutral', securityLevel: 'loose', flowchart: { htmlLabels: true, useMaxWidth: false }, mindmap: { useMaxWidth: false } });
+}
+</script>
+</body>
+</html>

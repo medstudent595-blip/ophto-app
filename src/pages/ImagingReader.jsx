@@ -4,7 +4,7 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mediumZoom from 'medium-zoom';
 import { ArrowLeft, List, X, ChevronRight, Image as ImageIcon } from 'lucide-react';
-import { dmlaChapters } from '../data/imagingDmlaData';
+import { imagingDmlaData } from '../data/imagingDmlaData';
 
 const ImagingReader = () => {
   const { id } = useParams();
@@ -14,6 +14,7 @@ const ImagingReader = () => {
   const contentRefs = useRef([]);
 
   // Fetch appropriate chapters based on ID
+  const dmlaChapters = Object.values(imagingDmlaData).sort((a, b) => a.id.localeCompare(b.id));
   const chapters = id === 'dmla' ? dmlaChapters : [];
 
   useEffect(() => {

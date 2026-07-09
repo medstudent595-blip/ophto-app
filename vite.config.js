@@ -8,6 +8,9 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['pwa-icon.svg'],
+      workbox: {
+        maximumFileSizeToCacheInBytes: 15 * 1024 * 1024
+      },
       manifest: {
         name: 'Ophto App DEMS',
         short_name: 'OphtoApp',
