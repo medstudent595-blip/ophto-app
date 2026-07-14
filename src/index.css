@@ -286,6 +286,48 @@ blockquote {
   border-top: 1px solid var(--border-color);
 }
 
+/* ---- Atlas d'imagerie : figures & badges ---- */
+figure.atlas-figure {
+  margin: 1.75rem auto;
+  max-width: 780px;
+  background: #fff;
+}
+figure.atlas-figure img {
+  width: 100%;
+  height: auto;
+  max-height: 82vh;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto;
+  background: #fff;
+  cursor: zoom-in;
+}
+figure.atlas-figure figcaption {
+  text-align: left;
+  line-height: 1.5;
+}
+.fig-num {
+  font-weight: 700;
+  color: var(--accent-primary);
+  margin-right: 0.25rem;
+  white-space: nowrap;
+}
+.nvc-badge {
+  display: inline-block;
+  padding: 0.02em 0.55em;
+  border-radius: 999px;
+  font-size: 0.78em;
+  font-weight: 700;
+  line-height: 1.5;
+  white-space: nowrap;
+  vertical-align: baseline;
+  color: #fff;
+}
+.nvc-1 { background: #2563eb; }   /* type 1 — bleu */
+.nvc-2 { background: #dc2626; }   /* type 2 — rouge */
+.nvc-3 { background: #7c3aed; }   /* type 3 — violet */
+.nvc-vpc { background: #ea580c; } /* VPC — orange */
+
 /* Mobile Optimizations */
 @media (max-width: 768px) {
   .app-container {

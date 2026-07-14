@@ -1,0 +1,529 @@
+{
+  "4-50": {
+    "page_idx": 162,
+    "printed_page": 142,
+    "clip": [
+      306.5,
+      200.9,
+      561.0,
+      332.1
+    ],
+    "px": [
+      779,
+      401
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-50Coupe verticale B-scan matérialisant les différents compartiments d’accumulation liquidienne.La coupe montre des logettes d’œdème maculaire cystoïde (ﬂèches blanches), un décollement séreux rétinien (ﬂèches jaunes) ainsi qu’une zone de soulèvement de l’épithélium pigmentaire (ﬂèches rouges)."
+  },
+  "4-51": {
+    "page_idx": 162,
+    "printed_page": 142,
+    "clip": [
+      306.5,
+      399.3,
+      560.7,
+      520.3
+    ],
+    "px": [
+      778,
+      370
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-51Soulèvement de l’épithélium pigmentaire associé à un décollement séreux rétinien.Soulèvement irrégulier de l’épithélium pigmentaire (ﬂèches rouges) très évocateur de néovaisseaux de type 1 associé à un décollement séreux rétinien (ﬂèches jaunes). Dans ce cas, il n’y a pas de réel épaississement de la rétine sensorielle ni d’accumula-tion de liquide intrarétinien."
+  },
+  "4-52": {
+    "page_idx": 163,
+    "printed_page": 143,
+    "clip": [
+      34.5,
+      407.7,
+      288.9,
+      732.9
+    ],
+    "px": [
+      778,
+      995
+    ],
+    "panels": 2,
+    "fallback": false,
+    "legend_raw": "Fig. 4-52Cartographie et coupe B-scan d’une DMLA exsudative.a. La cartographie est très perturbée montrant des diffé-rences importantes de niveau. b. La coupe verticale pas-sant par la macula montre un soulèvement inhomogène de l’épithélium pigmentaire (ﬂèches rouges), la présence de liquide intrarétinien ainsi que d’un décollement séreux rétinien. On note de plus une lésion hyper-réﬂective sous-rétinienne (ﬂèches jaunes)."
+  },
+  "4-53": {
+    "page_idx": 163,
+    "printed_page": 143,
+    "clip": [
+      292.3,
+      438.7,
+      546.8,
+      731.7
+    ],
+    "px": [
+      778,
+      896
+    ],
+    "panels": 2,
+    "fallback": false,
+    "legend_raw": "Fig. 4-53Second exemple de cartographie en coupe B-scan d’une DMLA exsudative.a. Cartographie perturbée montrant une variation importante de l’épaisseur rétinienne au pôle posté-rieur. b. Lésion hyper-réﬂective sous-rétinienne (ﬂèches rouges) associée à un œdème intrarétinien et à un décollement séreux rétinien. On note la présence de points réﬂectifs intrarétiniens (ﬂèches jaunes)."
+  },
+  "4-54": {
+    "page_idx": 164,
+    "printed_page": 144,
+    "clip": [
+      306.5,
+      292.9,
+      561.0,
+      408.1
+    ],
+    "px": [
+      779,
+      354
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-54Exsudation ou matériel sous-rétinien hyper-réﬂectif.Cette exsudation se matérialise sous la forme d’une lésion grise, à bords un peu inhomogènes, présente dans l’espace sous-rétinien (ﬂèche rouge). Elle est parfois la seule manifestation présente de l’exsudation mais, le plus souvent, elle est associée soit à un œdème intrarétinien, soit à un décollement séreux rétinien (ﬂèche blanche)."
+  },
+  "4-55": {
+    "page_idx": 164,
+    "printed_page": 144,
+    "clip": [
+      106.9,
+      480.9,
+      502.9,
+      729.3
+    ],
+    "px": [
+      1211,
+      760
+    ],
+    "panels": 4,
+    "fallback": false,
+    "legend_raw": "Fig. 4-55Lésion hyper-réﬂective sous-rétinienne en tant que seule manifestation exsudative à l’OCT.a. Cliché en couleurs ne montrant ni hémorragie ni exsudation. b. L’angiographie montre une hyperﬂuorescence inhomogène à la partie nasale de la macula (ﬂèches). c. La cartographie de l’OCT est perturbée montrant un épaississement inter-papillo-maculaire (ﬂèche). d. La coupe B-scan passant par ce territoire montre une lésion hyper-réﬂective sous-rétinienne (ﬂèche) sans véritable œdème intrarétinien ni décollement séreux. Cette lésion sous-rétinienne située en regard d’une surélévation inhomogène de l’épithélium pigmentaire est très évocatrice de néovascularisation choroïdienne."
+  },
+  "4-56": {
+    "page_idx": 165,
+    "printed_page": 145,
+    "clip": [
+      34.5,
+      79.1,
+      288.7,
+      754.3
+    ],
+    "px": [
+      778,
+      2064
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-56Exemples de décollements de l’épithélium pigmentaire en « arche de pont ».Ces décollements de l’épithélium pigmentaire sont habituelle-ment associés à de la ﬁbrose sous-rétinienne, ce qui explique leur pronostic réservé."
+  },
+  "4-57": {
+    "page_idx": 167,
+    "printed_page": 147,
+    "clip": [
+      34.5,
+      79.1,
+      546.7,
+      501.6
+    ],
+    "px": [
+      1566,
+      1292
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-57Exemples de décollements de l’épithélium pigmentaire.Le décollement de l’épithélium pigmentaire associé aux néovaisseaux de type 1 peut être plan (a, b) ou saillant (c, d) avec, dans ce dernier cas, un risque accru de déchirure. Le décollement de l’épithélium pigmentaire associé aux néovaisseaux de type 3 débutants est souvent de petite dimension, ressemblant à un simple drusen séreux (e, f)."
+  },
+  "4-58": {
+    "page_idx": 168,
+    "printed_page": 148,
+    "clip": [
+      48.1,
+      78.5,
+      560.9,
+      574.5
+    ],
+    "px": [
+      1567,
+      1516
+    ],
+    "panels": 4,
+    "fallback": false,
+    "legend_raw": "Fig. 4-58Néovascularisation choroïdienne de type 1.a. Cliché en couleurs montrant des drusen du pôle postérieur. b. L’autoﬂ uorescence est très perturbée. c, d. L’angiographie à la ﬂ uorescéine montre une ﬂ uorescence inhomogène, maximale aux temps tardifs avec des diffusions d’origine imprécise. e. La cartographie de l’OCT est peu perturbée montrant un simple épaississement supéro-maculaire. f. La coupe B-scan de l’OCT montre une surélévation inhomogène de l’épithélium pigmentaire (ﬂ èche blanche) associée à un décollement séreux rétinien. On note quelques points hyper-réﬂ ectifs intrarétiniens (ﬂ èche jaune)."
+  },
+  "4-59": {
+    "page_idx": 169,
+    "printed_page": 149,
+    "clip": [
+      34.5,
+      79.0,
+      546.9,
+      642.0
+    ],
+    "px": [
+      1567,
+      1721
+    ],
+    "panels": 12,
+    "fallback": false,
+    "legend_raw": "Fig. 4-59Second exemple de néovaisseaux choroïdiens de type 1.a. Cliché en couleurs montrant une discrète altération du reﬂet en temporo-maculaire. b, c. Séquences angiographiques montrant une ﬂuorescence inhomogène maximale au temps tardif avec des pin points (ﬂèche). d. Cartographie de l’OCT montrant une variation de l’épaisseur au pôle pos-térieur. e. Coupe B-scan de l’OCT horizontale passant par la macula montrant un très discret décollement séreux rétinien associé à une irrégularité de l’épithélium pigmentaire et une lésion hyper-réﬂective sous-rétinienne (ﬂèche). f. L’OCT-A est réalisé dans le même temps que l’OCT structurel. Elle met en évidence le néovaisseau (ﬂèches). g, h. Après trois injections d’anti-VEGF, on note la persistance d’un décollement séreux rétinien. La lésion hyper-réﬂective sous-rétinienne a disparu. i, j. Après une nouvelle injection, on note une réapplication quasi complète de la rétine senso-rielle. Il persiste une lame de décollement séreux (ﬂèche). k, l. Après une nouvelle injection, on note une réapplication complète de la rétine. À noter ici une pachychoroïde faisant discuter du diagnostic : la néovascularisation choroïdienne de type 1 est-elle secondaire à la DMLA ou à la pachychoroïde ?"
+  },
+  "4-60": {
+    "page_idx": 170,
+    "printed_page": 150,
+    "clip": [
+      116.7,
+      79.1,
+      492.9,
+      540.5
+    ],
+    "px": [
+      1151,
+      1411
+    ],
+    "panels": 8,
+    "fallback": false,
+    "legend_raw": "Fig. 4-60Néovascularisation choroïdienne de type 2.a. Cliché en couleurs montrant un aspect grisâtre et arrondi de la région centrale. b. Temps précoce de la séquence angiographique montrant clai-rement les limites de la membrane néovasculaire. c. Cartographie montrant un épaississement global de la rétine sensorielle centrale. d. La coupe horizontale passant par la macula retrouve une lésion hyper-réﬂective sous-rétinienne (ﬂèches jaunes) associée à un œdème important. À noter un très discret décollement séreux de voisinage (ﬂèche blanche). e. Après trois injections d’anti-VEGF, la cartographie est meilleure. f. La coupe hori-zontale passant par la macula montre un aspect cicatriciel du néovaisseau, à bords plus nets. On note cependant des logettes cystoïdes résiduelles (ﬂèche). g, h. Après deux nouvelles injections d’anti-VEGF, on observe une cartographie meilleure (g), ainsi que la disparition complète des phéno-mènes exsudatifs. À noter une zone d’hyper-réﬂectivité postérieure (h, ﬂèches) traduisant la présence d’une atrophie de l’épithélium pigmentaire."
+  },
+  "4-61": {
+    "page_idx": 171,
+    "printed_page": 151,
+    "clip": [
+      34.6,
+      77.0,
+      547.1,
+      468.0
+    ],
+    "px": [
+      1567,
+      1196
+    ],
+    "panels": 7,
+    "fallback": false,
+    "legend_raw": "Fig. 4-61Second exemple de néovaisseaux choroïdiens de type 2.a. Cliché en couleurs montrant une lésion grisâtre temporo-maculaire. b. Zoom réalisé en angiographie montrant la membrane néovasculaire bien délimitée, à bords nets. c. Temps tardif de l’angiographie montrant une diffusion importante du colorant. d. Cartographie perturbée matérialisant les différences d’épaisseur au pôle postérieur. e-g. Trois coupes montrant, selon les incidences, l’existence d’une zone hyper-réﬂective sous-rétinienne (e, ﬂèche jaune), d’un décollement séreux rétinien (f, ﬂèche blanche) et de logettes d’œdème maculaire cystoïde (g)."
+  },
+  "4-62": {
+    "page_idx": 172,
+    "printed_page": 152,
+    "clip": [
+      94.0,
+      79.1,
+      515.6,
+      591.1
+    ],
+    "px": [
+      1289,
+      1566
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-62Néovascularisation choroïdienne de type 2 régressant en néovaisseaux de type 1.a. Cartographie perturbée montrant deux zones d’épaississement rétinien. b, c. OCT-A réalisée dans deux plans différents. Au niveau de la rétine externe (b), le néovaisseau est bien matérialisé, il semble correspondre à un néovaisseau de type 2. L’image obtenue dans le plan choroïdien (c) montre l’existence de ramiﬁcations plus profondes traduisant la présence d’un néovaisseau de type 1 associé (ﬂèches). d. Coupe horizontale de la macula matérialisant le décollement séreux rétinien ainsi que la zone hyper-réﬂective sous-rétinienne (ﬂèches). e. Après plusieurs cycles de traitement anti-VEGF, la cartographie est quasiment normalisée. f. La coupe OCT passant par la macula montre une surélévation assez homogène de l’épithélium pigmentaire correspondant à la cicatrice du néovaisseau. Le néovaisseau de type 2, bien présent initialement, a régressé en néo-vaisseau de type 1 donnant une image en « igloo » caractéristique (ﬂèche)."
+  },
+  "4-63": {
+    "page_idx": 173,
+    "printed_page": 153,
+    "clip": [
+      67.1,
+      77.0,
+      513.9,
+      354.7
+    ],
+    "px": [
+      1366,
+      849
+    ],
+    "panels": 4,
+    "fallback": false,
+    "legend_raw": "Fig. 4-63Néovascularisation maculaire de type 3.a. Cliché en couleurs montrant des drusen. b, c. Séquence angiographique montrant au temps précoce (b) une lésion hyperﬂuorescente poncti-forme (ﬂèche) ; au temps tardif (c), cette lésion est noyée dans une diffusion plus importante du colorant. d. La coupe B-scan passant par la lésion montre un épaississement au niveau de la rétine externe (ﬂèche) associé à des logettes cystoïdes."
+  },
+  "4-64": {
+    "page_idx": 174,
+    "printed_page": 154,
+    "clip": [
+      106.1,
+      77.0,
+      503.5,
+      608.2
+    ],
+    "px": [
+      1215,
+      1624
+    ],
+    "panels": 8,
+    "fallback": false,
+    "legend_raw": "Fig. 4-64Néovascularisation maculaire de type 3 évoluée associée à un décollement de l’épithélium pigmentaire.a. Photographie en couleurs : lésion d’allure disciforme centrale associée à des exsudats temporaux. b. Une lésion hyperﬂuorescente ponctiforme est visible dès les temps précoces de l’angiographie à la ﬂuorescéine (ﬂèche). c. Aux temps tardifs de l’angiographie à la ﬂuorescéine, la diffusion est plus importante au niveau de la zone d’anastomose (ﬂèche). d. Le temps précoce de l’angiographie au vert d’indocyanine matérialise bien la zone d’anastomose (ﬂèche). e. Cartographie de l’OCT montrant des variations importantes de l’épaisseur rétinienne au pôle postérieur. f. La coupe horizontale passant par la zone d’anastomose la matérialise sous la forme d’une surélévation assez saillante de l’épithélium pigmentaire adhérente à la rétine sensorielle (kissing sign, ﬂèche). On note par ailleurs des manifestations d’exsudations : liquide sous-épithélial, liquide sous-rétinien et liquide intrarétinien. g, h. Après traitement, la cartographie se normalise (g) mais l’épithélium pigmentaire reste très irrégulier sur les coupes passant par la zone d’anastomose (h)."
+  },
+  "4-65": {
+    "page_idx": 175,
+    "printed_page": 155,
+    "clip": [
+      34.6,
+      79.1,
+      289.1,
+      395.7
+    ],
+    "px": [
+      779,
+      968
+    ],
+    "panels": 2,
+    "fallback": false,
+    "legend_raw": "Fig. 4-65Néovascularisation maculaire de type 3.a. L’anastomose est bien visible en angiographie. b. La coupe B-scan correspondante montre une surélévation inhomogène de l’épithélium pigmentaire associée à une densiﬁcation de la rétine externe (ﬂèche). À noter l’existence de logettes cystoïdes ainsi que de lésions hyper-réﬂectives intrarétiniennes."
+  },
+  "4-66": {
+    "page_idx": 175,
+    "printed_page": 155,
+    "clip": [
+      34.5,
+      513.3,
+      546.9,
+      740.5
+    ],
+    "px": [
+      1567,
+      695
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-66Décollement de l’épithélium pigmentaire évoluant en déchirure.a. Avant traitement, le fond d’œil est peu altéré, montrant simplement des drusen. b. L’angiographie montre une ﬂuorescence inhomogène évocatrice de soulèvement de l’épithélium pigmentaire (ﬂèches). c. La coupe passant par la macula montre un sou-lèvement inhomogène de l’épithélium pigmentaire partiellement festonné. d, e. Après constitution de la déchirure, le fond d’œil est modiﬁé montrant une plage claire, temporo-maculaire (d), mieux visualisée sur le cliché en autoﬂuorescence (e). La zone dépi-gmentée apparaît sombre. f. La coupe d’OCT correspondante montre l’épithélium pigmentaire rétracté sur lui-même (ﬂèche jaune) et l’absence d’épithélium pigmentaire dans la zone déchirée (ﬂèches blanches)."
+  },
+  "4-67": {
+    "page_idx": 176,
+    "printed_page": 156,
+    "clip": [
+      48.6,
+      71.2,
+      563.7,
+      334.7
+    ],
+    "px": [
+      1575,
+      806
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-67Décollement de l’épithélium pigmentaire évoluant en aspect plissé, de bon pronostic.Cliché en couleurs (a, c) et infrarouges (b, d) avant traitement (a, b), puis après traitement anti-VEGF (c, d). L’aspect plissé, apparu après traitement, se devine sur l’image infrarouge. La comparaison des OCT montre un aspect plissé caractéristique, ainsi que la disparition de l’hyper-réﬂectivité sous-rétinienne (e)."
+  },
+  "4-68": {
+    "page_idx": 176,
+    "printed_page": 156,
+    "clip": [
+      47.3,
+      399.8,
+      561.5,
+      535.0
+    ],
+    "px": [
+      1572,
+      414
+    ],
+    "panels": 3,
+    "fallback": false,
+    "legend_raw": "Fig. 4-68Tubulations intrarétiniennes.a. Photographie en couleurs : drusen associés à une ﬁbrose sous-rétinienne. b. L’OCT B-scan passant par la région inter- papillo-maculaire montre, au-dessus de la ﬁbrose, des tubulations sous la forme de lésions sombres, ovalaires ou arrondies, ayant une paroi hyper-réﬂective (ﬂèches). c. En OCT en face, ces tubulations donnent lieu à des réseaux bien visualisés (ﬂèche)."
+  },
+  "4-69": {
+    "page_idx": 176,
+    "printed_page": 156,
+    "clip": [
+      112.3,
+      599.0,
+      561.6,
+      804.5
+    ],
+    "px": [
+      1373,
+      629
+    ],
+    "panels": 2,
+    "fallback": false,
+    "legend_raw": "Fig. 4-69OCT B-scan (a) et OCT en face (b) d’une zone de tubulations intra rétiniennes.a. On observe une lésion ﬁbreuse centrale cicatricielle surmontée d’images arron-dies ou ovalaires hypo-réﬂectives, ayant une paroi propre. Dans le cas présent, on observe bien la différence entre les tubulations (ﬂèches jaunes) qui ont une paroi hyper-réﬂective par rapport aux logettes cystoïdes (ﬂèches blanches) de voisinage. b. L’OCT en face retrouve toutes ces anomalies et montre bien la paroi hyper-réﬂective des tubulations (ﬂèche jaune) par rapport aux logettes (ﬂèche blanche) qui sont simplement hypo-réﬂectives."
+  },
+  "4-70": {
+    "page_idx": 177,
+    "printed_page": 157,
+    "clip": [
+      34.5,
+      170.5,
+      288.7,
+      288.1
+    ],
+    "px": [
+      778,
+      361
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-70Coupe B-scan typique d’une lésion disciforme montrant la ﬁbrose surmontée de logettes cystoïdes et d’un discret décollement séreux."
+  },
+  "4-71": {
+    "page_idx": 177,
+    "printed_page": 157,
+    "clip": [
+      63.9,
+      330.9,
+      503.3,
+      739.9
+    ],
+    "px": [
+      1343,
+      1250
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-71Vasculopathie polypoïdale choroïdienne.a. Cliché en couleurs montrant un aspect orangé inhomogène de la macula (ﬂèche). b, c. L’angiographie à la ﬂuorescéine correspondante montre des lésions hyperﬂuorescentes arrondies, bien individualisées aux temps tardifs de la séquence (ﬂèche). d. L’angiographie au vert d’indocyanine retrouve également ces lésions qui apparaissent isolées (ﬂèche). Le branching network n’est pas vraiment apparent sur ces clichés. e. La coupe B-scan passant par les polypes les matérialise sous la forme d’une surélévation en doigt de gant de l’épithélium pigmentaire relativement hyper-réﬂective. On note par ailleurs un dédoublement apparent de l’épithélium pigmentaire (ﬂèches jaunes) correspondant à cet aspect décrit en double couche. f. L’OCT en face est assez typique de ce type de lésion montrant très bien le polype et sa paroi (ﬂèche)."
+  },
+  "4-72": {
+    "page_idx": 178,
+    "printed_page": 158,
+    "clip": [
+      48.6,
+      79.0,
+      302.9,
+      214.2
+    ],
+    "px": [
+      778,
+      414
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-72Hématome sous-rétinien en SS-OCT : l’hématome est essen-tiellement pré-épithélial, et il est associé à un décollement séreux rétinien, mais il y a un décollement de l’épithélium pigmentaire associé.(Source : J.-F. Korobelnik.)"
+  },
+  "4-73": {
+    "page_idx": 178,
+    "printed_page": 158,
+    "clip": [
+      306.5,
+      79.0,
+      557.9,
+      183.3
+    ],
+    "px": [
+      769,
+      319
+    ],
+    "panels": 1,
+    "fallback": false,
+    "legend_raw": "Fig. 4-73Hématome sous-rétinien en SS-OCT : l’hématome est très épais et surtout pré-épithélial.(Source : J.-F. Korobelnik.)"
+  },
+  "4-74": {
+    "page_idx": 180,
+    "printed_page": 160,
+    "clip": [
+      52.7,
+      338.5,
+      556.7,
+      553.1
+    ],
+    "px": [
+      1540,
+      657
+    ],
+    "panels": 3,
+    "fallback": false,
+    "legend_raw": "Fig. 4-74Imagerie typique des NVC en OCT-A.a. Hypersignal de NVC actifs naïfs : réseau dense de ﬁns capillaires interconnectés avec boucles, arcade périphérique et halo sombre sur la segmentation passant par la membrane de Bruch. b. Hypersignal d’une récidive néovasculaire : le front d’activité montre une extension des capillaires interconnectés avec une arcade anastomotique périphérique. c. Hypersignal d’une lésion néovasculaire ﬁbro-sée : remodelage de l’hypersignal avec vaisseaux volumineux, raréﬁés, isolés en arbre mort."
+  },
+  "4-75": {
+    "page_idx": 181,
+    "printed_page": 161,
+    "clip": [
+      55.9,
+      78.8,
+      524.0,
+      456.7
+    ],
+    "px": [
+      1432,
+      1156
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-75Aspect des NVC de type 1 en OCT Optovue®.a, b. Angiographie à la ﬂuorescéine aux temps précoce (a) et tardif (b) : aspect de néovascularisation occulte, hémorragique avec diffusion. c. L’angiographie au vert d’Infracyanine® conﬁrme la néovascularisation du décollement de l’EP. d. L’OCT-A montre un hypersignal de ﬂux actif entre la choriocapillaire et l’EP. e. L’OCT de structure montre l’absence de liquide notable intra- et sous-rétinien. f. Le cliché infrarouge permet de situer la localisation de l’OCT B-scan. g. L’OCT B-scan basse résolution colorisée montre un ﬂux sans blocage en arrière. h. OCT B-scan basse résolution avec lignes de repère pour localiser la segmentation dont l’épaisseur est de 30 μm. i. L’OCT B-scan haute déﬁnition (EDI, Heidelberg) montre le DEP avec hyper-réﬂectivité de l’hémorragie intrarétinienne."
+  },
+  "4-76": {
+    "page_idx": 183,
+    "printed_page": 163,
+    "clip": [
+      96.9,
+      79.0,
+      484.2,
+      725.1
+    ],
+    "px": [
+      1185,
+      1975
+    ],
+    "panels": 5,
+    "fallback": false,
+    "legend_raw": "Fig. 4-76Aspect de NVC type 2 en OCT Heidelberg.a, b. Angiographie à la ﬂuorescéine aux temps précoce (a) et tardif (b) : aspect de néovascularisation visible bien déﬁnie, avec diffusion. c. OCT B-scan haute résolution (avec en insert l’image infrarouge) : hyper-réﬂectivité en avant de l’EP. d. L’OCT-A montre un hypersignal de ﬂux actif en avant de l’EP avec les cinq critères d’activité : 1. forme bien déﬁnie ; 2. anastomoses et boucles ; 3. interconnexions de ﬁns et très nombreux capillaires ; 4. arcade périphérique complète ; 5. halo hypo-intense, périlésionnel. e. OCT B-scan avec lignes de segmentation de 30 μm d’épaisseur, alignées sur la membrane de Bruch."
+  },
+  "4-77": {
+    "page_idx": 184,
+    "printed_page": 164,
+    "clip": [
+      55.7,
+      79.0,
+      553.7,
+      331.8
+    ],
+    "px": [
+      1522,
+      773
+    ],
+    "panels": 6,
+    "fallback": false,
+    "legend_raw": "Fig. 4-77Aspect de NVC de type 3 en OCT-A Topcon®.a. L’angiographie à la ﬂuorescéine montre une diffusion juxtafovéale, un masquage dû à l’hémorragie sous-rétinienne associée et des logettes d’œdème maculaire cystoïdes. b. L’angiographie au vert d’infracyanine montre les deux hot spots. c. L’OCT-A montre deux zones d’hypersignal de ﬂux actif en touffe. d. L’OCT cross sectionnel colorisé montre la localisation de chaque NVC de type 3. e, f. La localisation intrarétinienne en rouge correspond au ﬂux intrarétinien ; la localisation en violet sous l’EP correspond au ﬂux sous l’EP décollé."
+  },
+  "4-78": {
+    "page_idx": 184,
+    "printed_page": 164,
+    "clip": [
+      70.0,
+      407.1,
+      540.9,
+      620.4
+    ],
+    "px": [
+      1440,
+      653
+    ],
+    "panels": 3,
+    "fallback": false,
+    "legend_raw": "Fig. 4-78Analyse des NVC de type 3.a. Aspect en angiographie au vert d’infracyanine. b. L’OCT-A montre la modiﬁcation du trajet des capillaires rétiniens superﬁciels (rond jaune) et l’hypersignal de ﬂux actif en touffe, en intrarétinien. c. L’OCT cross sectionnel colorisé montre la localisation de la segmentation."
+  },
+  "4-79": {
+    "page_idx": 185,
+    "printed_page": 165,
+    "clip": [
+      34.6,
+      79.2,
+      289.1,
+      615.1
+    ],
+    "px": [
+      779,
+      1639
+    ],
+    "panels": 5,
+    "fallback": false,
+    "legend_raw": "Fig. 4-79Vasculopathie polypoïdale en OCT-A Optovue®.a. L’angiographie à la ﬂuorescéine montre une hyper-ﬂuorescence mal déﬁnie avec diffusion modérée maculaire avec deux zones plus hyperﬂuorescentes. b. L’angio graphie au vert d’indocyanine conﬁrme les vaisseaux choroïdiens anormaux à la terminaison des-quels se situent des ectasies polypoïdales. c. Décolle-ment de l’EP inhomogène en COT. d. L’OCT-A en face montre un hypersignal de ﬂux correspondant aux vaisseaux choroïdiens anormaux dilatés sans intercon-nexion entre eux avec les polypes, ici, hyperdenses. e. L’OCT-A colorisée permet de localiser la localisation des zones de ﬂux sanguin."
+  },
+  "4-80": {
+    "page_idx": 186,
+    "printed_page": 166,
+    "clip": [
+      109.1,
+      78.7,
+      500.1,
+      474.5
+    ],
+    "px": [
+      1196,
+      1210
+    ],
+    "panels": 3,
+    "fallback": false,
+    "legend_raw": "Fig. 4-80Évolution sous anti-VEGF par post-processing point par point (OCT Topcon®).Au stade initial avant traitement, l’OCT-A montre un ﬂux de néovaisseaux choroïdiens actifs. Après la phase d’induction à 4 mois, on observe une raréfaction du ﬂux. Cinq mois après trois injections intravitréennes, une réactivation apparaît avec un réseau plus dense ; une nouvelle injection intravitréenne est réalisée. Les ﬁnes ramiﬁcations disparaissent et le ﬂux évolue vers un remodelage avec aspect en « arbre mort » à 7 mois."
+  }
+}

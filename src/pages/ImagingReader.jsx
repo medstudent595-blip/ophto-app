@@ -4,7 +4,17 @@ import { marked } from 'marked';
 import DOMPurify from 'dompurify';
 import mediumZoom from 'medium-zoom';
 import { ArrowLeft, List, X, ChevronRight, Image as ImageIcon } from 'lucide-react';
-import { imagingDmlaData } from '../data/imagingDmlaData';
+import { dmlaExsudativeChapters } from '../data/dmlaExsudativeData';
+
+// Registry of available imaging atlases, keyed by route id.
+const atlasData = {
+  'dmla-exsudative': dmlaExsudativeChapters,
+};
+
+const atlasTitles = {
+  'dmla-exsudative': 'Atlas OCT : DMLA exsudative',
+  dmla: 'Atlas OCT : DMLA',
+};
 
 const ImagingReader = () => {
   const { id } = useParams();
@@ -14,8 +24,8 @@ const ImagingReader = () => {
   const contentRefs = useRef([]);
 
   // Fetch appropriate chapters based on ID
-  const dmlaChapters = Object.values(imagingDmlaData).sort((a, b) => a.id.localeCompare(b.id));
-  const chapters = id === 'dmla' ? dmlaChapters : [];
+  const chapters = atlasData[id] || [];
+  const atlasTitle = atlasTitles[id] || 'Atlas d\'Imagerie';
 
   useEffect(() => {
     // Initialize zoom for images
@@ -203,7 +213,7 @@ const ImagingReader = () => {
           )}
 
           <div style={{ flex: 1, textAlign: 'center', fontWeight: 600, color: 'var(--text-primary)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
-            {id === 'dmla' ? 'Atlas OCT : DMLA' : 'Atlas d\'Imagerie'}
+            {atlasTitle}
           </div>
         </div>
 
@@ -214,7 +224,7 @@ const ImagingReader = () => {
             <span style={{ display: 'inline-block', padding: '0.5rem 1rem', background: 'var(--accent-primary-transparent)', color: 'var(--accent-primary)', borderRadius: '20px', fontSize: '0.85rem', fontWeight: 600, marginBottom: '1rem' }}>
               IMAGERIE & OCT
             </span>
-            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{id === 'dmla' ? 'Atlas OCT : DMLA' : 'Atlas d\'Imagerie'}</h1>
+            <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{atlasTitle}</h1>
             <p style={{ fontSize: '1.1rem', color: 'var(--text-secondary)' }}>L'intégralité du chapitre, structurée pour une lecture fluide entre textes et images.</p>
           </div>
 

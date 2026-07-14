@@ -16,10 +16,12 @@ export const allCourses = [
   { id: 'uveo-meningites', title: 'Uvéo-méningites', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéo-méningites.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveo-meningites_interactif.html' },
   { id: 'uveites-orientation-diagnostique', title: 'Orientation Diagnostique des Uvéites', category: 'Uvéites', description: 'Cours magistral interactif sur la démarche et orientation diagnostique.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Orientation_Diagnostique_interactif.html' },
   
+  // Imagerie — Atlas OCT interactifs
+  { id: 'dmla-exsudative', title: 'DMLA Exsudative — Atlas OCT & OCT-A', category: 'Imagerie', description: 'Atlas interactif : séméiologie OCT structurel et OCT-angiographie de la DMLA néovasculaire (types 1, 2, 3, VPC).', has: { imaging: true } },
+
   // Placeholders for visual effect
   { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
-  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
-  { id: 'dmla', title: 'Dégénérescence Maculaire Liée à l\'Âge (DMLA)', category: 'Imagerie', description: 'Cours OCT sur la DMLA et MLA : Drusen, classifications et prise en charge.', has: { cours: true, fiches: false, algorithms: false, classifications: false, imaging: true } }
+  { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } }
 ];
 
 const categories = ['Toutes', 'Neuro-Ophtalmologie', 'Rétine', 'Uvéites', 'Orbite', 'Glaucome', 'Cornée', 'Imagerie'];
