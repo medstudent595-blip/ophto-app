@@ -28,6 +28,7 @@ export const allCourses = [
 
   // Placeholders for visual effect
   { id: 'glaucome-primitif-angle-ouvert', title: 'Glaucome Primitif à Angle Ouvert (GPAO)', category: 'Glaucome', description: 'Diagnostic, champ visuel et escalade thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false } },
+  { id: 'glaucome-congenital', title: 'Glaucome Congénital', category: 'Glaucome', description: 'Épidémiologie, diagnostic, glaucomes secondaires et prise en charge thérapeutique.', has: { cours: false, fiches: false, algorithms: false, classifications: false, qcm: true } },
   { id: 'retinopathie-diabetique', title: 'Rétinopathie Diabétique', category: 'Rétine', description: 'Classification, suivi et indications du laser/anti-VEGF.', has: { cours: false, fiches: false, algorithms: false, classifications: false } }
 ];
 

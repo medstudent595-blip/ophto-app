@@ -241,991 +241,2109 @@ export const mindmapMermaid = `mindmap
         id6b("Immunosuppresseurs Méthotrexate")
         id6c("Radiothérapie 20-25Gy")`;
 
-
-
 export const qcmMarkdown = "### QCM 1\n**QCM Etiologie 1: Quelle proportion des atteintes orbitaires unilatérales représente l'inflammation orbitaire ?**\n- A. < 1%\n- B. 5 à 18%\n- C. 30 à 45%\n- D. > 50%\n- E. 100%\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B\n</details>\n\n### QCM 2\n**QCM Etiologie 2: L'inflammation orbitaire idiopathique (SIOI) est caractérisée par :**\n- A. Une étiologie infectieuse prouvée\n- B. Une atteinte toujours bilatérale\n- C. L'absence de maladie systémique sous-jacente\n- D. Une prédominance masculine forte\n- E. Un début toujours insidieux\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C\n</details>\n\n### QCM 3\n**QCM Etiologie 3: La granulomatose avec polyangéite (GPA) est :**\n- A. Une vascularite des gros vaisseaux\n- B. Une vascularite associée aux c-ANCA\n- C. Souvent révélée par une atteinte orbitaire\n- D. Épargne toujours le nerf optique\n- E. Non granulomateuse\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B, C\n</details>\n\n### QCM 4\n**QCM Etiologie 4: Dans l'EGPA (Churg-Strauss), on retrouve :**\n- A. Un asthme sévère\n- B. Une hyporéosinophilie\n- C. Une mononeuropathie\n- D. Une atteinte oculaire très fréquente\n- E. Des p-ANCA systématiques\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, C\n</details>\n\n### QCM 5\n**QCM Etiologie 5: La sarcoïdose orbitaire :**\n- A. Touche surtout la glande lacrymale\n- B. Est plus fréquente chez les Afro-Américains\n- C. Ne donne jamais de signes thoraciques\n- D. Est souvent associée à une uvéite antérieure\n- E. Présente une nécrose caséeuse à la biopsie\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B, D\n</details>\n\n### QCM 6\n**QCM Etiologie 6: La maladie à IgG4 :**\n- A. Est une ancienne forme de SIOI\n- B. S'accompagne toujours d'IgG4 > 135 mg/dl\n- C. Augmente le risque de lymphome\n- D. Touche surtout les femmes jeunes\n- E. Donne une fibrose storiforme\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, C, E\n</details>\n\n### QCM 7\n**QCM Etiologie 7: La maladie d'Erdheim-Chester :**\n- A. Est une histiocytose langerhansienne\n- B. Touche les diaphyses et métaphyses\n- C. Donne des xanthélasmas bilatéraux\n- D. Est de bon pronostic cardiaque\n- E. Atteint les enfants préférentiellement\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B, C\n</details>\n\n### QCM 8\n**QCM Etiologie 8: La maladie de Rosai-Dorfman :**\n- A. Touche les ganglions cervicaux\n- B. Donne une exophtalmie douloureuse aiguë\n- C. Est une prolifération histiocytaire sinusale\n- D. Ne touche jamais l'orbite\n- E. Est virale\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, C\n</details>\n\n### QCM 9\n**QCM Etiologie 9: Dans les MICI, la myosite orbitaire :**\n- A. Est souvent bilatérale\n- B. Touche toujours un seul muscle\n- C. Nécessite souvent une bithérapie\n- D. Est de très bon pronostic spontané\n- E. Est une contre-indication aux anti-TNF\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, C\n</details>\n\n### QCM 10\n**QCM Etiologie 10: Les médicaments pourvoyeurs d'inflammation orbitaire sont :**\n- A. Ipilimumab\n- B. Bisphosphonates\n- C. Corticoïdes\n- D. Statines\n- E. Aspirine\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B, D\n</details>\n\n### QCM 11\n**QCM Etiologie 11: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 12\n**QCM Etiologie 12: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 13\n**QCM Etiologie 13: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 14\n**QCM Etiologie 14: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 15\n**QCM Etiologie 15: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 16\n**QCM Etiologie 16: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 17\n**QCM Etiologie 17: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 18\n**QCM Etiologie 18: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 19\n**QCM Etiologie 19: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 20\n**QCM Etiologie 20: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 21\n**QCM Etiologie 21: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 22\n**QCM Etiologie 22: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 23\n**QCM Etiologie 23: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 24\n**QCM Etiologie 24: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 25\n**QCM Etiologie 25: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 26\n**QCM Etiologie 26: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 27\n**QCM Etiologie 27: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 28\n**QCM Etiologie 28: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 29\n**QCM Etiologie 29: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 30\n**QCM Etiologie 30: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 31\n**QCM Etiologie 31: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 32\n**QCM Etiologie 32: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 33\n**QCM Etiologie 33: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 34\n**QCM Etiologie 34: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 35\n**QCM Etiologie 35: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 36\n**QCM Etiologie 36: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 37\n**QCM Etiologie 37: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 38\n**QCM Etiologie 38: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 39\n**QCM Etiologie 39: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 40\n**QCM Etiologie 40: Concernant le diagnostic étiologique des inflammations orbitaires :**\n- A. L'imagerie TDM/IRM est suffisante\n- B. Le bilan systémique est inutile\n- C. La biopsie peut s'avérer nécessaire\n- D. Les métastases (sein, prostate) sont un diagnostic différentiel\n- E. L'âge n'oriente pas le diagnostic\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C, D\n</details>\n\n### QCM 41\n**QCM Classification 1: Selon Rootman, quelles sont les localisations du SIOI ?**\n- A. Antérieure\n- B. Diffuse\n- C. Sclérite\n- D. Apicale\n- E. Dacryoadénite\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B, D, E\n</details>\n\n### QCM 42\n**QCM Classification 2: Le syndrome de Tolosa-Hunt correspond à une atteinte :**\n- A. Antérieure\n- B. De la glande lacrymale\n- C. De l'apex ou fissure orbitaire supérieure\n- D. Isolée d'un muscle\n- E. Diffuse\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C\n</details>\n\n### QCM 43\n**QCM Classification 3: Le diagnostic de Tolosa-Hunt exige :**\n- A. Une douleur de moins d'une semaine\n- B. Une douleur persistant > 8 semaines sans traitement\n- C. Une paralysie oculomotrice\n- D. Une IRM normale\n- E. Une régression rapide sous corticoïdes\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B, C, E\n</details>\n\n### QCM 44\n**QCM Classification 4: La myosite idiopathique se distingue de l'orbitopathie dysthyroïdienne par :**\n- A. L'atteinte du tendon d'insertion\n- B. Le muscle le plus souvent atteint (droit médial)\n- C. Le respect des tendons\n- D. Une exophtalmie axile toujours présente\n- E. L'absence de diplopie\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 45\n**QCM Classification 5: Selon Mombaerts, l'histologie du SIOI comprend les formes :**\n- A. Classique\n- B. Sclérosante\n- C. Granulomateuse\n- D. Vasculaire\n- E. Purulente\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B, C, D\n</details>\n\n### QCM 46\n**QCM Classification 6: La forme sclérosante de Mombaerts doit faire rechercher :**\n- A. Une GPA\n- B. Une sarcoïdose\n- C. Une maladie à IgG4\n- D. Un lymphome\n- E. Une tuberculose\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C\n</details>\n\n### QCM 47\n**QCM Classification 7: La forme granulomateuse de Mombaerts oriente vers :**\n- A. Une sarcoïdose\n- B. Une GPA\n- C. Une PAN\n- D. Une IgG4\n- E. Un Tolosa-Hunt\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 48\n**QCM Classification 8: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 49\n**QCM Classification 9: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 50\n**QCM Classification 10: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 51\n**QCM Classification 11: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 52\n**QCM Classification 12: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 53\n**QCM Classification 13: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 54\n**QCM Classification 14: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 55\n**QCM Classification 15: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 56\n**QCM Classification 16: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 57\n**QCM Classification 17: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 58\n**QCM Classification 18: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 59\n**QCM Classification 19: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 60\n**QCM Classification 20: Concernant la nosologie des inflammations orbitaires :**\n- A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)\n- B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas\n- C. Les infections sont incluses dans cette classification\n- D. Le terme pseudotumeur est toujours utilisé\n- E. La forme diffuse est très localisée\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, B\n</details>\n\n### QCM 61\n**QCM Prise en Charge 1: L'indication d'une biopsie en 1ère intention est À ÉVITER si :**\n- A. Lésion évocatrice de malignité\n- B. Myosite typique répondant aux corticoïdes\n- C. Dacryoadénite suspecte\n- D. Lésion apicale avec douleur (Tolosa-Hunt)\n- E. Lésion facilement accessible\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B, D\n</details>\n\n### QCM 62\n**QCM Prise en Charge 2: Le traitement de 1ère intention d'un SIOI repose sur :**\n- A. Méthotrexate\n- B. Radiothérapie\n- C. Corticothérapie orale 1 mg/kg/j\n- D. Infliximab\n- E. Abstention thérapeutique\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C\n</details>\n\n### QCM 63\n**QCM Prise en Charge 3: La radiothérapie orbitaire (20-25 Gy) est indiquée en cas de :**\n- A. 1ère ligne systématique\n- B. Corticorésistance\n- C. Contre-indication aux corticoïdes\n- D. SIOI forme sclérosante (souvent associée à la chirurgie)\n- E. Infection herpétique\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : B, C, D\n</details>\n\n### QCM 64\n**QCM Prise en Charge 4: Dans le SIOI, quel est l'immunosuppresseur de 1er choix en 2ème ligne ?**\n- A. Méthotrexate\n- B. Azathioprine\n- C. Ciclosporine\n- D. Mycophénolate mofétil\n- E. Cyclophosphamide\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A\n</details>\n\n### QCM 65\n**QCM Prise en Charge 5: Les bolus IV de corticoïdes sont utiles principalement si :**\n- A. Atteinte de la glande lacrymale isolée\n- B. Myosite douloureuse\n- C. Atteinte compressive du nerf optique\n- D. Doute diagnostique\n- E. Rechute systématique\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : C\n</details>\n\n### QCM 66\n**QCM Prise en Charge 6: Le traitement des inflammations orbitaires spécifiques :**\n- A. Repose avant tout sur le traitement de la cause\n- B. Nécessite systématiquement une radiothérapie\n- C. Exclut l'usage d'anti-TNF alpha\n- D. Peut inclure des injections intra-orbitaires de corticoïdes retard\n- E. Est purement chirurgical\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, D\n</details>\n\n### QCM 67\n**QCM Prise en Charge 7: Le traitement des inflammations orbitaires spécifiques :**\n- A. Repose avant tout sur le traitement de la cause\n- B. Nécessite systématiquement une radiothérapie\n- C. Exclut l'usage d'anti-TNF alpha\n- D. Peut inclure des injections intra-orbitaires de corticoïdes retard\n- E. Est purement chirurgical\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, D\n</details>\n\n### QCM 68\n**QCM Prise en Charge 8: Le traitement des inflammations orbitaires spécifiques :**\n- A. Repose avant tout sur le traitement de la cause\n- B. Nécessite systématiquement une radiothérapie\n- C. Exclut l'usage d'anti-TNF alpha\n- D. Peut inclure des injections intra-orbitaires de corticoïdes retard\n- E. Est purement chirurgical\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, D\n</details>\n\n### QCM 69\n**QCM Prise en Charge 9: Le traitement des inflammations orbitaires spécifiques :**\n- A. Repose avant tout sur le traitement de la cause\n- B. Nécessite systématiquement une radiothérapie\n- C. Exclut l'usage d'anti-TNF alpha\n- D. Peut inclure des injections intra-orbitaires de corticoïdes retard\n- E. Est purement chirurgical\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, D\n</details>\n\n### QCM 70\n**QCM Prise en Charge 10: Le traitement des inflammations orbitaires spécifiques :**\n- A. Repose avant tout sur le traitement de la cause\n- B. Nécessite systématiquement une radiothérapie\n- C. Exclut l'usage d'anti-TNF alpha\n- D. Peut inclure des injections intra-orbitaires de corticoïdes retard\n- E. Est purement chirurgical\n\n<details><summary><b>Réponse</b></summary>\nRéponse(s) correcte(s) : A, D\n</details>\n\n";
 
 export const qcmData = [
   {
-    "q": "QCM Etiologie 1: Quelle proportion des atteintes orbitaires unilatérales représente l'inflammation orbitaire ?",
-    "opts": [
-      "A. < 1%",
-      "B. 5 à 18%",
-      "C. 30 à 45%",
-      "D. > 50%",
-      "E. 100%"
+    "question": "QCM Etiologie 1: Quelle proportion des atteintes orbitaires unilatérales représente l'inflammation orbitaire ?",
+    "options": [
+      {
+        "id": "A",
+        "text": "< 1%"
+      },
+      {
+        "id": "B",
+        "text": "5 à 18%"
+      },
+      {
+        "id": "C",
+        "text": "30 à 45%"
+      },
+      {
+        "id": "D",
+        "text": "> 50%"
+      },
+      {
+        "id": "E",
+        "text": "100%"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 2: L'inflammation orbitaire idiopathique (SIOI) est caractérisée par :",
-    "opts": [
-      "A. Une étiologie infectieuse prouvée",
-      "B. Une atteinte toujours bilatérale",
-      "C. L'absence de maladie systémique sous-jacente",
-      "D. Une prédominance masculine forte",
-      "E. Un début toujours insidieux"
+    "question": "QCM Etiologie 2: L'inflammation orbitaire idiopathique (SIOI) est caractérisée par :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Une étiologie infectieuse prouvée"
+      },
+      {
+        "id": "B",
+        "text": "Une atteinte toujours bilatérale"
+      },
+      {
+        "id": "C",
+        "text": "L'absence de maladie systémique sous-jacente"
+      },
+      {
+        "id": "D",
+        "text": "Une prédominance masculine forte"
+      },
+      {
+        "id": "E",
+        "text": "Un début toujours insidieux"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 3: La granulomatose avec polyangéite (GPA) est :",
-    "opts": [
-      "A. Une vascularite des gros vaisseaux",
-      "B. Une vascularite associée aux c-ANCA",
-      "C. Souvent révélée par une atteinte orbitaire",
-      "D. Épargne toujours le nerf optique",
-      "E. Non granulomateuse"
+    "question": "QCM Etiologie 3: La granulomatose avec polyangéite (GPA) est :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Une vascularite des gros vaisseaux"
+      },
+      {
+        "id": "B",
+        "text": "Une vascularite associée aux c-ANCA"
+      },
+      {
+        "id": "C",
+        "text": "Souvent révélée par une atteinte orbitaire"
+      },
+      {
+        "id": "D",
+        "text": "Épargne toujours le nerf optique"
+      },
+      {
+        "id": "E",
+        "text": "Non granulomateuse"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B",
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 4: Dans l'EGPA (Churg-Strauss), on retrouve :",
-    "opts": [
-      "A. Un asthme sévère",
-      "B. Une hyporéosinophilie",
-      "C. Une mononeuropathie",
-      "D. Une atteinte oculaire très fréquente",
-      "E. Des p-ANCA systématiques"
+    "question": "QCM Etiologie 4: Dans l'EGPA (Churg-Strauss), on retrouve :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Un asthme sévère"
+      },
+      {
+        "id": "B",
+        "text": "Une hyporéosinophilie"
+      },
+      {
+        "id": "C",
+        "text": "Une mononeuropathie"
+      },
+      {
+        "id": "D",
+        "text": "Une atteinte oculaire très fréquente"
+      },
+      {
+        "id": "E",
+        "text": "Des p-ANCA systématiques"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 5: La sarcoïdose orbitaire :",
-    "opts": [
-      "A. Touche surtout la glande lacrymale",
-      "B. Est plus fréquente chez les Afro-Américains",
-      "C. Ne donne jamais de signes thoraciques",
-      "D. Est souvent associée à une uvéite antérieure",
-      "E. Présente une nécrose caséeuse à la biopsie"
+    "question": "QCM Etiologie 5: La sarcoïdose orbitaire :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Touche surtout la glande lacrymale"
+      },
+      {
+        "id": "B",
+        "text": "Est plus fréquente chez les Afro-Américains"
+      },
+      {
+        "id": "C",
+        "text": "Ne donne jamais de signes thoraciques"
+      },
+      {
+        "id": "D",
+        "text": "Est souvent associée à une uvéite antérieure"
+      },
+      {
+        "id": "E",
+        "text": "Présente une nécrose caséeuse à la biopsie"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 6: La maladie à IgG4 :",
-    "opts": [
-      "A. Est une ancienne forme de SIOI",
-      "B. S'accompagne toujours d'IgG4 > 135 mg/dl",
-      "C. Augmente le risque de lymphome",
-      "D. Touche surtout les femmes jeunes",
-      "E. Donne une fibrose storiforme"
+    "question": "QCM Etiologie 6: La maladie à IgG4 :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Est une ancienne forme de SIOI"
+      },
+      {
+        "id": "B",
+        "text": "S'accompagne toujours d'IgG4 > 135 mg/dl"
+      },
+      {
+        "id": "C",
+        "text": "Augmente le risque de lymphome"
+      },
+      {
+        "id": "D",
+        "text": "Touche surtout les femmes jeunes"
+      },
+      {
+        "id": "E",
+        "text": "Donne une fibrose storiforme"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "C",
       "E"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 7: La maladie d'Erdheim-Chester :",
-    "opts": [
-      "A. Est une histiocytose langerhansienne",
-      "B. Touche les diaphyses et métaphyses",
-      "C. Donne des xanthélasmas bilatéraux",
-      "D. Est de bon pronostic cardiaque",
-      "E. Atteint les enfants préférentiellement"
+    "question": "QCM Etiologie 7: La maladie d'Erdheim-Chester :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Est une histiocytose langerhansienne"
+      },
+      {
+        "id": "B",
+        "text": "Touche les diaphyses et métaphyses"
+      },
+      {
+        "id": "C",
+        "text": "Donne des xanthélasmas bilatéraux"
+      },
+      {
+        "id": "D",
+        "text": "Est de bon pronostic cardiaque"
+      },
+      {
+        "id": "E",
+        "text": "Atteint les enfants préférentiellement"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B",
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 8: La maladie de Rosai-Dorfman :",
-    "opts": [
-      "A. Touche les ganglions cervicaux",
-      "B. Donne une exophtalmie douloureuse aiguë",
-      "C. Est une prolifération histiocytaire sinusale",
-      "D. Ne touche jamais l'orbite",
-      "E. Est virale"
+    "question": "QCM Etiologie 8: La maladie de Rosai-Dorfman :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Touche les ganglions cervicaux"
+      },
+      {
+        "id": "B",
+        "text": "Donne une exophtalmie douloureuse aiguë"
+      },
+      {
+        "id": "C",
+        "text": "Est une prolifération histiocytaire sinusale"
+      },
+      {
+        "id": "D",
+        "text": "Ne touche jamais l'orbite"
+      },
+      {
+        "id": "E",
+        "text": "Est virale"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 9: Dans les MICI, la myosite orbitaire :",
-    "opts": [
-      "A. Est souvent bilatérale",
-      "B. Touche toujours un seul muscle",
-      "C. Nécessite souvent une bithérapie",
-      "D. Est de très bon pronostic spontané",
-      "E. Est une contre-indication aux anti-TNF"
+    "question": "QCM Etiologie 9: Dans les MICI, la myosite orbitaire :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Est souvent bilatérale"
+      },
+      {
+        "id": "B",
+        "text": "Touche toujours un seul muscle"
+      },
+      {
+        "id": "C",
+        "text": "Nécessite souvent une bithérapie"
+      },
+      {
+        "id": "D",
+        "text": "Est de très bon pronostic spontané"
+      },
+      {
+        "id": "E",
+        "text": "Est une contre-indication aux anti-TNF"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 10: Les médicaments pourvoyeurs d'inflammation orbitaire sont :",
-    "opts": [
-      "A. Ipilimumab",
-      "B. Bisphosphonates",
-      "C. Corticoïdes",
-      "D. Statines",
-      "E. Aspirine"
+    "question": "QCM Etiologie 10: Les médicaments pourvoyeurs d'inflammation orbitaire sont :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Ipilimumab"
+      },
+      {
+        "id": "B",
+        "text": "Bisphosphonates"
+      },
+      {
+        "id": "C",
+        "text": "Corticoïdes"
+      },
+      {
+        "id": "D",
+        "text": "Statines"
+      },
+      {
+        "id": "E",
+        "text": "Aspirine"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 11: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 11: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 12: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 12: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 13: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 13: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 14: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 14: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 15: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 15: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 16: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 16: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 17: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 17: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 18: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 18: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 19: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 19: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 20: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 20: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 21: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 21: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 22: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 22: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 23: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 23: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 24: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 24: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 25: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 25: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 26: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 26: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 27: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 27: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 28: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 28: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 29: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 29: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 30: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 30: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 31: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 31: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 32: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 32: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 33: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 33: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 34: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 34: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 35: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 35: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 36: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 36: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 37: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 37: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 38: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 38: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 39: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 39: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Etiologie 40: Concernant le diagnostic étiologique des inflammations orbitaires :",
-    "opts": [
-      "A. L'imagerie TDM/IRM est suffisante",
-      "B. Le bilan systémique est inutile",
-      "C. La biopsie peut s'avérer nécessaire",
-      "D. Les métastases (sein, prostate) sont un diagnostic différentiel",
-      "E. L'âge n'oriente pas le diagnostic"
+    "question": "QCM Etiologie 40: Concernant le diagnostic étiologique des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'imagerie TDM/IRM est suffisante"
+      },
+      {
+        "id": "B",
+        "text": "Le bilan systémique est inutile"
+      },
+      {
+        "id": "C",
+        "text": "La biopsie peut s'avérer nécessaire"
+      },
+      {
+        "id": "D",
+        "text": "Les métastases (sein, prostate) sont un diagnostic différentiel"
+      },
+      {
+        "id": "E",
+        "text": "L'âge n'oriente pas le diagnostic"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 1: Selon Rootman, quelles sont les localisations du SIOI ?",
-    "opts": [
-      "A. Antérieure",
-      "B. Diffuse",
-      "C. Sclérite",
-      "D. Apicale",
-      "E. Dacryoadénite"
+    "question": "QCM Classification 1: Selon Rootman, quelles sont les localisations du SIOI ?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antérieure"
+      },
+      {
+        "id": "B",
+        "text": "Diffuse"
+      },
+      {
+        "id": "C",
+        "text": "Sclérite"
+      },
+      {
+        "id": "D",
+        "text": "Apicale"
+      },
+      {
+        "id": "E",
+        "text": "Dacryoadénite"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B",
       "D",
       "E"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 2: Le syndrome de Tolosa-Hunt correspond à une atteinte :",
-    "opts": [
-      "A. Antérieure",
-      "B. De la glande lacrymale",
-      "C. De l'apex ou fissure orbitaire supérieure",
-      "D. Isolée d'un muscle",
-      "E. Diffuse"
+    "question": "QCM Classification 2: Le syndrome de Tolosa-Hunt correspond à une atteinte :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Antérieure"
+      },
+      {
+        "id": "B",
+        "text": "De la glande lacrymale"
+      },
+      {
+        "id": "C",
+        "text": "De l'apex ou fissure orbitaire supérieure"
+      },
+      {
+        "id": "D",
+        "text": "Isolée d'un muscle"
+      },
+      {
+        "id": "E",
+        "text": "Diffuse"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 3: Le diagnostic de Tolosa-Hunt exige :",
-    "opts": [
-      "A. Une douleur de moins d'une semaine",
-      "B. Une douleur persistant > 8 semaines sans traitement",
-      "C. Une paralysie oculomotrice",
-      "D. Une IRM normale",
-      "E. Une régression rapide sous corticoïdes"
+    "question": "QCM Classification 3: Le diagnostic de Tolosa-Hunt exige :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Une douleur de moins d'une semaine"
+      },
+      {
+        "id": "B",
+        "text": "Une douleur persistant > 8 semaines sans traitement"
+      },
+      {
+        "id": "C",
+        "text": "Une paralysie oculomotrice"
+      },
+      {
+        "id": "D",
+        "text": "Une IRM normale"
+      },
+      {
+        "id": "E",
+        "text": "Une régression rapide sous corticoïdes"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B",
       "C",
       "E"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 4: La myosite idiopathique se distingue de l'orbitopathie dysthyroïdienne par :",
-    "opts": [
-      "A. L'atteinte du tendon d'insertion",
-      "B. Le muscle le plus souvent atteint (droit médial)",
-      "C. Le respect des tendons",
-      "D. Une exophtalmie axile toujours présente",
-      "E. L'absence de diplopie"
+    "question": "QCM Classification 4: La myosite idiopathique se distingue de l'orbitopathie dysthyroïdienne par :",
+    "options": [
+      {
+        "id": "A",
+        "text": "L'atteinte du tendon d'insertion"
+      },
+      {
+        "id": "B",
+        "text": "Le muscle le plus souvent atteint (droit médial)"
+      },
+      {
+        "id": "C",
+        "text": "Le respect des tendons"
+      },
+      {
+        "id": "D",
+        "text": "Une exophtalmie axile toujours présente"
+      },
+      {
+        "id": "E",
+        "text": "L'absence de diplopie"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 5: Selon Mombaerts, l'histologie du SIOI comprend les formes :",
-    "opts": [
-      "A. Classique",
-      "B. Sclérosante",
-      "C. Granulomateuse",
-      "D. Vasculaire",
-      "E. Purulente"
+    "question": "QCM Classification 5: Selon Mombaerts, l'histologie du SIOI comprend les formes :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Classique"
+      },
+      {
+        "id": "B",
+        "text": "Sclérosante"
+      },
+      {
+        "id": "C",
+        "text": "Granulomateuse"
+      },
+      {
+        "id": "D",
+        "text": "Vasculaire"
+      },
+      {
+        "id": "E",
+        "text": "Purulente"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B",
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 6: La forme sclérosante de Mombaerts doit faire rechercher :",
-    "opts": [
-      "A. Une GPA",
-      "B. Une sarcoïdose",
-      "C. Une maladie à IgG4",
-      "D. Un lymphome",
-      "E. Une tuberculose"
+    "question": "QCM Classification 6: La forme sclérosante de Mombaerts doit faire rechercher :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Une GPA"
+      },
+      {
+        "id": "B",
+        "text": "Une sarcoïdose"
+      },
+      {
+        "id": "C",
+        "text": "Une maladie à IgG4"
+      },
+      {
+        "id": "D",
+        "text": "Un lymphome"
+      },
+      {
+        "id": "E",
+        "text": "Une tuberculose"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 7: La forme granulomateuse de Mombaerts oriente vers :",
-    "opts": [
-      "A. Une sarcoïdose",
-      "B. Une GPA",
-      "C. Une PAN",
-      "D. Une IgG4",
-      "E. Un Tolosa-Hunt"
+    "question": "QCM Classification 7: La forme granulomateuse de Mombaerts oriente vers :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Une sarcoïdose"
+      },
+      {
+        "id": "B",
+        "text": "Une GPA"
+      },
+      {
+        "id": "C",
+        "text": "Une PAN"
+      },
+      {
+        "id": "D",
+        "text": "Une IgG4"
+      },
+      {
+        "id": "E",
+        "text": "Un Tolosa-Hunt"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 8: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 8: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 9: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 9: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 10: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 10: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 11: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 11: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 12: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 12: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 13: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 13: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 14: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 14: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 15: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 15: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 16: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 16: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 17: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 17: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 18: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 18: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 19: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 19: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Classification 20: Concernant la nosologie des inflammations orbitaires :",
-    "opts": [
-      "A. La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)",
-      "B. Les formes classique et sclérosante de Mombaerts font 60-90% des cas",
-      "C. Les infections sont incluses dans cette classification",
-      "D. Le terme pseudotumeur est toujours utilisé",
-      "E. La forme diffuse est très localisée"
+    "question": "QCM Classification 20: Concernant la nosologie des inflammations orbitaires :",
+    "options": [
+      {
+        "id": "A",
+        "text": "La sclérite n'est pas une inflammation orbitaire vraie (contiguïté)"
+      },
+      {
+        "id": "B",
+        "text": "Les formes classique et sclérosante de Mombaerts font 60-90% des cas"
+      },
+      {
+        "id": "C",
+        "text": "Les infections sont incluses dans cette classification"
+      },
+      {
+        "id": "D",
+        "text": "Le terme pseudotumeur est toujours utilisé"
+      },
+      {
+        "id": "E",
+        "text": "La forme diffuse est très localisée"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "B"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 1: L'indication d'une biopsie en 1ère intention est À ÉVITER si :",
-    "opts": [
-      "A. Lésion évocatrice de malignité",
-      "B. Myosite typique répondant aux corticoïdes",
-      "C. Dacryoadénite suspecte",
-      "D. Lésion apicale avec douleur (Tolosa-Hunt)",
-      "E. Lésion facilement accessible"
+    "question": "QCM Prise en Charge 1: L'indication d'une biopsie en 1ère intention est À ÉVITER si :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Lésion évocatrice de malignité"
+      },
+      {
+        "id": "B",
+        "text": "Myosite typique répondant aux corticoïdes"
+      },
+      {
+        "id": "C",
+        "text": "Dacryoadénite suspecte"
+      },
+      {
+        "id": "D",
+        "text": "Lésion apicale avec douleur (Tolosa-Hunt)"
+      },
+      {
+        "id": "E",
+        "text": "Lésion facilement accessible"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 2: Le traitement de 1ère intention d'un SIOI repose sur :",
-    "opts": [
-      "A. Méthotrexate",
-      "B. Radiothérapie",
-      "C. Corticothérapie orale 1 mg/kg/j",
-      "D. Infliximab",
-      "E. Abstention thérapeutique"
+    "question": "QCM Prise en Charge 2: Le traitement de 1ère intention d'un SIOI repose sur :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Méthotrexate"
+      },
+      {
+        "id": "B",
+        "text": "Radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Corticothérapie orale 1 mg/kg/j"
+      },
+      {
+        "id": "D",
+        "text": "Infliximab"
+      },
+      {
+        "id": "E",
+        "text": "Abstention thérapeutique"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 3: La radiothérapie orbitaire (20-25 Gy) est indiquée en cas de :",
-    "opts": [
-      "A. 1ère ligne systématique",
-      "B. Corticorésistance",
-      "C. Contre-indication aux corticoïdes",
-      "D. SIOI forme sclérosante (souvent associée à la chirurgie)",
-      "E. Infection herpétique"
+    "question": "QCM Prise en Charge 3: La radiothérapie orbitaire (20-25 Gy) est indiquée en cas de :",
+    "options": [
+      {
+        "id": "A",
+        "text": "1ère ligne systématique"
+      },
+      {
+        "id": "B",
+        "text": "Corticorésistance"
+      },
+      {
+        "id": "C",
+        "text": "Contre-indication aux corticoïdes"
+      },
+      {
+        "id": "D",
+        "text": "SIOI forme sclérosante (souvent associée à la chirurgie)"
+      },
+      {
+        "id": "E",
+        "text": "Infection herpétique"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "B",
       "C",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 4: Dans le SIOI, quel est l'immunosuppresseur de 1er choix en 2ème ligne ?",
-    "opts": [
-      "A. Méthotrexate",
-      "B. Azathioprine",
-      "C. Ciclosporine",
-      "D. Mycophénolate mofétil",
-      "E. Cyclophosphamide"
+    "question": "QCM Prise en Charge 4: Dans le SIOI, quel est l'immunosuppresseur de 1er choix en 2ème ligne ?",
+    "options": [
+      {
+        "id": "A",
+        "text": "Méthotrexate"
+      },
+      {
+        "id": "B",
+        "text": "Azathioprine"
+      },
+      {
+        "id": "C",
+        "text": "Ciclosporine"
+      },
+      {
+        "id": "D",
+        "text": "Mycophénolate mofétil"
+      },
+      {
+        "id": "E",
+        "text": "Cyclophosphamide"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 5: Les bolus IV de corticoïdes sont utiles principalement si :",
-    "opts": [
-      "A. Atteinte de la glande lacrymale isolée",
-      "B. Myosite douloureuse",
-      "C. Atteinte compressive du nerf optique",
-      "D. Doute diagnostique",
-      "E. Rechute systématique"
+    "question": "QCM Prise en Charge 5: Les bolus IV de corticoïdes sont utiles principalement si :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Atteinte de la glande lacrymale isolée"
+      },
+      {
+        "id": "B",
+        "text": "Myosite douloureuse"
+      },
+      {
+        "id": "C",
+        "text": "Atteinte compressive du nerf optique"
+      },
+      {
+        "id": "D",
+        "text": "Doute diagnostique"
+      },
+      {
+        "id": "E",
+        "text": "Rechute systématique"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "C"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 6: Le traitement des inflammations orbitaires spécifiques :",
-    "opts": [
-      "A. Repose avant tout sur le traitement de la cause",
-      "B. Nécessite systématiquement une radiothérapie",
-      "C. Exclut l'usage d'anti-TNF alpha",
-      "D. Peut inclure des injections intra-orbitaires de corticoïdes retard",
-      "E. Est purement chirurgical"
+    "question": "QCM Prise en Charge 6: Le traitement des inflammations orbitaires spécifiques :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repose avant tout sur le traitement de la cause"
+      },
+      {
+        "id": "B",
+        "text": "Nécessite systématiquement une radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Exclut l'usage d'anti-TNF alpha"
+      },
+      {
+        "id": "D",
+        "text": "Peut inclure des injections intra-orbitaires de corticoïdes retard"
+      },
+      {
+        "id": "E",
+        "text": "Est purement chirurgical"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 7: Le traitement des inflammations orbitaires spécifiques :",
-    "opts": [
-      "A. Repose avant tout sur le traitement de la cause",
-      "B. Nécessite systématiquement une radiothérapie",
-      "C. Exclut l'usage d'anti-TNF alpha",
-      "D. Peut inclure des injections intra-orbitaires de corticoïdes retard",
-      "E. Est purement chirurgical"
+    "question": "QCM Prise en Charge 7: Le traitement des inflammations orbitaires spécifiques :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repose avant tout sur le traitement de la cause"
+      },
+      {
+        "id": "B",
+        "text": "Nécessite systématiquement une radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Exclut l'usage d'anti-TNF alpha"
+      },
+      {
+        "id": "D",
+        "text": "Peut inclure des injections intra-orbitaires de corticoïdes retard"
+      },
+      {
+        "id": "E",
+        "text": "Est purement chirurgical"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 8: Le traitement des inflammations orbitaires spécifiques :",
-    "opts": [
-      "A. Repose avant tout sur le traitement de la cause",
-      "B. Nécessite systématiquement une radiothérapie",
-      "C. Exclut l'usage d'anti-TNF alpha",
-      "D. Peut inclure des injections intra-orbitaires de corticoïdes retard",
-      "E. Est purement chirurgical"
+    "question": "QCM Prise en Charge 8: Le traitement des inflammations orbitaires spécifiques :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repose avant tout sur le traitement de la cause"
+      },
+      {
+        "id": "B",
+        "text": "Nécessite systématiquement une radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Exclut l'usage d'anti-TNF alpha"
+      },
+      {
+        "id": "D",
+        "text": "Peut inclure des injections intra-orbitaires de corticoïdes retard"
+      },
+      {
+        "id": "E",
+        "text": "Est purement chirurgical"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 9: Le traitement des inflammations orbitaires spécifiques :",
-    "opts": [
-      "A. Repose avant tout sur le traitement de la cause",
-      "B. Nécessite systématiquement une radiothérapie",
-      "C. Exclut l'usage d'anti-TNF alpha",
-      "D. Peut inclure des injections intra-orbitaires de corticoïdes retard",
-      "E. Est purement chirurgical"
+    "question": "QCM Prise en Charge 9: Le traitement des inflammations orbitaires spécifiques :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repose avant tout sur le traitement de la cause"
+      },
+      {
+        "id": "B",
+        "text": "Nécessite systématiquement une radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Exclut l'usage d'anti-TNF alpha"
+      },
+      {
+        "id": "D",
+        "text": "Peut inclure des injections intra-orbitaires de corticoïdes retard"
+      },
+      {
+        "id": "E",
+        "text": "Est purement chirurgical"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   },
   {
-    "q": "QCM Prise en Charge 10: Le traitement des inflammations orbitaires spécifiques :",
-    "opts": [
-      "A. Repose avant tout sur le traitement de la cause",
-      "B. Nécessite systématiquement une radiothérapie",
-      "C. Exclut l'usage d'anti-TNF alpha",
-      "D. Peut inclure des injections intra-orbitaires de corticoïdes retard",
-      "E. Est purement chirurgical"
+    "question": "QCM Prise en Charge 10: Le traitement des inflammations orbitaires spécifiques :",
+    "options": [
+      {
+        "id": "A",
+        "text": "Repose avant tout sur le traitement de la cause"
+      },
+      {
+        "id": "B",
+        "text": "Nécessite systématiquement une radiothérapie"
+      },
+      {
+        "id": "C",
+        "text": "Exclut l'usage d'anti-TNF alpha"
+      },
+      {
+        "id": "D",
+        "text": "Peut inclure des injections intra-orbitaires de corticoïdes retard"
+      },
+      {
+        "id": "E",
+        "text": "Est purement chirurgical"
+      }
     ],
-    "ans": [
+    "correctAnswers": [
       "A",
       "D"
-    ]
+    ],
+    "explanation": "Reportez-vous au cours pour plus de détails."
   }
 ];

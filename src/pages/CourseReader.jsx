@@ -10,6 +10,8 @@ import { memCourseMarkdown, memFichesMarkdown, memAlgorithmsMarkdown, memAlgoMer
 import { vkhCourseMarkdown, vkhFichesMarkdown, vkhAlgorithmsMarkdown, vkhAlgoMermaid, vkhMindmapMarkdown, vkhMindmapMermaid, vkhClassificationsMarkdown, vkhClassificationsMermaid, vkhQcmMarkdown, vkhQcmData } from '../data/vkhData';
 import { noiCourseMarkdown, noiFichesMarkdown, noiAlgorithmsMarkdown, noiAlgoMermaid, noiMindmapMarkdown, noiMindmapMermaid, noiClassificationsMarkdown, noiClassificationsMermaid, noiQcmMarkdown, noiQcmData } from '../data/noiData';
 import { hsvCourseMarkdown, hsvFichesMarkdown, hsvAlgorithmsMarkdown, hsvAlgoMermaid, hsvClassificationsMarkdown, hsvClassificationsMermaid } from '../data/hsvData';
+import { uaFichesMarkdown, uaAlgorithmsMarkdown, uaAlgoMermaid, uiFichesMarkdown, uiAlgorithmsMarkdown, uiAlgoMermaid, uodFichesMarkdown, uodAlgorithmsMarkdown, uodAlgoMermaid, upvFichesMarkdown, upvAlgorithmsMarkdown, upvAlgoMermaid } from '../data/uveitesMagistralData';
+import { glaucomeQcmMarkdown, glaucomeQcmData } from '../data/glaucomeCongenitalData';
 
 import QcmPlayer from '../components/QcmPlayer';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
@@ -106,6 +108,45 @@ const CourseReader = () => {
     mindmapMermaid: '',
     classificationsMarkdown: hsvClassificationsMarkdown,
     classificationsMermaid: hsvClassificationsMermaid
+  } : id === 'uveites-anterieures' ? {
+    cours: `# 🎓 Cours Magistral Interactif\n\nCe cours dispose d'une version interactive complète (diaporama, animations, quiz).\n\n[▶ Ouvrir le cours magistral interactif complet](/interactive/uveites-anterieures)`,
+    fiches: uaFichesMarkdown,
+    algorithmes: uaAlgorithmsMarkdown,
+    algoMermaid: uaAlgoMermaid,
+    mindmapMarkdown: '',
+    mindmapMermaid: ''
+  } : id === 'uveites-intermediaires' ? {
+    cours: `# 🎓 Cours Magistral Interactif\n\nCe cours dispose d'une version interactive complète (diaporama, animations, quiz).\n\n[▶ Ouvrir le cours magistral interactif complet](/interactive/uveites-intermediaires)`,
+    fiches: uiFichesMarkdown,
+    algorithmes: uiAlgorithmsMarkdown,
+    algoMermaid: uiAlgoMermaid,
+    mindmapMarkdown: '',
+    mindmapMermaid: ''
+  } : id === 'uveites-orientation-diagnostique' ? {
+    cours: `# 🎓 Cours Magistral Interactif\n\nCe cours dispose d'une version interactive complète (diaporama, animations, quiz).\n\n[▶ Ouvrir le cours magistral interactif complet](/interactive/uveites-orientation-diagnostique)`,
+    fiches: uodFichesMarkdown,
+    algorithmes: uodAlgorithmsMarkdown,
+    algoMermaid: uodAlgoMermaid,
+    mindmapMarkdown: '',
+    mindmapMermaid: ''
+  } : id === 'uveites-posterieures-vascularites' ? {
+    cours: `# 🎓 Cours Magistral Interactif\n\nCe cours dispose d'une version interactive complète (diaporama, animations, quiz).\n\n[▶ Ouvrir le cours magistral interactif complet](/interactive/uveites-posterieures-vascularites)`,
+    fiches: upvFichesMarkdown,
+    algorithmes: upvAlgorithmsMarkdown,
+    algoMermaid: upvAlgoMermaid,
+    mindmapMarkdown: '',
+    mindmapMermaid: ''
+  } : id === 'glaucome-congenital' ? {
+    cours: '',
+    fiches: '',
+    algorithmes: '',
+    algoMermaid: '',
+    mindmapMarkdown: '',
+    mindmapMermaid: '',
+    classificationsMarkdown: '',
+    classificationsMermaid: '',
+    qcm: glaucomeQcmMarkdown,
+    qcmData: glaucomeQcmData
   } : {
     cours: courseMarkdown,
     fiches: fichesMarkdown,
