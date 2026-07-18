@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon } from 'lucide-react';
+import { Search, Book, Filter, ArrowRight, Map, Brain, Layout, Image as ImageIcon, ClipboardList } from 'lucide-react';
 
 export const allCourses = [
   { id: 'neuropathies-optiques-inflammatoires', title: 'Neuropathies Optiques Inflammatoires (NOI)', category: 'Neuro-Ophtalmologie', description: 'Diagnostic, bilan et prise en charge des NOI typiques et atypiques.', has: { cours: true, fiches: true, algorithms: true, classifications: true, qcm: true } },
@@ -10,12 +10,19 @@ export const allCourses = [
   { id: 'herpes-oculaire', title: 'Herpès Oculaire', category: 'Cornée', description: 'Physiopathologie, clinique et thérapeutique codifiée (Mise à jour 2025).', has: { cours: true, fiches: true, algorithms: true, classifications: true } },
   
   // Interactive HTML Courses - Uvéites
-  { id: 'uveites-anterieures', title: 'Uvéites Antérieures', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites antérieures.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Anterieures_interactif.html' },
-  { id: 'uveites-intermediaires', title: 'Uvéites Intermédiaires', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites intermédiaires.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Intermediaires_interactif.html' },
-  { id: 'uveites-posterieures-vascularites', title: 'Uvéites Postérieures et Vascularites', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéites postérieures et vascularites.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Posterieures_et_Vascularites_interactif.html' },
+  { id: 'uveites-anterieures', title: 'Uvéites Antérieures', category: 'Uvéites', description: 'Cours magistral interactif, fiches techniques et algorithme de prise en charge des uvéites antérieures.', has: { cours: true, fiches: true, algorithms: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Anterieures_interactif.html' },
+  { id: 'uveites-intermediaires', title: 'Uvéites Intermédiaires', category: 'Uvéites', description: 'Cours magistral interactif, fiches techniques et algorithme de prise en charge des uvéites intermédiaires.', has: { cours: true, fiches: true, algorithms: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Intermediaires_interactif.html' },
+  { id: 'uveites-posterieures-vascularites', title: 'Uvéites Postérieures et Vascularites', category: 'Uvéites', description: 'Cours magistral interactif, fiches techniques et algorithme de prise en charge des uvéites postérieures et vascularites.', has: { cours: true, fiches: true, algorithms: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Posterieures_et_Vascularites_interactif.html' },
   { id: 'uveo-meningites', title: 'Uvéo-méningites', category: 'Uvéites', description: 'Cours magistral interactif sur les uvéo-méningites.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveo-meningites_interactif.html' },
-  { id: 'uveites-orientation-diagnostique', title: 'Orientation Diagnostique des Uvéites', category: 'Uvéites', description: 'Cours magistral interactif sur la démarche et orientation diagnostique.', has: { cours: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Orientation_Diagnostique_interactif.html' },
+  { id: 'uveites-orientation-diagnostique', title: 'Orientation Diagnostique des Uvéites', category: 'Uvéites', description: 'Cours magistral interactif, fiches techniques et algorithme de prise en charge de la démarche diagnostique.', has: { cours: true, fiches: true, algorithms: true }, isInteractive: true, interactiveFile: 'Cours_Magistral_Uveites_Orientation_Diagnostique_interactif.html' },
   
+  // Interactive HTML Courses - Cas Cliniques
+  { id: 'case3-vkh-mimic', title: 'Cas clinique #3 — Diagnostic masqué (VKH mimic)', category: 'Uvéites', description: 'Le diagnostic a changé en cours de route. Un cas clinique interactif sur la choriorétinopathie séreuse centrale atypique bulleuse.', has: { 'cas-cliniques': true }, isInteractive: true, interactiveFile: 'case3_vkh_mimic.html' },
+  { id: 'case2-neuroretinite', title: 'Cas clinique #2 — BAV unilatérale', category: 'Uvéites', description: 'Cas clinique interactif sur une neurorétinite avec étoile maculaire.', has: { 'cas-cliniques': true }, isInteractive: true, interactiveFile: 'case2_neuroretinite.html' },
+  { id: 'birdshot-case-2', title: 'Cas clinique Birdshot #2', category: 'Uvéites', description: 'Cas clinique interactif d\'entraînement sur la choriorétinopathie de Birdshot.', has: { 'cas-cliniques': true }, isInteractive: true, interactiveFile: 'birdshot_case_2.html' },
+  { id: 'birdshot-case-1', title: 'Cas clinique Birdshot #1', category: 'Uvéites', description: 'Cas clinique interactif d\'entraînement sur la choriorétinopathie de Birdshot.', has: { 'cas-cliniques': true }, isInteractive: true, interactiveFile: 'birdshot_case_1.html' },
+  { id: 'birdshot-case', title: 'Cas clinique Birdshot (Global)', category: 'Uvéites', description: 'Cas clinique interactif complet sur la choriorétinopathie de Birdshot.', has: { 'cas-cliniques': true }, isInteractive: true, interactiveFile: 'birdshot_case.html' },
+
   // Imagerie — Atlas OCT interactifs
   { id: 'dmla-exsudative', title: 'DMLA Exsudative — Atlas OCT & OCT-A', category: 'Imagerie', description: 'Atlas interactif : séméiologie OCT structurel et OCT-angiographie de la DMLA néovasculaire (types 1, 2, 3, VPC).', has: { imaging: true } },
 
@@ -47,7 +54,8 @@ const Library = ({ type = 'cours' }) => {
     fiches: 'Fiches Techniques',
     algorithms: 'Algorithmes Décisionnels',
     classifications: 'Classifications',
-    imaging: 'Imagerie & Examens'
+    imaging: 'Imagerie & Examens',
+    'cas-cliniques': 'Cas Cliniques'
   };
 
   const iconMap = {
@@ -55,7 +63,8 @@ const Library = ({ type = 'cours' }) => {
     fiches: Map,
     algorithms: Brain,
     classifications: Layout,
-    imaging: ImageIcon
+    imaging: ImageIcon,
+    'cas-cliniques': ClipboardList
   };
 
   const TitleIcon = iconMap[type] || Book;
@@ -143,7 +152,7 @@ const Library = ({ type = 'cours' }) => {
               overflow: 'hidden'
             }}
             onClick={() => {
-              if (course.isInteractive) {
+              if (course.isInteractive && (type === 'cours' || type === 'cas-cliniques')) {
                 navigate(`/interactive/${course.id}`);
               } else if (type === 'imaging' || course.category === 'Imagerie') {
                 navigate(`/imaging-reader/${course.id}`);

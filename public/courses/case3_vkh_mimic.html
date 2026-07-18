@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #3 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0e131a;
+  --panel:#161d26;
+  --panel-2:#1c2531;
+  --panel-3:#212b39;
+  --border:#2a3442;
+  --gold:#cf9e57;
+  --gold-bright:#e8c07f;
+  --red:#c1584f;
+  --green:#6fa287;
+  --text:#e9e5da;
+  --text-dim:#8f99a8;
+  --text-dimmer:#616d7d;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+
+.wrap{max-width:880px;margin:0 auto;padding:0 24px 120px;}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);
+  pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+
+/* ---------- PROGRESS TRACKER ---------- */
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);position:relative;transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+
+/* ---------- STAGES ---------- */
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.stage h2{font-family:'Fraunces',serif;font-weight:600;font-size:26px;margin:0 0 20px;color:#f4efe4;}
+
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+
+/* ---------- QUESTION BLOCK ---------- */
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;letter-spacing:.01em;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+
+/* ---------- SCORE ---------- */
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+
+/* ---------- FINAL SUMMARY ---------- */
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+
+.pill{display:inline-block;padding:3px 10px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:10.5px;background:var(--panel-3);color:var(--text-dim);margin:2px 4px 2px 0;}
+
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°3 · Diagnostic masqué</div>
+  <h1>Le diagnostic <em>a changé</em> en cours de route</h1>
+  <p class="sub">Ce cas a réellement trompé l'équipe qui l'a pris en charge : le diagnostic initial n'était pas le bon. Suivez le dossier étape par étape, avec les décisions prises à chaque instant, et voyez si vous auriez fait le même choix.</p>
+  <div class="patient-chip">
+    <span>Patiente <b>50 ans</b></span>
+    <span>Motif <b>BAV bilatérale progressive + céphalées</b></span>
+    <span>Contexte <b>Consultation d'ophtalmologie</b></span>
+  </div>
+</div>
+
+<div class="tracker-outer">
+  <div class="tracker" id="tracker"></div>
+</div>
+
+<div class="score-badge">Score · <b id="scoreLive">0/6</b></div>
+
+<div id="stages"></div>
+
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l'étape suivante</div>
+
+<footer>Cas réel, adapté de See W, Sawri Rajan R, Alexander S. Cureus 2025;17(8):e91080 — CC BY 4.0 — à usage pédagogique</footer>
+
+<script>
+const STAGES = [
+{
+  key:"anamnese",
+  label:"Anamnèse",
+  title:"Étape 1 — Présentation initiale",
+  html:`
+    <div class="card exam">
+      <p>Patiente de <b>50 ans</b>, connue pour HTA, dyslipidémie, stéatose hépatique et trouble anxieux, consulte pour une <b>baisse d'acuité visuelle bilatérale progressive depuis 3 mois</b>, associée à des <b>céphalées</b> et des <b>acouphènes</b>.</p>
+      <div class="datagrid">
+        <div class="datacell"><div class="k">AV OD</div><div class="v">6/10</div></div>
+        <div class="datacell"><div class="k">AV OG</div><div class="v">6/120</div></div>
+        <div class="datacell"><div class="k">Segment antérieur</div><div class="v">Normal, 2 yeux</div></div>
+        <div class="datacell"><div class="k">PIO</div><div class="v">12 mmHg (2 yeux)</div></div>
+      </div>
+    </div>`,
+  q:{
+    tag:"QCM 1 · Raisonnement",
+    text:"BAV bilatérale progressive + céphalées + acouphènes chez une femme de 50 ans : quelle association de signes systémiques évoque le plus classiquement une atteinte auto-immune touchant les mélanocytes ?",
+    options:[
+      "Céphalées + acouphènes, évocateurs d'une atteinte méningée et auditive associée",
+      "HTA + dyslipidémie, qui expliquent à elles seules la BAV bilatérale",
+      "Le trouble anxieux, qui est la cause la plus probable des symptômes visuels",
+      "La stéatose hépatique, en lien direct avec la baisse de vision"
+    ],
+    correct:0,
+    feedback:"Céphalées et acouphènes sont des signes extra-oculaires classiquement associés à une atteinte inflammatoire des tissus riches en mélanocytes (méninges, oreille interne, uvée) — un tableau qui pousse logiquement, à ce stade, à évoquer une maladie de Vogt-Koyanagi-Harada. Gardez cependant en tête que ces symptômes systémiques ne sont pas, à eux seuls, spécifiques."
+  }
+},
+{
+  key:"fo",
+  label:"Rétinographie",
+  title:"Étape 2 — Fond d'œil et rétinophotographie",
+  html:`
+    <div class="card exam">
+      <div class="real-fig">
+        <img src="https://assets.cureus.com/uploads/figure/file/1649453/article_river_e24e30c0791311f09f7a1b64b5a2014e-Figure-1.png" alt="Rétinophotographies des deux yeux montrant un décollement séreux rétinien exsudatif" loading="lazy">
+        <p class="fig-caption">Rétinophotographies à la présentation. Œil droit : décollement rétinien exsudatif le long de l'arcade inféro-temporale avec petit soulèvement de l'épithélium pigmentaire (EP). Œil gauche : décollement rétinien exsudatif en périphérie inférieure et décollement séreux du pôle postérieur. <span class="src-tag">Photographie originale du cas — Source : See, Sawri Rajan &amp; Alexander, Cureus 2025, CC BY 4.0</span></p>
+      </div>
+      <p><b>Point important :</b> les deux yeux ne montrent <b>aucune hyalite</b>.</p>
+    </div>`,
+  q:{
+    tag:"QCM 2 · Interprétation d'imagerie",
+    text:"L'absence totale de hyalite (inflammation vitréenne) sur ce tableau de décollements séreux/exsudatifs bilatéraux est-elle un détail anodin ?",
+    options:[
+      "Oui, la hyalite n'a aucune valeur discriminante dans les décollements séreux rétiniens",
+      "Non : une authentique panuvéite granulomateuse comme le VKH s'accompagne typiquement d'une inflammation intraoculaire (cellules en chambre antérieure, hyalite) — son absence doit inciter à garder l'esprit ouvert sur d'autres diagnostics",
+      "Non, l'absence de hyalite élimine formellement toute cause inflammatoire ou infectieuse",
+      "Oui, car le VKH ne s'accompagne jamais de hyalite à la phase aiguë"
+    ],
+    correct:1,
+    feedback:"C'est un signal d'alerte précoce, rétrospectivement clé dans ce cas : le VKH typique comporte une réaction inflammatoire intraoculaire (cellules, hyalite), contrairement à ce tableau. Ce n'est pas éliminatoire à ce stade isolé, mais c'est un élément à garder en mémoire pour la suite du raisonnement."
+  }
+},
+{
+  key:"imagerie",
+  label:"Imagerie multimodale",
+  title:"Étape 3 — OCT, angiographie et échographie",
+  html:`
+    <div class="card exam">
+      <p><b>Échographie (œil gauche) :</b> décollement rétinien inférieur ; <b>pas d'épaississement scléral, pas de signe du « T »</b> (élimine une sclérite postérieure).</p>
+      <p><b>OCT :</b> OD — soulèvement de l'EP fovéolaire avec liquide sous-rétinien inféro-nasal. OG — liquide sous-rétinien déclive avec soulèvements multiples de l'EP, <b>sans septations intra-rétiniennes</b>.</p>
+      <p><b>Angiographie à la fluorescéine (FA) :</b> multiples points de fuite précoces punctiformes, <b>sans diffusion papillaire</b>, réalisant un aspect de « ciel étoilé ».</p>
+      <p><b>Angiographie ICG :</b> remplissage choroïdien retardé, choriocapillaire dilatée.</p>
+      <p>Le bilan systémique infectieux, inflammatoire et tumoral revient <b>négatif</b>.</p>
+    </div>`,
+  q:{
+    tag:"QCM 3 · Interprétation d'imagerie",
+    text:"L'aspect en « ciel étoilé » à la FA ressemble à celui décrit dans le VKH. Quel détail précis de cette même FA devrait pourtant faire hésiter ?",
+    options:[
+      "Le nombre de points de fuite, qui est toujours plus élevé dans le VKH",
+      "L'absence de diffusion (fuite) au niveau de la papille optique — typiquement présente dans le VKH, où l'atteinte du disque optique accompagne la choroïdite diffuse",
+      "La présence de points de fuite précoces, qui n'existe jamais dans le VKH",
+      "La couleur du colorant utilisé, différente entre les deux pathologies"
+    ],
+    correct:1,
+    feedback:"C'est exactement le point de discussion soulevé dans la publication originale : le VKH s'accompagne typiquement d'une fuite papillaire en FA, absente ici. De même, l'ICG du VKH montre classiquement des taches hypofluorescentes sombres correspondant à l'inflammation choroïdienne — alors qu'ici, on observe plutôt une choriocapillaire dilatée avec remplissage retardé, un pattern plus évocateur d'une dysfonction vasculaire choroïdienne que d'une choroïdite granulomateuse."
+  }
+},
+{
+  key:"tt1",
+  label:"1er traitement",
+  title:"Étape 4 — Décision thérapeutique initiale",
+  html:`
+    <div class="card exam">
+      <p>Sur la base du décollement séreux rétinien bilatéral, des céphalées/acouphènes associés, du liquide sous-rétinien en OCT et des fuites multiples en FA, un <b>diagnostic de VKH incomplet</b> est retenu.</p>
+      <p><b>Traitement :</b> bolus de corticothérapie IV pendant 3 jours, relais par prednisolone orale 60 mg/j.</p>
+      <div class="datagrid">
+        <div class="datacell"><div class="k">AV OD à 1 mois</div><div class="v">6/20 (aggravation)</div></div>
+        <div class="datacell"><div class="k">AV OG à 1 mois</div><div class="v">Compte les doigts (aggravation)</div></div>
+      </div>
+      <p>Les décollements exsudatifs ont <b>progressé</b> sous corticothérapie, dans les deux yeux.</p>
+    </div>`,
+  q:{
+    tag:"QCM 4 · Piège thérapeutique",
+    text:"Face à cette aggravation sous corticothérapie à haute dose, quelle est l'hypothèse la plus cohérente avec les données déjà recueillies (absence de hyalite, absence de fuite papillaire) ?",
+    options:[
+      "La dose de corticoïdes était insuffisante : il faut simplement l'augmenter encore",
+      "Le VKH est confirmé et cette aggravation initiale est un phénomène normal, sans signification",
+      "Le diagnostic de VKH doit être reconsidéré : une corticothérapie systémique à haute dose est un facteur de risque reconnu de choriorétinopathie séreuse centrale (CRSC), qui peut mimer et aggraver un tableau de décollement séreux rétinien",
+      "L'aggravation est due à une mauvaise observance du traitement par la patiente"
+    ],
+    correct:2,
+    feedback:"C'est le tournant du cas : la corticothérapie systémique est un facteur de risque bien identifié de choriorétinopathie séreuse centrale (CRSC), en particulier dans ses formes atypiques bulleuses. Avec le recul, les signes discordants relevés aux étapes 2 et 3 (pas de hyalite, pas de fuite papillaire) prennent tout leur sens : ce tableau pourrait ne pas être un VKH, ou avoir été aggravé — voire authentiquement provoqué — par le traitement corticoïde lui-même."
+  }
+},
+{
+  key:"tt2",
+  label:"2ème traitement",
+  title:"Étape 5 — Ajustement thérapeutique et évolution",
+  html:`
+    <div class="card exam">
+      <p>Le tableau est alors interprété comme un <b>VKH compliqué d'une CRSC induite par les corticoïdes</b>. Un immunosuppresseur d'épargne cortisonique (<b>méthotrexate</b> 15 mg/semaine) est introduit, et la corticothérapie orale est <b>rapidement dégressive</b> sur 1 mois.</p>
+      <p>Après 2 mois de ce traitement, l'acuité visuelle ne s'améliore toujours pas et le décollement exsudatif progresse encore. Une prise en charge chirurgicale est décidée : phacoémulsification + vitrectomie + drainage du liquide sous-rétinien + tamponnement par huile de silicone (œil gauche).</p>
+      <p>Un mois après la chirurgie, le décollement rétinien <b>récidive</b>.</p>
+    </div>`,
+  q:{
+    tag:"QCM 5 · Raisonnement",
+    text:"Devant cette récidive post-opératoire malgré une prise en charge chirurgicale complète, quelle catégorie diagnostique doit impérativement être évoquée avant de poursuivre le traitement immunosuppresseur ?",
+    options:[
+      "Un syndrome de mascarade (masquerade syndrome) — c'est-à-dire une pathologie non inflammatoire, par exemple néoplasique, mimant une uvéite/choroïdite",
+      "Une simple insuffisance de dose de méthotrexate",
+      "Un rejet de greffe, bien qu'aucune greffe n'ait été réalisée",
+      "Une allergie à l'huile de silicone utilisée pour le tamponnement"
+    ],
+    correct:0,
+    feedback:"Une évolution aussi réfractaire et atypique, après un traitement immunosuppresseur et chirurgical complet, doit systématiquement faire évoquer un syndrome de mascarade — une pathologie non inflammatoire (le plus souvent néoplasique, par exemple un lymphome intra-oculaire) qui mime cliniquement une uvéite mais ne répond pas aux traitements anti-inflammatoires. C'est exactement le raisonnement qui a motivé l'étape suivante de ce dossier."
+  }
+},
+{
+  key:"biopsie",
+  label:"Biopsie",
+  title:"Étape 6 — Biopsies diagnostiques",
+  html:`
+    <div class="card exam">
+      <p>Devant la suspicion de syndrome de mascarade, l'œil gauche est repris : ablation de l'huile de silicone, <b>biopsie tissulaire rétinienne et choroïdienne</b>, prélèvement et drainage du liquide sous-rétinien, laser et remise en place d'un tamponnement par huile de silicone.</p>
+      <div class="datagrid">
+        <div class="datacell"><div class="k">Histopathologie</div><div class="v">Pas de malignité</div></div>
+        <div class="datacell"><div class="k">Biopsies (vitré, LSR)</div><div class="v">Pas d'infection, pas d'inflammation</div></div>
+      </div>
+    </div>`,
+  q:{
+    tag:"QCM 6 · Raisonnement",
+    text:"Les biopsies éliminent une néoplasie, une infection ET une inflammation active. Avec le recul de l'ensemble du dossier (pas de hyalite, pas de fuite papillaire en FA, aggravation sous corticoïdes, échec de l'immunosuppression, biopsies négatives), quelle catégorie de diagnostic devient la plus probable ?",
+    options:[
+      "Un VKH chronique, qui ne répond simplement pas au traitement chez cette patiente",
+      "Une pathologie non inflammatoire, non infectieuse et non tumorale du spectre de la choriorétinopathie séreuse centrale, dans une forme atypique et sévère",
+      "Une tuberculose oculaire latente, non détectée par les biopsies",
+      "Un lymphome vitréo-rétinien à un stade trop précoce pour être détecté"
+    ],
+    correct:1,
+    feedback:"À ce stade, l'élimination successive de la néoplasie, de l'infection et de l'inflammation active — combinée à l'absence de signes inflammatoires authentiques dès le départ (pas de hyalite, pas de fuite papillaire) — oriente vers une pathologie du spectre de la choriorétinopathie séreuse centrale, dans une forme atypique bulleuse, probablement aggravée par la corticothérapie initialement administrée pour le VKH suspecté."
+  }
+}
+];
+
+let current = 0;
+let score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker');
+  t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : 'Synthèse') + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages');
+  root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++){
+    root.appendChild(renderStage(i));
+  }
+  if(current >= STAGES.length){
+    root.appendChild(renderSummary());
+    document.getElementById('lockedNote').style.display='none';
+  } else {
+    document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  }
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div');
+  wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${s.title}</div>
+    <h2></h2>
+    ${s.html}
+  `;
+  wrap.querySelector('h2').remove();
+
+  const qb = document.createElement('div');
+  qb.className = 'qblock';
+  qb.innerHTML = `
+    <div class="qhead">
+      <div class="qtag">${s.q.tag}</div>
+      <div class="qtext">${s.q.text}</div>
+    </div>
+    <div class="options" id="opts-${i}"></div>
+    <div class="feedback" id="fb-${i}"></div>
+  `;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div');
+    o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct');
+      else o.classList.add('faded');
+    } else {
+      o.addEventListener('click', ()=>handleAnswer(i, oi));
+    }
+    optsEl.appendChild(o);
+  });
+
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? 'Exact.' : 'Pas tout à fait.'}</b> ${s.q.feedback}`;
+  }
+
+  wrap.appendChild(qb);
+
+  if(answered[i] && i === current && i < STAGES.length - 1 || (answered[i] && i===current)){
+    const btn = document.createElement('button');
+    btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? 'Voir la synthèse finale →' : 'Étape suivante →';
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div');
+    foot.className = 'stage-footer';
+    foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div');
+  wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>Révélation du diagnostic</div>
+    <div class="summary">
+      <h2>Diagnostic final : choriorétinopathie séreuse centrale atypique bulleuse (mimant un VKH)</h2>
+      <div class="score-big">Score au parcours : <span>${score} / ${STAGES.length}</span></div>
+
+      <p style="line-height:1.7;color:#dcd7cb;font-size:14.5px;">Le diagnostic initial de VKH incomplet, retenu de bonne foi sur un faisceau d'arguments cliniques et angiographiques compatibles, s'est révélé être une <b style="color:var(--gold-bright)">CRSC atypique bulleuse</b> — probablement aggravée, voire déclenchée, par la corticothérapie systémique donnée pour traiter le VKH suspecté. Les biopsies rétiniennes et choroïdiennes ont formellement éliminé néoplasie, infection et inflammation active.</p>
+
+      <table class="ddx">
+        <tr><th>Signe</th><th>VKH</th><th>CRSC atypique (ce cas)</th></tr>
+        <tr class="highlight"><td>Cellules/hyalite</td><td>Présentes (panuvéite)</td><td>Absentes</td></tr>
+        <tr><td>FA</td><td>Fuite papillaire + points punctiformes</td><td>Points punctiformes, PAS de fuite papillaire</td></tr>
+        <tr><td>ICG</td><td>Taches sombres hypofluorescentes (choroïdite)</td><td>Choriocapillaire dilatée, remplissage retardé</td></tr>
+        <tr><td>OCT</td><td>Septations intra-rétiniennes, décollements en bulles</td><td>Soulèvements de l'EP sans septations</td></tr>
+        <tr><td>Réponse aux corticoïdes</td><td>Favorable</td><td>Aggravation</td></tr>
+      </table>
+
+      <div class="reflect-box">
+        <div class="rtitle">Le vrai piège de ce cas</div>
+        <p>Les indices discordants étaient présents dès le début — absence de hyalite (étape 2), absence de fuite papillaire en FA (étape 3) — mais le tableau d'ensemble (décollements séreux bilatéraux + céphalées + acouphènes) était suffisamment évocateur de VKH pour motiver un traitement corticoïde. C'est l'<b>aggravation paradoxale sous corticoïdes</b> qui a été le signal fort obligeant à reconsidérer le diagnostic — exactement comme la corticothérapie systémique est un facteur de risque reconnu de CRSC.</p>
+        <p><b>Règle à retenir :</b> devant un décollement séreux rétinien bilatéral, l'absence de vraie inflammation intraoculaire (hyalite, cellules) doit toujours faire garder en tête le diagnostic différentiel de CRSC atypique — et inciter à la prudence avant d'introduire une corticothérapie systémique à haute dose.</p>
+        <p><b>Question pour poursuivre la discussion :</b> quels examens auriez-vous voulu réaliser en 1ère intention, avant de débuter la corticothérapie, pour mieux trancher entre VKH et CRSC atypique ?</p>
+      </div>
+    </div>
+  `;
+  const btn = document.createElement('button');
+  btn.className = 'restart-btn';
+  btn.textContent = '↺ Recommencer le cas';
+  btn.addEventListener('click', ()=>{
+    current = 0; score = 0; answered.fill(false);
+    render();
+    window.scrollTo({top:0, behavior:'smooth'});
+  });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>
