@@ -43,18 +43,33 @@ export const uaFichesMarkdown = `
 
 **Indications à un bilan étiologique** : bilatéralité, forme granulomateuse, chronicité, récidives, hypertonie majeure, atrophie irienne, hypopyon, atteinte du segment postérieur associée.
 
-*   **Orientation HLA-B27** : NFS-CRP, HLA-B27, radiographie du bassin (sacro-iliaques), avis rhumatologique si rachialgies inflammatoires.
-*   **Orientation granulomateuse** : Enzyme de conversion de l'angiotensine (ECA) + lysozyme, radiographie/TDM thoracique, IDR ou Quantiferon (tuberculose), TPHA-VDRL.
-*   **Orientation herpétique/zostérienne** (hypertonie majeure, atrophie irienne, PRD granulomateux, forme récidivante unilatérale) : diagnostic clinique en 1ère intention ; ponction de chambre antérieure (PCR HSV/VZV) si doute ou forme sévère.
+### A. Bilan Minimal (1ère intention, si indication à bilan)
+
+*   NFS, CRP/VS.
+*   HLA-B27.
+*   Radiographie du bassin (sacro-iliaques de face).
+*   TPHA-VDRL.
+*   Enzyme de conversion de l'angiotensine (ECA) + radiographie de thorax.
+
+### B. Bilan Élargi (2ème intention, orienté selon le tableau)
+
+*   **Orientation HLA-B27 positive / rachialgies** : avis rhumatologique, IRM des sacro-iliaques si radiographie standard non contributive et forte suspicion clinique.
+*   **Orientation granulomateuse** : lysozyme, TDM thoracique, IDR à la tuberculine ou test IGRA (Quantiferon), calcémie ; biopsie des glandes salivaires accessoires si forte suspicion de sarcoïdose et bilan non contributif.
+*   **Orientation herpétique/zostérienne** (hypertonie majeure, atrophie irienne, PRD granulomateux, forme récidivante unilatérale) : diagnostic clinique en 1ère intention ; ponction de chambre antérieure avec PCR HSV/VZV ± coefficient de Witmer-Desmont si doute ou forme sévère.
+*   **Bilatéralité / chronicité inexpliquée** : sérologie VIH, avis interniste.
 
 ---
 
-## IV. Ordonnance Type
+## IV. Ordonnance Type (Posologies)
 
-*   **Corticoïdes topiques** : Dexaméthasone collyre, dose d'attaque 4 à 6 fois/jour selon l'intensité du Tyndall, décroissance progressive sur plusieurs semaines guidée par la clinique (jamais d'arrêt brutal).
-*   **Cycloplégiques-mydriatiques** : Cyclopentolate ou Atropine 1 %, 1 à 2 fois/jour — objectifs : antalgie (lever le spasme du sphincter irien et du corps ciliaire) et **prévention des synéchies postérieures**.
+*   **Corticoïdes topiques** : Dexaméthasone collyre, dose d'attaque **4 à 8 gouttes/jour** selon l'intensité du Tyndall (jusqu'à 1 goutte/heure les premiers jours dans les formes sévères à hypopyon), décroissance progressive sur plusieurs semaines guidée par la clinique (jamais d'arrêt brutal).
+*   **Cycloplégiques-mydriatiques** :
+    *   **Cyclopentolate 0,5 %** : 1 goutte, 2 à 3 fois/jour dans les formes modérées (action courte, antalgique).
+    *   **Atropine 1 %** : 1 goutte, 1 à 2 fois/jour dans les formes sévères ou à synéchies constituées (action prolongée, meilleure prévention des synéchies).
+    *   Objectifs : antalgie (lever le spasme du sphincter irien et du corps ciliaire) et **prévention des synéchies postérieures**.
+*   **Corticothérapie générale (formes sévères, bilatérales ou à hypopyon important)** : Prednisone orale **0,5 à 1 mg/kg/jour**, en association aux corticoïdes topiques, avec décroissance progressive une fois l'inflammation contrôlée.
 *   **Surveillance de la PIO** : systématique sous corticoïdes (hypertonie cortico-induite) — à distinguer de l'hypertonie inflammatoire du tableau initial (trabéculite).
-*   **Traitement étiologique** si cause identifiée (ex : Valaciclovir PO si UA herpétique — cf. fiche Herpès oculaire).
+*   **Traitement étiologique** si cause identifiée (ex : Valaciclovir PO 500 mg x 2/j si UA herpétique — cf. fiche Herpès oculaire).
 
 ---
 
@@ -151,25 +166,43 @@ export const uiFichesMarkdown = `
 
 ## III. Bilan Étiologique
 
-*   **Systématique** : NFS, ECA + lysozyme, radiographie ou TDM thoracique (sarcoïdose), sérologies syphilis (TPHA-VDRL) et Lyme, **IRM cérébrale et médullaire** (recherche de plaques de démyélinisation évocatrices de sclérose en plaques).
-*   **Selon contexte** : ponction du vitré (cytologie, PCR, cytokines) si suspicion de lymphome ou de forme infectieuse atypique ; sérologie VIH.
-*   **Cause rare mais à connaître** : maladie de Whipple (atteinte neurologique, digestive associée — PCR *Tropheryma whipplei*).
+### A. Bilan Minimal (1ère ligne, systématique)
+
+*   NFS, ionogramme sanguin, créatininémie, bilan hépatique.
+*   TPHA-VDRL et sérologie de Lyme.
+*   Radiographie pulmonaire et test IGRA (Quantiféron®).
+*   Enzyme de conversion de l'angiotensine (ECA) et calcémie.
+
+### B. Bilan Élargi (2ème ligne, orienté selon suspicion clinique)
+
+*   **Suspicion de sarcoïdose** : scanner thoracique, biopsie des glandes salivaires accessoires, lavage bronchoalvéolaire (LBA), biopsie transbronchique, épreuves fonctionnelles respiratoires (EFR).
+*   **Suspicion de sclérose en plaques** : IRM cérébrale ± potentiels évoqués visuels (PEV) ± ponction lombaire.
+*   **Suspicion de pathologie infectieuse atypique** : sérologie VIH, PCR sur ponction du vitré (Lyme, Whipple), examens ciblés selon le contexte (voyage, morsure de tique, diarrhée chronique).
+*   **Suspicion de lymphome intraoculaire** (> 50 ans, bilan négatif, corticorésistance, absence d'OMC) : IRM cérébrale, dosage de l'interleukine-10 (IL-10) dans l'humeur aqueuse (forte suspicion si **> 100 pg/mL**), vitrectomie diagnostique (cytologie, cytokines).
+*   **Cause rare mais à connaître** : maladie de Whipple (atteinte neurologique, digestive associée — biopsie intestinale avec macrophages PAS+, PCR vitréenne *Tropheryma whipplei*).
+*   **Très jeune enfant** : éliminer systématiquement un rétinoblastome par examen minutieux du fond d'œil, au besoin sous anesthésie générale.
 
 ---
 
-## IV. Prise en Charge par Paliers
+## IV. Prise en Charge par Paliers (Posologies)
 
-| Palier | Traitement | Indication |
-| :--- | :--- | :--- |
-| 1 | Corticoïdes périoculaires (injection sous-ténonienne de triamcinolone) | Forme unilatérale ou asymétrique, modérée |
-| 2 | Corticoïdes systémiques (cure courte) | Atteinte bilatérale sévère |
-| 3 | Immunosuppresseur d'épargne cortisonique (**Méthotrexate** en 1ère ligne) | Corticodépendance, récidives |
-| 4 | Biothérapie anti-TNF (Adalimumab) | Échec des immunosuppresseurs conventionnels |
-| 5 | Implant intravitréen de dexaméthasone / anti-VEGF | OMC réfractaire |
-| 6 | Vitrectomie | Snowbanking compliqué, hémorragie du vitré, décollement de rétine tractionnel, ou visée diagnostique |
+| Palier | Traitement | Posologie | Indication |
+| :--- | :--- | :--- | :--- |
+| 0 | Abstention thérapeutique | Surveillance clinique tous les 6 mois | Absence de retentissement fonctionnel invalidant et de signe de gravité anatomique |
+| 1 | Corticoïdes périoculaires (Kénacort® retard, triamcinolone 40 mg/1 mL) | Injection sous-conjonctivale/sous-ténonienne de **0,4 mL (= 16 mg)**, aiguille 25G | Forme unilatérale ou asymétrique, OMC, épargne systémique |
+| 1 | Corticothérapie systémique (Prednisone) | **0,5 à 1 mg/kg/j**, maintenue **3 à 5 semaines**, puis décroissance codifiée : 10 mg/7-15 j jusqu'à 20 mg/j ; 2 mg/15-30 j jusqu'à 10 mg/j ; 1 mg/1-3 mois jusqu'à 7 mg/j (dose d'entretien réévaluée tous les 6 mois) | Retentissement fonctionnel central ou signe de gravité anatomique, atteinte bilatérale sévère |
+| 1-2 | Implant intravitréen (Ozurdex®, dexaméthasone 0,7 mg) | 1 injection, durée d'action **4 à 6 mois** | OMC réfractaire, épargne systémique |
+| — | Kénacort® retard intravitréen (triamcinolone 4 mg) | Durée d'action **3 à 7 mois** | Alternative à l'Ozurdex®, complications (cataracte, hypertonie) plus fréquentes |
+| 2 | Immunosuppresseur d'épargne cortisonique — **Méthotrexate** (référence sarcoïdose/AJI), Azathioprine (Imurel®, ≈ 90 % de rémission à 1 an) ou Mycophénolate mofétil (Cellcept®, action plus rapide) | Posologie et surveillance à discuter avec un interniste ; délai d'action ≥ 6 semaines, à associer initialement aux corticoïdes | Corticodépendance **> 10 mg/j pendant plusieurs semaines**, ou **> 7 mg/j pendant plus d'un an**, ou corticorésistance |
+| 2 | Biothérapie — Anti-TNFα (Adalimumab/Humira®, Infliximab/Rémicade®) OU Interféron-α2a (UI associée à la SEP) | Selon protocole spécialisé | Échec des immunosuppresseurs conventionnels ; **éliminer une SEP avant tout anti-TNFα** (risque d'aggravation d'une pathologie démyélinisante) |
+| 2 | Cryothérapie des banquises / Laser argon | Séance(s) ciblée(s) | Pars planite compliquée de néovascularisation de la banquise ou d'hémorragie intravitréenne |
+| 2 (chirurgical) | Vitrectomie (pars plana) | — | Snowbanking compliqué, hémorragie du vitré, décollement de rétine tractionnel, membrane épirétinienne, ou visée diagnostique |
 
 > [!WARNING]
 > **L'œdème maculaire cystoïde (OMC)** est la principale cause de baisse d'acuité visuelle et le facteur pronostique majeur : surveillance OCT systématique à chaque consultation.
+
+> [!CAUTION]
+> Toute tentative de réduction de la corticothérapie sous **5 mg/j** expose au risque d'**insuffisance surrénalienne** : en informer systématiquement le patient et le médecin traitant.
 
 ---
 
@@ -274,7 +307,27 @@ export const uodFichesMarkdown = `
 > [!CAUTION]
 > Il n'existe **pas** de bilan biologique systématique unique pour toute uvéite. Le bilan est **orienté** par la présentation clinique (localisation SUN, uni/bilatéralité, granulomateuse ou non, aiguë ou chronique) et par l'interrogatoire.
 
-**Bilan de débrouillage commun** (uvéite non typique du 1er épisode isolé) : NFS-CRP, sérologies TPHA-VDRL, radiographie thoracique, ECA ± lysozyme, IDR à la tuberculine ou test IGRA (Quantiferon), HLA-B27 si uvéite antérieure aiguë récidivante à hypopyon.
+### A. Bilan Minimal (commun, si uvéite non typique du 1er épisode isolé)
+
+*   NFS, CRP/VS, créatininémie, bilan hépatique.
+*   Sérologies TPHA-VDRL.
+*   Radiographie thoracique.
+*   Enzyme de conversion de l'angiotensine (ECA) ± lysozyme, calcémie.
+*   IDR à la tuberculine ou test IGRA (Quantiferon®).
+*   HLA-B27 si uvéite antérieure aiguë récidivante ou à hypopyon.
+
+### B. Bilan Élargi (2ème ligne, strictement orienté par les points d'appel)
+
+| Orientation clinique | Examens complémentaires |
+| :--- | :--- |
+| Rachialgies inflammatoires, psoriasis | Avis rhumatologique, radiographie/IRM des sacro-iliaques |
+| Granulomes choroïdiens, dyspnée, adénopathies | TDM thoracique, biopsie des glandes salivaires accessoires, LBA, EFR |
+| Dysesthésies, diplopie, NORB, vertiges | IRM cérébrale ± PEV ± ponction lombaire |
+| Morsure de tique, érythème migrant | Sérologie de Lyme (Borrelia) |
+| Diarrhée chronique, macrophages PAS+ | Biopsie intestinale, PCR *Tropheryma whipplei* (Whipple) |
+| Hypertonie majeure, atrophie irienne | Ponction de chambre antérieure, PCR HSV/VZV |
+| > 50 ans, corticorésistance, absence d'OMC | IRM cérébrale, IL-10 humeur aqueuse (> 100 pg/mL évocateur), vitrectomie diagnostique (lymphome) |
+| Enfant < 5 ans, leucocorie | Examen du fond d'œil sous anesthésie générale (rétinoblastome) |
 
 ---
 
@@ -363,35 +416,55 @@ export const upvFichesMarkdown = `
 
 ---
 
-## II. Choriorétinites — Étiologies Clés
+## II. Choriorétinites — Étiologies Clés et Posologies
 
-| Cause | Aspect Typique | Traitement |
+| Cause | Aspect Typique | Traitement et Posologie |
 | :--- | :--- | :--- |
-| **Toxoplasmose oculaire** | Foyer blanc-jaunâtre satellite d'une cicatrice pigmentée (« phare dans le brouillard »), hyalite dense en regard | Pyriméthamine-sulfadiazine ou cotrimoxazole ; corticoïdes systémiques **après 48h** d'antiparasitaire si atteinte maculaire/nerf optique/gros vaisseaux ou immunodépression |
-| **Nécrose rétinienne aiguë (NRA)** (HSV/VZV) | 🚨 **Urgence absolue** : plages de nécrose périphérique confluentes, vascularite occlusive artérielle, hyalite | Aciclovir IV en urgence (hospitalisation), laser prophylactique de barrage discuté, corticoïdes retardés après 48h d'antiviral |
-| **Rétinite à CMV** | Immunodéprimé (VIH < 50 CD4/mm³, greffés) — aspect « pizza pie » (nécrose blanche hémorragique le long des vaisseaux) | Ganciclovir/Valganciclovir ± implant intravitréen |
+| **Toxoplasmose oculaire** | Foyer blanc-jaunâtre satellite d'une cicatrice pigmentée (« phare dans le brouillard »), hyalite dense en regard | **Pyriméthamine** 100 mg J1 puis **50 mg/j** + **Sulfadiazine 4 g/j** (2 g x 2) + acide folinique 25 mg 2x/semaine (surveillance NFS) **OU Cotrimoxazole** (triméthoprime-sulfaméthoxazole) 800/160 mg, 1 cp x 2/j, durée 4 à 6 semaines ; corticoïdes systémiques (Prednisone 0,5-1 mg/kg/j) **après 48h** d'antiparasitaire si atteinte maculaire/nerf optique/gros vaisseaux ou immunodépression |
+| **Nécrose rétinienne aiguë (NRA)** (HSV/VZV) | 🚨 **Urgence absolue** : plages de nécrose périphérique confluentes, vascularite occlusive artérielle, hyalite | **Aciclovir IV 10 à 15 mg/kg toutes les 8h** en urgence (hospitalisation), relais per os (Valaciclovir 1 g x 3/j) après 7 à 10 jours ; laser prophylactique de barrage discuté ; corticoïdes retardés après 48h d'antiviral |
+| **Rétinite à CMV** | Immunodéprimé (VIH < 50 CD4/mm³, greffés) — aspect « pizza pie » (nécrose blanche hémorragique le long des vaisseaux) | **Ganciclovir IV 5 mg/kg toutes les 12h** ou **Valganciclovir PO 900 mg x 2/j** (attaque 2-3 semaines puis dose d'entretien 900 mg/j) ± implant intravitréen de ganciclovir |
 
 ---
 
-## III. Vascularites Rétiniennes — Étiologies Clés
+## III. Vascularites Rétiniennes — Étiologies Clés et Posologies
 
-| Cause | Aspect Typique | Particularité |
+| Cause | Aspect Typique | Particularité et Traitement |
 | :--- | :--- | :--- |
-| **Maladie de Behçet** | Occlusions veineuses et/ou artérielles, hémorragies rétiniennes, vascularite nécrosante | 🚨 Urgence thérapeutique — risque de cécité rapide ; biothérapie (anti-TNF) souvent nécessaire d'emblée dans les formes sévères |
-| **Sarcoïdose** | Périphlébite avec exsudats péri-veineux en « coulées de bougie » (*candle wax drippings*), granulomes choroïdiens | Bilan systémique (ECA, TDM thoracique) |
-| **Sclérose en plaques** | Périphlébite périphérique rétinienne, souvent asymptomatique | IRM cérébro-médullaire systématique |
-| **Lupus / Granulomatose avec polyangéite** | Vascularite occlusive, atteinte multisystémique | Bilan immunologique dirigé |
+| **Maladie de Behçet** | Occlusions veineuses et/ou artérielles, hémorragies rétiniennes, vascularite nécrosante | 🚨 Urgence thérapeutique — risque de cécité rapide ; Corticoïdes forte dose (bolus IV Méthylprednisolone 1 g/j x 3j puis relais Prednisone 1 mg/kg/j) + Azathioprine ou Ciclosporine d'emblée ; biothérapie anti-TNF (Adalimumab) précoce dans les formes sévères |
+| **Sarcoïdose** | Périphlébite avec exsudats péri-veineux en « coulées de bougie » (*candle wax drippings*), granulomes choroïdiens | Bilan systémique (ECA, calcémie, TDM thoracique, biopsie glandes salivaires) ; Prednisone 0,5-1 mg/kg/j si atteinte sévère |
+| **Sclérose en plaques** | Périphlébite périphérique rétinienne, souvent asymptomatique | IRM cérébro-médullaire ± PEV ± PL systématiques ; Interféron-α2a en 1ère ligne si traitement local insuffisant (éviter les anti-TNFα) |
+| **Lupus / Granulomatose avec polyangéite** | Vascularite occlusive, atteinte multisystémique | Bilan immunologique dirigé (AAN, ANCA) ; corticoïdes systémiques + immunosuppresseur (Cyclophosphamide dans les formes sévères de GPA) |
 
 ---
 
-## IV. Place de l'Imagerie
+## IV. Bilan Paraclinique
+
+### A. Bilan Minimal (1ère intention)
+
+*   NFS, CRP/VS.
+*   Sérologie toxoplasmose (IgG/IgM).
+*   TPHA-VDRL.
+*   ECA + radiographie/TDM thoracique.
+*   Angiographie à la fluorescéine et OCT maculaire systématiques.
+
+### B. Bilan Élargi (orienté selon le tableau)
+
+*   **Nécrose rétinienne / suspicion virale** : ponction de chambre antérieure avec PCR HSV/VZV/CMV (± coefficient de Witmer-Desmont).
+*   **Suspicion de Behçet** : recherche HLA-B51, aphtose bipolaire, pathergy test, avis interniste.
+*   **Suspicion de sarcoïdose** : biopsie des glandes salivaires accessoires, LBA, EFR.
+*   **Suspicion de SEP** : IRM cérébro-médullaire ± PEV ± ponction lombaire.
+*   **Immunodépression suspectée/connue** : sérologie VIH, numération CD4.
+
+---
+
+## V. Place de l'Imagerie
 
 *   **Angiographie à la fluorescéine** : diffusion pariétale des vaisseaux (vascularite active), zones d'occlusion/ischémie périphérique guidant l'indication d'une photocoagulation panrétinienne.
 *   **OCT maculaire** : recherche d'un œdème maculaire, d'une membrane épirétinienne ; épaississement choroïdien évocateur de VKH.
 
 ---
 
-## V. Règle d'Or Thérapeutique
+## VI. Règle d'Or Thérapeutique
 
 > [!CAUTION]
 > Devant une choriorétinite ou une vascularite fébrile/aiguë, **toujours éliminer une cause infectieuse avant de débuter une corticothérapie systémique** — le traitement anti-infectieux précède ou couvre l'introduction des corticoïdes (règle identique à celle de l'herpès du segment antérieur).
