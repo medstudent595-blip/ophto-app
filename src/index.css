@@ -1,5 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
   --bg-primary: #f5f7f8;
@@ -55,7 +56,7 @@
 body.light-theme {
     /* Same as root */
 }
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Inter:wght@400;500;600&display=swap');
+
 
 
 
