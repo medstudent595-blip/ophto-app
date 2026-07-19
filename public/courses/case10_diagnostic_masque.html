@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #10 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e131a;--panel:#161d26;--panel-2:#1c2531;--panel-3:#212b39;--border:#2a3442;--gold:#cf9e57;--gold-bright:#e8c07f;--red:#c1584f;--green:#6fa287;--text:#e9e5da;--text-dim:#8f99a8;--text-dimmer:#616d7d;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°10 · Diagnostic masqué</div>
+  <h1>Des <em>bourgeons</em> sur l'arbre vasculaire</h1>
+  <p class="sub">Une découverte fortuite au fond d&#x27;œil, longtemps muette, puis une vision qui se dégrade. L&#x27;angiographie dessine une signature très particulière.</p>
+  <div class="patient-chip"><span>Patiente <b>24 ans</b></span><span>Motif <b>Anomalies au fond d&#x27;œil (dépistage)</b></span><span>Symptômes <b>Longtemps absents</b></span></div>
+</div>
+<div class="tracker-outer"><div class="tracker" id="tracker"></div></div>
+<div class="score-badge">Score · <b id="scoreLive">0/6</b></div>
+<div id="stages"></div>
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante</div>
+<footer>Cas pédagogique construit à partir des cours d&#x27;uvéites du DES d&#x27;Ophtalmologie — à usage pédagogique</footer>
+<script>
+const STAGES = [{"label": "Anamnèse", "title": "Étape 1 — Une atteinte d'abord silencieuse", "html": "<div class=\"card exam\"><p>Femme de <b>24 ans</b>, adressée après la découverte fortuite d'anomalies vasculaires au fond d'œil lors d'un examen de routine. Elle est <b>peu ou pas symptomatique</b> au début. Le bilan systémique initial ne retrouve pas de maladie générale évidente.</p></div>", "q": {"tag": "QCM 1 · Caractère évolutif", "text": "Une vascularite rétinienne du sujet jeune, longtemps asymptomatique et de découverte fortuite, avant une dégradation visuelle secondaire : quel mécanisme explique le mieux ce passage du silence à la baisse de vision ?", "options": ["Une inflammation choroïdienne d'emblée maculaire", "Une atteinte initialement périphérique/peu symptomatique, la baisse de vision survenant secondairement par exsudation centrale ou par ischémie périphérique compliquée de néovascularisation et d'hémorragie intravitréenne", "Une cause purement psychogène", "Une atteinte du nerf optique isolée sans composante vasculaire"], "correct": 1, "feedback": "Cette entité est habituellement asymptomatique au début (découverte fortuite), la vision se dégradant secondairement du fait d'une exsudation centrale ou d'une ischémie périphérique compliquée de néovascularisation et d'hémorragie intravitréenne. Ce profil évolutif « silencieux puis compliqué » est caractéristique."}}, {"label": "Fond d'œil", "title": "Étape 2 — La signature vasculaire", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Localisation anévrismes</div><div class=\"v\">Bifurcations artérielles</div></div><div class=\"datacell\"><div class=\"k\">Exsudats</div><div class=\"v\">Présents</div></div><div class=\"datacell\"><div class=\"k\">Latéralité</div><div class=\"v\">Bilatérale</div></div></div><p>Le fond d'œil, <b>bilatéral</b>, révèle des <b>dilatations anévrismales</b> siégeant aux <b>bifurcations artérielles</b> et au niveau péripapillaire, associées à des <b>plages d'exsudation</b> et à une vascularite rétinienne. On note par endroits une ébauche de neurorétinite.</p></div>", "q": {"tag": "QCM 2 · Sémiologie discriminante", "text": "Les dilatations anévrismales situées AUX bifurcations artérielles, avec exsudation et ébauche de neurorétinite, composent une triade évocatrice. Qu'est-ce qui la distingue d'une autre vascularite artérielle occlusive du sujet jeune ?", "options": ["Rien : cette présentation est indiscernable d'un syndrome de Susac", "La présence d'anévrismes AUX bifurcations artérielles (et non de simples occlusions avec plaques de Gass) associée à une neurorétinite ; le syndrome de Susac, lui, donne des occlusions artérielles avec plaques de Gass, un vitré calme et une triade rétine-cerveau-cochlée", "L'absence totale d'atteinte vasculaire", "Une choroïdite granulomateuse associée"], "correct": 1, "feedback": "La triade — vascularite + dilatations anévrismales AUX bifurcations artérielles + neurorétinite — est la signature de cette entité. Elle se distingue du syndrome de Susac (occlusions artérielles + plaques de Gass à distance des bifurcations, vitré calme, triade rétine/cerveau/cochlée). La localisation précise des anévrismes est le critère fin qui sépare ces deux vascularites artérielles du sujet jeune."}}, {"label": "Angiographie", "title": "Étape 3 — Angiographie : le motif « en bourgeons »", "html": "<div class=\"card exam\"><p>L'angiographie à la fluorescéine confirme des <b>dilatations anévrismales hyperfluorescentes « en bourgeons »</b> (décrites comme des « épines sur une branche de rosier ») aux bifurcations artérielles, avec des <b>zones de non-perfusion</b> périphériques et, à un stade évolué, une <b>néovascularisation prérétinienne</b>.</p></div>", "q": {"tag": "QCM 3 · Interprétation d'imagerie", "text": "Quelle est la conséquence pronostique majeure des zones de non-perfusion périphériques mises en évidence par l'angiographie, et comment oriente-t-elle le traitement ?", "options": ["Aucune : la non-perfusion périphérique est sans conséquence", "L'ischémie périphérique induit une néovascularisation (prérétinienne/prépapillaire) exposant au risque d'hémorragie intravitréenne et de glaucome néovasculaire ; cela justifie une photocoagulation laser des territoires ischémiques", "Elle impose une corticothérapie locale isolée sans laser", "Elle traduit une atteinte choroïdienne nécessitant une ICG"], "correct": 1, "feedback": "Les zones de non-perfusion signent l'ischémie rétinienne, moteur d'une néovascularisation (prérétinienne/prépapillaire) qui expose à l'hémorragie intravitréenne et au glaucome néovasculaire. La photocoagulation laser des territoires ischémiques est le traitement de référence de cette entité, complétée d'anti-VEGF dans les formes avancées."}}, {"label": "OCT", "title": "Étape 4 — OCT maculaire", "html": "<div class=\"card exam\"><p>L'OCT maculaire objective un <b>œdème et des exsudats maculaires</b> (exsudation centrale), rendant compte de la baisse de vision lorsqu'elle survient. Il permet le suivi quantitatif de cette exsudation sous traitement.</p></div>", "q": {"tag": "QCM 4 · Corrélation clinique", "text": "Comment l'OCT relie-t-il ici l'atteinte vasculaire à la symptomatologie visuelle ?", "options": ["Il ne montre jamais d'anomalie dans cette entité", "Il objective l'exsudation maculaire (œdème/exsudats) qui explique la baisse de vision centrale, et sert au suivi quantitatif — l'un des deux mécanismes de dégradation visuelle (avec l'ischémie périphérique)", "Il visualise directement les anévrismes artériels périphériques", "Il remplace l'angiographie pour cartographier la non-perfusion"], "correct": 1, "feedback": "L'OCT objective l'exsudation maculaire (œdème et exsudats) responsable de la baisse de vision centrale — l'un des deux mécanismes de dégradation (l'autre étant l'ischémie périphérique compliquée de néovascularisation). Il ne visualise pas les anévrismes périphériques (rôle de l'angiographie) mais assure le suivi maculaire."}}, {"label": "Bilan étiologique", "title": "Étape 5 — Idiopathique, mais pas sans bilan", "html": "<div class=\"card exam\"><p>Un bilan est réalisé pour rechercher une éventuelle maladie associée, cette présentation pouvant parfois s'inscrire dans un cadre systémique.</p><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Bilan sarcoïdose (ECA, imagerie)</div><div class=\"v\">Négatif</div></div><div class=\"datacell\"><div class=\"k\">pANCA / antiphospholipides</div><div class=\"v\">Négatifs</div></div><div class=\"datacell\"><div class=\"k\">Pression intracrânienne</div><div class=\"v\">Normale</div></div></div></div>", "q": {"tag": "QCM 5 · Cadre nosologique", "text": "Cette présentation vasculaire (anévrismes, vascularite, neurorétinite) est le plus souvent idiopathique, mais peut parfois s'associer à certaines conditions. Lesquelles faut-il avoir cherchées avant de conclure ?", "options": ["Uniquement une hypertension artérielle essentielle", "Une sarcoïdose, une hypertension intracrânienne, des pANCA ou des anticorps antiphospholipides — le tableau restant le plus souvent idiopathique une fois ces conditions écartées", "Une infection herpétique et une toxoplasmose exclusivement", "Un diabète et une rétinopathie diabétique proliférante"], "correct": 1, "feedback": "Cette entité est le plus souvent idiopathique, mais peut s'inscrire dans un cadre systémique : sarcoïdose, hypertension intracrânienne, présence de pANCA ou d'anticorps antiphospholipides. Il faut donc les avoir cherchés avant de retenir la forme idiopathique. Le diabète donnerait une rétinopathie proliférante — distracteur, car le contexte (sujet jeune, anévrismes aux bifurcations) est différent."}}, {"label": "Traitement", "title": "Étape 6 — Stratégie", "html": "<div class=\"card exam\"><p>La prise en charge cible l'ischémie et ses complications néovasculaires.</p></div>", "q": {"tag": "QCM 6 · Traitement de référence", "text": "Quel est le traitement de référence de cette entité, et quelle place tiennent les anti-VEGF ?", "options": ["Une corticothérapie générale prolongée en monothérapie, sans laser", "La photocoagulation laser des territoires ischémiques (référence), les anti-VEGF étant réservés aux formes avancées (néovascularisation, exsudation maculaire réfractaire)", "Un traitement antiviral IV en urgence", "Une abstention systématique, l'atteinte étant toujours bénigne"], "correct": 1, "feedback": "La photocoagulation laser des zones de non-perfusion est le traitement de référence, visant à prévenir/traiter la néovascularisation ischémique. Les anti-VEGF sont réservés aux formes avancées (néovascularisation, exsudation maculaire). Le pronostic dépend largement de la prévention des complications néovasculaires (hémorragie, glaucome néovasculaire)."}}];
+const REVEAL = {"title": "Diagnostic final : syndrome IRVAN (idiopathic retinitis, vasculitis, aneurysms and neuroretinitis)", "intro_html": "<p style=\"line-height:1.7;color:#dcd7cb;font-size:14.5px;\">Vascularite rétinienne occlusive bilatérale rare du sujet jeune, le plus souvent idiopathique, définie par une triade : <b style=\"color:var(--gold-bright)\">vascularite + dilatations anévrismales aux bifurcations artérielles</b> (« épines sur une branche de rosier » / « en bourgeons ») + <b style=\"color:var(--gold-bright)\">neurorétinite</b>. Longtemps asymptomatique, elle se complique d'ischémie, de néovascularisation et de glaucome néovasculaire. Traitement de référence : photocoagulation laser (± anti-VEGF).</p>", "ddx_headers": "<th>Entité</th><th>Terrain</th><th>Signe discriminant</th>", "ddx_rows": "<tr class=\"highlight\"><td>IRVAN</td><td>Sujet jeune, idiopathique</td><td>Anévrismes AUX bifurcations artérielles + neurorétinite + vascularite</td></tr><tr><td>Susac</td><td>Femme jeune</td><td>Occlusions artérielles + plaques de Gass, vitré calme, triade cérébro-cochléaire</td></tr><tr><td>Maladie de Eales</td><td>Adulte jeune, Asie du Sud</td><td>Périphlébite périphérique + ischémie + néovaisseaux, hémorragies récidivantes</td></tr><tr><td>Behçet</td><td>Homme jeune, HLA-B51</td><td>Vascularite occlusive veineuse, hypopion, hyalite présente</td></tr><tr><td>Rétinopathie diabétique proliférante</td><td>Diabète</td><td>Microanévrismes diffus, contexte métabolique, pas de neurorétinite</td></tr>", "trap_title": "Le vrai piège de ce cas", "trap_html": "<p>Deux pièges. D'abord le <b>caractère silencieux initial</b> : l'atteinte est souvent découverte fortuitement et peut être sous-estimée avant que la vision ne chute par ischémie ou exsudation. Ensuite la <b>confusion avec les autres vascularites artérielles du sujet jeune</b> : la clé est la localisation des anévrismes AUX bifurcations (vs occlusions + plaques de Gass à distance dans le Susac, vs périphlébite + néovaisseaux dans la maladie de Eales). Ne pas oublier de chercher une sarcoïdose, une HTIC ou des pANCA/antiphospholipides avant de conclure « idiopathique ».</p><p><b>Règle à retenir :</b> anévrismes aux bifurcations artérielles + neurorétinite chez un sujet jeune = penser à cette entité, cartographier l'ischémie à l'angiographie, et traiter par laser avant les complications néovasculaires.</p>", "discussion": "IRVAN, Susac et maladie de Eales partagent une vascularite du sujet jeune à fort potentiel ischémique. Sur quels critères d'imagerie multimodale (localisation des anévrismes, plaques de Gass, néovaisseaux, atteinte extra-oculaire) construiriez-vous, point par point, le diagnostic différentiel — et comment le traitement diffère-t-il entre ces trois entités ?"};
+const UI = {
+  locked: "Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante", next: "Étape suivante →", final: "Voir la synthèse finale →",
+  restart: "↺ Recommencer le cas", scoreLabel: "Score au parcours :", reveal: "Révélation du diagnostic",
+  exact: "Exact.", notquite: "Pas tout à fait."
+};
+let current = 0, score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker'); t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : UI.reveal) + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages'); root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++) root.appendChild(renderStage(i));
+  if(current >= STAGES.length){ root.appendChild(renderSummary()); document.getElementById('lockedNote').style.display='none'; }
+  else document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `<div class="stage-num"><span class="dot"></span>${s.title}</div>${s.html}`;
+  const qb = document.createElement('div'); qb.className = 'qblock';
+  qb.innerHTML = `<div class="qhead"><div class="qtag">${s.q.tag}</div><div class="qtext">${s.q.text}</div></div><div class="options" id="opts-${i}"></div><div class="feedback" id="fb-${i}"></div>`;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D','E','F'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div'); o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct'); else o.classList.add('faded');
+    } else o.addEventListener('click', ()=>handleAnswer(i, oi));
+    optsEl.appendChild(o);
+  });
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? UI.exact : UI.notquite}</b> ${s.q.feedback}`;
+  }
+  wrap.appendChild(qb);
+  if(answered[i] && i === current){
+    const btn = document.createElement('button'); btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? UI.final : UI.next;
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div'); foot.className = 'stage-footer'; foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${UI.reveal}</div>
+    <div class="summary">
+      <h2>${REVEAL.title}</h2>
+      <div class="score-big">${UI.scoreLabel} <span>${score} / ${STAGES.length}</span></div>
+      ${REVEAL.intro_html}
+      <table class="ddx"><tr>${REVEAL.ddx_headers}</tr>${REVEAL.ddx_rows}</table>
+      <div class="reflect-box">
+        <div class="rtitle">${REVEAL.trap_title}</div>
+        ${REVEAL.trap_html}
+        <p><b>Discussion :</b> ${REVEAL.discussion}</p>
+      </div>
+    </div>`;
+  const btn = document.createElement('button'); btn.className = 'restart-btn'; btn.textContent = UI.restart;
+  btn.addEventListener('click', ()=>{ current = 0; score = 0; answered.fill(false); render(); window.scrollTo({top:0, behavior:'smooth'}); });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>

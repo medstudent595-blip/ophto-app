@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #5 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e131a;--panel:#161d26;--panel-2:#1c2531;--panel-3:#212b39;--border:#2a3442;--gold:#cf9e57;--gold-bright:#e8c07f;--red:#c1584f;--green:#6fa287;--text:#e9e5da;--text-dim:#8f99a8;--text-dimmer:#616d7d;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°5 · Diagnostic masqué</div>
+  <h1>Une inflammation qui <em>disparaît</em> avant qu'on l'examine</h1>
+  <p class="sub">Un homme jeune, des poussées oculaires qui vont et viennent, et une angiographie qui parle plus fort que le fond d&#x27;œil. À vous de reconstituer le fil étiologique.</p>
+  <div class="patient-chip"><span>Patient <b>27 ans</b></span><span>Motif <b>BAV + rougeur récidivantes</b></span><span>Origine <b>Pourtour méditerranéen</b></span></div>
+</div>
+<div class="tracker-outer"><div class="tracker" id="tracker"></div></div>
+<div class="score-badge">Score · <b id="scoreLive">0/7</b></div>
+<div id="stages"></div>
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante</div>
+<footer>Cas pédagogique construit à partir du cours « Uvéites postérieures et vascularites rétiniennes » (DES d&#x27;Ophtalmologie) — à usage pédagogique</footer>
+<script>
+const STAGES = [{"label": "Anamnèse", "title": "Étape 1 — Interrogatoire policier", "html": "<div class=\"card exam\"><p>Homme de <b>27 ans</b>, originaire du pourtour méditerranéen, consulte pour des épisodes <b>récidivants</b> de baisse d'acuité visuelle et de rougeur oculaire, d'abord à droite puis touchant les deux yeux. Chaque poussée régresse partiellement de façon spontanée.</p><p>L'interrogatoire dirigé retrouve des <b>aphtes buccaux à répétition</b> et un antécédent d'<b>aphtose génitale</b> qu'il n'avait pas spontanément signalés. Pas de contage tuberculeux, pas de contact animalier, pas de voyage récent en zone d'endémie.</p></div>", "q": {"tag": "QCM 1 · Orientation étiologique", "text": "Quel élément de l'anamnèse a, à lui seul, la plus forte valeur d'orientation étiologique ici — et pourquoi est-il si souvent manqué ?", "options": ["La récidivance des poussées, car elle est spécifique d'une cause infectieuse", "L'aphtose bipolaire (buccale + génitale), rarement mentionnée spontanément par le patient mais primordiale, car elle pointe vers une vascularite systémique non granulomateuse à tropisme veineux", "L'origine géographique, qui suffit à elle seule à poser le diagnostic", "La bilatéralisation secondaire, qui élimine formellement toute cause infectieuse"], "correct": 1, "feedback": "L'aphtose buccale et génitale est le signe d'orientation majeur, mais elle est peu souvent rapportée spontanément — d'où l'intérêt de la rechercher activement. La récidivance et l'origine géographique sont des indices de terrain, non des critères suffisants. Retenez que la bilatéralisation n'élimine jamais une cause infectieuse à elle seule : c'est un raccourci dangereux."}}, {"label": "Segment antérieur", "title": "Étape 2 — Examen du segment antérieur en poussée", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">PRC</div><div class=\"v\">Fins, non granulomateux</div></div><div class=\"datacell\"><div class=\"k\">Hypopion</div><div class=\"v\">Mobile, fugace</div></div><div class=\"datacell\"><div class=\"k\">Synéchies</div><div class=\"v\">Présentes</div></div><div class=\"datacell\"><div class=\"k\">Caractère</div><div class=\"v\">NON granulomateux</div></div></div><p>Vu en poussée, l'œil droit présente une uvéite antérieure avec un <b>hypopion mobile</b>, se déplaçant avec la position de la tête, <b>sans</b> précipités rétrocornéens granulomateux. Il existe des synéchies postérieures débutantes.</p><p>Quelques jours plus tard, l'hypopion a spontanément disparu.</p></div>", "q": {"tag": "QCM 2 · Sémiologie discriminante", "text": "Cet hypopion mobile et fugace sur une uvéite strictement NON granulomateuse et synéchiante oriente le raisonnement dans quelle direction — et qu'est-ce qui le distingue de l'hypopion d'autres causes ?", "options": ["Vers une uvéite herpétique, car l'hypopion y est toujours granulomateux", "Vers une entité inflammatoire non granulomateuse à hypopion « froid » et fugace, à distinguer de l'hypopion « chaud » infectieux (endophtalmie) et de l'hypopion granulomateux — le caractère non granulomateux étant ici un critère fort", "Vers une sarcoïdose, car l'hypopion granulomateux en est caractéristique", "L'hypopion n'a aucune valeur d'orientation et ne reflète que la sévérité"], "correct": 1, "feedback": "L'hypopion reflète surtout la sévérité, mais son contexte compte : ici, il est mobile, fugace et surtout survient sur une uvéite NON granulomateuse et synéchiante — un profil très différent de l'hypopion « chaud » d'une endophtalmie infectieuse. Le caractère jamais granulomateux est un pilier du raisonnement étiologique dans cette entité, alors que sarcoïdose et VKH donnent des uvéites granulomateuses."}}, {"label": "Fond d'œil", "title": "Étape 3 — Fond d'œil en poussée", "html": "<div class=\"card exam\"><p>Au fond d'œil, on note des <b>foyers rétiniens superficiels blanc-jaunâtres</b>, d'aspect fugace, une <b>papillite</b> modérée, et des <b>hémorragies rétiniennes profondes</b> le long de troncs veineux engainés. La hyalite est diffuse.</p><p>Certains de ces foyers, revus à 10 jours, ont déjà régressé.</p></div>", "q": {"tag": "QCM 3 · Diagnostic différentiel redouté", "text": "Ce tableau de foyers rétiniens + hémorragies + vascularite avec hyalite chez un sujet jeune impose d'éliminer en urgence quel diagnostic différentiel, et sur quel argument évolutif se fonde surtout la distinction ?", "options": ["Une choriorétinopathie de Birdshot, distinguée par le typage HLA-A29", "Une rétinite virale nécrosante (ARN), distinguée notamment par le caractère extensif et confluent « en doigts de gant » et une progression très rapide, alors qu'ici les foyers sont fugaces et régressifs", "Une neurorétinite des griffes du chat, distinguée par l'étoile maculaire", "Un lymphome vitréo-rétinien, distingué par l'âge > 50 ans"], "correct": 1, "feedback": "Le piège majeur est la rétinite virale nécrosante (ARN) : panuvéite explosive, nécrose périphérique extensive et confluente « en doigts de gant », vascularite occlusive, hyalite majeure, progression en quelques jours. Ici, le caractère fugace et régressif des foyers, sans nécrose confluente extensive, oriente à l'inverse. C'est une distinction vitale car l'ARN est une urgence antivirale."}}, {"label": "Angiographie (AFG)", "title": "Étape 4 — Angiographie à la fluorescéine", "html": "<div class=\"card exam\"><p>L'AFG est bien plus riche que le fond d'œil : elle montre une <b>capillarite diffuse « en feuilles de fougère »</b>, une <b>fuite pariétale (leakage)</b> le long des veines, des territoires de <b>non-perfusion</b> et une <b>papillite infraclinique</b>.</p></div>", "q": {"tag": "QCM 4 · Interprétation d'imagerie", "text": "Pourquoi l'AFG est-elle décisive ici alors que le fond d'œil paraissait relativement pauvre, et que traduit précisément la capillarite « en feuilles de fougère » ?", "options": ["L'AFG explore la choroïde profonde, invisible au fond d'œil, et la « feuille de fougère » traduit une atteinte choroïdienne granulomateuse", "L'AFG révèle les capillarites — visibles UNIQUEMENT en angiographie sous forme de fuites capillaires diffuses — objectivant une vascularite occlusive à tropisme veineux bien plus étendue que ne le laissait supposer le fond d'œil", "L'AFG ne sert qu'à confirmer l'œdème maculaire et n'apporte rien sur les vaisseaux", "La « feuille de fougère » est un artefact de l'AFG sans valeur diagnostique"], "correct": 1, "feedback": "Les capillarites ne se voient qu'en angiographie (fuites capillaires) : le fond d'œil sous-estime donc massivement l'atteinte. La capillarite diffuse « en feuilles de fougère », associée à la fuite veineuse et aux zones de non-perfusion, signe une vascularite occlusive à prédominance veineuse — pattern typique de l'entité recherchée. L'ICG, elle, explorerait la choroïde (utile surtout dans les choroïdites primitives, ce qui n'est pas le mécanisme dominant ici)."}}, {"label": "OCT", "title": "Étape 5 — OCT maculaire et OCT-A", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">OCT maculaire</div><div class=\"v\">OMC</div></div><div class=\"datacell\"><div class=\"k\">OCT-A</div><div class=\"v\">Raréfaction capillaire périfovéolaire</div></div></div><p>L'<b>OCT maculaire</b> objective un <b>œdème maculaire cystoïde (OMC)</b>. Sur les poussées répétées, l'<b>OCT-angiographie</b> montre une <b>perte du lit capillaire</b> périfovéolaire (raréfaction), témoin d'une ischémie maculaire débutante.</p></div>", "q": {"tag": "QCM 5 · Physiopathologie & pronostic", "text": "Quelle cytokine joue un rôle central dans la genèse de cet œdème maculaire cystoïde inflammatoire, et quelle conséquence l'ischémie maculaire objectivée en OCT-A a-t-elle sur la stratégie ?", "options": ["L'IL-10, dont l'élévation imposerait une vitrectomie diagnostique immédiate pour lymphome", "L'IL-6, qui via une sécrétion anormale de VEGF favorise l'exsudation ; l'ischémie maculaire signe une atteinte sévère qui justifie une escalade thérapeutique rapide pour préserver le pronostic visuel", "Le TNF-α exclusivement, l'IL-6 n'ayant aucun rôle dans l'OMC", "Aucune cytokine n'est impliquée ; l'OMC est purement mécanique"], "correct": 1, "feedback": "L'IL-6 joue un rôle majeur dans l'OMC inflammatoire via une sécrétion anormale de VEGF responsable de l'exsudation. L'apparition d'une ischémie maculaire en OCT-A marque une atteinte sévère et un risque visuel élevé — argument pour ne pas se contenter d'un traitement minimal. (À noter : l'IL-10 est le biomarqueur du lymphome, un piège classique à ne pas confondre.)"}}, {"label": "Bilan & terrain", "title": "Étape 6 — Bilan orienté et critères", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Syphilis / Quantiféron</div><div class=\"v\">Négatifs</div></div><div class=\"datacell\"><div class=\"k\">Typage HLA</div><div class=\"v\">Allèle de susceptibilité +</div></div><div class=\"datacell\"><div class=\"k\">Signes extra-oculaires</div><div class=\"v\">Arthralgies, pseudo-folliculite</div></div></div><p>Le bilan infectieux (sérologie syphilis, Quantiféron) est négatif. Le <b>typage HLA</b> revient positif pour un allèle fortement associé à l'entité suspectée. Le patient rapporte par ailleurs des <b>arthralgies</b> et une <b>pseudo-folliculite cutanée</b>. Un test cutané spécifique est proposé.</p></div>", "q": {"tag": "QCM 6 · Terrain immunogénétique", "text": "Quel allèle HLA est fortement associé à l'entité ici suspectée, et quel test cutané est classiquement recherché dans ce cadre ?", "options": ["HLA-A29, et le test de Kveim", "HLA-B27, et l'intradermoréaction à la tuberculine", "HLA-B51, et le test pathergique (hyperréactivité cutanée au point de piqûre)", "HLA-DR15, et le patch-test allergénique"], "correct": 2, "feedback": "L'entité recherchée est fortement associée à HLA-B51, et le test pathergique (papule/pustule au point de piqûre cutanée à 24-48h) fait partie de ses critères diagnostiques. HLA-A29 renvoie au Birdshot, HLA-B27 aux uvéites antérieures non granulomateuses spondyloarthritiques — deux distracteurs de terrain à bien séparer."}}, {"label": "Décision thérapeutique", "title": "Étape 7 — Stratégie thérapeutique", "html": "<div class=\"card exam\"><p>Devant une atteinte bilatérale, occlusive, avec ischémie maculaire et menace visuelle, la question du traitement de fond se pose d'emblée.</p></div>", "q": {"tag": "QCM 7 · Thérapeutique", "text": "Quelle est la logique thérapeutique la plus adaptée à cette forme sévère et menaçante, et pourquoi la corticothérapie seule est-elle insuffisante ?", "options": ["Corticothérapie locale isolée, car l'atteinte est purement antérieure", "Corticothérapie générale en 1ère ligne, mais cette entité étant volontiers réfractaire et occlusive, une escalade rapide vers un immunosuppresseur puis une biothérapie (anti-TNF-α ou interféron α) est justifiée, parfois d'emblée en cas de menace visuelle à court terme", "Antiviraux IV en urgence, comme pour une nécrose rétinienne aiguë", "Abstention thérapeutique avec simple surveillance, les poussées régressant spontanément"], "correct": 1, "feedback": "La corticothérapie générale contrôle la poussée mais cette vascularite occlusive est volontiers réfractaire et récidivante, avec un risque de cécité par atrophie optique/rétinienne diffuse. Une escalade rapide vers l'immunosuppression puis les biothérapies (anti-TNF-α, interféron α) — éventuellement d'emblée si menace visuelle — est la stratégie moderne. L'abstention exposerait à des dégâts ischémiques cumulatifs irréversibles."}}];
+const REVEAL = {"title": "Diagnostic final : maladie de Behçet à expression oculaire", "intro_html": "<p style=\"line-height:1.7;color:#dcd7cb;font-size:14.5px;\">Vascularite systémique <b style=\"color:var(--gold-bright)\">occlusive non granulomateuse</b> à tropisme veineux, touchant l'homme jeune du pourtour méditerranéen/Asie, fortement associée à <b style=\"color:var(--gold-bright)\">HLA-B51</b>. L'atteinte oculaire associe hypopion fugace non granulomateux, panuvéite, foyers rétiniens fugaces et surtout une capillarite occlusive « en feuilles de fougère » à l'angiographie — bien plus parlante que le fond d'œil. Le diagnostic repose sur un faisceau d'arguments (critères ICBD > 4).</p>", "ddx_headers": "<th>Entité</th><th>Terrain / marqueur</th><th>Signe discriminant</th>", "ddx_rows": "<tr class=\"highlight\"><td>Behçet</td><td>Homme jeune, HLA-B51, ICBD>4</td><td>Hypopion fugace non granulomateux, capillarite « en feuilles de fougère »</td></tr><tr><td>Rétinite virale (ARN)</td><td>Immunocompétent</td><td>Nécrose confluente extensive « en doigts de gant », urgence</td></tr><tr><td>Sarcoïdose</td><td>ECA, ADP hilaires</td><td>Uvéite GRANULOMATEUSE, périphlébites « taches de bougie »</td></tr><tr><td>Uvéite HLA-B27</td><td>Spondyloarthrite</td><td>Antérieure non granulomateuse, hypopion, mais SANS vascularite postérieure occlusive</td></tr><tr><td>Birdshot</td><td>Femme mûre, HLA-A29</td><td>Taches choroïdiennes crémeuses, PAS de synéchies ni hypopion</td></tr>", "trap_title": "Le vrai piège de ce cas", "trap_html": "<p>Deux pièges se cumulent. D'abord <b>sémiologique</b> : le fond d'œil sous-estime l'atteinte — c'est l'angiographie qui révèle l'ampleur de la vascularite occlusive (capillarite « en feuilles de fougère »). Ensuite <b>diagnostique</b> : les foyers nécrotiques peuvent faire craindre une rétinite virale (urgence antivirale), et seul le caractère fugace/régressif et le faisceau extra-oculaire (aphtose bipolaire, pseudo-folliculite, HLA-B51) redressent le raisonnement.</p><p><b>Règle à retenir :</b> devant toute uvéite non granulomateuse récidivante de l'homme jeune méditerranéen, chercher activement l'aphtose bipolaire et faire une angiographie même si le fond d'œil paraît pauvre.</p>", "discussion": "Face à des foyers nécrotico-hémorragiques bilatéraux, comment argumenteriez-vous, point par point, la distinction entre cette entité et une rétinite virale nécrosante — et quel examen intraoculaire trancherait en cas de doute persistant ?"};
+const UI = {
+  locked: "Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante", next: "Étape suivante →", final: "Voir la synthèse finale →",
+  restart: "↺ Recommencer le cas", scoreLabel: "Score au parcours :", reveal: "Révélation du diagnostic",
+  exact: "Exact.", notquite: "Pas tout à fait."
+};
+let current = 0, score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker'); t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : UI.reveal) + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages'); root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++) root.appendChild(renderStage(i));
+  if(current >= STAGES.length){ root.appendChild(renderSummary()); document.getElementById('lockedNote').style.display='none'; }
+  else document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `<div class="stage-num"><span class="dot"></span>${s.title}</div>${s.html}`;
+  const qb = document.createElement('div'); qb.className = 'qblock';
+  qb.innerHTML = `<div class="qhead"><div class="qtag">${s.q.tag}</div><div class="qtext">${s.q.text}</div></div><div class="options" id="opts-${i}"></div><div class="feedback" id="fb-${i}"></div>`;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D','E','F'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div'); o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct'); else o.classList.add('faded');
+    } else o.addEventListener('click', ()=>handleAnswer(i, oi));
+    optsEl.appendChild(o);
+  });
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? UI.exact : UI.notquite}</b> ${s.q.feedback}`;
+  }
+  wrap.appendChild(qb);
+  if(answered[i] && i === current){
+    const btn = document.createElement('button'); btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? UI.final : UI.next;
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div'); foot.className = 'stage-footer'; foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${UI.reveal}</div>
+    <div class="summary">
+      <h2>${REVEAL.title}</h2>
+      <div class="score-big">${UI.scoreLabel} <span>${score} / ${STAGES.length}</span></div>
+      ${REVEAL.intro_html}
+      <table class="ddx"><tr>${REVEAL.ddx_headers}</tr>${REVEAL.ddx_rows}</table>
+      <div class="reflect-box">
+        <div class="rtitle">${REVEAL.trap_title}</div>
+        ${REVEAL.trap_html}
+        <p><b>Discussion :</b> ${REVEAL.discussion}</p>
+      </div>
+    </div>`;
+  const btn = document.createElement('button'); btn.className = 'restart-btn'; btn.textContent = UI.restart;
+  btn.addEventListener('click', ()=>{ current = 0; score = 0; answered.fill(false); render(); window.scrollTo({top:0, behavior:'smooth'}); });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>

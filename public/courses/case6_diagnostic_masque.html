@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #6 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e131a;--panel:#161d26;--panel-2:#1c2531;--panel-3:#212b39;--border:#2a3442;--gold:#cf9e57;--gold-bright:#e8c07f;--red:#c1584f;--green:#6fa287;--text:#e9e5da;--text-dim:#8f99a8;--text-dimmer:#616d7d;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°6 · Diagnostic masqué</div>
+  <h1>Quand la <em>choroïde</em> se soulève des deux côtés</h1>
+  <p class="sub">Une baisse de vision bilatérale brutale, précédée de signes qui n&#x27;étaient pas oculaires. L&#x27;imagerie multimodale va tout dire — encore faut-il la lire dans le bon ordre.</p>
+  <div class="patient-chip"><span>Patiente <b>31 ans</b></span><span>Motif <b>BAV bilatérale brutale</b></span><span>Phototype <b>Foncé (mélanoderme)</b></span></div>
+</div>
+<div class="tracker-outer"><div class="tracker" id="tracker"></div></div>
+<div class="score-badge">Score · <b id="scoreLive">0/6</b></div>
+<div id="stages"></div>
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante</div>
+<footer>Cas pédagogique construit à partir des cours d&#x27;uvéites du DES d&#x27;Ophtalmologie (d&#x27;après EMC-Ophtalmologie 2025) — à usage pédagogique</footer>
+<script>
+const STAGES = [{"label": "Anamnèse", "title": "Étape 1 — Phase prodromique", "html": "<div class=\"card exam\"><p>Patiente de <b>31 ans</b>, phototype foncé, consulte pour une <b>baisse de vision bilatérale brutale</b>. Elle rapporte, dans les jours précédant l'atteinte oculaire, des <b>céphalées</b>, une <b>raideur de nuque</b>, des <b>acouphènes</b> et une gêne auditive, ainsi qu'une hypersensibilité du cuir chevelu.</p><p>Pas de traumatisme oculaire, pas d'antécédent de chirurgie oculaire.</p></div>", "q": {"tag": "QCM 1 · Chronologie diagnostique", "text": "Cette séquence — prodrome neuro-méningé et auditif PUIS atteinte oculaire bilatérale — a une grande valeur. Qu'implique-t-elle sur le mécanisme, et pourquoi l'absence de traumatisme est-elle explicitement notée ?", "options": ["Elle évoque une origine infectieuse virale, et l'absence de traumatisme élimine une endophtalmie", "Elle évoque une atteinte auto-immune dirigée contre les mélanocytes (présents dans l'uvée, les méninges, l'oreille interne, la peau) ; l'absence de traumatisme/chirurgie oculaire est notée car elle est requise pour retenir ce diagnostic et écarter une ophtalmie sympathique", "Elle évoque une hypertension intracrânienne isolée", "Elle n'a aucune valeur : les prodromes sont trop peu spécifiques"], "correct": 1, "feedback": "Le tropisme pour les tissus riches en mélanocytes (uvée, méninges, oreille interne, peau) explique la constellation neuro-auditivo-oculaire. L'absence de traumatisme perforant/chirurgie oculaire est un critère requis : elle permet de distinguer cette entité d'une ophtalmie sympathique, son grand mime post-traumatique."}}, {"label": "Fond d'œil", "title": "Étape 2 — Fond d'œil bilatéral", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Latéralité</div><div class=\"v\">Bilatérale symétrique</div></div><div class=\"datacell\"><div class=\"k\">DSR</div><div class=\"v\">Multifocaux, pôle post.</div></div><div class=\"datacell\"><div class=\"k\">Papille</div><div class=\"v\">Hyperhémique</div></div><div class=\"datacell\"><div class=\"k\">Vascularite veineuse</div><div class=\"v\">ABSENTE</div></div></div><p>Le fond d'œil, <b>bilatéral et symétrique</b>, montre de <b>multiples décollements séreux rétiniens (DSR)</b> au pôle postérieur, des <b>plis choroïdiens et rétiniens</b>, une <b>hyperhémie papillaire</b>. La hyalite est minime.</p><p>Point notable : <b>pas de vascularite veineuse</b> rétinienne visible.</p></div>", "q": {"tag": "QCM 2 · Signe négatif discriminant", "text": "Dans un tableau de panuvéite avec DSR multifocal bilatéral, l'ABSENCE de vascularite veineuse rétinienne est un argument fin. Que permet-elle de faire ?", "options": ["Elle élimine toute cause inflammatoire et impose de chercher une cause infectieuse", "Elle aide à distinguer cette panuvéite granulomateuse des autres : à l'étage rétinien, cette entité ne donne pas de vasculite veineuse, contrairement à d'autres panuvéites (sarcoïdose, Behçet)", "Elle signe une origine tumorale (lymphome)", "Elle n'a aucune valeur car la vascularite est toujours absente dans les DSR"], "correct": 1, "feedback": "C'est un signe négatif utile : à l'étage rétinien, cette entité ne comporte pas de vasculite veineuse, ce qui aide à la différencier d'autres panuvéites granulomateuses ou occlusives (sarcoïdose avec périphlébites, Behçet avec vascularite occlusive veineuse). Le DSR bilatéral associé à une réaction inflammatoire intraoculaire est en revanche très caractéristique de la phase aiguë."}}, {"label": "OCT", "title": "Étape 3 — OCT maculaire (swept-source / EDI)", "html": "<div class=\"card exam\"><p>L'OCT maculaire est très évocateur :</p><ul><li><b>DSR multilobulaire</b> compartimenté par des <b>septa sous-rétiniens</b> reliant l'épithélium pigmentaire au neuroépithélium externe</li><li><b>Décollement bacillaire</b> de la rétine externe (clivage au niveau du segment interne des photorécepteurs)</li><li><b>Plis (ondulations) de l'épithélium pigmentaire</b></li><li><b>Épaississement choroïdien</b> majeur, à la limite du mesurable</li></ul></div>", "q": {"tag": "QCM 3 · Interprétation OCT fine", "text": "Les septa sous-rétiniens compartimentant le DSR et l'épaississement choroïdien massif traduisent quoi, physiopathologiquement, et que suggère la présence d'un décollement bacillaire ?", "options": ["Une simple choriorétinopathie séreuse centrale, les septa étant des dépôts lipidiques", "Une exsudation inflammatoire d'origine choriocapillaire (matériel fibrineux formant les septa) sur une choroïdite diffuse épaississante ; le décollement bacillaire est associé à une acuité initiale plus basse et signe la sévérité", "Une traction vitréomaculaire pure sans composante inflammatoire", "Une néovascularisation choroïdienne active"], "correct": 1, "feedback": "Les septa sous-rétiniens résultent de l'accumulation de matériel fibrineux issu de l'exsudation inflammatoire de la choriocapillaire ; l'épaississement choroïdien reflète l'intensité de la choroïdite (plus l'inflammation est sévère, plus la choroïde est épaisse, parfois non mesurable). Le décollement bacillaire, décrit plus récemment, est associé à une AV initiale plus basse — un marqueur de sévérité."}}, {"label": "Angiographie", "title": "Étape 4 — AFG et ICG", "html": "<div class=\"card exam\"><p><b>Angiographie à la fluorescéine (temps tardifs) :</b> multiples <b>points de fuite (pin points)</b> avec accumulation progressive du colorant dans l'espace sous-rétinien, <b>hyperfluorescence papillaire</b>, lignes hypofluorescentes radiaires (plis choroïdiens).</p><p><b>Angiographie ICG :</b> zones <b>hypofluorescentes de retard au remplissage choroïdien</b>, traduisant l'atteinte choroïdienne diffuse.</p></div>", "q": {"tag": "QCM 4 · Complémentarité AFG / ICG", "text": "Comment AFG et ICG se complètent-elles ici, et quel est le mécanisme des « pin points » à l'AFG ?", "options": ["L'AFG et l'ICG montrent exactement la même chose ; l'une est donc inutile", "Les pin points de l'AFG traduisent des points de diffusion à travers un épithélium pigmentaire altéré (exsudation vers l'espace sous-rétinien), tandis que l'ICG objective l'hypoperfusion/retard choroïdien diffus — l'AFG montre la conséquence (fuite), l'ICG la cause (choroïdite)", "L'ICG explore la rétine superficielle et l'AFG la choroïde profonde", "Les pin points sont des microanévrismes ischémiques sans rapport avec l'EP"], "correct": 1, "feedback": "Les pin points correspondent à des points de diffusion du colorant à travers un EP rendu perméable par la choroïdite sous-jacente, avec accumulation progressive dans l'espace sous-rétinien (d'où les DSR). L'ICG, elle, visualise directement l'atteinte choroïdienne (retard de remplissage, hypofluorescence). AFG = conséquence exsudative ; ICG = cause choroïdienne. C'est la complémentarité clé du diagnostic à la phase aiguë."}}, {"label": "Bilan d'exclusion", "title": "Étape 5 — Critères et diagnostics d'exclusion", "html": "<div class=\"card exam\"><p>Conformément aux critères de classification récents, un bilan d'exclusion est réalisé avant de retenir le diagnostic.</p><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Sérologie syphilis (tréponémique)</div><div class=\"v\">Négative</div></div><div class=\"datacell\"><div class=\"k\">Quantiféron / imagerie thoracique</div><div class=\"v\">Négatifs, pas d'ADP hilaire</div></div><div class=\"datacell\"><div class=\"k\">Antécédent traumatique/chirurgical oculaire</div><div class=\"v\">Absent</div></div></div></div>", "q": {"tag": "QCM 5 · Critères de classification", "text": "Selon les critères SUN 2021, deux examens négatifs sont exigés dans TOUS les cas avant de retenir ce diagnostic. Lesquels, et quel diagnostic post-traumatique reste à écarter cliniquement ?", "options": ["HLA-A29 et Quantiféron ; écarter un Birdshot", "Sérologie syphilitique et tuberculose (Quantiféron/imagerie) négatives ; écarter une ophtalmie sympathique en vérifiant l'absence de traumatisme perforant ou de chirurgie vitréorétinienne", "Sérologie de Lyme et ANCA ; écarter une granulomatose avec polyangéite", "IL-10 vitréen et IRM cérébrale ; écarter un lymphome"], "correct": 1, "feedback": "Les critères SUN 2021 exigent dans tous les cas une sérologie syphilitique et un bilan tuberculeux négatifs, ainsi que l'absence de traumatisme perforant ou de chirurgie vitréorétinienne — cette dernière condition servant à écarter l'ophtalmie sympathique, mime post-traumatique de cette entité. La sarcoïdose (ADP hilaires, granulomes) figure aussi parmi les exclusions."}}, {"label": "Traitement & pronostic", "title": "Étape 6 — Décision thérapeutique et fenêtre d'action", "html": "<div class=\"card exam\"><p>Le diagnostic étant retenu à la phase aiguë, la question du timing thérapeutique est centrale : la maladie évolue classiquement en quatre phases, et certaines complications tardives (dépigmentation « en coucher de soleil », récurrences) sont dites <b>évitables</b>.</p></div>", "q": {"tag": "QCM 6 · Fenêtre thérapeutique", "text": "Quelle est la logique thérapeutique, et pourquoi parle-t-on de complications tardives « évitables » ?", "options": ["Un traitement antiviral précoce, car l'entité est virale", "Une corticothérapie systémique précoce et massive (± immunosuppresseurs), car un traitement instauré dès la phase aiguë interrompt la séquence évolutive et prévient la chronicité, les récurrences et le fond d'œil « en coucher de soleil » — d'où le terme de complications évitables", "Une simple surveillance, les DSR se résorbant toujours spontanément sans séquelle", "Une corticothérapie strictement locale, l'atteinte étant limitée à la macula"], "correct": 1, "feedback": "Le traitement repose sur une corticothérapie systémique précoce et massive, souvent complétée d'immunosuppresseurs. Instauré dès la phase aiguë, il interrompt la séquence en quatre phases et prévient le passage à la chronicité, les récurrences et la dépigmentation « en coucher de soleil » — complications qualifiées d'évitables car directement liées à un traitement retardé ou insuffisant. Le pronostic visuel dépend étroitement de cette précocité."}}];
+const REVEAL = {"title": "Diagnostic final : maladie de Vogt-Koyanagi-Harada (phase aiguë)", "intro_html": "<p style=\"line-height:1.7;color:#dcd7cb;font-size:14.5px;\">Panuvéite <b style=\"color:var(--gold-bright)\">granulomateuse bilatérale</b> par auto-immunité dirigée contre les mélanocytes, touchant l'adulte jeune de phototype foncé. La phase aiguë associe choroïdite diffuse, <b style=\"color:var(--gold-bright)\">DSR multifocaux</b> avec septa sous-rétiniens et épaississement choroïdien à l'OCT, pin points + hyperfluorescence papillaire à l'AFG, hypofluorescence choroïdienne à l'ICG, et des prodromes neuro-méningés/auditifs. Diagnostic par imagerie multimodale, après exclusion de syphilis et tuberculose.</p>", "ddx_headers": "<th>Entité</th><th>Terrain / marqueur</th><th>Signe discriminant</th>", "ddx_rows": "<tr class=\"highlight\"><td>VKH aigu</td><td>Adulte jeune, phototype foncé</td><td>DSR multilobulaire à septa, choroïde épaissie, PAS de vasculite veineuse</td></tr><tr><td>Ophtalmie sympathique</td><td>ATCD traumatisme/chirurgie oculaire</td><td>Tableau quasi identique MAIS post-traumatique</td></tr><tr><td>Sarcoïdose</td><td>ECA, ADP hilaires</td><td>Granulomes, périphlébites « taches de bougie », vasculite présente</td></tr><tr><td>Syphilis</td><td>Sérologie tréponémique</td><td>Placoïde postérieure, à exclure systématiquement</td></tr><tr><td>CRSC bulleuse</td><td>Corticoïdes, stress</td><td>DSR SANS réaction inflammatoire, aggravée par les corticoïdes</td></tr>", "trap_title": "Le vrai piège de ce cas", "trap_html": "<p>Le piège n'est pas de reconnaître le DSR bilatéral, mais de <b>lire l'imagerie dans le bon ordre</b> et de ne pas sauter les exclusions. Deux mimes redoutables : l'<b>ophtalmie sympathique</b> (tableau superposable mais post-traumatique — d'où la mention explicite de l'absence de traumatisme) et la <b>CRSC bulleuse</b> (DSR sans réaction inflammatoire, qu'une corticothérapie aggraverait). Confondre les deux mènerait à des décisions opposées.</p><p><b>Règle à retenir :</b> devant un DSR multifocal bilatéral avec réaction inflammatoire, penser à cette entité, exclure syphilis + tuberculose, vérifier l'absence de traumatisme, et traiter tôt et fort.</p>", "discussion": "Un DSR bilatéral peut relever de cette entité OU d'une CRSC atypique bulleuse (aggravée par les corticoïdes). Sur quels arguments d'imagerie multimodale précis trancheriez-vous avant d'introduire une corticothérapie massive — et que redouteriez-vous en cas d'erreur ?"};
+const UI = {
+  locked: "Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante", next: "Étape suivante →", final: "Voir la synthèse finale →",
+  restart: "↺ Recommencer le cas", scoreLabel: "Score au parcours :", reveal: "Révélation du diagnostic",
+  exact: "Exact.", notquite: "Pas tout à fait."
+};
+let current = 0, score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker'); t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : UI.reveal) + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages'); root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++) root.appendChild(renderStage(i));
+  if(current >= STAGES.length){ root.appendChild(renderSummary()); document.getElementById('lockedNote').style.display='none'; }
+  else document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `<div class="stage-num"><span class="dot"></span>${s.title}</div>${s.html}`;
+  const qb = document.createElement('div'); qb.className = 'qblock';
+  qb.innerHTML = `<div class="qhead"><div class="qtag">${s.q.tag}</div><div class="qtext">${s.q.text}</div></div><div class="options" id="opts-${i}"></div><div class="feedback" id="fb-${i}"></div>`;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D','E','F'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div'); o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct'); else o.classList.add('faded');
+    } else o.addEventListener('click', ()=>handleAnswer(i, oi));
+    optsEl.appendChild(o);
+  });
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? UI.exact : UI.notquite}</b> ${s.q.feedback}`;
+  }
+  wrap.appendChild(qb);
+  if(answered[i] && i === current){
+    const btn = document.createElement('button'); btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? UI.final : UI.next;
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div'); foot.className = 'stage-footer'; foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${UI.reveal}</div>
+    <div class="summary">
+      <h2>${REVEAL.title}</h2>
+      <div class="score-big">${UI.scoreLabel} <span>${score} / ${STAGES.length}</span></div>
+      ${REVEAL.intro_html}
+      <table class="ddx"><tr>${REVEAL.ddx_headers}</tr>${REVEAL.ddx_rows}</table>
+      <div class="reflect-box">
+        <div class="rtitle">${REVEAL.trap_title}</div>
+        ${REVEAL.trap_html}
+        <p><b>Discussion :</b> ${REVEAL.discussion}</p>
+      </div>
+    </div>`;
+  const btn = document.createElement('button'); btn.className = 'restart-btn'; btn.textContent = UI.restart;
+  btn.addEventListener('click', ()=>{ current = 0; score = 0; answered.fill(false); render(); window.scrollTo({top:0, behavior:'smooth'}); });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #8 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e131a;--panel:#161d26;--panel-2:#1c2531;--panel-3:#212b39;--border:#2a3442;--gold:#cf9e57;--gold-bright:#e8c07f;--red:#c1584f;--green:#6fa287;--text:#e9e5da;--text-dim:#8f99a8;--text-dimmer:#616d7d;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°8 · Diagnostic masqué</div>
+  <h1>Trois organes, <em>une seule</em> microvasculopathie</h1>
+  <p class="sub">Une femme jeune, des scotomes qui se déplacent, et un vitré étonnamment calme. Le diagnostic ne se joue pas que dans l&#x27;œil.</p>
+  <div class="patient-chip"><span>Patiente <b>26 ans</b></span><span>Motif <b>Scotomes + BAV fluctuants</b></span><span>Signes associés <b>Céphalées, baisse d&#x27;audition</b></span></div>
+</div>
+<div class="tracker-outer"><div class="tracker" id="tracker"></div></div>
+<div class="score-badge">Score · <b id="scoreLive">0/6</b></div>
+<div id="stages"></div>
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante</div>
+<footer>Cas pédagogique construit à partir des cours d&#x27;uvéites du DES d&#x27;Ophtalmologie — à usage pédagogique</footer>
+<script>
+const STAGES = [{"label": "Anamnèse", "title": "Étape 1 — Un tableau qui déborde de l'œil", "html": "<div class=\"card exam\"><p>Femme de <b>26 ans</b>, sans antécédent, consulte pour des <b>scotomes</b> et une baisse d'acuité visuelle <b>fluctuants</b>, touchant les deux yeux à des degrés variables. À l'interrogatoire dirigé : <b>céphalées</b> récentes inhabituelles, épisodes de <b>confusion</b>, et une <b>baisse d'audition</b> perçue surtout dans les sons graves.</p></div>", "q": {"tag": "QCM 1 · Vision d'ensemble", "text": "Cette constellation — atteinte visuelle + neurologique + auditive chez une femme jeune — doit faire évoquer une atteinte touchant simultanément trois territoires. Lequel des raisonnements est le plus juste ?", "options": ["Trois pathologies indépendantes qui coïncident par hasard", "Une atteinte d'un tissu commun aux trois organes ; ici, une microvasculopathie touchant les petits vaisseaux de la rétine, du cerveau et de la cochlée réalise une triade évocatrice", "Une atteinte des mélanocytes, communs à l'œil, aux méninges et à l'oreille", "Une origine strictement psychogène vu le caractère fluctuant"], "correct": 1, "feedback": "La triade rétine + cerveau + cochlée oriente vers une microvasculopathie occlusive des petits vaisseaux touchant ces trois territoires. Attention à ne pas confondre avec l'atteinte des mélanocytes (uvée/méninges/oreille/peau) d'une autre entité : ici, il n'y a pas de composante cutanée ni de choroïdite, mais des occlusions vasculaires — le mécanisme est différent."}}, {"label": "Fond d'œil", "title": "Étape 2 — Fond d'œil : le vitré est calme", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Type d&#x27;atteinte</div><div class=\"v\">Occlusions artérielles de branche</div></div><div class=\"datacell\"><div class=\"k\">Paroi artérielle</div><div class=\"v\">Plaques de Gass</div></div><div class=\"datacell\"><div class=\"k\">Hyalite</div><div class=\"v\">ABSENTE</div></div></div><p>Le fond d'œil montre des <b>occlusions de branches artérielles rétiniennes</b>, des <b>nodules cotonneux</b>, et des dépôts blanc-jaunâtres sur la paroi artérielle, à distance des bifurcations (<b>plaques de Gass</b>).</p><p>Élément frappant : <b>absence de hyalite</b> — le vitré est calme malgré une atteinte rétinienne marquée.</p></div>", "q": {"tag": "QCM 2 · Signe négatif clé", "text": "L'absence de hyalite associée à des occlusions artérielles et des plaques de Gass a une double valeur. Laquelle ?", "options": ["Elle est banale et n'apporte rien au raisonnement", "Un vitré non inflammatoire oriente vers des vascularites peu ou non inflammatoires (lupus, périartérite noueuse, microvasculopathie occlusive de type Susac) ; les plaques de Gass (dépôts pariétaux à distance des bifurcations) sont particulièrement évocatrices de cette dernière", "Elle élimine formellement une origine occlusive et impose de chercher une choroïdite", "Elle signe obligatoirement une rétinite virale nécrosante"], "correct": 1, "feedback": "Un vitré calme malgré une atteinte rétinienne oriente vers les vascularites peu inflammatoires (lupus, PAN, microvasculopathie occlusive). Les plaques de Gass — dépôts blanc-jaunâtres sur la paroi artérielle, situés à distance des bifurcations — sont un signe distinctif fort. C'est un point qui différencie cette entité de l'IRVAN, où les dilatations anévrismales siègent AUX bifurcations artérielles."}}, {"label": "Angiographie", "title": "Étape 3 — Angiographie à la fluorescéine", "html": "<div class=\"card exam\"><p>L'AFG révèle de <b>multiples occlusions artérielles segmentaires</b> délimitant des <b>zones de non-perfusion</b>. On note un <b>staining pariétal artériel</b> à distance des zones occluses (hyperfluorescence de la paroi sans anévrisme), signant l'atteinte inflammatoire de la paroi elle-même.</p></div>", "q": {"tag": "QCM 3 · Interprétation d'imagerie", "text": "Le staining pariétal artériel à distance des occlusions, SANS dilatation anévrismale, permet une distinction fine avec une autre vascularite idiopathique. Laquelle, et sur quel critère ?", "options": ["Avec la maladie de Behçet, car la « feuille de fougère » y est absente", "Avec l'IRVAN : celui-ci associe des dilatations anévrismales aux bifurcations artérielles (« épines sur une branche de rosier »), absentes ici où l'on n'observe qu'un staining pariétal sans anévrisme", "Avec le Birdshot, distingué par l'imprégnation veineuse", "Avec la sarcoïdose, distinguée par les granulomes choroïdiens"], "correct": 1, "feedback": "L'IRVAN se caractérise par des dilatations anévrismales aux bifurcations artérielles (aspect « épines sur une branche de rosier » / « en bourgeons » hyperfluorescents). Ici, on a un staining pariétal artériel et des occlusions SANS anévrisme — profil différent, orientant vers la microvasculopathie occlusive. Les deux partagent une atteinte artérielle occlusive du sujet jeune, d'où l'intérêt de ce critère discriminant."}}, {"label": "OCT", "title": "Étape 4 — OCT et retentissement rétinien", "html": "<div class=\"card exam\"><p>L'OCT objective un <b>amincissement des couches rétiniennes internes</b> dans les territoires occlus (séquelle ischémique), sans œdème maculaire cystoïde marqué. L'OCT-angiographie confirme une <b>raréfaction capillaire</b> en regard des zones de non-perfusion.</p></div>", "q": {"tag": "QCM 4 · Corrélation structure-fonction", "text": "Cet amincissement des couches internes en OCT, dans les territoires occlus, traduit quoi — et pourquoi est-il cohérent avec le caractère occlusif (et non exsudatif) de l'atteinte ?", "options": ["Une simple variation physiologique sans valeur", "Une atrophie ischémique des couches internes (vascularisées par le réseau rétinien occlus), cohérente avec une atteinte occlusive artérielle plutôt qu'avec une exsudation inflammatoire diffuse qui donnerait surtout un œdème", "Un œdème maculaire cystoïde débutant", "Une néovascularisation choroïdienne"], "correct": 1, "feedback": "Les couches internes de la rétine sont irriguées par le réseau vasculaire rétinien ; leur amincissement dans les territoires occlus signe l'atrophie ischémique post-occlusive. C'est cohérent avec le mécanisme occlusif (ischémie → atrophie) plutôt qu'exsudatif (qui donnerait un œdème). La corrélation avec les zones de non-perfusion de l'OCT-A referme la boucle structure-fonction."}}, {"label": "Imagerie cérébrale", "title": "Étape 5 — L'examen qui fait basculer le diagnostic", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">IRM cérébrale</div><div class=\"v\">Lésions FLAIR, corps calleux</div></div><div class=\"datacell\"><div class=\"k\">Audiogramme</div><div class=\"v\">Hypoacousie de perception, graves</div></div></div><p>Devant les céphalées et la confusion, une <b>IRM cérébrale</b> est demandée. Elle montre de <b>multiples lésions arrondies en hypersignal FLAIR</b>, sus- et sous-tentorielles, dont certaines touchent le <b>corps calleux</b>. Un audiogramme confirme une <b>hypoacousie de perception</b> prédominant sur les fréquences graves.</p></div>", "q": {"tag": "QCM 5 · Signe extra-oculaire décisif", "text": "Quel élément de l'IRM est considéré comme quasi constant et particulièrement évocateur dans cette entité, complétant la triade ?", "options": ["Un rehaussement méningé diffus, spécifique de cette entité", "L'atteinte du corps calleux (lésions caractéristiques), quasi constante et très évocatrice, qui complète la triade rétine-cerveau-cochlée", "Une atteinte isolée des noyaux gris centraux", "Une prise de contraste des nerfs optiques exclusivement"], "correct": 1, "feedback": "L'atteinte du corps calleux à l'IRM est quasi constante et hautement évocatrice de cette microvasculopathie. Associée à la rétinopathie occlusive (plaques de Gass) et à l'atteinte cochléovestibulaire (hypoacousie des fréquences graves), elle complète la triade caractéristique. C'est l'imagerie extra-oculaire qui verrouille ici le diagnostic — l'œil seul ne suffisait pas."}}, {"label": "Traitement", "title": "Étape 6 — Stratégie thérapeutique", "html": "<div class=\"card exam\"><p>Le diagnostic étant posé sur la triade, un traitement est instauré, tenant compte à la fois de la composante inflammatoire et de la composante occlusive/thrombotique.</p></div>", "q": {"tag": "QCM 6 · Logique thérapeutique", "text": "Quelle combinaison thérapeutique est la plus cohérente avec la double nature (inflammatoire + occlusive) de cette entité ?", "options": ["Antiviraux seuls, comme pour une nécrose rétinienne", "Corticoïdes et immunosuppresseurs/biothérapie pour la composante inflammatoire, associés à des antithrombotiques pour la composante microvasculaire occlusive", "Photocoagulation laser isolée, comme traitement de référence unique", "Abstention et surveillance, l'atteinte régressant spontanément sans risque"], "correct": 1, "feedback": "La prise en charge associe le contrôle de l'inflammation (corticoïdes, immunosuppresseurs, voire biothérapie) et un volet antithrombotique visant la composante microvasculaire occlusive. Le laser (référence de l'IRVAN) n'est pas le pivot ici. L'enjeu est neurologique autant qu'ophtalmologique, d'où une prise en charge multidisciplinaire."}}];
+const REVEAL = {"title": "Diagnostic final : syndrome de Susac (SICRET syndrome)", "intro_html": "<p style=\"line-height:1.7;color:#dcd7cb;font-size:14.5px;\">Microvasculopathie occlusive idiopathique de la femme jeune, définie par une triade — <b style=\"color:var(--gold-bright)\">rétinopathie</b> (occlusions de branches artérielles, plaques de Gass, vitré calme), <b style=\"color:var(--gold-bright)\">encéphalopathie</b> (IRM avec atteinte quasi constante du corps calleux) et <b style=\"color:var(--gold-bright)\">atteinte cochléovestibulaire</b> (hypoacousie des fréquences graves). La triade est rarement complète d'emblée, ce qui rend le diagnostic difficile.</p>", "ddx_headers": "<th>Entité</th><th>Terrain</th><th>Signe discriminant</th>", "ddx_rows": "<tr class=\"highlight\"><td>Susac</td><td>Femme jeune (~30 ans)</td><td>Triade rétine/cerveau/cochlée, plaques de Gass, vitré CALME, corps calleux</td></tr><tr><td>IRVAN</td><td>Sujet jeune, idiopathique</td><td>Anévrismes AUX bifurcations artérielles + neurorétinite</td></tr><tr><td>Behçet</td><td>Homme jeune, HLA-B51</td><td>Vascularite occlusive veineuse, hypopion, hyalite présente</td></tr><tr><td>Lupus / PAN</td><td>Auto-immunité</td><td>Vascularite peu inflammatoire, vitré calme, contexte systémique</td></tr><tr><td>VKH</td><td>Phototype foncé</td><td>Choroïdite/DSR + mélanocytes (peau), PAS d'occlusion artérielle</td></tr>", "trap_title": "Le vrai piège de ce cas", "trap_html": "<p>Le piège est de <b>rester dans l'œil</b>. Une rétinopathie occlusive au vitré calme est peu spécifique prise isolément ; c'est le fait de relier les scotomes visuels aux céphalées, à la confusion et à l'hypoacousie — puis de demander l'IRM et l'audiogramme — qui révèle la triade. Autre piège fin : ne pas confondre avec l'IRVAN, dont les anévrismes siègent aux bifurcations, alors qu'ici il n'y a que des occlusions et un staining pariétal sans anévrisme.</p><p><b>Règle à retenir :</b> devant une rétinopathie artérielle occlusive de la femme jeune au vitré calme, chercher activement l'atteinte cérébrale (corps calleux) et cochléaire — la triade change tout.</p>", "discussion": "Face à une vascularite artérielle occlusive au vitré non inflammatoire, quels examens systémiques demanderiez-vous pour départager cette entité d'un lupus, d'une périartérite noueuse ou d'un syndrome des antiphospholipides — et quel élément clinique orienterait chacun ?"};
+const UI = {
+  locked: "Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante", next: "Étape suivante →", final: "Voir la synthèse finale →",
+  restart: "↺ Recommencer le cas", scoreLabel: "Score au parcours :", reveal: "Révélation du diagnostic",
+  exact: "Exact.", notquite: "Pas tout à fait."
+};
+let current = 0, score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker'); t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : UI.reveal) + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages'); root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++) root.appendChild(renderStage(i));
+  if(current >= STAGES.length){ root.appendChild(renderSummary()); document.getElementById('lockedNote').style.display='none'; }
+  else document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `<div class="stage-num"><span class="dot"></span>${s.title}</div>${s.html}`;
+  const qb = document.createElement('div'); qb.className = 'qblock';
+  qb.innerHTML = `<div class="qhead"><div class="qtag">${s.q.tag}</div><div class="qtext">${s.q.text}</div></div><div class="options" id="opts-${i}"></div><div class="feedback" id="fb-${i}"></div>`;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D','E','F'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div'); o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct'); else o.classList.add('faded');
+    } else o.addEventListener('click', ()=>handleAnswer(i, oi));
+    optsEl.appendChild(o);
+  });
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? UI.exact : UI.notquite}</b> ${s.q.feedback}`;
+  }
+  wrap.appendChild(qb);
+  if(answered[i] && i === current){
+    const btn = document.createElement('button'); btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? UI.final : UI.next;
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div'); foot.className = 'stage-footer'; foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${UI.reveal}</div>
+    <div class="summary">
+      <h2>${REVEAL.title}</h2>
+      <div class="score-big">${UI.scoreLabel} <span>${score} / ${STAGES.length}</span></div>
+      ${REVEAL.intro_html}
+      <table class="ddx"><tr>${REVEAL.ddx_headers}</tr>${REVEAL.ddx_rows}</table>
+      <div class="reflect-box">
+        <div class="rtitle">${REVEAL.trap_title}</div>
+        ${REVEAL.trap_html}
+        <p><b>Discussion :</b> ${REVEAL.discussion}</p>
+      </div>
+    </div>`;
+  const btn = document.createElement('button'); btn.className = 'restart-btn'; btn.textContent = UI.restart;
+  btn.addEventListener('click', ()=>{ current = 0; score = 0; answered.fill(false); render(); window.scrollTo({top:0, behavior:'smooth'}); });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>

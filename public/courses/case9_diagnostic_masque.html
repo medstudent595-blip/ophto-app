@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cas clinique interactif #9 — Devinez le diagnostic</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0e131a;--panel:#161d26;--panel-2:#1c2531;--panel-3:#212b39;--border:#2a3442;--gold:#cf9e57;--gold-bright:#e8c07f;--red:#c1584f;--green:#6fa287;--text:#e9e5da;--text-dim:#8f99a8;--text-dimmer:#616d7d;}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;background:var(--bg);color:var(--text);font-family:'Inter',sans-serif;-webkit-font-smoothing:antialiased;}
+::selection{background:var(--gold);color:#0e131a;}
+body{background-image:radial-gradient(ellipse 900px 500px at 50% -10%, rgba(207,158,87,0.08), transparent);}
+.hero{position:relative;padding:76px 24px 56px;text-align:center;overflow:hidden;border-bottom:1px solid var(--border);}
+.fundus-glow{position:absolute;top:50%;left:50%;width:640px;height:640px;transform:translate(-50%,-50%);background:radial-gradient(circle, rgba(193,88,79,0.14) 0%, rgba(207,158,87,0.10) 32%, transparent 68%);pointer-events:none;}
+.eyebrow{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:18px;position:relative;}
+.hero h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(32px,5.2vw,52px);line-height:1.08;margin:0 0 16px;position:relative;color:#f4efe4;}
+.hero h1 em{font-style:italic;color:var(--gold-bright);font-weight:500;}
+.hero p.sub{font-size:16px;color:var(--text-dim);max-width:560px;margin:0 auto;line-height:1.6;position:relative;}
+.patient-chip{display:inline-flex;gap:22px;margin-top:32px;padding:14px 26px;background:var(--panel);border:1px solid var(--border);border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);position:relative;flex-wrap:wrap;justify-content:center;}
+.patient-chip b{color:var(--gold-bright);font-weight:600;}
+.tracker-outer{position:sticky;top:0;z-index:50;background:rgba(14,19,26,0.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);}
+.tracker{max-width:880px;margin:0 auto;padding:14px 24px;display:flex;align-items:center;gap:6px;overflow-x:auto;}
+.tstep{flex:1;min-width:0;height:5px;border-radius:3px;background:var(--panel-3);transition:background .4s;}
+.tstep.done{background:var(--gold);}
+.tstep.active{background:var(--text-dimmer);}
+.tracker-label{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--text-dimmer);white-space:nowrap;margin-left:12px;}
+.stage{max-width:880px;margin:0 auto;padding:64px 24px 0;}
+.stage-num{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.stage-num .dot{width:6px;height:6px;border-radius:50%;background:var(--gold);}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:14px;padding:28px 30px;margin-bottom:22px;}
+.card.exam{background:linear-gradient(180deg, var(--panel-2), var(--panel));}
+.card p{line-height:1.72;font-size:15.5px;color:#dcd7cb;margin:0 0 12px;}
+.card p:last-child{margin-bottom:0;}
+.card ul{margin:10px 0 0;padding-left:20px;line-height:1.7;color:#dcd7cb;font-size:15px;}
+.card b{color:var(--gold-bright);font-weight:600;}
+.datagrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;background:var(--border);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin:18px 0;}
+.datacell{background:var(--panel-2);padding:14px 16px;}
+.datacell .k{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-dimmer);margin-bottom:5px;}
+.datacell .v{font-family:'IBM Plex Mono',monospace;font-size:15px;color:var(--gold-bright);font-weight:600;}
+.real-fig{margin:6px 0 22px;}
+.real-fig img{width:100%;display:block;border-radius:10px;border:1px solid var(--border);background:#06090d;}
+.fig-caption{font-family:'IBM Plex Mono',monospace;font-size:11.5px;line-height:1.6;color:var(--text-dimmer);margin:10px 2px 0 !important;}
+.fig-caption .src-tag{display:block;color:var(--text-dimmer);opacity:.75;margin-top:2px;}
+.qblock{border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:8px;}
+.qhead{padding:20px 28px;background:var(--panel-3);border-bottom:1px solid var(--border);}
+.qhead .qtag{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--red);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.qhead .qtext{font-size:16px;line-height:1.5;color:#f4efe4;font-weight:500;}
+.options{padding:18px 22px;background:var(--panel);display:flex;flex-direction:column;gap:10px;}
+.opt{display:flex;gap:14px;align-items:flex-start;padding:14px 18px;border:1px solid var(--border);border-radius:10px;cursor:pointer;transition:border-color .2s,background .2s;background:var(--panel-2);}
+.opt:hover{border-color:var(--gold);}
+.opt .letter{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--text-dim);border:1px solid var(--border);border-radius:6px;width:24px;height:24px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px;}
+.opt .otext{font-size:14.5px;line-height:1.55;color:#dcd7cb;}
+.opt.correct{border-color:var(--green);background:rgba(111,162,135,0.12);}
+.opt.correct .letter{background:var(--green);color:#0e131a;border-color:var(--green);}
+.opt.wrong{border-color:var(--red);background:rgba(193,88,79,0.1);}
+.opt.wrong .letter{background:var(--red);color:#0e131a;border-color:var(--red);}
+.opt.disabled{cursor:default;}
+.opt.faded{opacity:.45;}
+.feedback{margin:0 22px 20px;padding:16px 20px;border-radius:10px;font-size:14.5px;line-height:1.65;display:none;}
+.feedback.show{display:block;}
+.feedback.ok{background:rgba(111,162,135,0.1);border:1px solid rgba(111,162,135,0.35);color:#c9dfd2;}
+.feedback.ko{background:rgba(193,88,79,0.08);border:1px solid rgba(193,88,79,0.3);color:#e6cfcc;}
+.feedback b{color:var(--gold-bright);}
+.next-btn{display:none;margin:22px auto 0;padding:13px 30px;background:var(--gold);color:#1a1206;border:none;border-radius:100px;font-family:'Inter',sans-serif;font-weight:600;font-size:14px;cursor:pointer;transition:transform .15s, background .2s;}
+.next-btn:hover{background:var(--gold-bright);transform:translateY(-1px);}
+.next-btn.show{display:block;}
+.stage-footer{display:flex;justify-content:center;}
+.locked-note{max-width:880px;margin:40px auto 0;padding:0 24px;text-align:center;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.05em;}
+.score-badge{position:fixed;top:70px;right:22px;background:var(--panel);border:1px solid var(--border);border-radius:100px;padding:9px 18px;font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--text-dim);z-index:40;box-shadow:0 4px 18px rgba(0,0,0,0.35);}
+.score-badge b{color:var(--gold-bright);}
+@media (max-width:640px){.score-badge{display:none;}}
+.summary{background:linear-gradient(180deg,var(--panel-2),var(--panel));border:1px solid var(--gold);border-radius:16px;padding:36px 34px;margin-top:10px;}
+.summary h2{font-family:'Fraunces',serif;font-size:24px;color:var(--gold-bright);margin:0 0 6px;}
+.summary .score-big{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--text-dim);margin-bottom:22px;}
+.summary .score-big span{color:var(--gold-bright);font-size:20px;font-weight:600;}
+table.ddx{width:100%;border-collapse:collapse;margin-top:14px;font-size:13.5px;}
+table.ddx th,table.ddx td{text-align:left;padding:10px 12px;border-bottom:1px solid var(--border);line-height:1.5;}
+table.ddx th{font-family:'IBM Plex Mono',monospace;font-size:10.5px;text-transform:uppercase;letter-spacing:.06em;color:var(--text-dimmer);font-weight:500;}
+table.ddx td{color:#dcd7cb;}
+table.ddx tr.highlight td{color:var(--gold-bright);}
+table.ddx td:first-child{font-weight:600;color:#f4efe4;}
+.reflect-box{margin-top:26px;padding:20px 22px;border-left:3px solid var(--gold);background:rgba(207,158,87,0.06);border-radius:0 10px 10px 0;}
+.reflect-box .rtitle{font-family:'IBM Plex Mono',monospace;font-size:11px;text-transform:uppercase;letter-spacing:.1em;color:var(--gold);margin-bottom:10px;}
+.reflect-box p{margin:0 0 10px;font-size:14.5px;line-height:1.7;color:#dcd7cb;}
+.reflect-box p:last-child{margin-bottom:0;}
+.restart-btn{margin-top:28px;background:transparent;border:1px solid var(--border);color:var(--text-dim);padding:10px 20px;border-radius:100px;font-family:'IBM Plex Mono',monospace;font-size:12px;cursor:pointer;}
+.restart-btn:hover{border-color:var(--gold);color:var(--gold-bright);}
+footer{text-align:center;padding:50px 24px 10px;color:var(--text-dimmer);font-family:'IBM Plex Mono',monospace;font-size:11px;}
+</style>
+</head>
+<body>
+<div class="hero">
+  <div class="fundus-glow"></div>
+  <div class="eyebrow">Cas clinique interactif · Dossier n°9 · Diagnostic masqué</div>
+  <h1>Une <em>uvéite</em> qui n'en est pas une</h1>
+  <p class="sub">Un vitré chargé, une inflammation qui résiste, et un détail qui cloche à chaque contrôle. Ici, le vrai diagnostic se cache derrière le masque.</p>
+  <div class="patient-chip"><span>Patient <b>63 ans</b></span><span>Motif <b>Myodésopsies + flou, œil « blanc »</b></span><span>Évolution <b>Cortico-résistance</b></span></div>
+</div>
+<div class="tracker-outer"><div class="tracker" id="tracker"></div></div>
+<div class="score-badge">Score · <b id="scoreLive">0/7</b></div>
+<div id="stages"></div>
+<div class="locked-note" id="lockedNote">Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante</div>
+<footer>Cas pédagogique construit à partir des cours d&#x27;uvéites du DES d&#x27;Ophtalmologie — à usage pédagogique</footer>
+<script>
+const STAGES = [{"label": "Anamnèse", "title": "Étape 1 — Un terrain qui doit alerter", "html": "<div class=\"card exam\"><p>Patient de <b>63 ans</b>, adressé pour une « uvéite intermédiaire » traînante : myodésopsies et flou visuel évoluant depuis des mois, d'abord unilatéraux. L'œil est <b>peu rouge, peu douloureux</b> (« œil blanc ») malgré une inflammation intraoculaire manifeste.</p></div>", "q": {"tag": "QCM 1 · Signal d'alarme", "text": "Chez ce patient, deux éléments doivent d'emblée faire redouter une pseudo-uvéite plutôt qu'une uvéite banale. Lesquels ?", "options": ["Le sexe masculin et l'unilatéralité, spécifiques d'une infection", "L'âge > 50 ans et le contraste entre une inflammation intraoculaire marquée et un œil cliniquement « blanc/calme » — deux drapeaux rouges de pseudo-uvéite néoplasique", "Les myodésopsies, pathognomoniques d'un lymphome", "L'ancienneté des symptômes, qui élimine toute cause tumorale"], "correct": 1, "feedback": "L'âge > 50 ans et le contraste entre une inflammation intraoculaire nette et un œil extérieurement blanc/calme sont deux signaux d'alerte classiques de pseudo-uvéite néoplasique. Une hyalite du sujet > 50 ans doit toujours faire évoquer, entre autres, un lymphome — a fortiori si elle résiste au traitement."}}, {"label": "Segment antérieur", "title": "Étape 2 — Des précipités trompeurs", "html": "<div class=\"card exam\"><p>Au segment antérieur : <b>précipités rétrocornéens fins et spiculés</b>, répartis sur toute la cornée, pouvant faire évoquer une cyclite hétérochromique de Fuchs. Il n'y a <b>pas de synéchies</b>.</p></div>", "q": {"tag": "QCM 2 · Piège sémiologique", "text": "Ces PRC fins et spiculés chez un patient âgé sont un piège. Que faut-il en retenir ?", "options": ["Ils affirment une cyclite de Fuchs et écartent toute cause grave", "Ils peuvent mimer une cyclite de Fuchs, mais chez un sujet âgé, des précipités fins et spiculés diffus doivent AUSSI faire évoquer un lymphome vitréo-rétinien ; l'absence de synéchies est compatible (les synéchies sont exceptionnelles dans cette entité)", "Ils signent une uvéite herpétique en peau de léopard", "Ils imposent le diagnostic de sarcoïdose"], "correct": 1, "feedback": "Les précipités fins et spiculés sur toute la cornée peuvent mimer une cyclite de Fuchs, mais chez le sujet âgé ils doivent aussi évoquer un lymphome vitréo-rétinien. L'absence de synéchies est cohérente : elles sont exceptionnelles dans cette entité. Le piège est de se rassurer à tort avec un diagnostic bénin (Fuchs)."}}, {"label": "Fond d'œil", "title": "Étape 3 — L'indice majeur", "html": "<div class=\"card exam\"><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Hyalite</div><div class=\"v\">Dense</div></div><div class=\"datacell\"><div class=\"k\">Œdème maculaire</div><div class=\"v\">Absent / rare</div></div><div class=\"datacell\"><div class=\"k\">Infiltrats</div><div class=\"v\">Sous-rétiniens jaunâtres</div></div></div><p>Le fond d'œil, difficilement analysable à travers une <b>hyalite dense</b>, montre des infiltrats sous-rétiniens jaunâtres et quelques hémorragies. Point capital relevé à l'OCT : <b>hyalite dense mais absence (ou rareté) d'œdème maculaire</b>.</p></div>", "q": {"tag": "QCM 3 · Discordance clé", "text": "La discordance « hyalite dense MAIS peu ou pas d'œdème maculaire » est présentée comme un indice majeur. Pourquoi ?", "options": ["Parce qu'une hyalite dense s'accompagne toujours d'un œdème maculaire dans les uvéites inflammatoires ; son absence est donc atypique et évoque une infiltration cellulaire non inflammatoire (tumorale)", "Parce que l'œdème maculaire est impossible à voir en OCT", "Parce que cette discordance signe une origine infectieuse virale", "Parce qu'elle est banale et sans valeur d'orientation"], "correct": 0, "feedback": "Dans une uvéite inflammatoire, une hyalite dense s'accompagne le plus souvent d'un œdème maculaire (via IL-6/VEGF). Une hyalite dense SANS œdème maculaire est donc discordante et constitue un indice majeur en faveur d'une infiltration cellulaire tumorale (lymphomateuse) plutôt qu'inflammatoire. C'est un des signes les plus utiles pour démasquer cette pseudo-uvéite."}}, {"label": "OCT", "title": "Étape 4 — Signes OCT évocateurs", "html": "<div class=\"card exam\"><p>L'OCT maculaire montre des <b>irrégularités et une fragmentation de l'épithélium pigmentaire</b>, avec des <b>dépôts hyperréflectifs sous-rétiniens</b> (aspect parfois drusenoïde) correspondant à une infiltration tumorale sous-rétinienne. On retrouve également des points hyperréflectifs dans le vitré.</p></div>", "q": {"tag": "QCM 4 · Interprétation OCT", "text": "Ces dépôts hyperréflectifs sous-rétiniens et cette fragmentation de l'EP, dans ce contexte, traduisent quoi ?", "options": ["Une dégénérescence maculaire liée à l'âge banale, sans rapport avec le tableau", "Une infiltration tumorale de l'espace sous-rétinien / sous-EP, cohérente avec une pseudo-uvéite lymphomateuse — signe qui, associé à la hyalite dense sans œdème, renforce fortement la suspicion", "Un œdème maculaire cystoïde typique d'une uvéite inflammatoire", "Une choriorétinopathie séreuse centrale"], "correct": 1, "feedback": "Les dépôts hyperréflectifs sous-rétiniens/sous-EP et la fragmentation de l'EP traduisent une infiltration tumorale (nappes de cellules lymphomateuses). Associés à la hyalite dense sans œdème maculaire, ils orientent fortement vers un lymphome vitréo-rétinien. L'OCT participe donc activement à démasquer la pseudo-uvéite."}}, {"label": "Traitement d'épreuve", "title": "Étape 5 — La cortico-résistance qui parle", "html": "<div class=\"card exam\"><p>Un traitement par corticoïdes est instauré : amélioration initiale partielle, puis <b>reprise inflammatoire</b> à la décroissance, avec un tableau globalement <b>cortico-résistant / cortico-dépendant à haut niveau</b>. L'inflammation ne se comporte pas comme une uvéite classique.</p></div>", "q": {"tag": "QCM 5 · Valeur du test thérapeutique", "text": "Que doit imposer cette évolution cortico-résistante chez un patient de plus de 50 ans, avant toute escalade immunosuppressive ?", "options": ["Augmenter simplement les doses de corticoïdes sans autre exploration", "Réévaluer le diagnostic : reconsidérer d'abord une infection non diagnostiquée, puis évoquer une pseudo-uvéite néoplasique — et déclencher les explorations dédiées (IRM cérébrale, dosages intraoculaires, vitrectomie diagnostique)", "Conclure définitivement à une uvéite idiopathique et arrêter le bilan", "Débuter une biothérapie anti-TNF-α d'emblée sans autre bilan"], "correct": 1, "feedback": "Une uvéite postérieure résistant au traitement usuel, surtout après 50 ans, impose de réévaluer le diagnostic AVANT toute escalade : d'abord écarter une infection non diagnostiquée, puis évoquer une pseudo-uvéite (néoplasique en priorité). C'est le moment de demander l'imagerie cérébrale et les prélèvements intraoculaires plutôt que d'immunodéprimer à l'aveugle."}}, {"label": "Prélèvements", "title": "Étape 6 — Confirmation biologique et histologique", "html": "<div class=\"card exam\"><p>Une <b>IRM cérébrale</b> est demandée (recherche de localisation du système nerveux central), ainsi que des prélèvements intraoculaires.</p><div class=\"datagrid\"><div class=\"datacell\"><div class=\"k\">Dosage intraoculaire IL-10</div><div class=\"v\">Élevé</div></div><div class=\"datacell\"><div class=\"k\">Rapport IL-10 / IL-6</div><div class=\"v\">> 1</div></div><div class=\"datacell\"><div class=\"k\">IRM cérébrale</div><div class=\"v\">Lésion du corps calleux</div></div></div></div>", "q": {"tag": "QCM 6 · Biomarqueur et preuve", "text": "Quel biomarqueur intraoculaire oriente vers ce diagnostic, et quel geste apporte la preuve de certitude ?", "options": ["Une IL-6 isolée élevée ; la preuve venant d'une simple ponction de chambre antérieure", "Une IL-10 élevée (avec rapport IL-10/IL-6 > 1) évocatrice du lymphome B ; la confirmation nécessitant une vitrectomie diagnostique pour analyse histologique/cytologique", "Un HLA-A29 positif ; la preuve venant du typage génétique", "Une élévation de l'ECA ; la preuve venant d'une biopsie bronchique"], "correct": 1, "feedback": "L'IL-10 est le biomarqueur du lymphome B intraoculaire ; son élévation, surtout avec un rapport IL-10/IL-6 > 1, est évocatrice. La confirmation de certitude repose sur la vitrectomie diagnostique (analyse histo-cytologique). L'IL-6, elle, est plutôt un marqueur inflammatoire — d'où l'intérêt du rapport entre les deux."}}, {"label": "Enjeu vital", "title": "Étape 7 — Pourquoi le diagnostic est une urgence", "html": "<div class=\"card exam\"><p>Le diagnostic retenu engage le <b>pronostic vital</b>, du fait notamment de l'atteinte possible du système nerveux central. La prise en charge est multidisciplinaire (onco-hématologie, neurologie).</p></div>", "q": {"tag": "QCM 7 · Pronostic & principe de PEC", "text": "Quelle affirmation résume le mieux l'enjeu de cette entité ?", "options": ["Il s'agit d'une pathologie purement oculaire, de pronostic bénin", "C'est une pseudo-uvéite dont le pronostic vital est engagé (atteinte du SNC déterminante), ce qui impose un diagnostic rapide et une prise en charge oncologique spécialisée — l'immunosuppression « anti-uvéitique » à l'aveugle pouvant retarder le diagnostic et aggraver le pronostic", "Le traitement repose sur une simple corticothérapie locale au long cours", "La surveillance simple suffit car l'évolution est spontanément favorable"], "correct": 1, "feedback": "Le pronostic vital est engagé, l'atteinte du système nerveux central étant déterminante. D'où l'urgence d'un diagnostic précis et d'une prise en charge oncologique spécialisée. Traiter comme une « uvéite » à l'aveugle par immunosuppresseurs peut masquer et retarder le diagnostic — l'inverse de ce qu'il faut faire."}}];
+const REVEAL = {"title": "Diagnostic final : lymphome vitréo-rétinien primitif (pseudo-uvéite)", "intro_html": "<p style=\"line-height:1.7;color:#dcd7cb;font-size:14.5px;\">Pseudo-uvéite néoplasique à évoquer systématiquement après <b style=\"color:var(--gold-bright)\">50 ans</b> devant une hyalite résistant aux corticoïdes. Indices majeurs : contraste « œil blanc » / inflammation marquée, PRC fins spiculés, <b style=\"color:var(--gold-bright)\">hyalite dense SANS œdème maculaire</b>, dépôts hyperréflectifs sous-rétiniens en OCT. Confirmation par IL-10 intraoculaire élevée (rapport IL-10/IL-6 > 1) et vitrectomie diagnostique. Pronostic vital engagé par l'atteinte du SNC.</p>", "ddx_headers": "<th>Entité</th><th>Terrain</th><th>Signe discriminant</th>", "ddx_rows": "<tr class=\"highlight\"><td>Lymphome vitréo-rétinien</td><td>> 50 ans, cortico-résistant</td><td>Hyalite dense SANS œdème maculaire, IL-10↑, PRC fins spiculés</td></tr><tr><td>Cyclite de Fuchs</td><td>Adulte jeune/moyen</td><td>PRC fins diffus MAIS hétérochromie, évolution bénigne</td></tr><tr><td>Uvéite intermédiaire idiopathique</td><td>Sujet jeune</td><td>Œufs de fourmi, banquise, œdème maculaire fréquent</td></tr><tr><td>Sarcoïdose</td><td>ECA, ADP hilaires</td><td>Granulomateux, taches de bougie, cortico-sensible</td></tr><tr><td>Rétinite virale (immunodéprimé)</td><td>Immunodépression</td><td>Nécrose rétinienne, évolution rapide</td></tr>", "trap_title": "Le vrai piège de ce cas", "trap_html": "<p>Toute la difficulté est que cette entité <b>se déguise en uvéite</b> et peut même mimer une cyclite de Fuchs bénigne (PRC fins spiculés). Deux garde-fous : le terrain (> 50 ans) et surtout la <b>discordance hyalite dense / pas d'œdème maculaire</b>, contre-intuitive dans une vraie inflammation. La cortico-résistance est le troisième signal — elle doit déclencher une réévaluation, pas une escalade immunosuppressive à l'aveugle, qui retarderait un diagnostic dont le pronostic vital dépend.</p><p><b>Règle à retenir :</b> hyalite du sujet > 50 ans + résistance aux corticoïdes = évoquer un lymphome jusqu'à preuve du contraire (IRM, IL-10, vitrectomie).</p>", "discussion": "Devant une hyalite dense résistante du sujet âgé, comment hiérarchiseriez-vous les explorations (infection non diagnostiquée vs pseudo-uvéite néoplasique) avant toute immunosuppression — et quels arguments feraient basculer vers la vitrectomie diagnostique ?"};
+const UI = {
+  locked: "Répondez à la question ci-dessus pour débloquer l&#x27;étape suivante", next: "Étape suivante →", final: "Voir la synthèse finale →",
+  restart: "↺ Recommencer le cas", scoreLabel: "Score au parcours :", reveal: "Révélation du diagnostic",
+  exact: "Exact.", notquite: "Pas tout à fait."
+};
+let current = 0, score = 0;
+const answered = new Array(STAGES.length).fill(false);
+
+function buildTracker(){
+  const t = document.getElementById('tracker'); t.innerHTML = "";
+  STAGES.forEach((s,i)=>{
+    const d = document.createElement('div');
+    d.className = 'tstep' + (i < current ? ' done' : (i===current ? ' active':''));
+    t.appendChild(d);
+  });
+  const lbl = document.createElement('span');
+  lbl.className = 'tracker-label';
+  lbl.textContent = (current < STAGES.length ? STAGES[current].label : UI.reveal) + ` · ${Math.min(current+1,STAGES.length)}/${STAGES.length}`;
+  t.appendChild(lbl);
+}
+
+function render(){
+  const root = document.getElementById('stages'); root.innerHTML = "";
+  for(let i=0;i<=current && i<STAGES.length;i++) root.appendChild(renderStage(i));
+  if(current >= STAGES.length){ root.appendChild(renderSummary()); document.getElementById('lockedNote').style.display='none'; }
+  else document.getElementById('lockedNote').style.display = answered[current] ? 'none':'block';
+  buildTracker();
+  document.getElementById('scoreLive').textContent = `${score}/${STAGES.length}`;
+}
+
+function renderStage(i){
+  const s = STAGES[i];
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `<div class="stage-num"><span class="dot"></span>${s.title}</div>${s.html}`;
+  const qb = document.createElement('div'); qb.className = 'qblock';
+  qb.innerHTML = `<div class="qhead"><div class="qtag">${s.q.tag}</div><div class="qtext">${s.q.text}</div></div><div class="options" id="opts-${i}"></div><div class="feedback" id="fb-${i}"></div>`;
+  const optsEl = qb.querySelector(`#opts-${i}`);
+  const letters = ['A','B','C','D','E','F'];
+  s.q.options.forEach((opt,oi)=>{
+    const o = document.createElement('div'); o.className = 'opt';
+    o.innerHTML = `<div class="letter">${letters[oi]}</div><div class="otext">${opt}</div>`;
+    if(answered[i]){
+      o.classList.add('disabled');
+      if(oi === s.q.correct) o.classList.add('correct'); else o.classList.add('faded');
+    } else o.addEventListener('click', ()=>handleAnswer(i, oi));
+    optsEl.appendChild(o);
+  });
+  if(answered[i]){
+    const fb = qb.querySelector(`#fb-${i}`);
+    const wasCorrect = answered[i] === 'correct';
+    fb.className = 'feedback show ' + (wasCorrect ? 'ok':'ko');
+    fb.innerHTML = `<b>${wasCorrect ? UI.exact : UI.notquite}</b> ${s.q.feedback}`;
+  }
+  wrap.appendChild(qb);
+  if(answered[i] && i === current){
+    const btn = document.createElement('button'); btn.className = 'next-btn show';
+    btn.textContent = (i === STAGES.length-1) ? UI.final : UI.next;
+    btn.addEventListener('click', ()=>{ current++; render(); window.scrollTo({top: document.getElementById('stages').scrollHeight, behavior:'smooth'}); });
+    const foot = document.createElement('div'); foot.className = 'stage-footer'; foot.appendChild(btn);
+    wrap.appendChild(foot);
+  }
+  return wrap;
+}
+
+function handleAnswer(i, oi){
+  const correct = STAGES[i].q.correct === oi;
+  answered[i] = correct ? 'correct' : 'wrong';
+  if(correct) score++;
+  render();
+}
+
+function renderSummary(){
+  const wrap = document.createElement('div'); wrap.className = 'stage';
+  wrap.innerHTML = `
+    <div class="stage-num"><span class="dot"></span>${UI.reveal}</div>
+    <div class="summary">
+      <h2>${REVEAL.title}</h2>
+      <div class="score-big">${UI.scoreLabel} <span>${score} / ${STAGES.length}</span></div>
+      ${REVEAL.intro_html}
+      <table class="ddx"><tr>${REVEAL.ddx_headers}</tr>${REVEAL.ddx_rows}</table>
+      <div class="reflect-box">
+        <div class="rtitle">${REVEAL.trap_title}</div>
+        ${REVEAL.trap_html}
+        <p><b>Discussion :</b> ${REVEAL.discussion}</p>
+      </div>
+    </div>`;
+  const btn = document.createElement('button'); btn.className = 'restart-btn'; btn.textContent = UI.restart;
+  btn.addEventListener('click', ()=>{ current = 0; score = 0; answered.fill(false); render(); window.scrollTo({top:0, behavior:'smooth'}); });
+  wrap.appendChild(btn);
+  return wrap;
+}
+
+render();
+</script>
+</body>
+</html>
