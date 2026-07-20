@@ -14,6 +14,8 @@ import { uaFichesMarkdown, uaAlgorithmsMarkdown, uaAlgoMermaid, uiFichesMarkdown
 import { glaucomeQcmMarkdown, glaucomeQcmData } from '../data/glaucomeCongenitalData';
 import { uiQcmData } from '../data/uveitesIntermediairesQcmData';
 import { uveitePosterieureData } from '../data/uveitePosterieureData';
+import { sepPediatriqueCourseMarkdown, sepPediatriqueFichesMarkdown, sepPediatriqueAlgorithmsMarkdown, sepPediatriqueClassificationsMarkdown } from '../data/sepPediatriqueData';
+import { sarcoidoseOculaireCourseMarkdown, sarcoidoseOculaireFichesMarkdown, sarcoidoseOculaireAlgorithmsMarkdown, sarcoidoseOculaireClassificationsMarkdown } from '../data/sarcoidoseOculaireData';
 
 import QcmPlayer from '../components/QcmPlayer';
 import { Save, MessageSquare, Copy, Check, PenTool, ChevronRight, ChevronLeft, ArrowLeft, Hammer } from 'lucide-react';
@@ -140,6 +142,24 @@ const CourseReader = () => {
     mindmapMarkdown: '',
     mindmapMermaid: '',
     qcmData: uveitePosterieureData
+  } : id === 'sep-pediatrique' ? {
+    cours: sepPediatriqueCourseMarkdown,
+    fiches: sepPediatriqueFichesMarkdown,
+    algorithmes: sepPediatriqueAlgorithmsMarkdown,
+    algoMermaid: '',
+    mindmapMarkdown: '',
+    mindmapMermaid: '',
+    classificationsMarkdown: sepPediatriqueClassificationsMarkdown,
+    classificationsMermaid: ''
+  } : id === 'sarcoidose-oculaire' ? {
+    cours: sarcoidoseOculaireCourseMarkdown,
+    fiches: sarcoidoseOculaireFichesMarkdown,
+    algorithmes: sarcoidoseOculaireAlgorithmsMarkdown,
+    algoMermaid: '',
+    mindmapMarkdown: '',
+    mindmapMermaid: '',
+    classificationsMarkdown: sarcoidoseOculaireClassificationsMarkdown,
+    classificationsMermaid: ''
   } : id === 'glaucome-congenital' ? {
     cours: '',
     fiches: '',
