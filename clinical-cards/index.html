@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="description" content="Fiches cliniques rapides d'ophtalmologie pour consultation." />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="stylesheet" href="styles.css" />
+  <title>Ophtalmo Clinical Cards</title>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Consultation rapide</p>
+        <h1>Ophtalmo</h1>
+      </div>
+      <button id="themeToggle" class="icon-btn" aria-label="Changer de thème">☾</button>
+    </header>
+
+    <main>
+      <section id="homeView" class="view active">
+        <div class="search-wrap">
+          <input id="searchInput" type="search" placeholder="Pathologie, signe, classification, règle…" autocomplete="off" />
+          <span class="search-icon">⌕</span>
+        </div>
+
+        <div id="searchResults" class="search-results hidden"></div>
+
+        <section class="quick-grid" aria-label="Accès rapides">
+          <button class="quick-card danger" data-view="emergencyView">
+            <span class="quick-icon">⚠</span>
+            <strong>Urgences</strong>
+            <small>Accès immédiat</small>
+          </button>
+          <button class="quick-card" data-view="toolsView">
+            <span class="quick-icon">⌁</span>
+            <strong>Outils</strong>
+            <small>Règles & classifications</small>
+          </button>
+          <button class="quick-card" data-view="favoritesView">
+            <span class="quick-icon">★</span>
+            <strong>Favoris</strong>
+            <small>Fiches essentielles</small>
+          </button>
+          <button class="quick-card" data-view="recentView">
+            <span class="quick-icon">↺</span>
+            <strong>Récentes</strong>
+            <small>Dernières consultations</small>
+          </button>
+        </section>
+
+        <section class="section-block">
+          <div class="section-title-row">
+            <h2>Spécialités</h2>
+            <span id="pathologyCount" class="pill">0 fiche</span>
+          </div>
+          <div id="categoryGrid" class="category-grid"></div>
+        </section>
+
+        <section class="section-block">
+          <div class="section-title-row">
+            <h2>Épinglées</h2>
+            <span class="muted">Accès direct</span>
+          </div>
+          <div id="pinnedCards" class="stack"></div>
+        </section>
+      </section>
+
+      <section id="categoryView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <div class="page-heading">
+          <p class="eyebrow">Pathologies</p>
+          <h2 id="categoryTitle"></h2>
+        </div>
+        <div id="categoryList" class="stack"></div>
+      </section>
+
+      <section id="sheetView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <article id="sheetContent" class="clinical-sheet"></article>
+      </section>
+
+      <section id="emergencyView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <div class="page-heading">
+          <p class="eyebrow red-text">Accès prioritaire</p>
+          <h2>Urgences</h2>
+          <p class="muted">Les fiches de cette zone seront uniquement alimentées à partir de tes sources validées.</p>
+        </div>
+        <div id="emergencyList" class="stack"></div>
+      </section>
+
+      <section id="toolsView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <div class="page-heading">
+          <p class="eyebrow">Références rapides</p>
+          <h2>Outils</h2>
+        </div>
+        <div id="toolsList" class="stack"></div>
+      </section>
+
+      <section id="favoritesView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <div class="page-heading"><p class="eyebrow">Personnel</p><h2>Favoris</h2></div>
+        <div id="favoritesList" class="stack"></div>
+      </section>
+
+      <section id="recentView" class="view">
+        <button class="back-btn" data-back>← Retour</button>
+        <div class="page-heading"><p class="eyebrow">Historique</p><h2>Récentes</h2></div>
+        <div id="recentList" class="stack"></div>
+      </section>
+    </main>
+
+    <nav class="bottom-nav" aria-label="Navigation principale">
+      <button class="nav-item active" data-nav="homeView"><span>⌂</span><small>Accueil</small></button>
+      <button class="nav-item" data-nav="emergencyView"><span>⚠</span><small>Urgences</small></button>
+      <button class="nav-item" data-nav="toolsView"><span>⌁</span><small>Outils</small></button>
+      <button class="nav-item" data-nav="favoritesView"><span>★</span><small>Favoris</small></button>
+    </nav>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
